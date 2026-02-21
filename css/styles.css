@@ -848,6 +848,23 @@ strong {
     margin-bottom: 0;
 }
 
+/* 4-column concept grid (for 4 or 8 items) */
+.concept-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1024px) {
+    .concept-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .concept-grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Timeline */
 .timeline {
     position: relative;
