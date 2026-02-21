@@ -46,7 +46,7 @@ El blog incluye los siguientes temas:
 * Algoritmos de búsqueda local
 
 ## Estructura del proyecto
-
+```
 /ai-blog
 │
 ├── index.html
@@ -59,7 +59,7 @@ El blog incluye los siguientes temas:
 │
 ├── pages/
 │   └── (páginas individuales de cada tema)
-
+```
 
 ## Objetivo del proyecto
 
