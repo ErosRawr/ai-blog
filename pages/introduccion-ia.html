@@ -3,36 +3,241 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Introducción a la IA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="¿Qué es la inteligencia artificial? Aprende los conceptos básicos, definiciones clave y por qué la IA transforma el mundo.">
+    <title>Introducción a la IA — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
 </head>
 
 <body>
 
-    <div class="container">
-
-        <h1>Introducción a la Inteligencia Artificial</h1>
-
-        <p>
-            La inteligencia artificial es una rama de la informática que busca crear sistemas capaces de realizar tareas
-            que normalmente requieren inteligencia humana.
-        </p>
-
-        <p>
-            Estas tareas incluyen:
-        </p>
-
-        <ul>
-            <li>Aprendizaje</li>
-            <li>Razonamiento</li>
-            <li>Resolución de problemas</li>
-            <li>Percepción</li>
-            <li>Toma de decisiones</li>
-        </ul>
-
-        <a href="../index.html">Volver al inicio</a>
-
+    <!-- Particles -->
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
     </div>
+
+    <!-- Reading Progress -->
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo">
+                <span class="logo-icon">IA</span>
+                <span>AI Blog</span>
+            </a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="introduccion-ia.html">Introducción</a></li>
+                <li><a href="historia-ia.html">Historia</a></li>
+                <li><a href="habilidades-cognoscitivas.html">Cognición</a></li>
+                <li><a href="agente-inteligente.html">Agentes</a></li>
+                <li><a href="algoritmos-busqueda.html">Algoritmos</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+
+        <!-- Article Hero -->
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <span class="current">Introducción a la IA</span>
+            </div>
+            <h1>Introducción a la <span class="gradient-text">Inteligencia Artificial</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 8 min</span>
+                <span class="article-meta-item">🏷️ Fundamentos</span>
+                <span class="article-meta-item">📝 Tema 01 de 13</span>
+            </div>
+        </header>
+
+        <!-- Article Content -->
+        <article class="article-content">
+
+            <section class="reveal">
+                <h2 id="que-es">¿Qué es la Inteligencia Artificial?</h2>
+
+                <p>Imagina que pudieras enseñarle a una computadora a <strong>pensar</strong>, <strong>aprender</strong>
+                    y <strong>tomar decisiones</strong> como lo hace un ser humano. Esa es la esencia de la inteligencia
+                    artificial.</p>
+
+                <p>La <strong>Inteligencia Artificial (IA)</strong> es una rama de la informática que se dedica a crear
+                    sistemas capaces de realizar tareas que normalmente requieren inteligencia humana. Esto abarca desde
+                    reconocer rostros en fotografías hasta conducir automóviles de forma autónoma.</p>
+
+                <div class="callout">
+                    <div class="callout-title">💡 Definición clave</div>
+                    <p>La IA es la ciencia e ingeniería de crear máquinas inteligentes, especialmente programas de
+                        computadora inteligentes. Está relacionada con la tarea de usar computadoras para entender la
+                        inteligencia humana. — <strong>John McCarthy, 1956</strong></p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="tipos">Tipos de Inteligencia Artificial</h2>
+
+                <p>No toda la IA es igual. Podemos clasificarla según su <strong>capacidad</strong> y
+                    <strong>alcance</strong>:</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🎯</div>
+                        <h4>IA Débil (Estrecha)</h4>
+                        <p>Diseñada para una tarea específica. Ejemplo: Siri, un filtro de spam o tu algoritmo de
+                            Netflix.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🧠</div>
+                        <h4>IA Fuerte (General)</h4>
+                        <p>Capaz de entender y aprender cualquier tarea intelectual humana. Aún es un objetivo teórico.
+                        </p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🌌</div>
+                        <h4>Superinteligencia</h4>
+                        <p>Superaría la inteligencia humana en todos los aspectos. Por ahora, solo existe en la ciencia
+                            ficción.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="capacidades">¿Qué puede hacer la IA?</h2>
+
+                <p>La IA moderna puede realizar tareas asombrosas. Piensa en ella como un <strong>navaja suiza
+                        digital</strong> — tiene una herramienta para casi todo:</p>
+
+                <ul>
+                    <li><strong>Aprendizaje automático:</strong> Reconocer patrones en datos masivos, como predecir qué
+                        canción te gustará.</li>
+                    <li><strong>Visión por computadora:</strong> «Ver» y entender imágenes. Tu teléfono usa esto al
+                        desbloquear con tu rostro.</li>
+                    <li><strong>Procesamiento de lenguaje natural:</strong> Entender y generar texto humano. ChatGPT es
+                        un ejemplo claro.</li>
+                    <li><strong>Robótica:</strong> Robots que pueden moverse e interactuar con el mundo físico.</li>
+                    <li><strong>Toma de decisiones:</strong> Evaluar opciones y elegir la mejor, desde rutas de GPS
+                        hasta diagnósticos médicos.</li>
+                </ul>
+            </section>
+
+            <section class="reveal">
+                <h2 id="enfoques">Enfoques de la IA</h2>
+
+                <p>Los investigadores han abordado la IA desde cuatro perspectivas diferentes:</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Enfoque</th>
+                            <th>Pensar</th>
+                            <th>Actuar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Como humano</strong></td>
+                            <td>Pensar como humano (modelo cognitivo)</td>
+                            <td>Actuar como humano (Test de Turing)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Racionalmente</strong></td>
+                            <td>Pensar racionalmente (leyes del pensamiento)</td>
+                            <td>Actuar racionalmente (agentes racionales)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="callout callout-tip">
+                    <div class="callout-title">🎯 Dato interesante</div>
+                    <p>El enfoque dominante hoy en día es el del <strong>agente racional</strong>: un sistema que
+                        percibe su entorno y toma las acciones que maximizan su rendimiento.</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="importancia">¿Por qué importa la IA?</h2>
+
+                <p>La inteligencia artificial no es solo tecnología del futuro. Ya está transformando prácticamente cada
+                    industria:</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🏥</div>
+                        <h4>Salud</h4>
+                        <p>Diagnósticos más precisos y descubrimiento de medicamentos acelerado.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🚗</div>
+                        <h4>Transporte</h4>
+                        <p>Vehículos autónomos y optimización de rutas logísticas.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🎓</div>
+                        <h4>Educación</h4>
+                        <p>Tutores personalizados que se adaptan al ritmo de cada estudiante.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🎨</div>
+                        <h4>Creatividad</h4>
+                        <p>Generación de arte, música y texto que inspiran nuevas formas de expresión.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="resumen">Resumen</h2>
+
+                <p>La inteligencia artificial es una de las disciplinas más fascinantes de la computación. En esencia,
+                    busca responder una pregunta fundamental: <strong>¿pueden las máquinas pensar?</strong></p>
+
+                <ul>
+                    <li>La IA busca crear sistemas que emulen la inteligencia humana.</li>
+                    <li>Existen diferentes tipos: débil (específica), fuerte (general) y superinteligencia (teórica).
+                    </li>
+                    <li>Sus capacidades incluyen aprendizaje, visión, lenguaje, robótica y toma de decisiones.</li>
+                    <li>El enfoque moderno se centra en los <strong>agentes racionales</strong>.</li>
+                    <li>Ya transforma industrias como la salud, transporte, educación y creatividad.</li>
+                </ul>
+            </section>
+
+            <!-- Article Navigation -->
+            <nav class="article-nav reveal">
+                <a href="../index.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Inicio</span>
+                </a>
+                <a href="historia-ia.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Historia de la IA</span>
+                </a>
+            </nav>
+
+        </article>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
 
 </body>
 

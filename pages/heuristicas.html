@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Heurísticas en IA: atajos inteligentes para resolver problemas complejos cuando explorar todo el espacio es imposible.">
+    <title>Heurísticas — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+
+<body>
+
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo">
+                <span class="logo-icon">IA</span>
+                <span>AI Blog</span>
+            </a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="introduccion-ia.html">Introducción</a></li>
+                <li><a href="historia-ia.html">Historia</a></li>
+                <li><a href="habilidades-cognoscitivas.html">Cognición</a></li>
+                <li><a href="agente-inteligente.html">Agentes</a></li>
+                <li><a href="algoritmos-busqueda.html">Algoritmos</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <span class="current">Heurísticas</span>
+            </div>
+            <h1><span class="gradient-text">Heurísticas</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 8 min</span>
+                <span class="article-meta-item">🏷️ Algoritmos</span>
+                <span class="article-meta-item">📝 Tema 10 de 13</span>
+            </div>
+        </header>
+
+        <article class="article-content">
+
+            <section class="reveal">
+                <h2 id="que-son">¿Qué son las heurísticas?</h2>
+
+                <p>Una <strong>heurística</strong> es un «atajo inteligente» para resolver problemas. Cuando el espacio
+                    de posibles soluciones es enorme y no puedes explorarlas todas, una heurística te ayuda a
+                    <strong>adivinar inteligentemente</strong> cuál es el camino más prometedor.</p>
+
+                <p>Piénsalo con una analogía: imagina que buscas un restaurante en una ciudad desconocida. La búsqueda
+                    <strong>exhaustiva</strong> sería visitar TODOS los restaurantes y probar su comida. Obviamente
+                    imposible. Entonces usas <strong>heurísticas</strong>:</p>
+
+                <ul>
+                    <li>«Si tiene muchos clientes, probablemente es bueno»</li>
+                    <li>«Si huele bien desde fuera, vale la pena entrar»</li>
+                    <li>«Si tiene buenas reseñas en Google, es una apuesta segura»</li>
+                </ul>
+
+                <p>Ninguna de estas reglas garantiza encontrar el MEJOR restaurante, pero te acercan mucho más rápido a
+                    una buena opción.</p>
+            </section>
+
+            <section class="reveal">
+                <h2 id="propiedades">Propiedades de una buena heurística</h2>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">⚡</div>
+                        <h4>Eficiencia</h4>
+                        <p>Debe ser rápida de calcular. Si evaluar la heurística tarda tanto como resolver el problema,
+                            no sirve.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🎯</div>
+                        <h4>Informativa</h4>
+                        <p>Debe dar buenas estimaciones. Una heurística que siempre dice «cualquier camino es igual de
+                            bueno» no ayuda en nada.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">✅</div>
+                        <h4>Admisible</h4>
+                        <p>Nunca sobreestima el costo real. Siempre es optimista — dice «por lo menos te falta ESTO»,
+                            nunca más de lo real.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📏</div>
+                        <h4>Consistente</h4>
+                        <p>La estimación respeta la desigualdad triangular: el atajo nunca es más largo que el camino
+                            real.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="ejemplos">Ejemplos de heurísticas famosas</h2>
+
+                <h3>Distancia Manhattan</h3>
+                <p>Para moverse en una cuadrícula (como las calles de una ciudad), la distancia Manhattan suma los
+                    movimientos horizontales y verticales por separado. Si estás en (1,1) y quieres llegar a (4,5), la
+                    distancia es |4-1| + |5-1| = 3 + 4 = <strong>7 movimientos</strong>.</p>
+
+                <div class="code-block">
+                    <span class="comment">// Distancia Manhattan</span><br>
+                    <span class="keyword">h</span>(nodo) = |x_actual - x_destino| + |y_actual - y_destino|<br><br>
+                    <span class="comment">// Ejemplo: de (1,1) a (4,5)</span><br>
+                    <span class="function">h</span> = |4 - 1| + |5 - 1| = 3 + 4 = <span class="string">7</span>
+                </div>
+
+                <h3>Distancia euclidiana</h3>
+                <p>La distancia «en línea recta» entre dos puntos. Útil cuando puedes moverte en cualquier dirección, no
+                    solo en horizontal y vertical.</p>
+
+                <h3>Heurísticas del mundo real</h3>
+                <ul>
+                    <li><strong>GPS:</strong> «La distancia en línea recta al destino» como estimación del camino
+                        restante.</li>
+                    <li><strong>Ajedrez:</strong> Contar piezas y sus valores (peón=1, caballo=3, torre=5, reina=9) como
+                        estimación de quién va ganando.</li>
+                    <li><strong>Puzzle de 15:</strong> Contar cuántas fichas están fuera de lugar o sumar sus distancias
+                        Manhattan al lugar correcto.</li>
+                </ul>
+            </section>
+
+            <section class="reveal">
+                <h2 id="admisibilidad">Admisibilidad: la regla de oro</h2>
+
+                <p>Una heurística es <strong>admisible</strong> si nunca <strong>sobreestima</strong> el costo real para
+                    llegar al objetivo. Esto es crucial para algoritmos como A*, porque garantiza que encontrará la
+                    solución óptima.</p>
+
+                <div class="callout">
+                    <div class="callout-title">🗺️ Analogía: el amigo optimista</div>
+                    <p>Imagina que le preguntas a un amigo «¿cuánto falta para llegar?». Si tu amigo siempre dice un
+                        número <strong>menor o igual</strong> a la distancia real, es admisible. Si a veces exagera y
+                        dice «¡faltan 100 km!» cuando solo faltan 10, no es admisible y podrías tomar una ruta
+                        subóptima.</p>
+                </div>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Heurística</th>
+                            <th>¿Admisible?</th>
+                            <th>¿Por qué?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>h(n) = 0</strong></td>
+                            <td>✅ Sí</td>
+                            <td>Nunca sobreestima (siempre dice 0). Pero no es informativa.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Distancia en línea recta</strong></td>
+                            <td>✅ Sí</td>
+                            <td>La línea recta siempre es ≤ al camino real.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Distancia Manhattan</strong></td>
+                            <td>✅ Sí (en cuadrículas)</td>
+                            <td>Asume caminos sin obstáculos.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>h(n) = distancia real × 2</strong></td>
+                            <td>❌ No</td>
+                            <td>Sobreestima: dice que falta el doble de lo real.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="reveal">
+                <h2 id="dominancia">Dominancia: comparar heurísticas</h2>
+
+                <p>Si tenemos dos heurísticas admisibles h₁ y h₂, decimos que h₂ <strong>domina</strong> a h₁ si h₂(n) ≥
+                    h₁(n) para todos los nodos. Una heurística dominante es «mejor» porque da estimaciones más
+                    informativas sin perder admisibilidad.</p>
+
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Regla práctica</div>
+                    <p>Siempre prefiere la heurística que da valores <strong>más altos</strong> sin dejar de ser
+                        admisible. Mientras más se acerque al costo real, menos nodos necesita explorar el algoritmo.
+                    </p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="resumen">Resumen</h2>
+                <ul>
+                    <li>Las <strong>heurísticas</strong> son atajos inteligentes para resolver problemas cuando la
+                        búsqueda exhaustiva es imposible.</li>
+                    <li>Una buena heurística es eficiente, informativa, admisible y consistente.</li>
+                    <li>Ejemplos comunes: distancia Manhattan, distancia euclidiana, conteo de piezas.</li>
+                    <li>La <strong>admisibilidad</strong> (nunca sobreestimar) garantiza soluciones óptimas con A*.</li>
+                    <li>La <strong>dominancia</strong> nos ayuda a comparar y elegir la mejor heurística.</li>
+                </ul>
+            </section>
+
+            <nav class="article-nav reveal">
+                <a href="sistemas-multiagente.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Sistemas Multi-agente</span>
+                </a>
+                <a href="algoritmos-busqueda.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Algoritmos de Búsqueda</span>
+                </a>
+            </nav>
+
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>

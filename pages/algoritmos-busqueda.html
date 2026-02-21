@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Algoritmos de búsqueda en IA: BFS, DFS, búsqueda de costo uniforme y cómo las máquinas encuentran soluciones de forma sistemática.">
+    <title>Algoritmos de Búsqueda — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+
+<body>
+
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo">
+                <span class="logo-icon">IA</span>
+                <span>AI Blog</span>
+            </a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="introduccion-ia.html">Introducción</a></li>
+                <li><a href="historia-ia.html">Historia</a></li>
+                <li><a href="habilidades-cognoscitivas.html">Cognición</a></li>
+                <li><a href="agente-inteligente.html">Agentes</a></li>
+                <li><a href="algoritmos-busqueda.html">Algoritmos</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <span class="current">Algoritmos de Búsqueda</span>
+            </div>
+            <h1>Algoritmos de <span class="gradient-text">Búsqueda</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 12 min</span>
+                <span class="article-meta-item">🏷️ Algoritmos</span>
+                <span class="article-meta-item">📝 Tema 11 de 13</span>
+            </div>
+        </header>
+
+        <article class="article-content">
+
+            <section class="reveal">
+                <h2 id="que-son">¿Qué son los algoritmos de búsqueda?</h2>
+
+                <p>Un <strong>algoritmo de búsqueda</strong> es un método sistemático para explorar un espacio de
+                    posibilidades y encontrar una solución. Imagina que estás en un laberinto: un algoritmo de búsqueda
+                    es tu <strong>estrategia para encontrar la salida</strong>.</p>
+
+                <p>En IA, muchos problemas se pueden formular como búsqueda: encontrar la ruta más corta, resolver un
+                    puzzle, planificar movimientos en un juego, o incluso seleccionar la mejor respuesta en un chatbot.
+                </p>
+
+                <div class="callout">
+                    <div class="callout-title">🌳 El espacio de búsqueda como un árbol</div>
+                    <p>Imagina cada posible estado como un nodo en un árbol. Cada acción te lleva a un nuevo nodo. La
+                        raíz es tu estado inicial y las hojas contienen las soluciones. Los algoritmos de búsqueda son
+                        diferentes estrategias para <strong>recorrer este árbol</strong>.</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="formulacion">Formulación de un problema de búsqueda</h2>
+
+                <p>Para resolver un problema mediante búsqueda, necesitamos definir:</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🏁</div>
+                        <h4>Estado inicial</h4>
+                        <p>¿Dónde empezamos? En un GPS: tu ubicación actual.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🎯</div>
+                        <h4>Estado objetivo</h4>
+                        <p>¿A dónde queremos llegar? En un GPS: tu destino.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔀</div>
+                        <h4>Acciones</h4>
+                        <p>¿Qué podemos hacer en cada estado? En un GPS: girar, avanzar, retroceder.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">💰</div>
+                        <h4>Costo</h4>
+                        <p>¿Cuánto cuesta cada acción? En un GPS: tiempo, distancia o combustible.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="no-informada">Búsqueda no informada (ciega)</h2>
+
+                <p>Los algoritmos de <strong>búsqueda ciega</strong> exploran sin ninguna pista sobre dónde está la
+                    solución. Es como buscar en un laberinto <strong>sin mapa</strong>.</p>
+
+                <h3>BFS — Búsqueda en Anchura (Breadth-First Search)</h3>
+                <p>Explora <strong>nivel por nivel</strong>. Primero revisa todos los vecinos directos, luego los
+                    vecinos de los vecinos, y así sucesivamente. Es como tirar una piedra en un lago: las ondas se
+                    expanden en círculos.</p>
+
+                <div class="code-block">
+                    <span class="comment">// BFS: explora por niveles</span><br>
+                    <span class="keyword">Cola</span> = [nodo_inicial]<br>
+                    <span class="keyword">Mientras</span> Cola no esté vacía:<br>
+                    &nbsp;&nbsp;nodo = <span class="function">sacar_primero</span>(Cola)<br>
+                    &nbsp;&nbsp;<span class="keyword">Si</span> nodo es objetivo: <span
+                        class="string">¡Encontrado!</span><br>
+                    &nbsp;&nbsp;<span class="keyword">Para cada</span> vecino de nodo:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="function">agregar_al_final</span>(Cola, vecino)
+                </div>
+
+                <p><strong>Ventajas:</strong> Siempre encuentra la solución más superficial (menos pasos).<br>
+                    <strong>Desventajas:</strong> Usa mucha memoria — guarda todos los nodos de cada nivel.
+                </p>
+
+                <h3>DFS — Búsqueda en Profundidad (Depth-First Search)</h3>
+                <p>Va lo más <strong>profundo posible</strong> por un camino antes de retroceder. Es como en un
+                    laberinto: sigues un pasillo hasta el fondo y si es un callejón sin salida, regresas a la última
+                    bifurcación.</p>
+
+                <div class="code-block">
+                    <span class="comment">// DFS: va hasta el fondo</span><br>
+                    <span class="keyword">Pila</span> = [nodo_inicial]<br>
+                    <span class="keyword">Mientras</span> Pila no esté vacía:<br>
+                    &nbsp;&nbsp;nodo = <span class="function">sacar_último</span>(Pila)<br>
+                    &nbsp;&nbsp;<span class="keyword">Si</span> nodo es objetivo: <span
+                        class="string">¡Encontrado!</span><br>
+                    &nbsp;&nbsp;<span class="keyword">Para cada</span> vecino de nodo:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="function">agregar_al_final</span>(Pila, vecino)
+                </div>
+
+                <p><strong>Ventajas:</strong> Usa poca memoria — solo guarda el camino actual.<br>
+                    <strong>Desventajas:</strong> Puede quedarse atrapado en caminos infinitos. No garantiza la solución
+                    óptima.
+                </p>
+
+                <h3>Búsqueda de costo uniforme</h3>
+                <p>Expande siempre el nodo con el <strong>menor costo acumulado</strong>. Es como un GPS que siempre te
+                    lleva por la ruta más barata, no la más corta en pasos.</p>
+            </section>
+
+            <section class="reveal">
+                <h2 id="comparacion">Comparación de algoritmos</h2>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Algoritmo</th>
+                            <th>Completo</th>
+                            <th>Óptimo</th>
+                            <th>Memoria</th>
+                            <th>Tiempo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>BFS</strong></td>
+                            <td>✅ Sí</td>
+                            <td>✅ (costos iguales)</td>
+                            <td>🔴 Alta (O(b^d))</td>
+                            <td>O(b^d)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DFS</strong></td>
+                            <td>❌ No siempre</td>
+                            <td>❌ No</td>
+                            <td>🟢 Baja (O(bm))</td>
+                            <td>O(b^m)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Costo uniforme</strong></td>
+                            <td>✅ Sí</td>
+                            <td>✅ Sí</td>
+                            <td>🔴 Alta</td>
+                            <td>Depende de costos</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DFS limitada</strong></td>
+                            <td>✅ (con límite correcto)</td>
+                            <td>❌ No</td>
+                            <td>🟢 Baja</td>
+                            <td>O(b^l)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Profundización iterativa</strong></td>
+                            <td>✅ Sí</td>
+                            <td>✅ (costos iguales)</td>
+                            <td>🟢 Baja</td>
+                            <td>O(b^d)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Donde <strong>b</strong> = factor de ramificación, <strong>d</strong> = profundidad de la solución,
+                    <strong>m</strong> = profundidad máxima del árbol, <strong>l</strong> = límite de profundidad.</p>
+            </section>
+
+            <section class="reveal">
+                <h2 id="informada">Búsqueda informada</h2>
+
+                <p>Los algoritmos de <strong>búsqueda informada</strong> usan conocimiento adicional (heurísticas) para
+                    guiar la exploración. Es como buscar en un laberinto <strong>con un mapa</strong>.</p>
+
+                <h3>Búsqueda voraz (Greedy Best-First)</h3>
+                <p>Siempre expande el nodo que <strong>parece más cercano al objetivo</strong> según la heurística h(n).
+                    Es rápida pero no garantiza la solución óptima — es como el que siempre camina hacia el norte para
+                    llegar a un destino al norte, pero ignora los obstáculos.</p>
+
+                <div class="callout callout-tip">
+                    <div class="callout-title">🔗 Siguiente paso</div>
+                    <p>El algoritmo <strong>A*</strong>, que combina costo real + heurística, es el tema del siguiente
+                        artículo. ¡Es el algoritmo de búsqueda más utilizado en la IA!</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="resumen">Resumen</h2>
+                <ul>
+                    <li>Los algoritmos de búsqueda exploran un espacio de estados para encontrar una solución.</li>
+                    <li><strong>BFS</strong> explora por niveles (encuentra la más superficial), <strong>DFS</strong> va
+                        hasta el fondo (usa menos memoria).</li>
+                    <li>La <strong>búsqueda de costo uniforme</strong> encuentra la solución más barata.</li>
+                    <li>La <strong>profundización iterativa</strong> combina lo mejor de BFS y DFS.</li>
+                    <li>La <strong>búsqueda informada</strong> usa heurísticas para ser más eficiente.</li>
+                </ul>
+            </section>
+
+            <nav class="article-nav reveal">
+                <a href="heuristicas.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Heurísticas</span>
+                </a>
+                <a href="algoritmo-a-estrella.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Algoritmo A*</span>
+                </a>
+            </nav>
+
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>

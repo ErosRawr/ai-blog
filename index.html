@@ -3,37 +3,311 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Blog de Inteligencia Artificial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Blog educativo sobre Inteligencia Artificial: fundamentos, modelos, algoritmos y teorías. Aprende IA de forma clara y divertida.">
+    <meta name="keywords"
+        content="inteligencia artificial, IA, machine learning, algoritmos, agentes inteligentes, heurísticas">
+    <meta name="author" content="AI Blog">
+    <title>IA Blog — Inteligencia Artificial desde cero</title>
+
+    <!-- Google Fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/animations.css">
 </head>
 
 <body>
 
-    <header class="header">
-        <h1>Blog de Inteligencia Artificial</h1>
-        <p>Fundamentos, modelos y algoritmos</p>
-    </header>
+    <!-- Floating Particles -->
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
 
-    <main class="container">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="navbar-logo">
+                <span class="logo-icon">IA</span>
+                <span>AI Blog</span>
+            </a>
 
-        <a href="pages/introduccion-ia.html" class="card">
-            <h2>Introducción a la IA</h2>
-            <p>Conceptos básicos y definiciones</p>
-        </a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="pages/introduccion-ia.html">Introducción</a></li>
+                <li><a href="pages/historia-ia.html">Historia</a></li>
+                <li><a href="pages/habilidades-cognoscitivas.html">Cognición</a></li>
+                <li><a href="pages/agente-inteligente.html">Agentes</a></li>
+                <li><a href="pages/algoritmos-busqueda.html">Algoritmos</a></li>
+            </ul>
 
-        <a href="pages/historia-ia.html" class="card">
-            <h2>Historia de la IA</h2>
-            <p>Origen y evolución</p>
-        </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
 
-        <a href="pages/agente-inteligente.html" class="card">
-            <h2>Modelo del agente inteligente</h2>
-            <p>Fundamentos del comportamiento inteligente</p>
-        </a>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="pulse"></span>
+                Blog educativo — Edición 2026
+            </div>
 
-    </main>
+            <h1>
+                Aprende <span class="gradient-text">Inteligencia Artificial</span> desde cero
+            </h1>
 
+            <p class="hero-description">
+                Explora los fundamentos, modelos y algoritmos de la IA de forma clara, visual y divertida. Desde teorías
+                de la inteligencia hasta algoritmos de búsqueda avanzados.
+            </p>
+
+            <div class="hero-cta">
+                <a href="#temas" class="btn btn-primary">
+                    🚀 Explorar temas
+                </a>
+                <a href="pages/introduccion-ia.html" class="btn btn-secondary">
+                    📖 Comenzar a leer
+                </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">13</div>
+                    <div class="hero-stat-label">Temas completos</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">∞</div>
+                    <div class="hero-stat-label">Curiosidad</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">100%</div>
+                    <div class="hero-stat-label">En español</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topics Section -->
+    <section class="section" id="temas">
+        <div class="section-header reveal">
+            <span class="section-label">Contenido del blog</span>
+            <h2>Explora los temas</h2>
+            <p>Cada artículo explica conceptos de IA de forma accesible con analogías, ejemplos y visualizaciones.</p>
+        </div>
+
+        <div class="cards-grid">
+
+            <!-- Card 1 -->
+            <a href="pages/introduccion-ia.html" class="card" id="card-intro">
+                <span class="card-number">01</span>
+                <div class="card-icon">🧠</div>
+                <h3>Introducción a la IA</h3>
+                <p>¿Qué es la inteligencia artificial? Conceptos básicos, definiciones y por qué importa hoy más que
+                    nunca.</p>
+                <div class="card-tags">
+                    <span class="card-tag">Fundamentos</span>
+                    <span class="card-tag">Definiciones</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card 2 -->
+            <a href="pages/historia-ia.html" class="card" id="card-historia">
+                <span class="card-number">02</span>
+                <div class="card-icon">📜</div>
+                <h3>Historia de la IA</h3>
+                <p>Desde Turing hasta ChatGPT: un recorrido por los momentos clave que definieron la inteligencia
+                    artificial.</p>
+                <div class="card-tags">
+                    <span class="card-tag">Historia</span>
+                    <span class="card-tag">Evolución</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card 3 -->
+            <a href="pages/habilidades-cognoscitivas.html" class="card" id="card-habilidades">
+                <span class="card-number">03</span>
+                <div class="card-icon">🎯</div>
+                <h3>Habilidades Cognoscitivas</h3>
+                <p>Las capacidades mentales que nos hacen inteligentes, según la psicología: percepción, memoria,
+                    razonamiento…</p>
+                <div class="card-tags">
+                    <span class="card-tag">Psicología</span>
+                    <span class="card-tag">Cognición</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card 4 -->
+            <a href="pages/teorias-inteligencia.html" class="card" id="card-teorias">
+                <span class="card-number">04</span>
+                <div class="card-icon">💡</div>
+                <h3>Teorías de la Inteligencia</h3>
+                <p>Conductismo, inteligencias múltiples de Gardner, y cómo la psicología intenta explicar qué es ser
+                    inteligente.</p>
+                <div class="card-tags">
+                    <span class="card-tag">Gardner</span>
+                    <span class="card-tag">Conductismo</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card 5 -->
+            <a href="pages/razonamiento-logica.html" class="card" id="card-razonamiento">
+                <span class="card-number">05</span>
+                <div class="card-icon">⚙️</div>
+                <h3>Razonamiento y Lógica</h3>
+                <p>Axiomas, teoremas y demostración: cómo la lógica formal permite que las máquinas razonen paso a paso.
+                </p>
+                <div class="card-tags">
+                    <span class="card-tag">Lógica</span>
+                    <span class="card-tag">Axiomas</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card 6 -->
+            <a href="pages/adquisicion-conocimiento.html" class="card" id="card-conocimiento">
+                <span class="card-number">06</span>
+                <div class="card-icon">📚</div>
+                <h3>Adquisición del Conocimiento</h3>
+                <p>¿Cómo aprenden las máquinas? Modelos, representaciones y métodos para capturar el saber humano.</p>
+                <div class="card-tags">
+                    <span class="card-tag">Aprendizaje</span>
+                    <span class="card-tag">Conocimiento</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card 7 -->
+            <a href="pages/modelo-cognoscitivo.html" class="card" id="card-cognoscitivo">
+                <span class="card-number">07</span>
+                <div class="card-icon">🔬</div>
+                <h3>Modelo Cognoscitivo</h3>
+                <p>Cómo los modelos cognitivos simulan el pensamiento humano para crear sistemas inteligentes más
+                    naturales.</p>
+                <div class="card-tags">
+                    <span class="card-tag">Cognición</span>
+                    <span class="card-tag">Modelos</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card 8 -->
+            <a href="pages/agente-inteligente.html" class="card" id="card-agente">
+                <span class="card-number">08</span>
+                <div class="card-icon">🤖</div>
+                <h3>Agente Inteligente</h3>
+                <p>Percibe, decide y actúa: el modelo fundamental del agente inteligente y sus tipos en la IA.</p>
+                <div class="card-tags">
+                    <span class="card-tag">Agentes</span>
+                    <span class="card-tag">PEAS</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card 9 -->
+            <a href="pages/sistemas-multiagente.html" class="card" id="card-multiagente">
+                <span class="card-number">09</span>
+                <div class="card-icon">🌐</div>
+                <h3>Sistemas Multi-agente</h3>
+                <p>Cuando los agentes trabajan juntos: cooperación, comunicación y organización en sistemas
+                    distribuidos.</p>
+                <div class="card-tags">
+                    <span class="card-tag">Cooperación</span>
+                    <span class="card-tag">Distribuido</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card 10 -->
+            <a href="pages/heuristicas.html" class="card" id="card-heuristicas">
+                <span class="card-number">10</span>
+                <div class="card-icon">🧩</div>
+                <h3>Heurísticas</h3>
+                <p>Atajos inteligentes: cómo las heurísticas ayudan a resolver problemas complejos sin explorar todo el
+                    espacio.</p>
+                <div class="card-tags">
+                    <span class="card-tag">Optimización</span>
+                    <span class="card-tag">Atajos</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card 11 -->
+            <a href="pages/algoritmos-busqueda.html" class="card" id="card-busqueda">
+                <span class="card-number">11</span>
+                <div class="card-icon">🔍</div>
+                <h3>Algoritmos de Búsqueda</h3>
+                <p>BFS, DFS y más: los métodos sistemáticos que usan las máquinas para encontrar soluciones óptimas.</p>
+                <div class="card-tags">
+                    <span class="card-tag">BFS</span>
+                    <span class="card-tag">DFS</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card 12 -->
+            <a href="pages/algoritmo-a-estrella.html" class="card" id="card-aestrella">
+                <span class="card-number">12</span>
+                <div class="card-icon">⭐</div>
+                <h3>Algoritmo A*</h3>
+                <p>El rey de la búsqueda informada: cómo A* combina costo real y heurística para encontrar el camino
+                    óptimo.</p>
+                <div class="card-tags">
+                    <span class="card-tag">A*</span>
+                    <span class="card-tag">Pathfinding</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card 13 -->
+            <a href="pages/busqueda-local.html" class="card" id="card-local">
+                <span class="card-number">13</span>
+                <div class="card-icon">🏔️</div>
+                <h3>Búsqueda Local</h3>
+                <p>Hill climbing, simulated annealing y algoritmos genéticos: optimización cuando el espacio de búsqueda
+                    es enorme.</p>
+                <div class="card-tags">
+                    <span class="card-tag">Hill Climbing</span>
+                    <span class="card-tag">Genéticos</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — Todos los derechos reservados © 2026</p>
+            <ul class="footer-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="pages/introduccion-ia.html">Introducción</a></li>
+                <li><a href="pages/historia-ia.html">Historia</a></li>
+                <li><a href="pages/algoritmos-busqueda.html">Algoritmos</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+
+    <!-- Scripts -->
     <script src="js/main.js"></script>
 
 </body>

@@ -1,12 +1,394 @@
-.card {
+/* ============================================
+   AI BLOG — Animations & Transitions
+   ============================================ */
+
+/* ---------- Scroll-Triggered Reveal ---------- */
+.reveal {
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.6s forwards;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes fadeUp {
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered delays for cards */
+.reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.3s;
+}
+
+.reveal-delay-4 {
+    transition-delay: 0.4s;
+}
+
+.reveal-delay-5 {
+    transition-delay: 0.5s;
+}
+
+.reveal-delay-6 {
+    transition-delay: 0.6s;
+}
+
+/* Directional reveals */
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left.visible,
+.reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Scale reveal */
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ---------- Hero Animations ---------- */
+@keyframes hero-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+.hero-content .hero-badge {
+    animation: hero-fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.hero-content h1 {
+    animation: hero-fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.hero-content .hero-description {
+    animation: hero-fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+.hero-content .hero-cta {
+    animation: hero-fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+.hero-content .hero-stats {
+    animation: hero-fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+}
+
+/* ---------- Pulse Glow (badge dot) ---------- */
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4);
+    }
+
+    50% {
+        opacity: 0.8;
+        box-shadow: 0 0 0 6px rgba(56, 189, 248, 0);
+    }
+}
+
+/* ---------- Floating particles effect ---------- */
+@keyframes float-particle {
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100vh) translateX(20px);
+        opacity: 0;
+    }
+}
+
+.particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    bottom: -10px;
+    width: 3px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float-particle linear infinite;
+}
+
+.particle:nth-child(1) {
+    left: 10%;
+    animation-duration: 18s;
+    animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+    left: 25%;
+    animation-duration: 22s;
+    animation-delay: 2s;
+}
+
+.particle:nth-child(3) {
+    left: 40%;
+    animation-duration: 20s;
+    animation-delay: 4s;
+}
+
+.particle:nth-child(4) {
+    left: 55%;
+    animation-duration: 24s;
+    animation-delay: 1s;
+}
+
+.particle:nth-child(5) {
+    left: 70%;
+    animation-duration: 19s;
+    animation-delay: 3s;
+}
+
+.particle:nth-child(6) {
+    left: 85%;
+    animation-duration: 21s;
+    animation-delay: 5s;
+}
+
+.particle:nth-child(7) {
+    left: 15%;
+    animation-duration: 23s;
+    animation-delay: 6s;
+}
+
+.particle:nth-child(8) {
+    left: 60%;
+    animation-duration: 17s;
+    animation-delay: 7s;
+}
+
+/* ---------- Gradient Border Animation ---------- */
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animated-border {
+    position: relative;
+}
+
+.animated-border::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(45deg, var(--accent), #818cf8, var(--accent));
+    background-size: 200% 200%;
+    z-index: -1;
+    animation: gradient-shift 4s ease infinite;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.animated-border:hover::after {
+    opacity: 1;
+}
+
+/* ---------- Typing effect ---------- */
+@keyframes blink-cursor {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.typing-cursor::after {
+    content: '|';
+    color: var(--accent);
+    animation: blink-cursor 0.8s ease infinite;
+    font-weight: 300;
+}
+
+/* ---------- Shimmer loading effect ---------- */
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.06), transparent);
+    animation: shimmer 2s ease-in-out infinite;
+}
+
+/* ---------- Navbar scroll animation ---------- */
+.navbar {
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ---------- Card hover glow effect ---------- */
+.card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(56, 189, 248, 0.08) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    pointer-events: none;
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
+/* ---------- Progress Bar ---------- */
+.reading-progress {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--gradient-accent);
+    z-index: 999;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+}
+
+/* ---------- Concept Card Hover ---------- */
+.concept-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.concept-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(56, 189, 248, 0.05);
+}
+
+/* ---------- Timeline animation ---------- */
+.timeline-item {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ---------- Smooth anchor scroll ---------- */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ---------- Focus styles (accessibility) ---------- */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .reveal,
+    .reveal-left,
+    .reveal-right,
+    .reveal-scale {
+        opacity: 1;
+        transform: none;
+    }
+
+    .particle {
+        display: none;
+    }
+
+    html {
+        scroll-behavior: auto;
     }
 }

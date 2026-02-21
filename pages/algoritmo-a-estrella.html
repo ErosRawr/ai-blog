@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Algoritmo A*: cómo combina costo real y heurística para encontrar el camino óptimo.">
+    <title>Algoritmo A* — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+
+<body>
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    <div class="reading-progress" id="readingProgress"></div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="introduccion-ia.html">Introducción</a></li>
+                <li><a href="historia-ia.html">Historia</a></li>
+                <li><a href="habilidades-cognoscitivas.html">Cognición</a></li>
+                <li><a href="agente-inteligente.html">Agentes</a></li>
+                <li><a href="algoritmos-busqueda.html">Algoritmos</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">Algoritmo
+                    A*</span>
+            </div>
+            <h1>Algoritmo <span class="gradient-text">A*</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 10 min</span>
+                <span class="article-meta-item">🏷️ Algoritmos</span>
+                <span class="article-meta-item">📝 Tema 12 de 13</span>
+            </div>
+        </header>
+
+        <article class="article-content">
+            <section class="reveal">
+                <h2 id="que-es">¿Qué es A*?</h2>
+                <p>El <strong>algoritmo A*</strong> (se pronuncia «A estrella») es el algoritmo de búsqueda más famoso
+                    de la IA. Combina dos ideas:</p>
+                <ul>
+                    <li><strong>g(n):</strong> El costo real del camino desde el inicio hasta el nodo n.</li>
+                    <li><strong>h(n):</strong> La estimación heurística del costo desde n hasta el objetivo.</li>
+                </ul>
+                <div class="code-block" style="text-align:center;font-size:1.2rem;">
+                    <span class="function">f(n)</span> = <span class="keyword">g(n)</span> + <span
+                        class="string">h(n)</span>
+                </div>
+                <div class="callout">
+                    <div class="callout-title">🗺️ Analogía: el viajero sabio</div>
+                    <p>Un viajero <strong>codicioso</strong> solo mira la distancia al destino. Uno de <strong>costo
+                            uniforme</strong> solo mira lo que ya gastó. A* es el <strong>viajero sabio</strong>:
+                        considera AMBOS — lo que ya gastó Y lo que estima que le falta.</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="funcionamiento">¿Cómo funciona?</h2>
+                <div class="code-block">
+                    <span class="comment">// Algoritmo A*</span><br>
+                    <span class="keyword">Abiertos</span> = {nodo_inicial}<br>
+                    <span class="keyword">Cerrados</span> = {}<br><br>
+                    <span class="keyword">Mientras</span> Abiertos no esté vacío:<br>
+                    &nbsp;&nbsp;n = nodo con <span class="function">menor f(n)</span> en Abiertos<br>
+                    &nbsp;&nbsp;<span class="keyword">Si</span> n es objetivo: <span
+                        class="string">reconstruir_camino(n)</span><br>
+                    &nbsp;&nbsp;Mover n de Abiertos a Cerrados<br>
+                    &nbsp;&nbsp;<span class="keyword">Para cada</span> vecino de n:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;nuevo_g = g(n) + costo(n, vecino)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Si</span> nuevo_g &lt; g(vecino):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actualizar g, f y padre del vecino
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="propiedades">Propiedades de A*</h2>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">✅</div>
+                        <h4>Completo</h4>
+                        <p>Si existe solución, A* la encontrará.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">⭐</div>
+                        <h4>Óptimo</h4>
+                        <p>Encuentra la solución de menor costo con heurística admisible.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🧠</div>
+                        <h4>Eficiente</h4>
+                        <p>Ningún otro algoritmo óptimo expande menos nodos.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">💾</div>
+                        <h4>Memoria</h4>
+                        <p>Principal debilidad: guarda todos los nodos en memoria.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="vs">A* vs otros algoritmos</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Algoritmo</th>
+                            <th>Evaluación</th>
+                            <th>Óptimo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>BFS</strong></td>
+                            <td>Nivel</td>
+                            <td>Solo costos iguales</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Costo uniforme</strong></td>
+                            <td>g(n)</td>
+                            <td>✅ Sí</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Greedy</strong></td>
+                            <td>h(n)</td>
+                            <td>❌ No</td>
+                        </tr>
+                        <tr>
+                            <td><strong>A*</strong></td>
+                            <td>g(n)+h(n)</td>
+                            <td>✅ Sí</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="reveal">
+                <h2 id="aplicaciones">Aplicaciones</h2>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🎮</div>
+                        <h4>Videojuegos</h4>
+                        <p>Pathfinding de NPCs alrededor de obstáculos.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🗺️</div>
+                        <h4>GPS</h4>
+                        <p>Google Maps usa variantes de A* para rutas óptimas.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🤖</div>
+                        <h4>Robótica</h4>
+                        <p>Planificación de trayectorias en el mundo real.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🧬</div>
+                        <h4>Bioinformática</h4>
+                        <p>Alineamiento de secuencias de ADN.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="variantes">Variantes</h2>
+                <ul>
+                    <li><strong>IDA*:</strong> Profundización iterativa + A*. Menos memoria.</li>
+                    <li><strong>SMA*:</strong> A* con límite de memoria.</li>
+                    <li><strong>Weighted A*:</strong> f(n) = g(n) + w·h(n). Más rápido, menos óptimo.</li>
+                    <li><strong>D*:</strong> Para entornos dinámicos que cambian.</li>
+                </ul>
+            </section>
+
+            <section class="reveal">
+                <h2 id="resumen">Resumen</h2>
+                <ul>
+                    <li>A* evalúa nodos con <strong>f(n)=g(n)+h(n)</strong>.</li>
+                    <li>Es <strong>completo</strong> y <strong>óptimo</strong> con heurísticas admisibles.</li>
+                    <li>Principal limitación: uso de memoria.</li>
+                    <li>Aplicaciones: videojuegos, GPS, robótica y bioinformática.</li>
+                </ul>
+            </section>
+
+            <nav class="article-nav reveal">
+                <a href="algoritmos-busqueda.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span><span class="nav-title">Algoritmos de Búsqueda</span>
+                </a>
+                <a href="busqueda-local.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span><span class="nav-title">Búsqueda Local</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

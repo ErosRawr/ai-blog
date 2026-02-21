@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Modelo de adquisición del conocimiento: cómo las máquinas y los humanos aprenden, representan y utilizan el saber.">
+    <title>Adquisición del Conocimiento — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+
+<body>
+
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo">
+                <span class="logo-icon">IA</span>
+                <span>AI Blog</span>
+            </a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="introduccion-ia.html">Introducción</a></li>
+                <li><a href="historia-ia.html">Historia</a></li>
+                <li><a href="habilidades-cognoscitivas.html">Cognición</a></li>
+                <li><a href="agente-inteligente.html">Agentes</a></li>
+                <li><a href="algoritmos-busqueda.html">Algoritmos</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <span class="current">Adquisición del Conocimiento</span>
+            </div>
+            <h1>Adquisición del <span class="gradient-text">Conocimiento</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 9 min</span>
+                <span class="article-meta-item">🏷️ Modelos</span>
+                <span class="article-meta-item">📝 Tema 06 de 13</span>
+            </div>
+        </header>
+
+        <article class="article-content">
+
+            <section class="reveal">
+                <h2 id="que-es">¿Qué es la adquisición del conocimiento?</h2>
+
+                <p>La <strong>adquisición del conocimiento</strong> es el proceso mediante el cual un sistema (humano o
+                    artificial) obtiene, organiza y almacena información para poder usarla después. Es como llenar una
+                    biblioteca: no solo se trata de conseguir libros, sino de <strong>organizarlos</strong> para
+                    encontrarlos fácilmente.</p>
+
+                <p>En la IA, este proceso es crucial. Una máquina que no puede adquirir conocimiento es como un
+                    estudiante que va a clase pero nunca recuerda nada. El desafío no es solo almacenar datos — es
+                    <strong>convertir datos en conocimiento útil</strong>.</p>
+
+                <div class="callout">
+                    <div class="callout-title">📊 Datos vs. Información vs. Conocimiento</div>
+                    <p><strong>Datos:</strong> «38°C» — un número sin contexto.<br>
+                        <strong>Información:</strong> «La temperatura del paciente es 38°C» — datos con contexto.<br>
+                        <strong>Conocimiento:</strong> «El paciente tiene fiebre y probablemente una infección» —
+                        información procesada con experiencia.
+                    </p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="fases">Fases de la adquisición del conocimiento</h2>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Fase 1</div>
+                        <h4>Identificación</h4>
+                        <p>Determinar qué conocimiento se necesita y quién lo posee. En IA: definir el dominio del
+                            problema y las fuentes de datos.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Fase 2</div>
+                        <h4>Conceptualización</h4>
+                        <p>Organizar los conceptos clave y sus relaciones. Es crear el «mapa mental» del dominio. En IA:
+                            diseñar la ontología o estructura de datos.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Fase 3</div>
+                        <h4>Formalización</h4>
+                        <p>Traducir el conocimiento a un formato que la máquina pueda procesar: reglas, marcos, redes
+                            semánticas.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Fase 4</div>
+                        <h4>Implementación</h4>
+                        <p>Codificar el conocimiento en el sistema. Programar las reglas, entrenar el modelo, llenar la
+                            base de datos.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Fase 5</div>
+                        <h4>Validación</h4>
+                        <p>Verificar que el conocimiento es correcto y completo. Probar el sistema con casos reales.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="representacion">Formas de representar el conocimiento</h2>
+
+                <p>Una vez adquirido, el conocimiento necesita representarse de forma que la máquina lo entienda. Hay
+                    varias formas:</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📜</div>
+                        <h4>Reglas SI-ENTONCES</h4>
+                        <p>«Si el paciente tiene fiebre y tos, entonces puede tener gripe». Simple, claro y fácil de
+                            entender.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🖼️</div>
+                        <h4>Marcos (Frames)</h4>
+                        <p>Estructuras como fichas con atributos. Un marco «Perro» tiene: nombre, raza, color, peso.
+                            Similar a los objetos en programación.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🕸️</div>
+                        <h4>Redes Semánticas</h4>
+                        <p>Grafos donde los nodos son conceptos y las aristas son relaciones: «gato ES-UN animal», «gato
+                            TIENE bigotes».</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🧮</div>
+                        <h4>Lógica Formal</h4>
+                        <p>Expresar conocimiento como proposiciones lógicas que pueden ser procesadas matemáticamente.
+                        </p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🧠</div>
+                        <h4>Redes Neuronales</h4>
+                        <p>El conocimiento se distribuye en los pesos de las conexiones entre neuronas. Aprenden de
+                            datos en lugar de reglas explícitas.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📊</div>
+                        <h4>Ontologías</h4>
+                        <p>Descripciones formales de conceptos y relaciones en un dominio. Son como diccionarios
+                            ultra-organizados para máquinas.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="metodos">Métodos de adquisición</h2>
+
+                <p>¿Cómo obtiene una IA su conocimiento? Hay dos grandes enfoques:</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Método</th>
+                            <th>Descripción</th>
+                            <th>Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Manual</strong></td>
+                            <td>Un experto humano codifica el conocimiento directamente</td>
+                            <td>Sistemas expertos médicos con reglas escritas por doctores</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Automático</strong></td>
+                            <td>La máquina aprende de los datos por sí misma</td>
+                            <td>Machine learning: la IA descubre patrones en millones de datos</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Semi-automático</strong></td>
+                            <td>Combinación de conocimiento humano y aprendizaje automático</td>
+                            <td>Sistemas híbridos que usan reglas + datos</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Tendencia actual</div>
+                    <p>La tendencia moderna va hacia la adquisición <strong>automática</strong> del conocimiento. Los
+                        modelos de lenguaje grandes (como GPT) aprenden de billones de palabras sin que nadie les enseñe
+                        reglas explícitas. ¡Aprenden solos!</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="cuello-botella">El cuello de botella del conocimiento</h2>
+
+                <p>Uno de los mayores desafíos en IA se llama el <strong>cuello de botella del conocimiento</strong>: es
+                    muy difícil y costoso capturar todo el conocimiento de un experto humano y codificarlo en una
+                    máquina.</p>
+
+                <p>Imagina intentar escribir <strong>todas las reglas</strong> que usas para conducir un auto. «Si hay
+                    un peatón... si la luz es amarilla... si llueve y la calle está mojada...» ¡Serían miles de reglas!
+                    Y aún así olvidarías muchas. Por eso el machine learning es tan popular: en lugar de escribir
+                    reglas, <strong>le muestras ejemplos y la máquina aprende sola</strong>.</p>
+            </section>
+
+            <section class="reveal">
+                <h2 id="resumen">Resumen</h2>
+                <ul>
+                    <li>La adquisición del conocimiento transforma <strong>datos</strong> en <strong>conocimiento
+                            útil</strong>.</li>
+                    <li>Pasa por fases: identificación, conceptualización, formalización, implementación y validación.
+                    </li>
+                    <li>El conocimiento se puede representar como reglas, marcos, redes semánticas, lógica o redes
+                        neuronales.</li>
+                    <li>Puede ser manual (experto), automático (machine learning) o semi-automático.</li>
+                    <li>El «cuello de botella del conocimiento» motivó el auge del aprendizaje automático.</li>
+                </ul>
+            </section>
+
+            <nav class="article-nav reveal">
+                <a href="razonamiento-logica.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Razonamiento y Lógica</span>
+                </a>
+                <a href="modelo-cognoscitivo.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Modelo Cognoscitivo</span>
+                </a>
+            </nav>
+
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>

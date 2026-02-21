@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="El modelo del agente inteligente: percepción, decisión y acción. Tipos de agentes, arquitectura PEAS y diseño de agentes racionales.">
+    <title>Agente Inteligente — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+
+<body>
+
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo">
+                <span class="logo-icon">IA</span>
+                <span>AI Blog</span>
+            </a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="introduccion-ia.html">Introducción</a></li>
+                <li><a href="historia-ia.html">Historia</a></li>
+                <li><a href="habilidades-cognoscitivas.html">Cognición</a></li>
+                <li><a href="agente-inteligente.html">Agentes</a></li>
+                <li><a href="algoritmos-busqueda.html">Algoritmos</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <span class="current">Agente Inteligente</span>
+            </div>
+            <h1>Modelo del <span class="gradient-text">Agente Inteligente</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 10 min</span>
+                <span class="article-meta-item">🏷️ Agentes</span>
+                <span class="article-meta-item">📝 Tema 08 de 13</span>
+            </div>
+        </header>
+
+        <article class="article-content">
+
+            <section class="reveal">
+                <h2 id="que-es">¿Qué es un agente inteligente?</h2>
+
+                <p>Un <strong>agente inteligente</strong> es cualquier entidad que <strong>percibe</strong> su entorno a
+                    través de sensores y <strong>actúa</strong> sobre él a través de actuadores. Es el modelo
+                    fundamental de la IA moderna.</p>
+
+                <p>Piénsalo así: tú eres un agente inteligente. Tus <strong>sensores</strong> son tus ojos, oídos y
+                    demás sentidos. Tus <strong>actuadores</strong> son tus manos, piernas y voz. Y tu
+                    <strong>cerebro</strong> es el programa que decide qué hacer.</p>
+
+                <div class="callout">
+                    <div class="callout-title">🤖 Definición formal</div>
+                    <p>Un agente es una función que mapea secuencias de percepciones a acciones:<br>
+                        <strong>f: P* → A</strong><br>
+                        Donde P* es el historial de percepciones y A es la acción seleccionada.
+                    </p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="racionalidad">¿Qué hace «inteligente» a un agente?</h2>
+
+                <p>Un agente es <strong>racional</strong> cuando, para cada secuencia de percepciones posible,
+                    selecciona la acción que <strong>maximiza su medida de rendimiento</strong>, dada la información
+                    disponible.</p>
+
+                <p>Ojo: racional no significa <strong>omnisciente</strong>. Un agente racional toma la <strong>mejor
+                        decisión posible</strong> con la información que tiene, no la decisión perfecta. Es como un
+                    jugador de póker que juega bien con las cartas que le tocaron, aunque no conozca las cartas de los
+                    demás.</p>
+
+                <h3>Factores que definen la racionalidad</h3>
+                <ul>
+                    <li><strong>Medida de rendimiento:</strong> ¿Cómo evalúas el éxito? (ganar el juego, llegar rápido,
+                        minimizar errores)</li>
+                    <li><strong>Conocimiento previo:</strong> Lo que el agente ya sabe del entorno.</li>
+                    <li><strong>Acciones posibles:</strong> Las opciones disponibles en cada momento.</li>
+                    <li><strong>Percepciones:</strong> La información que recibe del entorno.</li>
+                </ul>
+            </section>
+
+            <section class="reveal">
+                <h2 id="peas">Arquitectura PEAS</h2>
+
+                <p>Para diseñar un agente inteligente, usamos el framework <strong>PEAS</strong>:</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🎯</div>
+                        <h4>P — Performance (Rendimiento)</h4>
+                        <p>¿Cómo medimos si el agente lo hace bien? Ejemplo para un taxi autónomo: viaje seguro, rápido
+                            y legal.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🌍</div>
+                        <h4>E — Environment (Entorno)</h4>
+                        <p>¿En qué mundo opera? El taxi: calles, tráfico, peatones, clima, señales de tránsito.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">👁️</div>
+                        <h4>A — Actuators (Actuadores)</h4>
+                        <p>¿Cómo actúa sobre el entorno? El taxi: volante, acelerador, freno, luces, claxon.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📡</div>
+                        <h4>S — Sensors (Sensores)</h4>
+                        <p>¿Cómo percibe el entorno? El taxi: cámaras, LIDAR, GPS, velocímetro, radar.</p>
+                    </div>
+                </div>
+
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejemplo: aspiradora robot</div>
+                    <p><strong>P:</strong> Piso limpio, eficiencia energética.<br>
+                        <strong>E:</strong> Habitación con muebles y suciedad.<br>
+                        <strong>A:</strong> Motores de rueda, aspiradora, cepillos.<br>
+                        <strong>S:</strong> Sensores de suciedad, proximidad y batería.
+                    </p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="tipos">Tipos de agente</h2>
+
+                <p>Los agentes van de simples a complejos según su arquitectura interna:</p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Nivel 1</div>
+                        <h4>Agente reactivo simple</h4>
+                        <p>Actúa solo según la percepción actual. No tiene memoria. «Si hay suciedad → aspira». Es como
+                            un insecto: reacciones directas sin pensamiento profundo.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Nivel 2</div>
+                        <h4>Agente reactivo basado en modelo</h4>
+                        <p>Mantiene un modelo interno del mundo. «No puedo ver la puerta, pero sé que está a mi
+                            izquierda porque la vi antes». Tiene memoria del estado del mundo.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Nivel 3</div>
+                        <h4>Agente basado en objetivos</h4>
+                        <p>Tiene metas y planifica cómo alcanzarlas. «Quiero llegar a la cocina: primero giro a la
+                            izquierda, luego camino 5 metros». Puede razonar sobre el futuro.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Nivel 4</div>
+                        <h4>Agente basado en utilidad</h4>
+                        <p>No solo tiene objetivos, sino que evalúa qué tan «feliz» lo hace cada resultado. «Puedo
+                            llegar por la ruta A (rápida y peligrosa) o la B (segura y lenta)». Optimiza la utilidad.
+                        </p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Nivel 5</div>
+                        <h4>Agente que aprende</h4>
+                        <p>Mejora su comportamiento con la experiencia. Tiene un componente de aprendizaje, un crítico y
+                            un generador de problemas. Es el tipo más avanzado.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="entornos">Tipos de entornos</h2>
+
+                <p>El diseño del agente depende de las <strong>propiedades del entorno</strong>:</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Propiedad</th>
+                            <th>Opción A</th>
+                            <th>Opción B</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Observabilidad</strong></td>
+                            <td>Totalmente observable (ajedrez: ves todo)</td>
+                            <td>Parcialmente observable (póker: no ves todo)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Determinismo</strong></td>
+                            <td>Determinista (resultado predecible)</td>
+                            <td>Estocástico (hay incertidumbre)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Episodicidad</strong></td>
+                            <td>Episódico (cada acción es independiente)</td>
+                            <td>Secuencial (acciones afectan el futuro)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dinamismo</strong></td>
+                            <td>Estático (no cambia mientras piensas)</td>
+                            <td>Dinámico (cambia en tiempo real)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Agentes</strong></td>
+                            <td>Un solo agente (crucigrama)</td>
+                            <td>Multi-agente (fútbol, tráfico)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="reveal">
+                <h2 id="resumen">Resumen</h2>
+                <ul>
+                    <li>Un agente inteligente <strong>percibe</strong> su entorno y <strong>actúa</strong> para
+                        maximizar su rendimiento.</li>
+                    <li>El framework <strong>PEAS</strong> (Performance, Environment, Actuators, Sensors) guía el
+                        diseño.</li>
+                    <li>Los tipos van desde reactivos simples hasta agentes que <strong>aprenden</strong>.</li>
+                    <li>El diseño del agente depende de las <strong>propiedades del entorno</strong>.</li>
+                    <li>La <strong>racionalidad</strong> no es perfección — es tomar la mejor decisión con la
+                        información disponible.</li>
+                </ul>
+            </section>
+
+            <nav class="article-nav reveal">
+                <a href="modelo-cognoscitivo.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Modelo Cognoscitivo</span>
+                </a>
+                <a href="sistemas-multiagente.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Sistemas Multi-agente</span>
+                </a>
+            </nav>
+
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>

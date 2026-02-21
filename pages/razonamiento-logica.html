@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="El proceso de razonamiento según la lógica: axiomas, teoremas, demostración y cómo las máquinas razonan formalmente.">
+    <title>Razonamiento y Lógica — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+
+<body>
+
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo">
+                <span class="logo-icon">IA</span>
+                <span>AI Blog</span>
+            </a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="introduccion-ia.html">Introducción</a></li>
+                <li><a href="historia-ia.html">Historia</a></li>
+                <li><a href="habilidades-cognoscitivas.html">Cognición</a></li>
+                <li><a href="agente-inteligente.html">Agentes</a></li>
+                <li><a href="algoritmos-busqueda.html">Algoritmos</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <span class="current">Razonamiento y Lógica</span>
+            </div>
+            <h1>Razonamiento y <span class="gradient-text">Lógica</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 10 min</span>
+                <span class="article-meta-item">🏷️ Lógica</span>
+                <span class="article-meta-item">📝 Tema 05 de 13</span>
+            </div>
+        </header>
+
+        <article class="article-content">
+
+            <section class="reveal">
+                <h2 id="introduccion">¿Qué es el razonamiento lógico?</h2>
+
+                <p>El <strong>razonamiento lógico</strong> es la capacidad de llegar a conclusiones válidas a partir de
+                    premisas o hechos conocidos. Es como construir una escalera de argumentos donde cada peldaño se
+                    apoya sólidamente en el anterior.</p>
+
+                <p>En la IA, la lógica fue el primer intento serio de hacer que las máquinas «piensen». La idea es
+                    simple pero poderosa: si podemos expresar el conocimiento en reglas lógicas, entonces la computadora
+                    puede razonar automáticamente.</p>
+
+                <div class="callout">
+                    <div class="callout-title">🧱 Analogía: LEGO lógico</div>
+                    <p>Piensa en la lógica como un juego de LEGO. Los <strong>axiomas</strong> son las piezas básicas.
+                        Las <strong>reglas de inferencia</strong> son las instrucciones de cómo conectarlas. Y los
+                        <strong>teoremas</strong> son las estructuras complejas que construyes siguiendo las reglas.</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="axiomas">Axiomas: las verdades fundamentales</h2>
+
+                <p>Un <strong>axioma</strong> es una verdad que aceptamos sin necesidad de demostración. Son los
+                    «cimientos» sobre los que se construye todo el edificio lógico.</p>
+
+                <h3>Ejemplos de axiomas</h3>
+                <ul>
+                    <li><strong>Axioma de identidad:</strong> «A es A» — una cosa es igual a sí misma.</li>
+                    <li><strong>Axioma de no contradicción:</strong> Algo no puede ser verdadero y falso al mismo
+                        tiempo.</li>
+                    <li><strong>Axioma del tercero excluido:</strong> Una proposición es verdadera o falsa — no hay
+                        opción intermedia.</li>
+                </ul>
+
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 En la vida real</div>
+                    <p>Los axiomas son como las reglas de un juego. No preguntas «¿por qué el peón se mueve así en
+                        ajedrez?» — simplemente aceptas la regla y juegas. Los axiomas funcionan igual: son el punto de
+                        partida que todos aceptan.</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="proposiciones">Lógica proposicional</h2>
+
+                <p>La <strong>lógica proposicional</strong> trabaja con enunciados que son verdaderos o falsos, y los
+                    combina usando conectores lógicos:</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">∧</div>
+                        <h4>AND (Y)</h4>
+                        <p>«Llueve Y hace frío» — verdadero solo si ambas son verdaderas.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">∨</div>
+                        <h4>OR (O)</h4>
+                        <p>«Llueve O hace sol» — verdadero si al menos una es verdadera.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">¬</div>
+                        <h4>NOT (No)</h4>
+                        <p>«NO llueve» — invierte el valor de verdad.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">→</div>
+                        <h4>Implicación (Si… entonces)</h4>
+                        <p>«SI llueve, ENTONCES me mojo» — solo falsa si llueve y no me mojo.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="inferencia">Reglas de inferencia</h2>
+
+                <p>Las <strong>reglas de inferencia</strong> son los mecanismos para derivar nuevas verdades a partir de
+                    las existentes. Son el motor del razonamiento lógico.</p>
+
+                <h3>Modus Ponens — la regla estrella</h3>
+                <div class="code-block">
+                    <span class="comment">// Si P entonces Q</span><br>
+                    <span class="keyword">Premisa 1:</span> Si llueve → el suelo se moja<br>
+                    <span class="keyword">Premisa 2:</span> Llueve<br>
+                    <span class="function">Conclusión:</span> <span class="string">El suelo se moja ✓</span>
+                </div>
+
+                <h3>Modus Tollens</h3>
+                <div class="code-block">
+                    <span class="comment">// Si no Q, entonces no P</span><br>
+                    <span class="keyword">Premisa 1:</span> Si llueve → el suelo se moja<br>
+                    <span class="keyword">Premisa 2:</span> El suelo NO se mojó<br>
+                    <span class="function">Conclusión:</span> <span class="string">No llovió ✓</span>
+                </div>
+
+                <h3>Silogismo hipotético</h3>
+                <div class="code-block">
+                    <span class="comment">// Cadena de implicaciones</span><br>
+                    <span class="keyword">Premisa 1:</span> Si estudio → paso el examen<br>
+                    <span class="keyword">Premisa 2:</span> Si paso el examen → me gradúo<br>
+                    <span class="function">Conclusión:</span> <span class="string">Si estudio → me gradúo ✓</span>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="teoremas">Teoremas y demostraciones</h2>
+
+                <p>Un <strong>teorema</strong> es una verdad que se puede demostrar a partir de axiomas usando reglas de
+                    inferencia. La <strong>demostración</strong> es la cadena de pasos que conecta los axiomas con la
+                    conclusión.</p>
+
+                <p>Piénsalo como un <strong>GPS del conocimiento</strong>: los axiomas son tu punto de partida, el
+                    teorema es tu destino, y la demostración es la ruta que sigues para llegar allí.</p>
+
+                <h3>Tipos de demostración</h3>
+                <ul>
+                    <li><strong>Directa:</strong> Se demuestra el teorema paso a paso desde los axiomas. El camino más
+                        natural.</li>
+                    <li><strong>Por contradicción:</strong> Se asume que el teorema es falso y se llega a una
+                        contradicción. «Si esto fuera falso, pasarían cosas absurdas, así que debe ser verdadero».</li>
+                    <li><strong>Por inducción:</strong> Se demuestra para un caso base y luego se muestra que si
+                        funciona para N, funciona para N+1. Como fichas de dominó cayendo.</li>
+                </ul>
+            </section>
+
+            <section class="reveal">
+                <h2 id="ia-logica">La lógica en la IA</h2>
+
+                <p>La lógica fue el primer lenguaje de la IA. Los llamados <strong>sistemas basados en
+                        conocimiento</strong> usan lógica para razonar:</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📋</div>
+                        <h4>Sistemas Expertos</h4>
+                        <p>Bases de reglas «SI-ENTONCES» que emulan el razonamiento de un experto humano en un dominio
+                            específico.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔗</div>
+                        <h4>Prolog</h4>
+                        <p>Lenguaje de programación basado completamente en lógica. Le describes hechos y reglas, y él
+                            deduce las respuestas.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🌐</div>
+                        <h4>Web Semántica</h4>
+                        <p>Ontologías y razonadores lógicos que permiten que las máquinas entiendan el significado de
+                            los datos en internet.</p>
+                    </div>
+                </div>
+
+                <div class="callout callout-warning">
+                    <div class="callout-title">⚠️ Limitaciones</div>
+                    <p>La lógica clásica funciona perfecto en mundos «limpios» y bien definidos. Pero el mundo real es
+                        desordenado, incierto y ambiguo. Por eso surgieron la <strong>lógica difusa</strong>, la
+                        <strong>lógica probabilística</strong> y los enfoques basados en <strong>aprendizaje
+                            automático</strong>.</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="resumen">Resumen</h2>
+                <ul>
+                    <li>El razonamiento lógico parte de <strong>axiomas</strong> (verdades básicas) y usa <strong>reglas
+                            de inferencia</strong> para derivar nuevas verdades.</li>
+                    <li>Los conectores lógicos básicos son AND, OR, NOT e implicación (→).</li>
+                    <li>Las reglas como <strong>Modus Ponens</strong> y <strong>Modus Tollens</strong> permiten razonar
+                        formalmente.</li>
+                    <li>Los <strong>teoremas</strong> se demuestran directamente, por contradicción o por inducción.
+                    </li>
+                    <li>La lógica es poderosa pero tiene limitaciones con la incertidumbre del mundo real.</li>
+                </ul>
+            </section>
+
+            <nav class="article-nav reveal">
+                <a href="teorias-inteligencia.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Teorías de la Inteligencia</span>
+                </a>
+                <a href="adquisicion-conocimiento.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Adquisición del Conocimiento</span>
+                </a>
+            </nav>
+
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>

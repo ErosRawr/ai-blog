@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Teorías de la inteligencia: conductismo, inteligencias múltiples de Gardner, teoría triárquica y su influencia en la IA.">
+    <title>Teorías de la Inteligencia — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+
+<body>
+
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo">
+                <span class="logo-icon">IA</span>
+                <span>AI Blog</span>
+            </a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="introduccion-ia.html">Introducción</a></li>
+                <li><a href="historia-ia.html">Historia</a></li>
+                <li><a href="habilidades-cognoscitivas.html">Cognición</a></li>
+                <li><a href="agente-inteligente.html">Agentes</a></li>
+                <li><a href="algoritmos-busqueda.html">Algoritmos</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <span class="current">Teorías de la Inteligencia</span>
+            </div>
+            <h1>Teorías de la <span class="gradient-text">Inteligencia</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 10 min</span>
+                <span class="article-meta-item">🏷️ Psicología</span>
+                <span class="article-meta-item">📝 Tema 04 de 13</span>
+            </div>
+        </header>
+
+        <article class="article-content">
+
+            <section class="reveal">
+                <h2 id="pregunta">La gran pregunta: ¿qué es la inteligencia?</h2>
+
+                <p>Antes de crear una «inteligencia artificial», necesitamos responder algo fundamental: <strong>¿qué
+                        significa ser inteligente?</strong> Parece una pregunta simple, pero los psicólogos llevan más
+                    de un siglo debatiéndola.</p>
+
+                <p>Piénsalo así: ¿es más inteligente un matemático brillante, un músico excepcional, o un líder
+                    carismático que entiende las emociones de todos? La respuesta depende de tu <strong>teoría de la
+                        inteligencia</strong>.</p>
+            </section>
+
+            <section class="reveal">
+                <h2 id="conductismo">Conductismo: la inteligencia como comportamiento</h2>
+
+                <p>El <strong>conductismo</strong> fue la escuela dominante en la primera mitad del siglo XX. Su idea
+                    principal es radical: no necesitamos hablar de «mente» ni de «pensamiento». Solo importa lo que
+                    <strong>se puede observar y medir</strong>.</p>
+
+                <div class="callout">
+                    <div class="callout-title">📦 Analogía: la caja negra</div>
+                    <p>Para los conductistas, la mente es una «caja negra». No nos importa qué hay dentro — solo nos
+                        importa qué entra (estímulos) y qué sale (respuestas). Si la respuesta es correcta, el sistema
+                        es inteligente.</p>
+                </div>
+
+                <h3>Figuras clave</h3>
+                <ul>
+                    <li><strong>B.F. Skinner:</strong> Todo comportamiento se explica por <em>refuerzos</em> (premios y
+                        castigos). ¿Te suena? El <strong>aprendizaje por refuerzo</strong> en IA funciona exactamente
+                        así.</li>
+                    <li><strong>John Watson:</strong> «Dame una docena de niños sanos y los convertiré en lo que
+                        quieras: doctor, artista o ladrón». La inteligencia es puramente aprendida.</li>
+                    <li><strong>Ivan Pavlov:</strong> Descubrió el condicionamiento clásico. Su perro aprendió a salivar
+                        con una campana. Simple pero poderoso.</li>
+                </ul>
+
+                <h3>Conexión con la IA</h3>
+                <p>El <strong>Test de Turing</strong> es profundamente conductista: no le importa si la máquina «piensa»
+                    — solo si su <em>comportamiento</em> es indistinguible del humano. De igual forma, el
+                    <strong>aprendizaje por refuerzo</strong> (usado en AlphaGo) es conductismo puro aplicado a
+                    máquinas.</p>
+            </section>
+
+            <section class="reveal">
+                <h2 id="gardner">Inteligencias Múltiples de Gardner</h2>
+
+                <p>En 1983, Howard Gardner propuso algo revolucionario: <strong>no existe UNA sola inteligencia, sino
+                        múltiples</strong>. Cada persona tiene un perfil único de inteligencias, como un ecualizador de
+                    música con diferentes niveles.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📐</div>
+                        <h4>Lógico-matemática</h4>
+                        <p>Razonamiento lógico, cálculos, patrones. La que más se parece a la IA tradicional.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📝</div>
+                        <h4>Lingüística</h4>
+                        <p>Dominio del lenguaje hablado y escrito. En IA: modelos de lenguaje como GPT.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🗺️</div>
+                        <h4>Espacial</h4>
+                        <p>Visualizar y manipular objetos en el espacio. En IA: visión por computadora y robótica.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🎵</div>
+                        <h4>Musical</h4>
+                        <p>Percibir, crear y comprender música. En IA: composición algorítmica.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🏃</div>
+                        <h4>Corporal-kinestésica</h4>
+                        <p>Control del cuerpo y manipulación de objetos. En IA: robótica y control motor.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🤝</div>
+                        <h4>Interpersonal</h4>
+                        <p>Entender a los demás, empatía y habilidades sociales. En IA: análisis de sentimientos.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🪞</div>
+                        <h4>Intrapersonal</h4>
+                        <p>Autoconocimiento y regulación emocional. En IA: aún un gran desafío.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🌿</div>
+                        <h4>Naturalista</h4>
+                        <p>Clasificar y reconocer especies y patrones naturales. En IA: clasificación de imágenes.</p>
+                    </div>
+                </div>
+
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Reflexión</div>
+                    <p>La IA actual es como un ecualizador con el volumen a tope en lógica-matemática y lingüística,
+                        pero con niveles bajos en inteligencia interpersonal e intrapersonal. ¿Podrá equilibrarse algún
+                        día?</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="triárquica">Teoría Triárquica de Sternberg</h2>
+
+                <p>Robert Sternberg propuso que la inteligencia tiene <strong>tres componentes</strong>:</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">⚡</div>
+                        <h4>Analítica</h4>
+                        <p>Resolver problemas abstractos y analizar información. Es la inteligencia «académica» o «de
+                            libro».</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">💡</div>
+                        <h4>Creativa</h4>
+                        <p>Generar ideas nuevas, adaptarse a situaciones novedosas y ver conexiones inesperadas.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🌍</div>
+                        <h4>Práctica</h4>
+                        <p>«Inteligencia callejera»: adaptarse al entorno real, negociar y resolver problemas
+                            cotidianos.</p>
+                    </div>
+                </div>
+
+                <p>La IA actual es fuerte en inteligencia analítica, está mejorando en la creativa (con modelos
+                    generativos), pero la inteligencia práctica sigue siendo su mayor debilidad.</p>
+            </section>
+
+            <section class="reveal">
+                <h2 id="comparacion">Comparación de teorías</h2>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Teoría</th>
+                            <th>Visión de la inteligencia</th>
+                            <th>Impacto en IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Conductismo</strong></td>
+                            <td>Comportamiento observable (estímulo → respuesta)</td>
+                            <td>Aprendizaje por refuerzo, Test de Turing</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gardner</strong></td>
+                            <td>8+ inteligencias independientes</td>
+                            <td>IA especializada para cada dominio</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sternberg</strong></td>
+                            <td>3 componentes: analítica, creativa, práctica</td>
+                            <td>IA generativa + razonamiento</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cognitivismo</strong></td>
+                            <td>Procesamiento de información (como una computadora)</td>
+                            <td>Redes neuronales, modelos cognitivos</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="reveal">
+                <h2 id="resumen">Resumen</h2>
+                <ul>
+                    <li>No existe una definición única de inteligencia — depende de la teoría utilizada.</li>
+                    <li>El <strong>conductismo</strong> se enfoca en comportamientos observables, base del aprendizaje
+                        por refuerzo.</li>
+                    <li>Las <strong>inteligencias múltiples de Gardner</strong> sugieren que hay al menos 8 tipos de
+                        inteligencia.</li>
+                    <li>La <strong>teoría triárquica de Sternberg</strong> divide la inteligencia en analítica, creativa
+                        y práctica.</li>
+                    <li>Cada teoría ha influido en cómo diseñamos y evaluamos los sistemas de IA.</li>
+                </ul>
+            </section>
+
+            <nav class="article-nav reveal">
+                <a href="habilidades-cognoscitivas.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Habilidades Cognoscitivas</span>
+                </a>
+                <a href="razonamiento-logica.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Razonamiento y Lógica</span>
+                </a>
+            </nav>
+
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>
