@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mapas conceptuales en IA: representación visual del conocimiento con conceptos, relaciones y jerarquías.">
+    <title>Mapas Conceptuales — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    </div>
+    <div class="reading-progress" id="readingProgress"></div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="introduccion-ia.html">Introducción</a></li>
+                <li><a href="historia-ia.html">Historia</a></li>
+                <li><a href="habilidades-cognoscitivas.html">Cognición</a></li>
+                <li><a href="agente-inteligente.html">Agentes</a></li>
+                <li><a href="algoritmos-busqueda.html">Algoritmos</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+    <div class="page-wrapper">
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <span class="current">Mapas Conceptuales</span>
+            </div>
+            <h1>Mapas <span class="gradient-text">Conceptuales</span> en IA</h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 10 min</span>
+                <span class="article-meta-item">🏷️ Unidad II</span>
+                <span class="article-meta-item">📝 Tema 2.3</span>
+            </div>
+        </header>
+        <article class="article-content">
+            <section class="reveal">
+                <h2 id="que-son">¿Qué es un mapa conceptual?</h2>
+                <p>Un <strong>mapa conceptual</strong> es una herramienta gráfica que organiza el conocimiento como una red de <strong>conceptos</strong> (nodos) conectados por <strong>relaciones</strong> (enlaces etiquetados). Fue desarrollado por Joseph Novak en los años 70, basándose en la teoría del aprendizaje significativo de Ausubel.</p>
+                <p>En IA, los mapas conceptuales son una forma de <strong>representación del conocimiento</strong> que captura la estructura semántica de un dominio: qué entidades existen, cómo se relacionan y qué jerarquías forman.</p>
+                <div class="callout">
+                    <div class="callout-title">🗺️ Analogía</div>
+                    <p>Si el conocimiento fuera una ciudad, el mapa conceptual sería Google Maps: muestra las calles (relaciones), los edificios (conceptos) y los barrios (jerarquías). No tiene todo el detalle, pero te permite <strong>navegar y entender la estructura</strong>.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="elementos">Elementos fundamentales</h2>
+                <div class="concept-grid concept-grid-4">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🟦</div>
+                        <h4>Conceptos</h4>
+                        <p>Ideas u objetos representados en nodos. Ej: «Animal», «Mamífero», «Perro».</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">➡️</div>
+                        <h4>Relaciones</h4>
+                        <p>Flechas etiquetadas que conectan conceptos: «es un», «tiene», «causa».</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📐</div>
+                        <h4>Jerarquía</h4>
+                        <p>Conceptos generales arriba, específicos abajo. De lo abstracto a lo concreto.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔗</div>
+                        <h4>Enlaces cruzados</h4>
+                        <p>Conexiones entre ramas diferentes del mapa, mostrando relaciones complejas.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="vs-otros">Comparación con otras representaciones</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Representación</th><th>Estructura</th><th>Uso principal</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Mapa conceptual</strong></td><td>Jerárquica con enlaces cruzados</td><td>Organizar conocimiento complejo</td></tr>
+                        <tr><td><strong>Mapa mental</strong></td><td>Radial desde un centro</td><td>Lluvia de ideas, resúmenes</td></tr>
+                        <tr><td><strong>Red semántica</strong></td><td>Grafo flexible</td><td>Representación formal en IA</td></tr>
+                        <tr><td><strong>Ontología</strong></td><td>Formal con axiomas</td><td>Web semántica, interoperabilidad</td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="reveal">
+                <h2 id="ia-aplicacion">Aplicación en IA</h2>
+                <ul>
+                    <li><strong>Ingeniería del conocimiento:</strong> Primer paso para capturar conocimiento experto antes de formalizarlo.</li>
+                    <li><strong>Diseño de ontologías:</strong> Boceto visual para diseñar ontologías OWL.</li>
+                    <li><strong>Minería de texto:</strong> Algoritmos de NLP generan mapas conceptuales automáticamente.</li>
+                    <li><strong>Sistemas tutores:</strong> Modelan el conocimiento del estudiante y detectan lagunas.</li>
+                </ul>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejemplo real</div>
+                    <p><strong>CmapTools</strong> (IHMC, Florida) permite crear mapas conceptuales exportables como ontologías OWL/RDF, conectando la herramienta educativa con la representación formal en IA.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="actividad">🎯 Actividad práctica</h2>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejercicio: Construye tu mapa conceptual</div>
+                    <p><strong>Tema:</strong> «Inteligencia Artificial» como concepto central.</p>
+                    <p>1. Agrega al menos <strong>8 conceptos</strong> subordinados (paradigmas, técnicas, aplicaciones, etc.).</p>
+                    <p>2. Usa al menos <strong>3 tipos de relación</strong> diferentes.</p>
+                    <p>3. Incluye al menos <strong>2 enlaces cruzados</strong> entre ramas.</p>
+                    <p>4. Herramientas: <strong>CmapTools</strong>, <strong>draw.io</strong>, <strong>Miro</strong> o papel.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="cuestionario">📝 Cuestionario</h2>
+                <div class="concept-grid">
+                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuáles son los cuatro elementos fundamentales de un mapa conceptual?</p></div>
+                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Cuál es la diferencia principal entre un mapa conceptual y un mapa mental?</p></div>
+                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Cómo se usan los mapas conceptuales en la ingeniería del conocimiento?</p></div>
+                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Qué son los «enlaces cruzados» y por qué son importantes?</p></div>
+                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿Cómo puede un mapa conceptual convertirse en una ontología formal?</p></div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="conclusion">Conclusión</h2>
+                <p>Los mapas conceptuales son un <strong>puente entre la mente humana y la representación computacional del conocimiento</strong>. En IA, constituyen el primer paso para capturar, organizar y formalizar el conocimiento de un dominio. Dominar esta técnica te permite diseñar bases de conocimiento más robustas y colaborar eficientemente con expertos de dominio.</p>
+            </section>
+            <section class="reveal">
+                <h2 id="referencias">📚 Referencias</h2>
+                <ul>
+                    <li>Novak, J. D. & Cañas, A. J. (2008). The Theory Underlying Concept Maps. <em>Technical Report IHMC</em>.</li>
+                    <li>Sowa, J. F. (2000). <em>Knowledge Representation</em>. Brooks/Cole.</li>
+                    <li>Russell, S. & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Ausubel, D. P. (2000). <em>The Acquisition and Retention of Knowledge</em>. Springer.</li>
+                    <li>Cañas, A. J. et al. (2004). CmapTools: A Knowledge Modeling Environment. <em>Proc. First Int. Conf. on Concept Mapping</em>.</li>
+                </ul>
+            </section>
+            <nav class="article-nav reveal">
+                <a href="paradigmas-ia.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Paradigmas de la IA</span>
+                </a>
+                <a href="redes-semanticas.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Redes Semánticas</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+</body>
+</html>

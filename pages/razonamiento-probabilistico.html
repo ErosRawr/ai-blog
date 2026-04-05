@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Razonamiento probabilístico en IA: incertidumbre, distribuciones de probabilidad, redes bayesianas y aplicaciones en sistemas inteligentes.">
+    <title>Razonamiento Probabilístico — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    </div>
+    <div class="reading-progress" id="readingProgress"></div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="introduccion-ia.html">Introducción</a></li>
+                <li><a href="historia-ia.html">Historia</a></li>
+                <li><a href="habilidades-cognoscitivas.html">Cognición</a></li>
+                <li><a href="agente-inteligente.html">Agentes</a></li>
+                <li><a href="algoritmos-busqueda.html">Algoritmos</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+    <div class="page-wrapper">
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <span class="current">Razonamiento Probabilístico</span>
+            </div>
+            <h1>Razonamiento <span class="gradient-text">Probabilístico</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 13 min</span>
+                <span class="article-meta-item">🏷️ Unidad II</span>
+                <span class="article-meta-item">📝 Tema 2.8</span>
+            </div>
+        </header>
+        <article class="article-content">
+            <section class="reveal">
+                <h2 id="que-es">¿Por qué probabilidad en IA?</h2>
+                <p>El mundo real está lleno de <strong>incertidumbre</strong>. Un médico no sabe con certeza si un paciente tiene gripe o COVID; un auto autónomo no sabe si el objeto adelante es un peatón o una bolsa de basura. La lógica clásica dice V o F, pero la realidad vive en tonos de gris.</p>
+                <p>El <strong>razonamiento probabilístico</strong> permite a los sistemas de IA tomar decisiones racionales bajo incertidumbre, asignando <strong>grados de creencia</strong> (probabilidades) a diferentes hipótesis y actualizándolos conforme llega nueva evidencia.</p>
+                <div class="callout">
+                    <div class="callout-title">🎲 Idea central</div>
+                    <p>En lugar de preguntar «¿es verdad que llueve?», preguntamos «¿cuál es la <strong>probabilidad</strong> de que llueva dado lo que observo?». Esto permite actuar racionalmente incluso cuando no tenemos información completa.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="fundamentos">Fundamentos de probabilidad</h2>
+                <div class="concept-grid concept-grid-4">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📊</div>
+                        <h4>Probabilidad P(A)</h4>
+                        <p>Número entre 0 y 1 que mide qué tan probable es un evento. P(A) = 0 imposible, P(A) = 1 certeza.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔗</div>
+                        <h4>Probabilidad conjunta</h4>
+                        <p>P(A ∧ B): probabilidad de que A y B ocurran simultáneamente. Ej: P(lluvia ∧ frío).</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📐</div>
+                        <h4>Probabilidad condicional</h4>
+                        <p>P(A|B): probabilidad de A dado que B ocurrió. P(A|B) = P(A ∧ B) / P(B). Fundamental para Bayes.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔄</div>
+                        <h4>Independencia</h4>
+                        <p>A y B son independientes si P(A|B) = P(A). Saber B no cambia tu creencia sobre A.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="redes-bayesianas">Redes Bayesianas</h2>
+                <p>Una <strong>red bayesiana</strong> es un grafo dirigido acíclico donde:</p>
+                <ul>
+                    <li>Los <strong>nodos</strong> representan variables aleatorias (enfermedades, síntomas, causas).</li>
+                    <li>Las <strong>aristas</strong> representan dependencias probabilísticas (causalidad).</li>
+                    <li>Cada nodo tiene una <strong>tabla de probabilidad condicional</strong> (CPT) que cuantifica la relación con sus padres.</li>
+                </ul>
+                <div class="code-block">
+<span class="comment">// Ejemplo: Red bayesiana para diagnóstico simple</span>
+<span class="comment">//</span>
+<span class="comment">//     [Fumador]     [Contaminación]</span>
+<span class="comment">//         \              /</span>
+<span class="comment">//          v            v</span>
+<span class="comment">//          [Cáncer_Pulmón]</span>
+<span class="comment">//               |</span>
+<span class="comment">//               v</span>
+<span class="comment">//          [Rayos_X_Positivo]</span>
+<span class="comment">//</span>
+<span class="keyword">P(Fumador)</span> = <span class="string">0.30</span>
+<span class="keyword">P(Contaminación)</span> = <span class="string">0.20</span>
+<span class="keyword">P(Cáncer | Fumador, Contaminación)</span> = <span class="string">0.05</span>
+<span class="keyword">P(Cáncer | Fumador, ¬Contaminación)</span> = <span class="string">0.03</span>
+<span class="keyword">P(Cáncer | ¬Fumador, Contaminación)</span> = <span class="string">0.02</span>
+<span class="keyword">P(Cáncer | ¬Fumador, ¬Contaminación)</span> = <span class="string">0.001</span>
+<span class="keyword">P(RayosX+ | Cáncer)</span> = <span class="string">0.90</span>
+<span class="keyword">P(RayosX+ | ¬Cáncer)</span> = <span class="string">0.10</span>
+                </div>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ventaja clave</div>
+                    <p>Las redes bayesianas permiten hacer <strong>razonamiento bidireccional</strong>: dado un síntoma observado (rayos X positivo), podemos calcular la probabilidad de la causa (cáncer). Esto se llama <strong>inferencia diagnóstica</strong> y usa el Teorema de Bayes.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="vs-logica">Comparación: lógica vs. probabilidad</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Aspecto</th><th>Lógica clásica</th><th>Razonamiento probabilístico</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Valores</strong></td><td>Verdadero / Falso</td><td>[0, 1] continuo</td></tr>
+                        <tr><td><strong>Incertidumbre</strong></td><td>No la maneja</td><td>Es su razón de ser</td></tr>
+                        <tr><td><strong>Actualización</strong></td><td>Monótona (irreversible)</td><td>Bayesiana (se actualiza con evidencia)</td></tr>
+                        <tr><td><strong>Ejemplo</strong></td><td>«El paciente tiene gripe»</td><td>«P(gripe | síntomas) = 0.73»</td></tr>
+                        <tr><td><strong>Aplicación</strong></td><td>Verificación formal, matemáticas</td><td>Diagnóstico, predicción, robótica</td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="reveal">
+                <h2 id="aplicaciones">Aplicaciones en el mundo real</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Medicina</div>
+                        <h4>Diagnóstico asistido</h4>
+                        <p>Redes bayesianas evalúan la probabilidad de enfermedades dados los síntomas, historial y resultados de pruebas del paciente.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Filtros de spam</div>
+                        <h4>Clasificación de correos</h4>
+                        <p>Naive Bayes calcula P(spam | palabras del correo) para clasificar emails como spam o legítimo con alta precisión.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Robótica</div>
+                        <h4>Localización y mapeo</h4>
+                        <p>Los robots usan filtros de partículas (métodos probabilísticos) para estimar su posición en un entorno desconocido (SLAM).</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">NLP</div>
+                        <h4>Modelos de lenguaje</h4>
+                        <p>Los modelos de lenguaje calculan P(siguiente palabra | palabras anteriores) para generar texto coherente.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="actividad">🎯 Actividad práctica</h2>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejercicio: Clasificador Naive Bayes</div>
+                    <p><strong>Escenario:</strong> Tienes datos de 100 correos, 40 son spam y 60 legítimos.</p>
+                    <p><strong>Datos:</strong></p>
+                    <p>• P(«gratis» | spam) = 0.80 — P(«gratis» | legítimo) = 0.10</p>
+                    <p>• P(«oferta» | spam) = 0.60 — P(«oferta» | legítimo) = 0.15</p>
+                    <p>• P(«reunión» | spam) = 0.05 — P(«reunión» | legítimo) = 0.50</p>
+                    <p><strong>Preguntas:</strong></p>
+                    <p>a) Llega un correo con las palabras «gratis» y «oferta». Calcula P(spam | gratis, oferta) usando Naive Bayes.</p>
+                    <p>b) Llega otro con «reunión». Calcula P(spam | reunión).</p>
+                    <p>c) ¿Cuál se clasifica como spam y cuál como legítimo?</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="cuestionario">📝 Cuestionario</h2>
+                <div class="concept-grid">
+                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Por qué la lógica clásica es insuficiente para modelar decisiones médicas reales?</p></div>
+                    <div class="concept-card"><h4>Pregunta 2</h4><p>Explica la diferencia entre probabilidad conjunta P(A,B) y condicional P(A|B).</p></div>
+                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Qué es una red bayesiana y cuáles son sus tres componentes principales?</p></div>
+                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Qué significa «independencia condicional» y por qué simplifica los cálculos en redes bayesianas?</p></div>
+                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿Por qué el clasificador Naive Bayes se llama «naive» (ingenuo)? ¿Cuál es su suposición simplificadora?</p></div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="conclusion">Conclusión</h2>
+                <p>El razonamiento probabilístico es la <strong>herramienta fundamental</strong> para que la IA opere en el mundo real, donde la incertidumbre es la norma. Las redes bayesianas, Naive Bayes y los modelos probabilísticos gráficos permiten tomar decisiones <strong>racionales con información incompleta</strong>, actualizando creencias conforme aparece nueva evidencia — exactamente como lo hace un experto humano.</p>
+            </section>
+            <section class="reveal">
+                <h2 id="referencias">📚 Referencias</h2>
+                <ul>
+                    <li>Russell, S. & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Pearl, J. (1988). <em>Probabilistic Reasoning in Intelligent Systems</em>. Morgan Kaufmann.</li>
+                    <li>Koller, D. & Friedman, N. (2009). <em>Probabilistic Graphical Models</em>. MIT Press.</li>
+                    <li>Murphy, K. P. (2012). <em>Machine Learning: A Probabilistic Perspective</em>. MIT Press.</li>
+                    <li>Bishop, C. M. (2006). <em>Pattern Recognition and Machine Learning</em>. Springer.</li>
+                </ul>
+            </section>
+            <nav class="article-nav reveal">
+                <a href="conocimiento-no-monotono.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Conocimiento No-Monótono</span>
+                </a>
+                <a href="teorema-bayes.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Teorema de Bayes</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Principios y metodología de la Inteligencia Artificial: fases de desarrollo, ciclo de vida de un proyecto de IA y mejores prácticas metodológicas.">
+    <title>Principios y Metodología de la IA — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+
+<body>
+
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo">
+                <span class="logo-icon">IA</span>
+                <span>AI Blog</span>
+            </a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="introduccion-ia.html">Introducción</a></li>
+                <li><a href="historia-ia.html">Historia</a></li>
+                <li><a href="habilidades-cognoscitivas.html">Cognición</a></li>
+                <li><a href="agente-inteligente.html">Agentes</a></li>
+                <li><a href="algoritmos-busqueda.html">Algoritmos</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <span class="current">Principios y Metodología de la IA</span>
+            </div>
+            <h1>Principios y <span class="gradient-text">Metodología de la IA</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 12 min</span>
+                <span class="article-meta-item">🏷️ Unidad II</span>
+                <span class="article-meta-item">📝 Tema 2.1</span>
+            </div>
+        </header>
+
+        <article class="article-content">
+
+            <!-- Teoría -->
+            <section class="reveal">
+                <h2 id="fundamentos">¿Qué son los principios de la IA?</h2>
+
+                <p>Los <strong>principios de la Inteligencia Artificial</strong> son los fundamentos filosóficos, matemáticos y computacionales que guían el diseño de sistemas capaces de resolver problemas complejos de manera autónoma. No se trata solo de programar — se trata de <strong>modelar la inteligencia</strong>.</p>
+
+                <p>Así como un arquitecto no construye un edificio sin planos, un ingeniero de IA no crea un sistema inteligente sin una <strong>metodología rigurosa</strong>. La metodología de la IA proporciona el marco para pasar de un problema del mundo real a una solución inteligente funcional.</p>
+
+                <div class="callout">
+                    <div class="callout-title">🧠 Idea clave</div>
+                    <p>La IA combina tres pilares fundamentales: <strong>representación del conocimiento</strong> (¿cómo almacenamos lo que sabemos?), <strong>razonamiento</strong> (¿cómo sacamos conclusiones?) y <strong>aprendizaje</strong> (¿cómo mejoramos con la experiencia?).</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="principios">Principios fundamentales</h2>
+
+                <p>Todo sistema de IA, desde un chatbot hasta un vehículo autónomo, se rige por estos principios:</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🎯</div>
+                        <h4>Racionalidad</h4>
+                        <p>El sistema debe tomar decisiones que maximicen su medida de desempeño con base en la información disponible.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔄</div>
+                        <h4>Adaptabilidad</h4>
+                        <p>Capacidad de ajustar el comportamiento ante cambios en el entorno, sin necesidad de reprogramación manual.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📊</div>
+                        <h4>Representación</h4>
+                        <p>El conocimiento del mundo debe codificarse en estructuras formales que la máquina pueda manipular lógicamente.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">⚡</div>
+                        <h4>Eficiencia</h4>
+                        <p>Las soluciones deben ser computacionalmente viables: no basta con que sean correctas, deben ser prácticas.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="metodologia">Metodología de desarrollo en IA</h2>
+
+                <p>La metodología define las <strong>fases</strong> que un proyecto de IA debe seguir, desde la identificación del problema hasta el despliegue y mantenimiento del sistema. A diferencia del desarrollo de software tradicional, en IA las fases son <strong>más iterativas y experimentales</strong>.</p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Fase 1</div>
+                        <h4>Identificación del problema</h4>
+                        <p>Definir claramente qué problema se va a resolver, qué datos están disponibles y cuáles son los criterios de éxito. Ejemplo: «queremos detectar fraude en transacciones bancarias con al menos 95% de precisión».</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Fase 2</div>
+                        <h4>Adquisición y representación del conocimiento</h4>
+                        <p>Recopilar datos y conocimiento experto. Elegir cómo representar ese conocimiento: reglas, ontologías, redes semánticas, modelos probabilísticos, etc.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Fase 3</div>
+                        <h4>Selección del paradigma y técnica</h4>
+                        <p>Elegir el enfoque adecuado: ¿sistemas basados en reglas? ¿redes neuronales? ¿razonamiento bayesiano? La elección depende de la naturaleza del problema y de los datos disponibles.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Fase 4</div>
+                        <h4>Diseño e implementación</h4>
+                        <p>Construir el sistema: definir la arquitectura, implementar los algoritmos, entrenar los modelos y codificar las reglas de inferencia.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Fase 5</div>
+                        <h4>Validación y pruebas</h4>
+                        <p>Evaluar el sistema con datos de prueba, medir su rendimiento y comparar contra benchmarks. Iterar si los resultados no son satisfactorios.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Fase 6</div>
+                        <h4>Despliegue y mantenimiento</h4>
+                        <p>Poner el sistema en producción, monitorear su rendimiento en el mundo real y actualizarlo conforme cambian los datos o los requisitos.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="enfoques">Enfoques metodológicos</h2>
+
+                <p>Existen diferentes formas de abordar un problema de IA:</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Enfoque</th>
+                            <th>Descripción</th>
+                            <th>Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Top-down (simbólico)</strong></td>
+                            <td>Se parte de reglas y lógica formal para modelar el razonamiento humano</td>
+                            <td>Sistemas expertos, PROLOG</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bottom-up (conexionista)</strong></td>
+                            <td>Se parte de datos y se aprenden patrones mediante redes neuronales</td>
+                            <td>Deep Learning, GPT</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Híbrido</strong></td>
+                            <td>Combina razonamiento simbólico con aprendizaje automático</td>
+                            <td>Neuro-symbolic AI</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Evolutivo</strong></td>
+                            <td>Usa algoritmos inspirados en la evolución natural</td>
+                            <td>Algoritmos genéticos</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Actividad práctica -->
+            <section class="reveal">
+                <h2 id="actividad">🎯 Actividad práctica</h2>
+
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejercicio: Diseña la metodología para un proyecto de IA</div>
+                    <p><strong>Escenario:</strong> Una empresa de e-commerce quiere crear un sistema de IA que recomiende productos a sus usuarios en tiempo real.</p>
+                    <p><strong>Instrucciones:</strong></p>
+                    <p>1. <strong>Identifica el problema:</strong> Define el objetivo, los datos disponibles (historial de compras, navegación, demografía) y la métrica de éxito (tasa de clics en recomendaciones).</p>
+                    <p>2. <strong>Elige la representación del conocimiento:</strong> ¿Usarías perfiles de usuario, grafos de productos, embeddings vectoriales?</p>
+                    <p>3. <strong>Selecciona el paradigma:</strong> ¿Filtrado colaborativo, basado en contenido, o un enfoque híbrido?</p>
+                    <p>4. <strong>Describe la arquitectura:</strong> Diagrama de componentes del sistema.</p>
+                    <p>5. <strong>Define el plan de validación:</strong> ¿Cómo medirás si las recomendaciones son buenas? (A/B testing, precisión, recall).</p>
+                </div>
+            </section>
+
+            <!-- Cuestionario -->
+            <section class="reveal">
+                <h2 id="cuestionario">📝 Cuestionario de comprensión</h2>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Pregunta 1</h4>
+                        <p>¿Cuáles son los tres pilares fundamentales de la IA?</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Pregunta 2</h4>
+                        <p>¿Cuál es la diferencia principal entre el enfoque top-down y el bottom-up en IA?</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Pregunta 3</h4>
+                        <p>¿Por qué la metodología de desarrollo en IA es más iterativa que la del software tradicional?</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Pregunta 4</h4>
+                        <p>En la fase de «Selección de paradigma», ¿qué factores influyen en la elección de la técnica?</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Pregunta 5</h4>
+                        <p>¿Qué papel juega la validación en el ciclo de vida de un sistema de IA y por qué es diferente al testing convencional?</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Conclusión -->
+            <section class="reveal">
+                <h2 id="conclusion">Conclusión</h2>
+
+                <p>Los principios y la metodología de la IA no son solo teoría académica — son la <strong>columna vertebral</strong> de cualquier proyecto exitoso de inteligencia artificial. Dominar estas fases te permite abordar problemas complejos de manera sistemática, elegir las técnicas correctas y evitar los errores clásicos como lanzarse a codificar sin entender el problema.</p>
+
+                <p>En la industria, empresas como Google, Amazon y Tesla aplican estos principios diariamente. Un ingeniero que comprende la metodología completa — desde la formulación del problema hasta el monitoreo en producción — tiene una ventaja competitiva enorme en el mercado laboral actual.</p>
+
+                <div class="callout">
+                    <div class="callout-title">🚀 Dato profesional</div>
+                    <p>Según un estudio de Gartner (2024), el 85% de los proyectos de IA que fracasan lo hacen por problemas metodológicos (mala definición del problema, datos inadecuados o falta de validación), no por limitaciones técnicas.</p>
+                </div>
+            </section>
+
+            <!-- Referencias -->
+            <section class="reveal">
+                <h2 id="referencias">📚 Referencias</h2>
+                <ul>
+                    <li>Russell, S. & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Nilsson, N. J. (2014). <em>Principles of Artificial Intelligence</em>. Morgan Kaufmann.</li>
+                    <li>Poole, D. & Mackworth, A. (2023). <em>Artificial Intelligence: Foundations of Computational Agents</em> (3rd ed.). Cambridge University Press.</li>
+                    <li>Géron, A. (2022). <em>Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow</em> (3rd ed.). O'Reilly Media.</li>
+                    <li>Gartner. (2024). <em>Top Strategic Technology Trends: Artificial Intelligence</em>. Gartner Research.</li>
+                </ul>
+            </section>
+
+            <nav class="article-nav reveal">
+                <a href="busqueda-local.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Búsqueda Local</span>
+                </a>
+                <a href="paradigmas-ia.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Paradigmas de la IA</span>
+                </a>
+            </nav>
+
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>

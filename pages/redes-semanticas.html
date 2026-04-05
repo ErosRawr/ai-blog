@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Redes semánticas en IA: representación del conocimiento mediante grafos con nodos y arcos etiquetados. Herencia, inferencia y aplicaciones.">
+    <title>Redes Semánticas — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    </div>
+    <div class="reading-progress" id="readingProgress"></div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="introduccion-ia.html">Introducción</a></li>
+                <li><a href="historia-ia.html">Historia</a></li>
+                <li><a href="habilidades-cognoscitivas.html">Cognición</a></li>
+                <li><a href="agente-inteligente.html">Agentes</a></li>
+                <li><a href="algoritmos-busqueda.html">Algoritmos</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+    <div class="page-wrapper">
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <span class="current">Redes Semánticas</span>
+            </div>
+            <h1>Redes <span class="gradient-text">Semánticas</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 12 min</span>
+                <span class="article-meta-item">🏷️ Unidad II</span>
+                <span class="article-meta-item">📝 Tema 2.4</span>
+            </div>
+        </header>
+        <article class="article-content">
+            <section class="reveal">
+                <h2 id="que-son">¿Qué es una red semántica?</h2>
+                <p>Una <strong>red semántica</strong> es una estructura de grafo donde el conocimiento se representa mediante <strong>nodos</strong> (conceptos u objetos) y <strong>arcos</strong> (relaciones entre ellos). Cada arco tiene una <strong>etiqueta</strong> que describe el tipo de relación.</p>
+                <p>Imagina un diagrama donde «Perro» está conectado a «Animal» con una flecha etiquetada «es-un», y a «Ladrar» con una flecha «puede». Eso es una red semántica — una forma elegante de decirle a la computadora: «los perros son animales y pueden ladrar».</p>
+                <div class="callout">
+                    <div class="callout-title">🧠 Definición formal</div>
+                    <p>Una red semántica es un <strong>grafo dirigido etiquetado</strong> G = (V, E, L) donde V es el conjunto de nodos (conceptos), E es el conjunto de arcos (relaciones) y L es el conjunto de etiquetas que tipifican las relaciones.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="relaciones">Tipos de relaciones</h2>
+                <div class="concept-grid concept-grid-4">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔷</div>
+                        <h4>es-un (IS-A)</h4>
+                        <p>Relación de categoría/herencia. «Gato es-un Felino». Permite la herencia de propiedades.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📦</div>
+                        <h4>tiene-un (HAS-A)</h4>
+                        <p>Relación de composición. «Coche tiene-un Motor». Describe las partes de un objeto.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🎭</div>
+                        <h4>instancia-de</h4>
+                        <p>Relación entre un objeto concreto y su clase. «Firulais instancia-de Perro».</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">⚡</div>
+                        <h4>Propiedades</h4>
+                        <p>Atributos del nodo: «color», «tamaño», «puede». Ej: «Ave puede Volar».</p>
+                    </div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="herencia">Herencia en redes semánticas</h2>
+                <p>Una de las características más poderosas es la <strong>herencia de propiedades</strong>. Si sabemos que «Animal tiene Metabolismo» y «Perro es-un Animal», entonces podemos inferir que «Perro tiene Metabolismo» sin declararlo explícitamente.</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Paso 1</div>
+                        <h4>Declarar conocimiento general</h4>
+                        <p>Animal → tiene → Metabolismo; Animal → puede → Moverse</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Paso 2</div>
+                        <h4>Establecer jerarquía</h4>
+                        <p>Mamífero → es-un → Animal; Perro → es-un → Mamífero</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Paso 3</div>
+                        <h4>Inferir propiedades</h4>
+                        <p>Perro hereda: tiene Metabolismo, puede Moverse (heredado de Animal vía Mamífero)</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Paso 4</div>
+                        <h4>Excepciones</h4>
+                        <p>Se pueden definir excepciones locales: «Pingüino es-un Ave» pero «Pingüino NO-puede Volar»</p>
+                    </div>
+                </div>
+                <div class="callout callout-warning">
+                    <div class="callout-title">⚠️ Problema de la herencia múltiple</div>
+                    <p>Si un nodo hereda de dos padres con propiedades contradictorias, ¿cuál prevalece? Esto se conoce como el <strong>problema del diamante</strong> y requiere estrategias de resolución de conflictos.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="ejemplo">Ejemplo completo: sistema médico</h2>
+                <p>Imagina una red semántica para un sistema de diagnóstico:</p>
+                <div class="code-block">
+<span class="comment">// Red semántica — Sistema médico simplificado</span>
+Enfermedad ←<span class="keyword">es-un</span>← Gripe
+Enfermedad ←<span class="keyword">es-un</span>← Neumonía
+Gripe →<span class="function">tiene-síntoma</span>→ Fiebre
+Gripe →<span class="function">tiene-síntoma</span>→ Dolor_muscular
+Gripe →<span class="function">se-trata-con</span>→ Reposo
+Neumonía →<span class="function">tiene-síntoma</span>→ Fiebre
+Neumonía →<span class="function">tiene-síntoma</span>→ Tos_severa
+Neumonía →<span class="function">se-trata-con</span>→ Antibióticos
+Paciente_01 →<span class="string">instancia-de</span>→ Persona
+Paciente_01 →<span class="function">presenta</span>→ Fiebre
+Paciente_01 →<span class="function">presenta</span>→ Tos_severa
+<span class="comment">// Inferencia: Paciente_01 probablemente tiene Neumonía</span>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="actividad">🎯 Actividad práctica</h2>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejercicio: Diseña una red semántica</div>
+                    <p><strong>Dominio:</strong> Sistema de información universitario.</p>
+                    <p>1. Define al menos <strong>10 nodos</strong>: Universidad, Facultad, Carrera, Estudiante, Profesor, Materia, Aula, Semestre, Calificación, Título.</p>
+                    <p>2. Usa al menos <strong>5 tipos de relación</strong>: es-un, tiene-un, pertenece-a, imparte, cursa.</p>
+                    <p>3. Incluye al menos <strong>2 instancias concretas</strong> (ej: «Juan instancia-de Estudiante»).</p>
+                    <p>4. Demuestra la <strong>herencia</strong>: si Persona tiene Nombre, y Estudiante es-un Persona, entonces Estudiante hereda Nombre.</p>
+                    <p>5. Dibuja la red usando <strong>draw.io</strong> o papel y describe 3 inferencias posibles.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="cuestionario">📝 Cuestionario</h2>
+                <div class="concept-grid">
+                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuál es la diferencia entre una relación «es-un» y una relación «instancia-de»?</p></div>
+                    <div class="concept-card"><h4>Pregunta 2</h4><p>Explica el mecanismo de herencia de propiedades en redes semánticas con un ejemplo.</p></div>
+                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Qué es el «problema del diamante» en herencia múltiple?</p></div>
+                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Cómo se representan las excepciones a la herencia? Da un ejemplo.</p></div>
+                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿Qué ventajas tienen las redes semánticas sobre la lógica proposicional para representar conocimiento?</p></div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="conclusion">Conclusión</h2>
+                <p>Las redes semánticas son una de las representaciones del conocimiento más intuitivas y poderosas en IA. Su capacidad de <strong>herencia, inferencia y visualización</strong> las hace ideales para modelar dominios complejos. Hoy siguen vigentes como la base conceptual de tecnologías modernas como los <strong>Knowledge Graphs</strong> (Google, Wikidata) y las ontologías de la web semántica.</p>
+            </section>
+            <section class="reveal">
+                <h2 id="referencias">📚 Referencias</h2>
+                <ul>
+                    <li>Quillian, M. R. (1968). Semantic Memory. En M. Minsky (Ed.), <em>Semantic Information Processing</em> (pp. 227–270). MIT Press.</li>
+                    <li>Sowa, J. F. (2000). <em>Knowledge Representation</em>. Brooks/Cole.</li>
+                    <li>Russell, S. & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Brachman, R. J. & Levesque, H. J. (2004). <em>Knowledge Representation and Reasoning</em>. Morgan Kaufmann.</li>
+                    <li>Hogan, A. et al. (2021). Knowledge Graphs. <em>ACM Computing Surveys</em>, 54(4), 1–37.</li>
+                </ul>
+            </section>
+            <nav class="article-nav reveal">
+                <a href="mapas-conceptuales.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Mapas Conceptuales</span>
+                </a>
+                <a href="razonamiento-monotono.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Razonamiento Monótono</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+</body>
+</html>

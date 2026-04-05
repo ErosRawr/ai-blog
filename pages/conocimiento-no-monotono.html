@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conocimiento no-monótono y otras lógicas en IA: razonamiento por defecto, lógica circumscriptiva, mundos cerrados y lógica difusa.">
+    <title>Conocimiento No-Monótono — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    </div>
+    <div class="reading-progress" id="readingProgress"></div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="introduccion-ia.html">Introducción</a></li>
+                <li><a href="historia-ia.html">Historia</a></li>
+                <li><a href="habilidades-cognoscitivas.html">Cognición</a></li>
+                <li><a href="agente-inteligente.html">Agentes</a></li>
+                <li><a href="algoritmos-busqueda.html">Algoritmos</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+    <div class="page-wrapper">
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <span class="current">Conocimiento No-Monótono</span>
+            </div>
+            <h1>Conocimiento <span class="gradient-text">No-Monótono</span> y Otras Lógicas</h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 13 min</span>
+                <span class="article-meta-item">🏷️ Unidad II</span>
+                <span class="article-meta-item">📝 Tema 2.7</span>
+            </div>
+        </header>
+        <article class="article-content">
+            <section class="reveal">
+                <h2 id="que-es">¿Qué es el razonamiento no-monótono?</h2>
+                <p>El <strong>razonamiento no-monótono</strong> es un tipo de inferencia donde agregar nueva información <strong>puede invalidar</strong> conclusiones previas. A diferencia de la lógica clásica (monótona), aquí las creencias son <strong>revisables y tentativos</strong>.</p>
+                <p>Piénsalo con un ejemplo cotidiano: si alguien te dice «Juan tiene un ave», tú asumes que el ave puede volar. Pero si después te dicen «es un pingüino», <strong>retiras</strong> tu conclusión anterior. ¡Eso es razonamiento no monótono!</p>
+                <div class="callout">
+                    <div class="callout-title">🔄 Contraste con monotonía</div>
+                    <p><strong>Monótono:</strong> Γ ⊢ α implica Γ ∪ {β} ⊢ α (siempre).<br>
+                    <strong>No monótono:</strong> Γ ⊢ α pero Γ ∪ {β} ⊬ α (a veces la nueva info β invalida α).<br>
+                    El razonamiento no monótono modela el <strong>sentido común</strong>: sacamos conclusiones razonables con información incompleta, pero las revisamos cuando aparece nueva evidencia.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="tipos">Principales formalismos no-monótonos</h2>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📋</div>
+                        <h4>Lógica por defecto (Default Logic)</h4>
+                        <p>Reiter (1980). Define reglas por defecto: «si es ave y no se sabe que no vuela, concluir que vuela». Las conclusiones son tentativas.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔲</div>
+                        <h4>Suposición del mundo cerrado (CWA)</h4>
+                        <p>Lo que no está afirmado como verdadero se asume falso. Base de SQL: si no hay un registro, el dato «no existe».</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔍</div>
+                        <h4>Circunscripción</h4>
+                        <p>McCarthy (1980). Minimiza la extensión de predicados anormales: «asume que las cosas son normales a menos que se diga lo contrario».</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🧩</div>
+                        <h4>Lógica autoepistémica</h4>
+                        <p>Moore (1985). El agente razona sobre su propio conocimiento: «si yo no sé que p es falso, entonces asumo p verdadero».</p>
+                    </div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="default-logic">Lógica por defecto en detalle</h2>
+                <p>Una <strong>regla por defecto</strong> tiene la forma:</p>
+                <div class="code-block">
+<span class="comment">// Formato: prerrequisito : justificación / conclusión</span>
+<span class="function">Ave</span>(x) : <span class="string">Vuela</span>(x) / <span class="string">Vuela</span>(x)
+
+<span class="comment">// Lectura: "Si x es un ave, Y es consistente</span>
+<span class="comment">// asumir que vuela, ENTONCES concluir que vuela"</span>
+
+<span class="comment">// Ejemplo completo:</span>
+<span class="keyword">Hechos:</span> Ave(Tweety), Ave(Tux), Pingüino(Tux)
+<span class="keyword">Regla defecto:</span> Ave(x) : Vuela(x) / Vuela(x)
+<span class="keyword">Regla estricta:</span> Pingüino(x) → ¬Vuela(x)
+
+<span class="comment">// Resultado:</span>
+<span class="comment">// Vuela(Tweety) ✓ (por defecto)</span>
+<span class="comment">// ¬Vuela(Tux) ✓ (la regla estricta bloquea el defecto)</span>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="otras-logicas">Otras lógicas alternativas</h2>
+                <h3>Lógica Difusa (Fuzzy Logic)</h3>
+                <p>En la lógica clásica, todo es verdadero (1) o falso (0). La <strong>lógica difusa</strong> permite valores intermedios entre 0 y 1. «Juan es alto» no es V o F — podría ser 0.8 si mide 1.85m.</p>
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Lógica</th><th>Valores</th><th>Ejemplo</th><th>Aplicación</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Clásica</strong></td><td>{0, 1}</td><td>Llueve: Sí o No</td><td>Matemáticas, verificación formal</td></tr>
+                        <tr><td><strong>Difusa</strong></td><td>[0, 1]</td><td>Llueve: 0.3 (llovizna)</td><td>Control de electrodomésticos, decisiones suaves</td></tr>
+                        <tr><td><strong>Probabilística</strong></td><td>[0, 1]</td><td>P(llueve) = 0.7</td><td>Predicción, diagnóstico médico</td></tr>
+                        <tr><td><strong>Modal</strong></td><td>Necesario/Posible</td><td>Es posible que llueva</td><td>Planificación, razonamiento temporal</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejemplo real de lógica difusa</div>
+                    <p>Las <strong>lavadoras inteligentes</strong> usan lógica difusa para decidir cuánto detergente usar. En lugar de «mucha ropa» o «poca ropa» (binario), evalúan «carga = 0.65 de capacidad» y ajustan proporcionalmente.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="actividad">🎯 Actividad práctica</h2>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejercicio: Razonamiento por defecto</div>
+                    <p><strong>Escenario:</strong> Diseña un mini sistema de razonamiento por defecto para un asistente de viajes.</p>
+                    <p><strong>Hechos iniciales:</strong></p>
+                    <p>• Los vuelos generalmente llegan a tiempo.</p>
+                    <p>• Si hay tormenta, los vuelos se retrasan.</p>
+                    <p>• El vuelo AX-204 es un vuelo. Hay tormenta en el destino.</p>
+                    <p><strong>Tareas:</strong></p>
+                    <p>a) Formula las reglas por defecto y estrictas.</p>
+                    <p>b) ¿Qué concluyes sobre el vuelo AX-204? Justifica paso a paso.</p>
+                    <p>c) Si desaparece la tormenta, ¿cómo cambian las conclusiones? Eso es no monotonía.</p>
+                    <p>d) Propón una situación donde la lógica difusa sería más apropiada que la lógica por defecto.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="cuestionario">📝 Cuestionario</h2>
+                <div class="concept-grid">
+                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuál es la diferencia fundamental entre razonamiento monótono y no-monótono? Da un ejemplo de cada uno.</p></div>
+                    <div class="concept-card"><h4>Pregunta 2</h4><p>Explica qué es una «regla por defecto» y cuándo se bloquea su aplicación.</p></div>
+                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Qué es la suposición del mundo cerrado y cómo se aplica en bases de datos SQL?</p></div>
+                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿En qué se diferencia la lógica difusa de la lógica probabilística?</p></div>
+                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿Por qué el razonamiento no-monótono es esencial para modelar el sentido común en IA?</p></div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="conclusion">Conclusión</h2>
+                <p>El razonamiento no-monótono y las lógicas alternativas son <strong>herramientas esenciales</strong> para que la IA modele el mundo real, donde la información es incompleta, cambiante y ambigua. Mientras la lógica clásica sigue siendo fundamental para contextos formales y matemáticos, las lógicas no clásicas permiten a los sistemas inteligentes razonar con <strong>sentido común</strong>, manejar excepciones y tomar decisiones bajo incertidumbre.</p>
+            </section>
+            <section class="reveal">
+                <h2 id="referencias">📚 Referencias</h2>
+                <ul>
+                    <li>Reiter, R. (1980). A Logic for Default Reasoning. <em>Artificial Intelligence</em>, 13(1–2), 81–132.</li>
+                    <li>McCarthy, J. (1980). Circumscription—A Form of Non-Monotonic Reasoning. <em>Artificial Intelligence</em>, 13(1–2), 27–39.</li>
+                    <li>Zadeh, L. A. (1965). Fuzzy Sets. <em>Information and Control</em>, 8(3), 338–353.</li>
+                    <li>Russell, S. & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Brachman, R. J. & Levesque, H. J. (2004). <em>Knowledge Representation and Reasoning</em>. Morgan Kaufmann.</li>
+                </ul>
+            </section>
+            <nav class="article-nav reveal">
+                <a href="razonamiento-monotono.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Razonamiento Monótono</span>
+                </a>
+                <a href="razonamiento-probabilistico.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Razonamiento Probabilístico</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+</body>
+</html>

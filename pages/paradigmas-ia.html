@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Paradigmas de la Inteligencia Artificial: IA simbólica, conexionista, evolutiva e híbrida. Comparativa, ejemplos y aplicaciones de cada enfoque.">
+    <title>Paradigmas de la IA — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+
+<body>
+
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo">
+                <span class="logo-icon">IA</span>
+                <span>AI Blog</span>
+            </a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="introduccion-ia.html">Introducción</a></li>
+                <li><a href="historia-ia.html">Historia</a></li>
+                <li><a href="habilidades-cognoscitivas.html">Cognición</a></li>
+                <li><a href="agente-inteligente.html">Agentes</a></li>
+                <li><a href="algoritmos-busqueda.html">Algoritmos</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <span class="current">Paradigmas de la IA</span>
+            </div>
+            <h1>Paradigmas de la <span class="gradient-text">Inteligencia Artificial</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 12 min</span>
+                <span class="article-meta-item">🏷️ Unidad II</span>
+                <span class="article-meta-item">📝 Tema 2.2</span>
+            </div>
+        </header>
+
+        <article class="article-content">
+
+            <section class="reveal">
+                <h2 id="que-son">¿Qué es un paradigma en IA?</h2>
+
+                <p>Un <strong>paradigma</strong> en inteligencia artificial es un marco conceptual que define <strong>cómo modelamos, representamos y procesamos</strong> la inteligencia en una máquina. Es como las «escuelas de pensamiento» de la IA: cada una tiene su propia filosofía sobre qué significa ser inteligente y cómo replicarlo.</p>
+
+                <p>Piénsalo como las corrientes artísticas: el impresionismo, el cubismo y el surrealismo son todas formas válidas de hacer arte, pero con técnicas y filosofías radicalmente diferentes. Lo mismo ocurre con los paradigmas de la IA.</p>
+
+                <div class="callout">
+                    <div class="callout-title">🧠 ¿Por qué importa?</div>
+                    <p>Elegir el paradigma correcto es la <strong>primera decisión estratégica</strong> en cualquier proyecto de IA. Un paradigma inadecuado puede hacer que un problema sencillo se vuelva imposible — o que uno complejo se resuelva elegantemente.</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="simbolico">1. Paradigma Simbólico (GOFAI)</h2>
+
+                <p>La <strong>IA simbólica</strong> (Good Old-Fashioned AI o GOFAI) fue el primer paradigma dominante. Su premisa es que la inteligencia puede representarse mediante <strong>símbolos</strong> y <strong>reglas lógicas</strong> que se manipulan formalmente.</p>
+
+                <h3>Características</h3>
+                <ul>
+                    <li><strong>Conocimiento explícito:</strong> Las reglas se codifican manualmente por expertos humanos.</li>
+                    <li><strong>Razonamiento deductivo:</strong> Se aplican reglas de inferencia lógica (si A entonces B).</li>
+                    <li><strong>Transparencia:</strong> Se puede explicar exactamente por qué el sistema tomó una decisión.</li>
+                    <li><strong>Fragilidad:</strong> Si una situación no está contemplada en las reglas, el sistema falla.</li>
+                </ul>
+
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejemplo clásico</div>
+                    <p><strong>MYCIN (1976)</strong> — Un sistema experto que diagnosticaba infecciones bacterianas usando ≈600 reglas del tipo: «SI el paciente tiene fiebre Y el cultivo muestra gram-positivo, ENTONCES considerar estafilococo con certeza 0.7».</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="conexionista">2. Paradigma Conexionista</h2>
+
+                <p>El <strong>conexionismo</strong> se inspira en la estructura del cerebro humano. En lugar de reglas explícitas, la inteligencia <strong>emerge</strong> de la interacción de miles o millones de unidades simples conectadas entre sí: las <strong>neuronas artificiales</strong>.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🧬</div>
+                        <h4>Aprendizaje por datos</h4>
+                        <p>El sistema aprende patrones a partir de ejemplos, sin reglas explícitas. El conocimiento está en los pesos de las conexiones.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔮</div>
+                        <h4>Generalización</h4>
+                        <p>Puede manejar situaciones nuevas que no vio durante el entrenamiento, interpolando entre patrones aprendidos.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📦</div>
+                        <h4>Caja negra</h4>
+                        <p>Es difícil explicar por qué toma una decisión específica. La interpretabilidad es un desafío activo de investigación.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📈</div>
+                        <h4>Escalabilidad</h4>
+                        <p>Mejora su rendimiento conforme recibe más datos y más poder de cómputo. Es el paradigma detrás de GPT y DALL-E.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="evolutivo">3. Paradigma Evolutivo</h2>
+
+                <p>Inspirado en la <strong>evolución biológica</strong> de Darwin. Las soluciones se representan como «individuos» que <strong>compiten, se reproducen y mutan</strong> a lo largo de generaciones, hasta que emergen soluciones óptimas.</p>
+
+                <h3>Mecanismo básico</h3>
+                <ul>
+                    <li><strong>Población inicial:</strong> Se generan soluciones candidatas aleatorias.</li>
+                    <li><strong>Selección:</strong> Las mejores soluciones tienen más probabilidades de sobrevivir.</li>
+                    <li><strong>Cruzamiento:</strong> Se combinan partes de dos buenas soluciones para crear descendencia.</li>
+                    <li><strong>Mutación:</strong> Se introducen cambios aleatorios para explorar nuevas posibilidades.</li>
+                    <li><strong>Iteración:</strong> Se repite por muchas generaciones hasta converger a una solución óptima.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">🌍 Aplicación real</div>
+                    <p>NASA usó algoritmos evolutivos para diseñar una <strong>antena de satélite</strong> (ST5, 2006) con una forma tan inusual que ningún ingeniero humano la habría concebido — pero era óptima para la misión.</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="hibrido">4. Paradigma Híbrido</h2>
+
+                <p>El <strong>paradigma híbrido</strong> reconoce que ningún enfoque por sí solo resuelve todos los problemas. Combina fortalezas de múltiples paradigmas:</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Paradigma</th>
+                            <th>Fortaleza</th>
+                            <th>Debilidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Simbólico</strong></td>
+                            <td>Explicabilidad, razonamiento lógico</td>
+                            <td>Fragilidad, no maneja incertidumbre bien</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Conexionista</strong></td>
+                            <td>Generalización, aprendizaje de patrones</td>
+                            <td>Opacidad, necesita muchos datos</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Evolutivo</strong></td>
+                            <td>Exploración creativa, optimización global</td>
+                            <td>Lento, computacionalmente costoso</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Híbrido</strong></td>
+                            <td>Combina lo mejor de cada uno</td>
+                            <td>Complejidad de diseño e integración</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejemplo moderno</div>
+                    <p><strong>AlphaGo (DeepMind, 2016)</strong> es un sistema híbrido que combina redes neuronales profundas (conexionismo) con búsqueda Monte Carlo Tree Search (simbólico) para jugar Go a nivel sobrehumano.</p>
+                </div>
+            </section>
+
+            <!-- Actividad práctica -->
+            <section class="reveal">
+                <h2 id="actividad">🎯 Actividad práctica</h2>
+
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejercicio: Clasifica el paradigma</div>
+                    <p>Para cada uno de los siguientes sistemas reales, identifica qué paradigma(s) de IA utiliza y justifica tu respuesta:</p>
+                    <p>1. <strong>Siri / Alexa:</strong> Asistentes virtuales que entienden lenguaje natural.</p>
+                    <p>2. <strong>GPS / Waze:</strong> Sistemas de navegación que calculan rutas óptimas.</p>
+                    <p>3. <strong>Filtro anti-spam de Gmail:</strong> Clasifica correos automáticamente.</p>
+                    <p>4. <strong>Un sistema experto de diagnóstico médico:</strong> Usa reglas escritas por doctores.</p>
+                    <p>5. <strong>DALL-E / Midjourney:</strong> Genera imágenes a partir de texto.</p>
+                    <p><strong>Bonus:</strong> ¿Alguno de ellos combina múltiples paradigmas? Explica cómo.</p>
+                </div>
+            </section>
+
+            <!-- Cuestionario -->
+            <section class="reveal">
+                <h2 id="cuestionario">📝 Cuestionario de comprensión</h2>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Pregunta 1</h4>
+                        <p>¿Qué significa que el paradigma simbólico sea «transparente» y por qué esto es una ventaja en aplicaciones médicas?</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Pregunta 2</h4>
+                        <p>¿Por qué las redes neuronales se consideran una «caja negra» y qué implicaciones éticas tiene esto?</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Pregunta 3</h4>
+                        <p>Describe las tres operaciones fundamentales de un algoritmo evolutivo.</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Pregunta 4</h4>
+                        <p>¿Por qué AlphaGo se considera un sistema híbrido? ¿Qué paradigmas combina?</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Pregunta 5</h4>
+                        <p>Si tuvieras que diseñar un sistema para predecir terremotos, ¿qué paradigma(s) elegirías y por qué?</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Conclusión -->
+            <section class="reveal">
+                <h2 id="conclusion">Conclusión</h2>
+
+                <p>Los paradigmas de la IA representan <strong>diferentes filosofías</strong> sobre cómo replicar la inteligencia. No existe un paradigma «mejor» en absoluto — cada uno brilla en contextos diferentes. El ingeniero moderno de IA debe conocer todos los paradigmas para elegir (o combinar) el más adecuado a cada problema.</p>
+
+                <p>La tendencia actual apunta fuertemente hacia los <strong>sistemas híbridos</strong> que combinan la explicabilidad de lo simbólico, la potencia de lo conexionista y la creatividad de lo evolutivo. Comprender estos paradigmas te da el marco mental para innovar en cualquier área de la IA.</p>
+            </section>
+
+            <!-- Referencias -->
+            <section class="reveal">
+                <h2 id="referencias">📚 Referencias</h2>
+                <ul>
+                    <li>Russell, S. & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Haugeland, J. (1985). <em>Artificial Intelligence: The Very Idea</em>. MIT Press.</li>
+                    <li>Mitchell, M. (1998). <em>An Introduction to Genetic Algorithms</em>. MIT Press.</li>
+                    <li>Goodfellow, I., Bengio, Y. & Courville, A. (2016). <em>Deep Learning</em>. MIT Press.</li>
+                    <li>Garcez, A. d'A. & Lamb, L. C. (2023). Neurosymbolic AI: The 3rd Wave. <em>Artificial Intelligence Review</em>, 56, 12387–12406.</li>
+                </ul>
+            </section>
+
+            <nav class="article-nav reveal">
+                <a href="principios-metodologia-ia.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Principios y Metodología</span>
+                </a>
+                <a href="mapas-conceptuales.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Mapas Conceptuales</span>
+                </a>
+            </nav>
+
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>
