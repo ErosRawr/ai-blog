@@ -43,12 +43,10 @@
             </a>
 
             <ul class="navbar-links" id="navLinks">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="pages/introduccion-ia.html">Introducción</a></li>
-                <li><a href="pages/historia-ia.html">Historia</a></li>
-                <li><a href="pages/habilidades-cognoscitivas.html">Cognición</a></li>
-                <li><a href="pages/agente-inteligente.html">Agentes</a></li>
-                <li><a href="pages/algoritmos-busqueda.html">Algoritmos</a></li>
+                <li><a href="#unidad1">Unidad 1</a></li>
+                <li><a href="#unidad2">Unidad 2</a></li>
+                <li><a href="#unidad3" aria-disabled="true" style="opacity:0.45;cursor:default;">Unidad 3</a></li>
+                <li><a href="#unidad4" aria-disabled="true" style="opacity:0.45;cursor:default;">Unidad 4</a></li>
             </ul>
 
             <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
@@ -83,16 +81,20 @@
 
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <div class="hero-stat-number">21</div>
-                    <div class="hero-stat-label">Temas completos</div>
+                    <div class="hero-stat-number">13</div>
+                    <div class="hero-stat-label">Temas — Unidad 1</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-number">∞</div>
-                    <div class="hero-stat-label">Curiosidad</div>
+                    <div class="hero-stat-number">8</div>
+                    <div class="hero-stat-label">Temas — Unidad 2</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-number">100%</div>
-                    <div class="hero-stat-label">En español</div>
+                    <div class="hero-stat-number">—</div>
+                    <div class="hero-stat-label">Temas — Unidad 3</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">—</div>
+                    <div class="hero-stat-label">Temas — Unidad 4</div>
                 </div>
             </div>
         </div>
@@ -100,8 +102,8 @@
 
     <!-- Topics Section -->
     <section class="section" id="temas">
-        <div class="section-header reveal">
-            <span class="section-label">Contenido del blog</span>
+        <div class="section-header reveal" id="unidad1">
+            <span class="section-label">Unidad I — Fundamentos de la IA</span>
             <h2>Explora los temas</h2>
             <p>Cada artículo explica conceptos de IA de forma accesible con analogías, ejemplos y visualizaciones.</p>
         </div>
@@ -290,17 +292,17 @@
         </div>
 
         <!-- Unidad II Section -->
-        <div class="section-header reveal" style="margin-top: var(--space-3xl);">
+        <div class="section-header reveal" style="margin-top: var(--space-3xl);" id="unidad2">
             <span class="section-label">Unidad II — Representación del Conocimiento</span>
             <h2>Razonamiento y Metodología</h2>
             <p>Representación del conocimiento, lógicas formales, razonamiento probabilístico y el Teorema de Bayes.</p>
         </div>
 
-        <div class="cards-grid">
+        <div class="cards-grid cards-grid-2col">
 
-            <!-- Card 14 -->
+            <!-- Card U2-01 -->
             <a href="pages/principios-metodologia-ia.html" class="card" id="card-principios">
-                <span class="card-number">14</span>
+                <span class="card-number">01</span>
                 <div class="card-icon">📐</div>
                 <h3>Principios y Metodología de la IA</h3>
                 <p>Fases de desarrollo, ciclo de vida de un proyecto de IA y enfoques metodológicos top-down vs. bottom-up.</p>
@@ -311,9 +313,9 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card 15 -->
+            <!-- Card U2-02 -->
             <a href="pages/paradigmas-ia.html" class="card" id="card-paradigmas">
-                <span class="card-number">15</span>
+                <span class="card-number">02</span>
                 <div class="card-icon">🧬</div>
                 <h3>Paradigmas de la IA</h3>
                 <p>IA simbólica, conexionista, evolutiva e híbrida: las cuatro escuelas de pensamiento de la inteligencia artificial.</p>
@@ -324,9 +326,9 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card 16 -->
+            <!-- Card U2-03 -->
             <a href="pages/mapas-conceptuales.html" class="card" id="card-mapas">
-                <span class="card-number">16</span>
+                <span class="card-number">03</span>
                 <div class="card-icon">🗺️</div>
                 <h3>Mapas Conceptuales</h3>
                 <p>Organiza y representa el conocimiento de forma visual: conceptos, relaciones, jerarquías y enlaces cruzados.</p>
@@ -337,9 +339,9 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card 17 -->
+            <!-- Card U2-04 -->
             <a href="pages/redes-semanticas.html" class="card" id="card-redes-sem">
-                <span class="card-number">17</span>
+                <span class="card-number">04</span>
                 <div class="card-icon">🕸️</div>
                 <h3>Redes Semánticas</h3>
                 <p>Grafos de conocimiento con nodos y arcos etiquetados: herencia, inferencia y la base de los Knowledge Graphs.</p>
@@ -350,9 +352,9 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card 18 -->
+            <!-- Card U2-05 -->
             <a href="pages/razonamiento-monotono.html" class="card" id="card-monotono">
-                <span class="card-number">18</span>
+                <span class="card-number">05</span>
                 <div class="card-icon">📏</div>
                 <h3>Razonamiento Monótono</h3>
                 <p>Lógica clásica e inferencia deductiva: cuando agregar información nunca invalida conclusiones previas.</p>
@@ -363,9 +365,9 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card 19 -->
+            <!-- Card U2-06 -->
             <a href="pages/conocimiento-no-monotono.html" class="card" id="card-no-monotono">
-                <span class="card-number">19</span>
+                <span class="card-number">06</span>
                 <div class="card-icon">🔄</div>
                 <h3>Conocimiento No-Monótono</h3>
                 <p>Razonamiento por defecto, lógica difusa y circunscripción: cuando la nueva info puede cambiar tus conclusiones.</p>
@@ -376,9 +378,9 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card 20 -->
+            <!-- Card U2-07 -->
             <a href="pages/razonamiento-probabilistico.html" class="card" id="card-probabilistico">
-                <span class="card-number">20</span>
+                <span class="card-number">07</span>
                 <div class="card-icon">🎲</div>
                 <h3>Razonamiento Probabilístico</h3>
                 <p>Incertidumbre, distribuciones, redes bayesianas y Naive Bayes: decide racionalmente con información incompleta.</p>
@@ -389,9 +391,9 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card 21 — Featured -->
-            <a href="pages/teorema-bayes.html" class="card card-featured" id="card-bayes">
-                <span class="card-number">21</span>
+            <!-- Card U2-08 -->
+            <a href="pages/teorema-bayes.html" class="card" id="card-bayes">
+                <span class="card-number">08</span>
                 <div class="card-icon">📊</div>
                 <h3>Teorema de Bayes</h3>
                 <p>La ecuación más importante de la IA: actualiza creencias ante nueva evidencia. Ejemplos resueltos paso a paso con la paradoja de la base rate.</p>
@@ -403,6 +405,20 @@
             </a>
 
         </div>
+
+        <!-- Unidad III Placeholder -->
+        <div class="section-header reveal" style="margin-top: var(--space-3xl);" id="unidad3">
+            <span class="section-label">Unidad III — Próximamente</span>
+            <h2 style="opacity:0.5;">Contenido en desarrollo</h2>
+            <p style="opacity:0.5;">Los temas de la Unidad III estarán disponibles pronto.</p>
+        </div>
+
+        <!-- Unidad IV Placeholder -->
+        <div class="section-header reveal" style="margin-top: var(--space-2xl);" id="unidad4">
+            <span class="section-label">Unidad IV — Próximamente</span>
+            <h2 style="opacity:0.5;">Contenido en desarrollo</h2>
+            <p style="opacity:0.5;">Los temas de la Unidad IV estarán disponibles pronto.</p>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -411,10 +427,10 @@
             <div class="footer-brand">🤖 AI Blog</div>
             <p>Blog educativo sobre Inteligencia Artificial — Todos los derechos reservados © 2026</p>
             <ul class="footer-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="pages/introduccion-ia.html">Introducción</a></li>
-                <li><a href="pages/historia-ia.html">Historia</a></li>
-                <li><a href="pages/algoritmos-busqueda.html">Algoritmos</a></li>
+                <li><a href="index.html#unidad1">Unidad 1</a></li>
+                <li><a href="index.html#unidad2">Unidad 2</a></li>
+                <li><a href="index.html#unidad3">Unidad 3</a></li>
+                <li><a href="index.html#unidad4">Unidad 4</a></li>
             </ul>
         </div>
     </footer>
