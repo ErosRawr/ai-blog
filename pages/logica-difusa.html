@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lógica Difusa (Fuzzy Logic) en IA: conjuntos difusos, funciones de membresía, reglas difusas, scikit-fuzzy y aplicaciones actuales.">
+    <title>Lógica Difusa — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    </div>
+    <div class="reading-progress" id="readingProgress"></div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html#unidad1">Unidad 1</a></li>
+                <li><a href="../index.html#unidad2">Unidad 2</a></li>
+                <li><a href="../index.html#unidad3">Unidad 3</a></li>
+                <li><a href="../index.html#unidad4">Unidad 4</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+    <div class="page-wrapper">
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a><span class="separator">›</span>
+                <span class="current">Lógica Difusa</span>
+            </div>
+            <h1>Lógica <span class="gradient-text">Difusa</span> (Fuzzy Logic)</h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 12 min</span>
+                <span class="article-meta-item">🏷️ Unidad IV</span>
+                <span class="article-meta-item">📝 Tema 4.4</span>
+            </div>
+        </header>
+        <article class="article-content">
+            <!-- 4.4.1 Conceptos básicos -->
+            <section class="reveal">
+                <h2 id="conceptos">4.4.1 Conceptos Básicos</h2>
+                <p>La <strong>lógica difusa</strong> (fuzzy logic), propuesta por Lotfi Zadeh en 1965, extiende la lógica clásica para manejar <strong>grados de verdad</strong> en lugar de verdadero/falso absoluto. Permite razonar con conceptos vagos como «alto», «caliente», «rápido» — tal como lo hace el pensamiento humano.</p>
+                <div class="callout">
+                    <div class="callout-title">📐 Lógica clásica vs. difusa</div>
+                    <p><strong>Clásica</strong>: ¿La temperatura de 37°C es «caliente»? → SÍ o NO (0 o 1).<br>
+                    <strong>Difusa</strong>: ¿La temperatura de 37°C es «caliente»? → Es caliente con grado <strong>0.7</strong> y tibia con grado <strong>0.3</strong>.<br><br>
+                    Los <strong>conjuntos difusos</strong> permiten que un elemento pertenezca parcialmente a un conjunto, con un valor de membresía μ ∈ [0, 1].</p>
+                </div>
+                <div class="concept-grid concept-grid-4">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📊</div>
+                        <h4>Conjunto difuso</h4>
+                        <p>Conjunto donde la pertenencia no es binaria sino un grado entre 0 y 1. Ejemplo: μ_caliente(37°C) = 0.7.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📈</div>
+                        <h4>Función de membresía</h4>
+                        <p>Función que asigna el grado de pertenencia: triangular, trapezoidal, gaussiana, sigmoide.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔗</div>
+                        <h4>Reglas difusas</h4>
+                        <p>SI temperatura ES caliente Y humedad ES alta ENTONCES ventilador ES rápido. Usan operadores difusos (AND, OR, NOT).</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🎯</div>
+                        <h4>Defuzzificación</h4>
+                        <p>Convertir la salida difusa en un valor numérico concreto. Métodos: centroide, bisector, máximo.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="proceso">El proceso de inferencia difusa</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Paso 1</div>
+                        <h4>Fuzzificación</h4>
+                        <p>Convertir valores numéricos en grados de membresía. Ejemplo: temp=37°C → μ_fría=0.0, μ_tibia=0.3, μ_caliente=0.7.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Paso 2</div>
+                        <h4>Evaluación de reglas</h4>
+                        <p>Aplicar las reglas difusas usando operadores: AND=min, OR=max. Cada regla produce una salida difusa.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Paso 3</div>
+                        <h4>Agregación</h4>
+                        <p>Combinar las salidas de todas las reglas en un único conjunto difuso de salida.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Paso 4</div>
+                        <h4>Defuzzificación</h4>
+                        <p>Convertir el conjunto difuso agregado en un valor numérico: ventilador = 72% de velocidad.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4.4.2 Desarrollos actuales -->
+            <section class="reveal">
+                <h2 id="desarrollos">4.4.2 Desarrollos Actuales y Aplicaciones</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Aplicación</th><th>Uso de lógica difusa</th><th>Ejemplo</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Electrodomésticos</strong></td><td>Control inteligente de lavadoras, aires acondicionados</td><td>Lavadoras Samsung/LG con fuzzy logic</td></tr>
+                        <tr><td><strong>Automóviles</strong></td><td>Control de transmisión, ABS, suspension</td><td>Toyota, Honda, Nissan</td></tr>
+                        <tr><td><strong>Control industrial</strong></td><td>Regulación de procesos, PLC difusos</td><td>Cementos, siderurgia, plantas químicas</td></tr>
+                        <tr><td><strong>Medicina</strong></td><td>Diagnóstico con síntomas imprecisos</td><td>Sistemas de apoyo a la decisión clínica</td></tr>
+                        <tr><td><strong>Neuro-fuzzy</strong></td><td>Combinación de RN + fuzzy logic</td><td>ANFIS (Adaptive Neuro-Fuzzy Inference System)</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout">
+                    <div class="callout-title">🛠️ Herramientas clave</div>
+                    <p><strong>scikit-fuzzy</strong>: Librería Python para sistemas difusos (<code>pip install scikit-fuzzy</code>).<br>
+                    <strong>MATLAB Fuzzy Logic Toolbox</strong>: Herramienta visual para diseñar sistemas difusos.<br>
+                    <strong>jFuzzyLogic</strong>: Implementación en Java.<br>
+                    <strong>FuzzyLite</strong>: Motor de inferencia difusa en C++.</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="actividad">🎯 Actividad Práctica</h2>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejercicio: Controlador difuso de propinas</div>
+                    <p>Diseña un sistema difuso que calcule el porcentaje de propina en un restaurante basado en la calidad del servicio y la comida.</p>
+                    <p>1. <strong>Variables de entrada</strong>: servicio (0-10), calidad_comida (0-10).</p>
+                    <p>2. <strong>Variable de salida</strong>: propina (5%-25%).</p>
+                    <p>3. Define <strong>funciones de membresía</strong>: pobre, aceptable, excelente (para cada variable).</p>
+                    <p>4. Escribe <strong>9 reglas difusas</strong> (3×3 combinaciones).</p>
+                    <p>5. Implementa en Python con <code>scikit-fuzzy</code> y calcula la propina para servicio=7.5, comida=9.0.</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="cuestionario">📝 Cuestionario</h2>
+                <div class="concept-grid">
+                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuál es la diferencia fundamental entre la lógica clásica (booleana) y la lógica difusa?</p></div>
+                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Qué es una función de membresía y cuáles son las formas más comunes?</p></div>
+                    <div class="concept-card"><h4>Pregunta 3</h4><p>Explica los 4 pasos del proceso de inferencia difusa.</p></div>
+                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Qué es la defuzzificación y por qué es necesaria?</p></div>
+                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿Qué es un sistema neuro-fuzzy (ANFIS) y qué ventaja ofrece sobre un sistema difuso puro?</p></div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="conclusion">Conclusión</h2>
+                <p>La lógica difusa es la herramienta ideal cuando el problema involucra <strong>imprecisión humana</strong>: conceptos vagos, opiniones subjetivas, mediciones ruidosas. Mientras la lógica clásica obliga a elegir «sí o no», la lógica difusa dice «depende, y aquí está el grado». Con <strong>scikit-fuzzy</strong> puedes implementar controladores difusos en pocos minutos.</p>
+            </section>
+
+            <section class="reveal">
+                <h2 id="referencias">📚 Referencias</h2>
+                <ul>
+                    <li>Zadeh, L. A. (1965). Fuzzy Sets. <em>Information and Control</em>, 8(3), 338–353.</li>
+                    <li>Ross, T. J. (2010). <em>Fuzzy Logic with Engineering Applications</em> (3rd ed.). Wiley.</li>
+                    <li>Jang, J.-S. R. (1993). ANFIS: Adaptive-Network-Based Fuzzy Inference System. <em>IEEE Transactions on Systems, Man, and Cybernetics</em>, 23(3), 665–685.</li>
+                    <li>Russell, S. & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Klir, G. J. & Yuan, B. (1995). <em>Fuzzy Sets and Fuzzy Logic: Theory and Applications</em>. Prentice-Hall.</li>
+                </ul>
+            </section>
+
+            <nav class="article-nav reveal">
+                <a href="vision-artificial.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Visión Artificial</span>
+                </a>
+                <a href="procesamiento-lenguaje-natural.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Procesamiento de Lenguaje Natural</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+</body>
+</html>

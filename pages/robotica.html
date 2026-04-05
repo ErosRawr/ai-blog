@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Robótica en IA: conceptos básicos, clasificación de robots, desarrollos actuales y aplicaciones industriales, médicas y autónomas.">
+    <title>Robótica — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    </div>
+    <div class="reading-progress" id="readingProgress"></div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html#unidad1">Unidad 1</a></li>
+                <li><a href="../index.html#unidad2">Unidad 2</a></li>
+                <li><a href="../index.html#unidad3">Unidad 3</a></li>
+                <li><a href="../index.html#unidad4">Unidad 4</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+    <div class="page-wrapper">
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a><span class="separator">›</span>
+                <span class="current">Robótica</span>
+            </div>
+            <h1><span class="gradient-text">Robótica</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 14 min</span>
+                <span class="article-meta-item">🏷️ Unidad IV</span>
+                <span class="article-meta-item">📝 Tema 4.1</span>
+            </div>
+        </header>
+        <article class="article-content">
+            <!-- 4.1.1 Conceptos básicos -->
+            <section class="reveal">
+                <h2 id="conceptos">4.1.1 Conceptos Básicos</h2>
+                <p>La <strong>robótica</strong> es la rama de la IA que diseña, construye y programa <strong>agentes físicos</strong> (robots) capaces de percibir su entorno, tomar decisiones y actuar en el mundo real. Un robot es, en esencia, un agente inteligente con un <strong>cuerpo físico</strong>.</p>
+                <div class="callout">
+                    <div class="callout-title">🤖 Componentes fundamentales de un robot</div>
+                    <p><strong>Sensores</strong>: Cámaras, LIDAR, ultrasonido, IMU, encoders — capturan información del entorno.<br>
+                    <strong>Actuadores</strong>: Motores, servos, pinzas, ruedas — ejecutan acciones físicas.<br>
+                    <strong>Controlador</strong>: CPU/GPU que ejecuta los algoritmos de percepción, planificación y control.<br>
+                    <strong>Software de IA</strong>: Algoritmos de percepción (visión), planificación (búsqueda, SLAM), y toma de decisiones.</p>
+                </div>
+                <div class="concept-grid concept-grid-4">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">👁️</div>
+                        <h4>Percepción</h4>
+                        <p>Interpretar datos sensoriales para entender el entorno: objetos, obstáculos, personas, terreno.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🧠</div>
+                        <h4>Planificación</h4>
+                        <p>Decidir qué hacer: planificación de rutas, secuencia de tareas, estrategia de manipulación.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🦾</div>
+                        <h4>Acción</h4>
+                        <p>Ejecutar movimientos físicos: navegar, agarrar, ensamblar, transportar.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔄</div>
+                        <h4>Ciclo Percepción-Acción</h4>
+                        <p>Bucle continuo: percibir → planificar → actuar → percibir... El paradigma reactivo vs. deliberativo.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4.1.2 Clasificación -->
+            <section class="reveal">
+                <h2 id="clasificacion">4.1.2 Clasificación de Robots</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Criterio</th><th>Tipos</th><th>Ejemplos</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Por arquitectura</strong></td><td>Brazo articulado, móvil, humanoide, aéreo (drone), submarino</td><td>KUKA, Roomba, Atlas, DJI Phantom, ROV</td></tr>
+                        <tr><td><strong>Por autonomía</strong></td><td>Teleoperado, semiautónomo, autónomo</td><td>Da Vinci (quirúrgico), Tesla Autopilot, Waymo</td></tr>
+                        <tr><td><strong>Por aplicación</strong></td><td>Industrial, de servicio, militar, espacial, educativo</td><td>FANUC, Pepper, BigDog, Perseverance, NAO</td></tr>
+                        <tr><td><strong>Por generación</strong></td><td>1ª: secuencial, 2ª: sensorial, 3ª: programable, 4ª: inteligente</td><td>Unimate → robots colaborativos actuales</td></tr>
+                        <tr><td><strong>Por locomoción</strong></td><td>Ruedas, orugas, patas, alas, hélices, serpenteo</td><td>Mars rovers, Spot (Boston Dynamics), drones</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Cobots (robots colaborativos)</div>
+                    <p>La tendencia actual son los <strong>cobots</strong>: robots diseñados para trabajar <strong>junto a humanos</strong> de forma segura. Usan sensores de fuerza y límites de velocidad para evitar accidentes. Ejemplo: Universal Robots UR5, ABB YuMi.</p>
+                </div>
+            </section>
+
+            <!-- 4.1.3 Desarrollos actuales -->
+            <section class="reveal">
+                <h2 id="desarrollos">4.1.3 Desarrollos Actuales y Aplicaciones</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Manufactura</div>
+                        <h4>Robots industriales inteligentes</h4>
+                        <p>Brazos robóticos con visión artificial que adaptan su comportamiento en tiempo real. FANUC, KUKA y ABB lideran con sistemas que aprenden por <strong>reinforcement learning</strong>.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Medicina</div>
+                        <h4>Cirugía robótica</h4>
+                        <p>Da Vinci (Intuitive Surgical) realiza cirugías mínimamente invasivas. Nuevos sistemas usan IA para <strong>asistencia autónoma</strong> en suturas y cortes.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Logística</div>
+                        <h4>Almacenes automatizados</h4>
+                        <p>Amazon Robotics despliega <strong>750,000+ robots</strong> en sus almacenes. Usan SLAM, planificación multi-agente y visión artificial.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Exploración</div>
+                        <h4>Robots espaciales y submarinos</h4>
+                        <p>Perseverance (Mars), Ingenuity (primer vuelo en Marte), robots submarinos para explorar el océano profundo.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Cotidiano</div>
+                        <h4>Robots de servicio</h4>
+                        <p>Aspiradoras autónomas (Roomba), robots sociales (Pepper), drones de entrega (Wing de Google).</p>
+                    </div>
+                </div>
+                <div class="callout">
+                    <div class="callout-title">🛠️ Herramientas clave</div>
+                    <p><strong>ROS (Robot Operating System)</strong>: Framework estándar para programar robots.<br>
+                    <strong>Gazebo</strong>: Simulador 3D para probar robots antes de fabricarlos.<br>
+                    <strong>OpenCV + TensorFlow</strong>: Percepción visual con deep learning.<br>
+                    <strong>MoveIt!</strong>: Planificación de movimiento para brazos robóticos.</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="actividad">🎯 Actividad Práctica</h2>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejercicio: Diseña un robot conceptual</div>
+                    <p><strong>Escenario:</strong> Una empresa agrícola quiere un robot autónomo para recolectar fresas en un invernadero.</p>
+                    <p>1. Define los <strong>sensores</strong> necesarios (cámara RGB, LIDAR, IMU, sensor de fuerza).</p>
+                    <p>2. Define los <strong>actuadores</strong> (tipo de locomoción, gripper, brazo articulado).</p>
+                    <p>3. Clasifica tu robot según los 5 criterios de la tabla anterior.</p>
+                    <p>4. Describe el <strong>ciclo percepción-acción</strong>: ¿cómo detecta una fresa madura? ¿cómo la recoge sin dañarla?</p>
+                    <p>5. ¿Qué componentes de IA usarías? (visión artificial para detectar fresas, planificación de ruta, control de fuerza).</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="cuestionario">📝 Cuestionario</h2>
+                <div class="concept-grid">
+                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuáles son los cuatro componentes fundamentales de un robot y qué función cumple cada uno?</p></div>
+                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Cuál es la diferencia entre un robot teleoperado, semiautónomo y autónomo? Da un ejemplo de cada uno.</p></div>
+                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Qué son los cobots y qué ventajas ofrecen respecto a los robots industriales tradicionales?</p></div>
+                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Qué es ROS y por qué es importante en el desarrollo de robots modernos?</p></div>
+                    <div class="concept-card"><h4>Pregunta 5</h4><p>Describe una aplicación actual de la robótica con IA en el sector salud y explica qué técnicas de IA utiliza.</p></div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="conclusion">Conclusión</h2>
+                <p>La robótica es el campo donde la IA se vuelve <strong>tangible</strong>. Ya no se trata solo de algoritmos en una pantalla, sino de máquinas que interactúan con el mundo físico. Desde brazos industriales hasta drones autónomos, la convergencia de visión artificial, aprendizaje profundo y planificación inteligente está creando robots cada vez más capaces. El ingeniero de IA que entiende robótica puede literalmente <strong>darle vida a sus algoritmos</strong>.</p>
+            </section>
+
+            <section class="reveal">
+                <h2 id="referencias">📚 Referencias</h2>
+                <ul>
+                    <li>Siciliano, B. & Khatib, O. (Eds.). (2016). <em>Springer Handbook of Robotics</em> (2nd ed.). Springer.</li>
+                    <li>Russell, S. & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Thrun, S., Burgard, W. & Fox, D. (2005). <em>Probabilistic Robotics</em>. MIT Press.</li>
+                    <li>Craig, J. J. (2017). <em>Introduction to Robotics: Mechanics and Control</em> (4th ed.). Pearson.</li>
+                    <li>Murphy, R. R. (2019). <em>Introduction to AI Robotics</em> (2nd ed.). MIT Press.</li>
+                </ul>
+            </section>
+
+            <nav class="article-nav reveal">
+                <a href="busqueda-sistematica.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Búsqueda Sistemática</span>
+                </a>
+                <a href="redes-neuronales.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Redes Neuronales</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+</body>
+</html>

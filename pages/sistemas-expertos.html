@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistemas Expertos en IA: conceptos, clasificación, arquitectura, CLIPS, Drools, MYCIN y aplicaciones actuales en diagnóstico y configuración.">
+    <title>Sistemas Expertos — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    </div>
+    <div class="reading-progress" id="readingProgress"></div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html#unidad1">Unidad 1</a></li>
+                <li><a href="../index.html#unidad2">Unidad 2</a></li>
+                <li><a href="../index.html#unidad3">Unidad 3</a></li>
+                <li><a href="../index.html#unidad4">Unidad 4</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+    <div class="page-wrapper">
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a><span class="separator">›</span>
+                <span class="current">Sistemas Expertos</span>
+            </div>
+            <h1>Sistemas <span class="gradient-text">Expertos</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 14 min</span>
+                <span class="article-meta-item">🏷️ Unidad IV</span>
+                <span class="article-meta-item">📝 Tema 4.6</span>
+            </div>
+        </header>
+        <article class="article-content">
+            <!-- 4.6.1 Conceptos básicos -->
+            <section class="reveal">
+                <h2 id="conceptos">4.6.1 Conceptos Básicos</h2>
+                <p>Un <strong>sistema experto (SE)</strong> es un programa de IA que emula el <strong>conocimiento y razonamiento de un experto humano</strong> en un dominio específico. Fue la primera aplicación comercial exitosa de la IA, popularizada en los años 80.</p>
+                <div class="callout">
+                    <div class="callout-title">🏗️ Arquitectura de un sistema experto</div>
+                    <p><strong>Base de conocimientos</strong>: Reglas de producción y hechos del dominio (el «saber» del experto).<br>
+                    <strong>Motor de inferencia</strong>: Algoritmo que aplica las reglas (forward/backward chaining).<br>
+                    <strong>Memoria de trabajo</strong>: Hechos del caso actual que se está resolviendo.<br>
+                    <strong>Módulo de explicación</strong>: Justifica sus conclusiones al usuario («¿por qué llegaste a esa conclusión?»).<br>
+                    <strong>Interfaz de usuario</strong>: Permite al usuario ingresar datos y ver resultados.<br>
+                    <strong>Módulo de adquisición</strong>: Herramientas para que el ingeniero del conocimiento añada reglas.</p>
+                </div>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">👨‍⚕️</div>
+                        <h4>Experto humano</h4>
+                        <p>Persona con años de experiencia en el dominio. Su conocimiento se extrae y codifica en reglas.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔧</div>
+                        <h4>Ingeniero del conocimiento</h4>
+                        <p>Especialista que entrevista al experto y traduce su saber en reglas formales para el sistema.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">👤</div>
+                        <h4>Usuario final</h4>
+                        <p>Persona no experta que consulta al sistema para obtener diagnósticos, recomendaciones o soluciones.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4.6.2 Clasificación -->
+            <section class="reveal">
+                <h2 id="clasificacion">4.6.2 Clasificación de Sistemas Expertos</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Tipo</th><th>Función</th><th>Ejemplo clásico</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Diagnóstico</strong></td><td>Identificar la causa de un problema a partir de síntomas</td><td>MYCIN (diagnóstico médico), CADUCEUS</td></tr>
+                        <tr><td><strong>Configuración</strong></td><td>Diseñar/configurar sistemas complejos</td><td>XCON/R1 (configuración de computadoras DEC)</td></tr>
+                        <tr><td><strong>Planificación</strong></td><td>Crear secuencias de acciones para alcanzar objetivos</td><td>Sistemas de planificación logística</td></tr>
+                        <tr><td><strong>Monitoreo</strong></td><td>Vigilar sistemas en tiempo real y generar alertas</td><td>Control de procesos industriales</td></tr>
+                        <tr><td><strong>Pronóstico</strong></td><td>Predecir eventos futuros basándose en datos actuales</td><td>Riesgo financiero, meteorología</td></tr>
+                        <tr><td><strong>Instrucción</strong></td><td>Enseñar a estudiantes adaptándose a su nivel</td><td>Sistemas tutores inteligentes (ITS)</td></tr>
+                        <tr><td><strong>Interpretación</strong></td><td>Analizar datos complejos (señales, imágenes)</td><td>DENDRAL (estructura molecular)</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 4.6.3 Desarrollos actuales -->
+            <section class="reveal">
+                <h2 id="desarrollos">4.6.3 Desarrollos Actuales y Aplicaciones</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Clásico</div>
+                        <h4>MYCIN (1976) — el pionero</h4>
+                        <p>Sistema de diagnóstico de infecciones bacterianas de Stanford. 600 reglas, precisión comparable a especialistas. Introdujo factores de certeza.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Industria</div>
+                        <h4>Motores de reglas de negocio</h4>
+                        <p><strong>Drools</strong> (Java), <strong>CLIPS</strong> (C), <strong>Jess</strong> (Java): sistemas de producción usados en banca, seguros, telecomunicaciones para automatizar decisiones.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Moderno</div>
+                        <h4>SE + Machine Learning</h4>
+                        <p>Sistemas híbridos: reglas para lógica de negocio + ML para predicción. Explicable AI (XAI) retoma la filosofía de los SE.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Actual</div>
+                        <h4>LLMs como «expertos» generales</h4>
+                        <p>ChatGPT y similares actúan como SE generalistas, pero carecen de garantías formales. Los SE clásicos siguen siendo preferidos en dominios críticos (medicina, aviación).</p>
+                    </div>
+                </div>
+                <div class="callout">
+                    <div class="callout-title">🛠️ Herramientas clave</div>
+                    <p><strong>CLIPS</strong>: Entorno clásico para construir SE basados en reglas (open source).<br>
+                    <strong>Drools</strong>: Motor de reglas empresarial en Java (Red Hat).<br>
+                    <strong>Pyknow / Experta</strong>: Framework Python para SE (inspirado en CLIPS).<br>
+                    <strong>Protégé</strong>: Editor de ontologías para bases de conocimiento complejas.</p>
+                </div>
+                <div class="callout callout-warning">
+                    <div class="callout-title">⚠️ SE vs. LLMs: ¿cuándo usar cada uno?</div>
+                    <p><strong>Usa SE cuando</strong>: necesitas explicabilidad total, el dominio es bien definido, hay regulación estricta (medicina, finanzas), las reglas no cambian frecuentemente.<br>
+                    <strong>Usa LLMs cuando</strong>: el dominio es abierto, se necesita flexibilidad con lenguaje natural, los datos son masivos y cambiantes, la precisión «perfeccionable» es aceptable.</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="actividad">🎯 Actividad Práctica</h2>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejercicio: Construye un mini sistema experto</div>
+                    <p><strong>Dominio:</strong> Diagnóstico de problemas de red en una empresa.</p>
+                    <p>1. Entrevista a un «experto» (puedes ser tú mismo): lista los 10 problemas de red más comunes y sus síntomas.</p>
+                    <p>2. Codifica al menos <strong>15 reglas</strong> en pseudocódigo o con la librería <strong>Experta</strong> de Python.</p>
+                    <p>3. Implementa el <strong>módulo de explicación</strong>: cuando dé un diagnóstico, debe mostrar las reglas que usó.</p>
+                    <p>4. Prueba con 5 casos de prueba. ¿El SE diagnostica correctamente?</p>
+                    <p>5. ¿Qué límites tiene tu sistema? ¿Qué haría falta para desplegarlo en producción?</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="cuestionario">📝 Cuestionario</h2>
+                <div class="concept-grid">
+                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuáles son los 6 componentes de la arquitectura de un sistema experto?</p></div>
+                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Cuál es la diferencia entre un SE de diagnóstico y uno de configuración? Da un ejemplo de cada uno.</p></div>
+                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Qué es el «módulo de explicación» y por qué es una ventaja clave de los SE sobre los modelos de ML?</p></div>
+                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Qué fue MYCIN y por qué fue un hito en la historia de la IA?</p></div>
+                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿En qué situaciones un SE basado en reglas es preferible a un LLM como ChatGPT?</p></div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="conclusion">Conclusión</h2>
+                <p>Los sistemas expertos son la <strong>aplicación clásica más exitosa de la IA simbólica</strong>. Aunque la era de los LLMs ha cambiado el panorama, los SE siguen siendo insustituibles en dominios donde la <strong>explicabilidad, trazabilidad y garantía formal</strong> son obligatorias. CLIPS, Drools y Experta permiten construir SE funcionales hoy. El futuro está en la <strong>combinación</strong>: reglas formales para lógica de negocio + ML para predicción + LLMs para interfaz natural.</p>
+            </section>
+
+            <section class="reveal">
+                <h2 id="referencias">📚 Referencias</h2>
+                <ul>
+                    <li>Giarratano, J. C. & Riley, G. D. (2005). <em>Expert Systems: Principles and Programming</em> (4th ed.). Course Technology.</li>
+                    <li>Shortliffe, E. H. (1976). <em>Computer-Based Medical Consultations: MYCIN</em>. Elsevier.</li>
+                    <li>Jackson, P. (1998). <em>Introduction to Expert Systems</em> (3rd ed.). Addison-Wesley.</li>
+                    <li>Russell, S. & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Buchanan, B. G. & Shortliffe, E. H. (Eds.). (1984). <em>Rule-Based Expert Systems</em>. Addison-Wesley.</li>
+                </ul>
+            </section>
+
+            <nav class="article-nav reveal">
+                <a href="procesamiento-lenguaje-natural.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Procesamiento de Lenguaje Natural</span>
+                </a>
+                <a href="../index.html" class="article-nav-link next">
+                    <span class="nav-label">Volver →</span>
+                    <span class="nav-title">Inicio</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+</body>
+</html>

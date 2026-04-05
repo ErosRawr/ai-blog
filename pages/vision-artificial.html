@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Visión Artificial en IA: procesamiento de imágenes, detección de objetos, segmentación, OpenCV, YOLO y aplicaciones actuales.">
+    <title>Visión Artificial — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    </div>
+    <div class="reading-progress" id="readingProgress"></div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html#unidad1">Unidad 1</a></li>
+                <li><a href="../index.html#unidad2">Unidad 2</a></li>
+                <li><a href="../index.html#unidad3">Unidad 3</a></li>
+                <li><a href="../index.html#unidad4">Unidad 4</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+    <div class="page-wrapper">
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a><span class="separator">›</span>
+                <span class="current">Visión Artificial</span>
+            </div>
+            <h1>Visión <span class="gradient-text">Artificial</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 13 min</span>
+                <span class="article-meta-item">🏷️ Unidad IV</span>
+                <span class="article-meta-item">📝 Tema 4.3</span>
+            </div>
+        </header>
+        <article class="article-content">
+            <!-- 4.3.1 Conceptos básicos -->
+            <section class="reveal">
+                <h2 id="conceptos">4.3.1 Conceptos Básicos</h2>
+                <p>La <strong>visión artificial</strong> (computer vision) es el campo de la IA que permite a las máquinas <strong>interpretar y entender imágenes y videos</strong> de la misma forma que lo hace el sistema visual humano. Es la capacidad de «ver» y extraer significado de lo visual.</p>
+                <div class="concept-grid concept-grid-4">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📷</div>
+                        <h4>Adquisición</h4>
+                        <p>Captura de imágenes/video con cámaras RGB, infrarrojas, de profundidad (RGBD), LIDAR o multiespectrales.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🎨</div>
+                        <h4>Preprocesamiento</h4>
+                        <p>Filtrado, normalización, redimensionado, aumento de datos. Pasar de imagen cruda a datos procesables.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔍</div>
+                        <h4>Extracción de features</h4>
+                        <p>Detectar bordes, texturas, esquinas, colores. Clásico: SIFT, HOG. Moderno: CNNs aprenden features automáticamente.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🎯</div>
+                        <h4>Interpretación</h4>
+                        <p>Clasificar, detectar, segmentar, reconocer. Darle significado semántico a los píxeles.</p>
+                    </div>
+                </div>
+                <div class="callout">
+                    <div class="callout-title">📐 Tareas principales de visión artificial</div>
+                    <p><strong>Clasificación</strong>: ¿Qué hay en la imagen? → «Es un gato».<br>
+                    <strong>Detección de objetos</strong>: ¿Dónde están los objetos? → Bounding boxes + etiquetas.<br>
+                    <strong>Segmentación semántica</strong>: ¿Qué es cada píxel? → Mapa de clases por píxel.<br>
+                    <strong>Segmentación de instancias</strong>: ¿Cuáles son los objetos individuales? → Cada objeto separado.<br>
+                    <strong>Estimación de pose</strong>: ¿En qué posición está el cuerpo/objeto?<br>
+                    <strong>OCR</strong>: Leer texto en imágenes.</p>
+                </div>
+            </section>
+
+            <!-- 4.3.2 Desarrollos actuales -->
+            <section class="reveal">
+                <h2 id="desarrollos">4.3.2 Desarrollos Actuales y Aplicaciones</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Aplicación</th><th>Tecnología</th><th>Herramienta</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Autos autónomos</strong></td><td>Detección de peatones, carriles, señales</td><td>Tesla Vision, YOLO, PointPillars</td></tr>
+                        <tr><td><strong>Medicina</strong></td><td>Diagnóstico por imagen (rayos X, MRI)</td><td>ResNet, U-Net, MONAI</td></tr>
+                        <tr><td><strong>Manufactura</strong></td><td>Inspección de calidad automatizada</td><td>OpenCV, Cognex, Keyence</td></tr>
+                        <tr><td><strong>Seguridad</strong></td><td>Reconocimiento facial, vigilancia</td><td>FaceNet, DeepFace, MTCNN</td></tr>
+                        <tr><td><strong>Agricultura</strong></td><td>Detección de plagas, conteo de frutos</td><td>Drones + YOLO, PlantVillage</td></tr>
+                        <tr><td><strong>Retail</strong></td><td>Tiendas sin cajero, análisis de tráfico</td><td>Amazon Go, Trigo, SAM</td></tr>
+                    </tbody>
+                </table>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2012</div>
+                        <h4>AlexNet — la revolución deep learning</h4>
+                        <p>CNN que ganó ImageNet por un margen enorme. Demostró que el deep learning supera a cualquier método clásico.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2015-2020</div>
+                        <h4>YOLO, Faster R-CNN, Mask R-CNN</h4>
+                        <p>Detección de objetos en tiempo real. YOLO permite detectar múltiples objetos en una sola pasada a 30+ FPS.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023-2026</div>
+                        <h4>SAM, CLIP, Gemini Vision</h4>
+                        <p>Modelos «foundation» para visión: segmentan cualquier objeto (SAM), entienden texto+imagen (CLIP), razonan visualmente (Gemini).</p>
+                    </div>
+                </div>
+                <div class="callout">
+                    <div class="callout-title">🛠️ Herramientas clave</div>
+                    <p><strong>OpenCV</strong>: Librería de visión artificial más usada (C++/Python).<br>
+                    <strong>TensorFlow / PyTorch</strong>: Para CNNs y modelos deep learning.<br>
+                    <strong>Ultralytics YOLO</strong>: Detección de objetos en tiempo real.<br>
+                    <strong>Hugging Face (ViT, CLIP, SAM)</strong>: Modelos preentrenados de visión.</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="actividad">🎯 Actividad Práctica</h2>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejercicio: Detección con OpenCV + YOLO</div>
+                    <p>1. Instala OpenCV (<code>pip install opencv-python</code>) y Ultralytics (<code>pip install ultralytics</code>).</p>
+                    <p>2. Carga una imagen con varias personas y objetos.</p>
+                    <p>3. Usa YOLO preentrenado para detectar objetos: <code>from ultralytics import YOLO; model = YOLO("yolov8n.pt"); results = model("imagen.jpg")</code></p>
+                    <p>4. Dibuja los bounding boxes y etiquetas sobre la imagen.</p>
+                    <p>5. ¿Cuántos objetos detectó? ¿Con qué confianza? ¿Hubo falsos positivos?</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="cuestionario">📝 Cuestionario</h2>
+                <div class="concept-grid">
+                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuál es la diferencia entre clasificación de imagen, detección de objetos y segmentación semántica?</p></div>
+                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Qué es OpenCV y para qué se utiliza en proyectos de visión artificial?</p></div>
+                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Por qué las CNNs reemplazaron a los métodos clásicos (SIFT, HOG) en visión artificial?</p></div>
+                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Qué hace YOLO diferente a otros detectores de objetos y por qué es tan rápido?</p></div>
+                    <div class="concept-card"><h4>Pregunta 5</h4><p>Describe una aplicación de visión artificial en medicina y explica su impacto.</p></div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="conclusion">Conclusión</h2>
+                <p>La visión artificial ha pasado de ser un problema «imposible» a un problema «resuelto para muchos casos prácticos». Gracias a CNNs, Transformers y modelos foundation como SAM y CLIP, las máquinas pueden ver, detectar y segmentar con precisión sobrehumana en dominios específicos. OpenCV y YOLO hacen que estas capacidades sean accesibles para cualquier desarrollador.</p>
+            </section>
+
+            <section class="reveal">
+                <h2 id="referencias">📚 Referencias</h2>
+                <ul>
+                    <li>Szeliski, R. (2022). <em>Computer Vision: Algorithms and Applications</em> (2nd ed.). Springer.</li>
+                    <li>Goodfellow, I., Bengio, Y. & Courville, A. (2016). <em>Deep Learning</em>. MIT Press.</li>
+                    <li>Redmon, J. et al. (2016). You Only Look Once: Unified Real-Time Object Detection. <em>CVPR</em>.</li>
+                    <li>Kirillov, A. et al. (2023). Segment Anything. <em>ICCV</em>.</li>
+                    <li>Russell, S. & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                </ul>
+            </section>
+
+            <nav class="article-nav reveal">
+                <a href="redes-neuronales.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Redes Neuronales</span>
+                </a>
+                <a href="logica-difusa.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Lógica Difusa</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+</body>
+</html>

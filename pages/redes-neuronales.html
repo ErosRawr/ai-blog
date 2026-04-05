@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Redes Neuronales en IA: perceptrón, backpropagation, CNNs, RNNs, Transformers, TensorFlow, PyTorch y aplicaciones actuales.">
+    <title>Redes Neuronales — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    </div>
+    <div class="reading-progress" id="readingProgress"></div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html#unidad1">Unidad 1</a></li>
+                <li><a href="../index.html#unidad2">Unidad 2</a></li>
+                <li><a href="../index.html#unidad3">Unidad 3</a></li>
+                <li><a href="../index.html#unidad4">Unidad 4</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+    <div class="page-wrapper">
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a><span class="separator">›</span>
+                <span class="current">Redes Neuronales</span>
+            </div>
+            <h1>Redes <span class="gradient-text">Neuronales</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 15 min</span>
+                <span class="article-meta-item">🏷️ Unidad IV</span>
+                <span class="article-meta-item">📝 Tema 4.2</span>
+            </div>
+        </header>
+        <article class="article-content">
+            <!-- 4.2.1 Conceptos básicos -->
+            <section class="reveal">
+                <h2 id="conceptos">4.2.1 Conceptos Básicos</h2>
+                <p>Una <strong>red neuronal artificial (RNA)</strong> es un modelo computacional inspirado en el cerebro humano. Consiste en unidades de procesamiento (<strong>neuronas</strong>) organizadas en capas y conectadas por <strong>pesos</strong> que se ajustan mediante entrenamiento.</p>
+                <div class="callout">
+                    <div class="callout-title">🧠 La neurona artificial (perceptrón)</div>
+                    <p>Cada neurona calcula:<br>
+                    <strong>y = f(Σ wᵢxᵢ + b)</strong><br><br>
+                    <strong>xᵢ</strong> = entradas (features).<br>
+                    <strong>wᵢ</strong> = pesos (importancia de cada entrada).<br>
+                    <strong>b</strong> = sesgo (bias).<br>
+                    <strong>f</strong> = función de activación (ReLU, sigmoid, tanh, softmax).<br>
+                    <strong>y</strong> = salida de la neurona.</p>
+                </div>
+                <div class="concept-grid concept-grid-4">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📥</div>
+                        <h4>Capa de entrada</h4>
+                        <p>Recibe los datos crudos: píxeles de imagen, palabras, valores numéricos.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔄</div>
+                        <h4>Capas ocultas</h4>
+                        <p>Procesan y transforman información. Más capas = más capacidad de abstracción (deep learning).</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📤</div>
+                        <h4>Capa de salida</h4>
+                        <p>Produce el resultado: clasificación, regresión, generación de texto o imagen.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📉</div>
+                        <h4>Entrenamiento</h4>
+                        <p>Backpropagation + gradient descent: ajustar pesos para minimizar el error (loss function).</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4.2.2 Clasificación -->
+            <section class="reveal">
+                <h2 id="clasificacion">4.2.2 Clasificación de Redes Neuronales</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Tipo</th><th>Arquitectura</th><th>Uso principal</th><th>Ejemplo</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Perceptrón</strong></td><td>Una capa, lineal</td><td>Clasificación binaria simple</td><td>AND, OR lógicos</td></tr>
+                        <tr><td><strong>MLP</strong></td><td>Multicapa, fully connected</td><td>Clasificación, regresión</td><td>Predicción de precios</td></tr>
+                        <tr><td><strong>CNN</strong></td><td>Convolucional + pooling</td><td>Imágenes, video, señales</td><td>ResNet, VGG, YOLO</td></tr>
+                        <tr><td><strong>RNN / LSTM</strong></td><td>Recurrente con memoria</td><td>Secuencias, series temporales</td><td>Traducción, música</td></tr>
+                        <tr><td><strong>Transformer</strong></td><td>Atención (sin recurrencia)</td><td>NLP, visión, multimodal</td><td>GPT, BERT, ViT</td></tr>
+                        <tr><td><strong>GAN</strong></td><td>Generador + discriminador</td><td>Generación de imágenes</td><td>StyleGAN, DALL-E</td></tr>
+                        <tr><td><strong>Autoencoder</strong></td><td>Encoder + decoder</td><td>Compresión, denoising</td><td>VAE, anomaly detection</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 4.2.3 Desarrollos actuales -->
+            <section class="reveal">
+                <h2 id="desarrollos">4.2.3 Desarrollos Actuales y Aplicaciones</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">LLMs</div>
+                        <h4>Modelos de Lenguaje Grandes</h4>
+                        <p>GPT-4, Gemini, Claude: Transformers con miles de millones de parámetros que entienden y generan texto, código, razonamiento.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Visión</div>
+                        <h4>Vision Transformers (ViT)</h4>
+                        <p>Transformers aplicados a imágenes: CLIP, SAM (Segment Anything), DINO. Superan a CNNs en muchas tareas.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Generación</div>
+                        <h4>Modelos generativos</h4>
+                        <p>Diffusion Models (Stable Diffusion, DALL-E 3, Midjourney): generan imágenes fotorrealistas a partir de texto.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Ciencia</div>
+                        <h4>Descubrimiento científico</h4>
+                        <p>AlphaFold (predicción de proteínas), GNoME (materiales), AlphaGeometry (razonamiento geométrico).</p>
+                    </div>
+                </div>
+                <div class="callout">
+                    <div class="callout-title">🛠️ Herramientas clave</div>
+                    <p><strong>TensorFlow / Keras</strong>: Framework de Google para deep learning.<br>
+                    <strong>PyTorch</strong>: Framework de Meta, preferido en investigación.<br>
+                    <strong>Hugging Face</strong>: Hub de modelos pre-entrenados (Transformers).<br>
+                    <strong>Scikit-learn</strong>: ML clásico + MLPs simples.</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="actividad">🎯 Actividad Práctica</h2>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejercicio: Clasifica con una CNN</div>
+                    <p><strong>Escenario:</strong> Clasifica imágenes del dataset MNIST (dígitos escritos a mano) usando TensorFlow/Keras.</p>
+                    <p>1. Carga el dataset MNIST con <code>tf.keras.datasets.mnist</code>.</p>
+                    <p>2. Construye una CNN: Conv2D → MaxPool → Conv2D → MaxPool → Flatten → Dense → Softmax.</p>
+                    <p>3. Entrena por 5 epochs y reporta la accuracy en el set de prueba.</p>
+                    <p>4. Visualiza las predicciones incorrectas. ¿Qué dígitos confunde más la red?</p>
+                    <p>5. ¿Cómo mejorarías la precisión? (data augmentation, más capas, dropout).</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="cuestionario">📝 Cuestionario</h2>
+                <div class="concept-grid">
+                    <div class="concept-card"><h4>Pregunta 1</h4><p>Explica la fórmula de una neurona artificial y el papel de la función de activación.</p></div>
+                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Cuál es la diferencia entre una CNN y una RNN? ¿Para qué tipo de datos es mejor cada una?</p></div>
+                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Qué es backpropagation y cómo se relaciona con gradient descent?</p></div>
+                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Por qué los Transformers han revolucionado tanto el NLP como la visión artificial?</p></div>
+                    <div class="concept-card"><h4>Pregunta 5</h4><p>Menciona tres aplicaciones actuales de redes neuronales profundas y la arquitectura que utiliza cada una.</p></div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="conclusion">Conclusión</h2>
+                <p>Las redes neuronales son el <strong>motor del deep learning</strong> y la base de la revolución actual de la IA. Desde CNNs que ven hasta Transformers que razonan, estas arquitecturas están detrás de los avances más impresionantes de la última década. TensorFlow y PyTorch democratizaron su uso, y Hugging Face puso modelos de clase mundial al alcance de cualquier desarrollador.</p>
+            </section>
+
+            <section class="reveal">
+                <h2 id="referencias">📚 Referencias</h2>
+                <ul>
+                    <li>Goodfellow, I., Bengio, Y. & Courville, A. (2016). <em>Deep Learning</em>. MIT Press.</li>
+                    <li>Vaswani, A. et al. (2017). Attention Is All You Need. <em>NeurIPS</em>.</li>
+                    <li>LeCun, Y., Bengio, Y. & Hinton, G. (2015). Deep Learning. <em>Nature</em>, 521, 436–444.</li>
+                    <li>Russell, S. & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Chollet, F. (2021). <em>Deep Learning with Python</em> (2nd ed.). Manning.</li>
+                </ul>
+            </section>
+
+            <nav class="article-nav reveal">
+                <a href="robotica.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Robótica</span>
+                </a>
+                <a href="vision-artificial.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Visión Artificial</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+</body>
+</html>
