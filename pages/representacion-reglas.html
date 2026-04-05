@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Representación del conocimiento mediante reglas en IA: reglas SI-ENTONCES, bases de conocimiento y sistemas basados en reglas.">
+    <title>Representación mediante Reglas — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    </div>
+    <div class="reading-progress" id="readingProgress"></div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html#unidad1">Unidad 1</a></li>
+                <li><a href="../index.html#unidad2">Unidad 2</a></li>
+                <li><a href="../index.html#unidad3">Unidad 3</a></li>
+                <li><a href="../index.html#unidad4" aria-disabled="true" style="opacity:0.45;cursor:default;">Unidad 4</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+    <div class="page-wrapper">
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <span class="current">Representación mediante Reglas</span>
+            </div>
+            <h1>Representación del Conocimiento <span class="gradient-text">mediante Reglas</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 11 min</span>
+                <span class="article-meta-item">🏷️ Unidad III</span>
+                <span class="article-meta-item">📝 Tema 3.1</span>
+            </div>
+        </header>
+        <article class="article-content">
+            <section class="reveal">
+                <h2 id="que-es">¿Qué son las reglas en IA?</h2>
+                <p>Las <strong>reglas</strong> son una de las formas más naturales e intuitivas de representar el conocimiento humano en un sistema de IA. Tienen la forma <strong>SI condición ENTONCES acción</strong> (IF-THEN), y permiten codificar el saber de un experto de forma que la máquina pueda razonar con él.</p>
+                <p>Piensa en cómo un médico piensa: «SI el paciente tiene fiebre alta Y tos persistente, ENTONCES sospechar neumonía». Ese razonamiento condicional es exactamente lo que las reglas capturan.</p>
+                <div class="callout">
+                    <div class="callout-title">📐 Formato general</div>
+                    <p><strong>SI</strong> &lt;condición₁&gt; Y &lt;condición₂&gt; Y ... Y &lt;condiciónₙ&gt;<br>
+                    <strong>ENTONCES</strong> &lt;conclusión&gt; o &lt;acción&gt;<br><br>
+                    La parte SI se llama <strong>antecedente</strong> (o LHS — Left Hand Side).<br>
+                    La parte ENTONCES se llama <strong>consecuente</strong> (o RHS — Right Hand Side).</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="ventajas">Ventajas de la representación por reglas</h2>
+                <div class="concept-grid concept-grid-4">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🗣️</div>
+                        <h4>Naturalidad</h4>
+                        <p>Se parecen al razonamiento humano. Los expertos pueden entenderlas y validarlas fácilmente.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🧩</div>
+                        <h4>Modularidad</h4>
+                        <p>Cada regla es independiente. Puedes agregar, eliminar o modificar reglas sin afectar las demás.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔍</div>
+                        <h4>Transparencia</h4>
+                        <p>Se puede explicar exactamente por qué el sistema tomó una decisión mostrando la cadena de reglas usadas.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📏</div>
+                        <h4>Formalismo</h4>
+                        <p>Tienen una sintaxis formal y precisa que se puede implementar computacionalmente sin ambigüedad.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="tipos">Tipos de reglas</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Tipo</th><th>Formato</th><th>Ejemplo</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Regla de deducción</strong></td><td>SI hechos ENTONCES conclusión</td><td>SI llueve ENTONCES el piso está mojado</td></tr>
+                        <tr><td><strong>Regla de acción</strong></td><td>SI condición ENTONCES acción</td><td>SI semáforo rojo ENTONCES frenar</td></tr>
+                        <tr><td><strong>Regla con certeza</strong></td><td>SI cond ENTONCES concl (FC=0.8)</td><td>SI fiebre Y tos ENTONCES gripe (80%)</td></tr>
+                        <tr><td><strong>Regla con negación</strong></td><td>SI cond Y NO cond₂ ENTONCES...</td><td>SI ave Y NO pingüino ENTONCES vuela</td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="reveal">
+                <h2 id="ejemplo">Ejemplo: sistema de diagnóstico de autos</h2>
+                <div class="code-block">
+<span class="comment">// Base de reglas — Diagnóstico automotriz</span>
+
+<span class="keyword">Regla 1:</span> <span class="function">SI</span> motor_no_arranca <span class="function">Y</span> luces_no_encienden
+          <span class="function">ENTONCES</span> <span class="string">batería_descargada</span>
+
+<span class="keyword">Regla 2:</span> <span class="function">SI</span> motor_no_arranca <span class="function">Y</span> luces_encienden
+          <span class="function">ENTONCES</span> <span class="string">motor_de_arranque_dañado</span>
+
+<span class="keyword">Regla 3:</span> <span class="function">SI</span> batería_descargada
+          <span class="function">ENTONCES</span> <span class="string">recargar_o_reemplazar_batería</span>
+
+<span class="keyword">Regla 4:</span> <span class="function">SI</span> motor_arranca <span class="function">Y</span> humo_negro
+          <span class="function">ENTONCES</span> <span class="string">mezcla_de_combustible_rica</span>
+
+<span class="comment">// Si reportan: motor_no_arranca + luces_no_encienden</span>
+<span class="comment">// → Regla 1 se activa → batería_descargada</span>
+<span class="comment">// → Regla 3 se activa → recargar_o_reemplazar_batería</span>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="actividad">🎯 Actividad práctica</h2>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejercicio: Diseña un sistema de reglas</div>
+                    <p><strong>Dominio:</strong> Soporte técnico de una empresa de software.</p>
+                    <p>1. Define al menos <strong>8 reglas</strong> para diagnosticar problemas comunes (internet, impresora, software, permisos, etc.).</p>
+                    <p>2. Identifica los <strong>hechos iniciales</strong> que el sistema necesita (¿qué preguntas hace al usuario?).</p>
+                    <p>3. Muestra cómo se encadenan al menos <strong>3 reglas</strong> para llegar a una solución.</p>
+                    <p>4. ¿Qué pasa si dos reglas pueden activarse al mismo tiempo? Propón una estrategia de resolución.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="cuestionario">📝 Cuestionario</h2>
+                <div class="concept-grid">
+                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Qué es el antecedente y el consecuente de una regla? Da un ejemplo.</p></div>
+                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Por qué se dice que las reglas son «modulares»? ¿Qué ventaja práctica tiene esto?</p></div>
+                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Cuál es la diferencia entre una regla de deducción y una regla de acción?</p></div>
+                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Cómo se manejan las reglas con factor de certeza? ¿Qué problema resuelven?</p></div>
+                    <div class="concept-card"><h4>Pregunta 5</h4><p>Menciona dos dominios del mundo real donde las reglas sean la mejor forma de representar el conocimiento y justifica por qué.</p></div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="conclusion">Conclusión</h2>
+                <p>Las reglas son el <strong>mecanismo más intuitivo</strong> para capturar el conocimiento experto en sistemas de IA. Su naturalidad, modularidad y transparencia las hacen ideales para dominios donde la explicabilidad es crucial (medicina, derecho, soporte técnico). Aunque tienen limitaciones con conocimiento muy complejo o difuso, siguen siendo la base de los sistemas expertos y la columna vertebral de motores de reglas empresariales como <strong>Drools</strong> y <strong>CLIPS</strong>.</p>
+            </section>
+            <section class="reveal">
+                <h2 id="referencias">📚 Referencias</h2>
+                <ul>
+                    <li>Russell, S. & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Giarratano, J. C. & Riley, G. D. (2005). <em>Expert Systems: Principles and Programming</em> (4th ed.). Course Technology.</li>
+                    <li>Jackson, P. (1998). <em>Introduction to Expert Systems</em> (3rd ed.). Addison-Wesley.</li>
+                    <li>Brachman, R. J. & Levesque, H. J. (2004). <em>Knowledge Representation and Reasoning</em>. Morgan Kaufmann.</li>
+                    <li>Luger, G. F. (2009). <em>Artificial Intelligence: Structures and Strategies for Complex Problem Solving</em> (6th ed.). Pearson.</li>
+                </ul>
+            </section>
+            <nav class="article-nav reveal">
+                <a href="teorema-bayes.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Teorema de Bayes</span>
+                </a>
+                <a href="metodos-inferencia-reglas.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Métodos de Inferencia</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sintaxis de las reglas de producción: formato formal, patrones, variables, operadores y ejemplos en CLIPS y pseudocódigo.">
+    <title>Sintaxis de Reglas de Producción — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    </div>
+    <div class="reading-progress" id="readingProgress"></div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html#unidad1">Unidad 1</a></li>
+                <li><a href="../index.html#unidad2">Unidad 2</a></li>
+                <li><a href="../index.html#unidad3">Unidad 3</a></li>
+                <li><a href="../index.html#unidad4" aria-disabled="true" style="opacity:0.45;cursor:default;">Unidad 4</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+    <div class="page-wrapper">
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a><span class="separator">›</span>
+                <span class="current">Sintaxis de Reglas de Producción</span>
+            </div>
+            <h1>Sintaxis de las <span class="gradient-text">Reglas de Producción</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 10 min</span>
+                <span class="article-meta-item">🏷️ Unidad III</span>
+                <span class="article-meta-item">📝 Tema 3.4</span>
+            </div>
+        </header>
+        <article class="article-content">
+            <section class="reveal">
+                <h2 id="formato">Formato sintáctico general</h2>
+                <p>La <strong>sintaxis</strong> define la forma correcta de escribir una regla de producción. Es el «idioma formal» que el motor de inferencia puede leer y ejecutar. Toda regla sigue una estructura precisa:</p>
+                <div class="code-block">
+<span class="comment">// Estructura general de una regla de producción</span>
+<span class="keyword">REGLA</span> &lt;nombre_único&gt;
+  <span class="keyword">PRIORIDAD</span>: &lt;número&gt;           <span class="comment">// opcional</span>
+  <span class="keyword">SI</span>
+    &lt;patrón₁&gt; <span class="function">Y</span>
+    &lt;patrón₂&gt; <span class="function">Y</span>
+    <span class="function">NO</span> &lt;patrón₃&gt;
+  <span class="keyword">ENTONCES</span>
+    &lt;acción₁&gt;
+    &lt;acción₂&gt;
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="elementos">Elementos sintácticos</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Elemento</th><th>Descripción</th><th>Ejemplo</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Constante</strong></td><td>Valor fijo literal</td><td>temperatura = 38, color = rojo</td></tr>
+                        <tr><td><strong>Variable</strong></td><td>Placeholder que unifica con cualquier valor</td><td>?x, ?nombre, ?temp</td></tr>
+                        <tr><td><strong>Patrón</strong></td><td>Plantilla que se compara con hechos</td><td>(sintoma (tipo ?x) (valor alto))</td></tr>
+                        <tr><td><strong>Operadores lógicos</strong></td><td>AND, OR, NOT entre condiciones</td><td>SI cond1 Y cond2 Y NO cond3</td></tr>
+                        <tr><td><strong>Restricciones</strong></td><td>Condiciones sobre variables</td><td>?temp &gt; 37.5, ?edad &lt; 18</td></tr>
+                        <tr><td><strong>Acciones</strong></td><td>Assert, retract, modify, print</td><td>(assert (diagnostico gripe))</td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="reveal">
+                <h2 id="clips">Sintaxis en CLIPS (ejemplo real)</h2>
+                <div class="code-block">
+<span class="comment">; Definición de template (estructura de hechos)</span>
+(<span class="keyword">deftemplate</span> <span class="function">paciente</span>
+   (slot nombre)
+   (slot edad (type INTEGER))
+   (slot temperatura (type FLOAT)))
+
+<span class="comment">; Regla con variables y restricciones</span>
+(<span class="keyword">defrule</span> <span class="function">fiebre-alta</span>
+   (<span class="function">paciente</span>
+      (nombre <span class="string">?nom</span>)
+      (temperatura <span class="string">?t</span>&:(> <span class="string">?t</span> 38.5)))
+   =>
+   (<span class="function">assert</span> (alerta (paciente <span class="string">?nom</span>) (tipo fiebre-alta)))
+   (<span class="function">printout</span> t <span class="string">"ALERTA: "</span> <span class="string">?nom</span> <span class="string">" tiene fiebre alta: "</span> <span class="string">?t</span> <span class="string">"°C"</span> crlf))
+
+<span class="comment">; Regla con negación</span>
+(<span class="keyword">defrule</span> <span class="function">sin-alergias</span>
+   (<span class="function">paciente</span> (nombre <span class="string">?nom</span>))
+   (<span class="keyword">not</span> (<span class="function">alergia</span> (paciente <span class="string">?nom</span>)))
+   =>
+   (<span class="function">printout</span> t <span class="string">?nom</span> <span class="string">" no tiene alergias registradas"</span> crlf))
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="actividad">🎯 Actividad práctica</h2>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejercicio: Escribe reglas con sintaxis formal</div>
+                    <p><strong>Dominio:</strong> Sistema de aprobación de créditos bancarios.</p>
+                    <p>1. Define <strong>templates/hechos</strong>: cliente(nombre, edad, ingreso_mensual, historial_crediticio, deuda_actual).</p>
+                    <p>2. Escribe al menos <strong>5 reglas</strong> usando la sintaxis formal con variables y restricciones:</p>
+                    <p>   • R1: Si ingreso > 15,000 Y historial = bueno → crédito_aprobado</p>
+                    <p>   • R2: Si edad < 18 → rechazado_por_menor_de_edad</p>
+                    <p>   • R3: Si deuda_actual > 50% del ingreso → rechazado_por_deuda</p>
+                    <p>3. Usa la sintaxis de CLIPS o pseudocódigo formal visto en clase.</p>
+                    <p>4. Muestra la traza de ejecución para un cliente ejemplo.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="cuestionario">📝 Cuestionario</h2>
+                <div class="concept-grid">
+                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuál es la diferencia entre una constante y una variable en una regla de producción?</p></div>
+                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Qué es un «patrón» en el antecedente de una regla y cómo se compara con la memoria de trabajo?</p></div>
+                    <div class="concept-card"><h4>Pregunta 3</h4><p>Escribe una regla de producción en pseudocódigo para: «si un estudiante tiene promedio >= 9.0 y asistencia >= 90%, entonces beca aprobada».</p></div>
+                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Qué hace la acción «retract» en el consecuente de una regla?</p></div>
+                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿Por qué necesitamos templates/deftemplate en CLIPS en lugar de hechos simples?</p></div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="conclusion">Conclusión</h2>
+                <p>Dominar la sintaxis de las reglas de producción es <strong>esencial</strong> para implementar sistemas expertos funcionales. La sintaxis formal garantiza que las reglas sean precisas, no ambiguas y ejecutables por un motor de inferencia. Las variables, restricciones y patrones son las herramientas que convierten el conocimiento experto en código procesable.</p>
+            </section>
+            <section class="reveal">
+                <h2 id="referencias">📚 Referencias</h2>
+                <ul>
+                    <li>Giarratano, J. C. & Riley, G. D. (2005). <em>Expert Systems: Principles and Programming</em> (4th ed.). Course Technology.</li>
+                    <li>Riley, G. D. (2022). <em>CLIPS Reference Manual</em>. CLIPS Project.</li>
+                    <li>Russell, S. & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Forgy, C. L. (1982). Rete: A Fast Algorithm for Pattern Match. <em>Artificial Intelligence</em>, 19(1), 17–37.</li>
+                    <li>Luger, G. F. (2009). <em>Artificial Intelligence</em> (6th ed.). Pearson.</li>
+                </ul>
+            </section>
+            <nav class="article-nav reveal">
+                <a href="reglas-produccion.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Reglas de Producción</span>
+                </a>
+                <a href="semantica-reglas-produccion.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Semántica de Reglas</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+</body>
+</html>

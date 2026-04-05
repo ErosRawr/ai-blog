@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Búsqueda sistemática en IA: BFS (anchura) y DFS (profundidad). Algoritmos, propiedades, comparación y aplicaciones con ejemplos paso a paso.">
+    <title>Búsqueda Sistemática — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    </div>
+    <div class="reading-progress" id="readingProgress"></div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html#unidad1">Unidad 1</a></li>
+                <li><a href="../index.html#unidad2">Unidad 2</a></li>
+                <li><a href="../index.html#unidad3">Unidad 3</a></li>
+                <li><a href="../index.html#unidad4" aria-disabled="true" style="opacity:0.45;cursor:default;">Unidad 4</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+    <div class="page-wrapper">
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a><span class="separator">›</span>
+                <span class="current">Búsqueda Sistemática</span>
+            </div>
+            <h1>Búsqueda <span class="gradient-text">Sistemática</span>: BFS y DFS</h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 14 min</span>
+                <span class="article-meta-item">🏷️ Unidad III</span>
+                <span class="article-meta-item">📝 Tema 3.8</span>
+            </div>
+        </header>
+        <article class="article-content">
+            <section class="reveal">
+                <h2 id="que-es">¿Qué es la búsqueda sistemática?</h2>
+                <p>La <strong>búsqueda sistemática</strong> es una estrategia de exploración que garantiza recorrer el espacio de estados de forma <strong>completa y ordenada</strong>, sin usar heurísticas. Son métodos «ciegos» (no informados): no saben qué tan cerca están de la meta, solo exploran metódicamente.</p>
+                <p>Imagina que buscas tus llaves en tu casa. La búsqueda sistemática sería revisar <strong>cada habitación, cada cajón, cada rincón</strong> en un orden predefinido. No es inteligente, pero si las llaves están ahí, las encontrarás.</p>
+            </section>
+            <section class="reveal">
+                <h2 id="bfs">Búsqueda en Anchura (BFS — Breadth-First Search)</h2>
+                <p>Explora <strong>nivel por nivel</strong>: primero todos los nodos a distancia 1, luego distancia 2, luego 3... Usa una <strong>cola (FIFO)</strong> como estructura de datos.</p>
+                <div class="code-block">
+<span class="keyword">función</span> <span class="function">BFS</span>(estado_inicial, es_meta):
+    cola ← [estado_inicial]
+    visitados ← {estado_inicial}
+
+    <span class="keyword">mientras</span> cola no esté vacía:
+        nodo ← cola.<span class="function">dequeue</span>()     <span class="comment">// sacar del frente</span>
+
+        <span class="keyword">si</span> <span class="function">es_meta</span>(nodo):
+            <span class="keyword">retornar</span> <span class="string">camino_hasta(nodo)</span>
+
+        <span class="keyword">para cada</span> sucesor <span class="keyword">en</span> <span class="function">expandir</span>(nodo):
+            <span class="keyword">si</span> sucesor <span class="keyword">no en</span> visitados:
+                visitados.<span class="function">add</span>(sucesor)
+                cola.<span class="function">enqueue</span>(sucesor)  <span class="comment">// agregar al final</span>
+
+    <span class="keyword">retornar</span> <span class="string">"No hay solución"</span>
+                </div>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">✅</div>
+                        <h4>Completo</h4>
+                        <p>Si existe solución, BFS la encuentra (si el factor de ramificación es finito).</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">⭐</div>
+                        <h4>Óptimo</h4>
+                        <p>Encuentra la solución más corta (menor número de pasos) cuando los costos son uniformes.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">💾</div>
+                        <h4>Memoria: O(b^d)</h4>
+                        <p>Necesita almacenar todos los nodos de un nivel. Problema: se queda sin memoria rápido.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">⏱️</div>
+                        <h4>Tiempo: O(b^d)</h4>
+                        <p>b = factor de ramificación, d = profundidad de la solución. Exponencial.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="dfs">Búsqueda en Profundidad (DFS — Depth-First Search)</h2>
+                <p>Explora <strong>rama por rama</strong>: va tan profundo como puede por una rama antes de retroceder (backtrack). Usa una <strong>pila (LIFO)</strong> o recursión.</p>
+                <div class="code-block">
+<span class="keyword">función</span> <span class="function">DFS</span>(estado_inicial, es_meta):
+    pila ← [estado_inicial]
+    visitados ← {estado_inicial}
+
+    <span class="keyword">mientras</span> pila no esté vacía:
+        nodo ← pila.<span class="function">pop</span>()          <span class="comment">// sacar del tope</span>
+
+        <span class="keyword">si</span> <span class="function">es_meta</span>(nodo):
+            <span class="keyword">retornar</span> <span class="string">camino_hasta(nodo)</span>
+
+        <span class="keyword">para cada</span> sucesor <span class="keyword">en</span> <span class="function">expandir</span>(nodo):
+            <span class="keyword">si</span> sucesor <span class="keyword">no en</span> visitados:
+                visitados.<span class="function">add</span>(sucesor)
+                pila.<span class="function">push</span>(sucesor)   <span class="comment">// agregar al tope</span>
+
+    <span class="keyword">retornar</span> <span class="string">"No hay solución"</span>
+                </div>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">⚠️</div>
+                        <h4>No completo</h4>
+                        <p>Puede quedarse atrapado en ramas infinitas. Se soluciona con límite de profundidad (DLS).</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">❌</div>
+                        <h4>No óptimo</h4>
+                        <p>Puede encontrar una solución larga antes que una corta en otra rama.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">💾</div>
+                        <h4>Memoria: O(b·m)</h4>
+                        <p>Solo almacena el camino actual. Mucho más eficiente en memoria que BFS.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">⏱️</div>
+                        <h4>Tiempo: O(b^m)</h4>
+                        <p>m = profundidad máxima del árbol. Puede explorar mucho antes de encontrar la solución.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="comparacion">Comparación directa</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Propiedad</th><th>BFS</th><th>DFS</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Estructura de datos</strong></td><td>Cola (FIFO)</td><td>Pila (LIFO)</td></tr>
+                        <tr><td><strong>Exploración</strong></td><td>Nivel por nivel</td><td>Rama por rama</td></tr>
+                        <tr><td><strong>Completitud</strong></td><td>Sí (si b finito)</td><td>No (puede ciclar)</td></tr>
+                        <tr><td><strong>Optimalidad</strong></td><td>Sí (costo uniforme)</td><td>No</td></tr>
+                        <tr><td><strong>Memoria</strong></td><td>O(b^d) — mucha</td><td>O(b·m) — poca</td></tr>
+                        <tr><td><strong>Ideal para</strong></td><td>Solución cercana a la raíz</td><td>Solución profunda, espacio limitado</td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="reveal">
+                <h2 id="actividad">🎯 Actividad práctica</h2>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejercicio: Traza BFS y DFS</div>
+                    <p>Dado el siguiente árbol de búsqueda (orden de hijos: izquierda a derecha):</p>
+                    <p><strong>A</strong> → [B, C]; <strong>B</strong> → [D, E]; <strong>C</strong> → [F, G]; <strong>D</strong> → []; <strong>E</strong> → [H]; <strong>F</strong> → []; <strong>G</strong> → []; <strong>H</strong> → []</p>
+                    <p>Meta: <strong>H</strong></p>
+                    <p>a) Traza <strong>BFS</strong>: ¿en qué orden se visitan los nodos? ¿Cuántos nodos se expanden?</p>
+                    <p>b) Traza <strong>DFS</strong>: ¿en qué orden se visitan? ¿Cuántos nodos se expanden?</p>
+                    <p>c) ¿Cuál encontró H primero?</p>
+                    <p>d) Si la meta fuera <strong>F</strong> en lugar de H, ¿cuál sería más eficiente?</p>
+                    <p>e) Implementa ambos algoritmos en Python o pseudocódigo y verifica tus trazas.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="cuestionario">📝 Cuestionario</h2>
+                <div class="concept-grid">
+                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Por qué BFS y DFS se consideran «búsquedas no informadas»?</p></div>
+                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Qué estructura de datos usa BFS y cuál usa DFS? ¿Cómo afecta el orden de exploración?</p></div>
+                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿En qué situaciones BFS es mejor que DFS? ¿Y viceversa?</p></div>
+                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Qué es IDDFS (Iterative Deepening) y por qué combina las ventajas de ambos?</p></div>
+                    <div class="concept-card"><h4>Pregunta 5</h4><p>Si b=10 y d=5, ¿cuántos nodos (aproximadamente) almacena BFS en el peor caso?</p></div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="conclusion">Conclusión</h2>
+                <p>BFS y DFS son los <strong>algoritmos fundamentales</strong> de la búsqueda en IA. BFS garantiza encontrar la solución óptima pero consume mucha memoria; DFS es eficiente en memoria pero puede no ser óptimo ni completo. Dominar estos algoritmos es el prerequisito para entender algoritmos más sofisticados como A*, IDA* y búsquada Monte Carlo, que se construyen sobre estos principios.</p>
+            </section>
+            <section class="reveal">
+                <h2 id="referencias">📚 Referencias</h2>
+                <ul>
+                    <li>Russell, S. & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Cormen, T. H. et al. (2022). <em>Introduction to Algorithms</em> (4th ed.). MIT Press.</li>
+                    <li>Korf, R. E. (1985). Depth-First Iterative-Deepening. <em>Artificial Intelligence</em>, 27(1), 97–109.</li>
+                    <li>Nilsson, N. J. (2014). <em>Principles of Artificial Intelligence</em>. Morgan Kaufmann.</li>
+                    <li>Luger, G. F. (2009). <em>Artificial Intelligence</em> (6th ed.). Pearson.</li>
+                </ul>
+            </section>
+            <nav class="article-nav reveal">
+                <a href="espacios-estados.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Espacios de Estados</span>
+                </a>
+                <a href="../index.html" class="article-nav-link next">
+                    <span class="nav-label">Volver →</span>
+                    <span class="nav-title">Inicio</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+</body>
+</html>

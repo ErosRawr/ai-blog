@@ -45,7 +45,7 @@
             <ul class="navbar-links" id="navLinks">
                 <li><a href="#unidad1">Unidad 1</a></li>
                 <li><a href="#unidad2">Unidad 2</a></li>
-                <li><a href="#unidad3" aria-disabled="true" style="opacity:0.45;cursor:default;">Unidad 3</a></li>
+                <li><a href="#unidad3">Unidad 3</a></li>
                 <li><a href="#unidad4" aria-disabled="true" style="opacity:0.45;cursor:default;">Unidad 4</a></li>
             </ul>
 
@@ -89,7 +89,7 @@
                     <div class="hero-stat-label">Temas — Unidad 2</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-number">—</div>
+                    <div class="hero-stat-number">8</div>
                     <div class="hero-stat-label">Temas — Unidad 3</div>
                 </div>
                 <div class="hero-stat">
@@ -406,11 +406,119 @@
 
         </div>
 
-        <!-- Unidad III Placeholder -->
+        <!-- Unidad III Section -->
         <div class="section-header reveal" style="margin-top: var(--space-3xl);" id="unidad3">
-            <span class="section-label">Unidad III — Próximamente</span>
-            <h2 style="opacity:0.5;">Contenido en desarrollo</h2>
-            <p style="opacity:0.5;">Los temas de la Unidad III estarán disponibles pronto.</p>
+            <span class="section-label">Unidad III — Reglas y Búsqueda</span>
+            <h2>Sistemas de Producción y Búsqueda</h2>
+            <p>Reglas de producción, motores de inferencia, arquitectura de sistemas expertos, espacios de estados y algoritmos de búsqueda.</p>
+        </div>
+
+        <div class="cards-grid cards-grid-2col">
+
+            <!-- Card U3-01 -->
+            <a href="pages/representacion-reglas.html" class="card" id="card-rep-reglas">
+                <span class="card-number">01</span>
+                <div class="card-icon">📜</div>
+                <h3>Representación mediante Reglas</h3>
+                <p>Reglas SI-ENTONCES para capturar conocimiento experto: tipos, ventajas, modularidad y transparencia.</p>
+                <div class="card-tags">
+                    <span class="card-tag">IF-THEN</span>
+                    <span class="card-tag">Conocimiento</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card U3-02 -->
+            <a href="pages/metodos-inferencia-reglas.html" class="card" id="card-metodos-inf">
+                <span class="card-number">02</span>
+                <div class="card-icon">⚙️</div>
+                <h3>Métodos de Inferencia</h3>
+                <p>Encadenamiento hacia adelante (forward) y hacia atrás (backward): cómo el motor de inferencia razona con reglas.</p>
+                <div class="card-tags">
+                    <span class="card-tag">Forward</span>
+                    <span class="card-tag">Backward</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card U3-03 -->
+            <a href="pages/reglas-produccion.html" class="card" id="card-reglas-prod">
+                <span class="card-number">03</span>
+                <div class="card-icon">🏭</div>
+                <h3>Reglas de Producción</h3>
+                <p>El formalismo de Post y Newell-Simon: ciclo Match-Resolve-Act, conjunto de conflicto y CLIPS.</p>
+                <div class="card-tags">
+                    <span class="card-tag">Producción</span>
+                    <span class="card-tag">CLIPS</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card U3-04 -->
+            <a href="pages/sintaxis-reglas-produccion.html" class="card" id="card-sintaxis">
+                <span class="card-number">04</span>
+                <div class="card-icon">✍️</div>
+                <h3>Sintaxis de Reglas</h3>
+                <p>Variables, patrones, restricciones, operadores y la gramática formal para escribir reglas ejecutables.</p>
+                <div class="card-tags">
+                    <span class="card-tag">Sintaxis</span>
+                    <span class="card-tag">Patrones</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card U3-05 -->
+            <a href="pages/semantica-reglas-produccion.html" class="card" id="card-semantica">
+                <span class="card-number">05</span>
+                <div class="card-icon">💡</div>
+                <h3>Semántica de Reglas</h3>
+                <p>Significado y efecto de las reglas: interpretaciones lógica, procedimental, de estado y causal.</p>
+                <div class="card-tags">
+                    <span class="card-tag">Semántica</span>
+                    <span class="card-tag">Efectos</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card U3-06 -->
+            <a href="pages/arquitectura-sistema-produccion.html" class="card" id="card-arquitectura">
+                <span class="card-number">06</span>
+                <div class="card-icon">🏧</div>
+                <h3>Arquitectura del Sistema</h3>
+                <p>Los tres pilares: memoria de trabajo, base de conocimientos y motor de inferencia. Algoritmo Rete.</p>
+                <div class="card-tags">
+                    <span class="card-tag">Arquitectura</span>
+                    <span class="card-tag">Rete</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card U3-07 -->
+            <a href="pages/espacios-estados.html" class="card" id="card-espacios">
+                <span class="card-number">07</span>
+                <div class="card-icon">🗺️</div>
+                <h3>Espacios de Estados</h3>
+                <p>Representación formal de problemas: estados determinísticos vs. no determinísticos, grafos y transiciones.</p>
+                <div class="card-tags">
+                    <span class="card-tag">Estados</span>
+                    <span class="card-tag">Grafos</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
+            <!-- Card U3-08 -->
+            <a href="pages/busqueda-sistematica.html" class="card" id="card-busq-sist">
+                <span class="card-number">08</span>
+                <div class="card-icon">🔍</div>
+                <h3>Búsqueda Sistemática</h3>
+                <p>BFS y DFS: los algoritmos fundamentales de búsqueda no informada con pseudocódigo y análisis de complejidad.</p>
+                <div class="card-tags">
+                    <span class="card-tag">BFS</span>
+                    <span class="card-tag">DFS</span>
+                </div>
+                <div class="card-arrow">Leer artículo →</div>
+            </a>
+
         </div>
 
         <!-- Unidad IV Placeholder -->

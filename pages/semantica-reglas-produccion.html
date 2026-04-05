@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Semántica de las reglas de producción: significado, interpretación, ejecución lógica y efectos de las reglas en sistemas expertos.">
+    <title>Semántica de Reglas de Producción — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    </div>
+    <div class="reading-progress" id="readingProgress"></div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html#unidad1">Unidad 1</a></li>
+                <li><a href="../index.html#unidad2">Unidad 2</a></li>
+                <li><a href="../index.html#unidad3">Unidad 3</a></li>
+                <li><a href="../index.html#unidad4" aria-disabled="true" style="opacity:0.45;cursor:default;">Unidad 4</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+    <div class="page-wrapper">
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a><span class="separator">›</span>
+                <span class="current">Semántica de Reglas de Producción</span>
+            </div>
+            <h1>Semántica de las <span class="gradient-text">Reglas de Producción</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 10 min</span>
+                <span class="article-meta-item">🏷️ Unidad III</span>
+                <span class="article-meta-item">📝 Tema 3.5</span>
+            </div>
+        </header>
+        <article class="article-content">
+            <section class="reveal">
+                <h2 id="que-es">¿Qué es la semántica de una regla?</h2>
+                <p>Mientras la <strong>sintaxis</strong> define <em>cómo</em> se escribe una regla (la forma), la <strong>semántica</strong> define <em>qué significa</em> y <em>qué efecto</em> tiene cuando se ejecuta. Es la diferencia entre la gramática de una oración y su significado.</p>
+                <p>Una regla como «SI fiebre ENTONCES gripe» es sintácticamente correcta, pero su semántica nos dice: «cuando el sistema detecta el hecho fiebre en la memoria de trabajo, añade el hecho gripe» — eso es lo que realmente <strong>hace</strong> la regla.</p>
+                <div class="callout">
+                    <div class="callout-title">🧠 Idea clave</div>
+                    <p><strong>Sintaxis</strong> = forma correcta de escribir la regla.<br>
+                    <strong>Semántica</strong> = significado y efecto de la regla al ejecutarse.<br>
+                    Dos reglas sintácticamente diferentes pueden tener la misma semántica, y viceversa.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="interpretaciones">Interpretaciones semánticas</h2>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📊</div>
+                        <h4>Semántica lógica</h4>
+                        <p>La regla como implicación lógica: A → B (si A es verdadero, B es verdadero). Base del razonamiento formal.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">⚡</div>
+                        <h4>Semántica procedimental</h4>
+                        <p>La regla como instrucción: «cuando se detecte A, ejecutar la acción B». Se enfoca en el efecto.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔄</div>
+                        <h4>Semántica de estado</h4>
+                        <p>La regla como transformación de estado: convierte el estado S₁ de la memoria de trabajo en un estado S₂.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🎯</div>
+                        <h4>Semántica causal</h4>
+                        <p>La regla como relación causa-efecto: «A causa B». Implica una relación del mundo real, no solo lógica.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="efectos">Efectos semánticos de las acciones</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Acción RHS</th><th>Efecto semántico</th><th>Ejemplo</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>ASSERT</strong></td><td>Añade un hecho nuevo a la memoria de trabajo</td><td>assert(diagnostico = gripe)</td></tr>
+                        <tr><td><strong>RETRACT</strong></td><td>Elimina un hecho existente</td><td>retract(sintoma_sin_verificar)</td></tr>
+                        <tr><td><strong>MODIFY</strong></td><td>Cambia el valor de un hecho sin eliminarlo</td><td>modify(paciente.estado = tratado)</td></tr>
+                        <tr><td><strong>HALT</strong></td><td>Detiene el motor de inferencia</td><td>halt() → fin del razonamiento</td></tr>
+                        <tr><td><strong>PRINT</strong></td><td>Efecto externo: comunica información al usuario</td><td>print("Diagnóstico: gripe")</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout callout-warning">
+                    <div class="callout-title">⚠️ Efectos colaterales</div>
+                    <p>Las acciones RETRACT y MODIFY cambian la memoria de trabajo, lo que puede <strong>activar o desactivar</strong> otras reglas. Esto crea <strong>cadenas de inferencia</strong> y puede producir comportamiento inesperado si no se diseña con cuidado.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="actividad">🎯 Actividad práctica</h2>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejercicio: Analiza la semántica</div>
+                    <p>Dadas estas reglas:</p>
+                    <p>R1: SI estudiante(nombre=?x, promedio=?p) Y ?p >= 9.0 → ASSERT(beca(nombre=?x, tipo=excelencia))</p>
+                    <p>R2: SI beca(nombre=?x, tipo=?t) → MODIFY(estudiante(nombre=?x, estado=becado)) + PRINT("?x obtiene beca ?t")</p>
+                    <p>R3: SI estudiante(nombre=?x, estado=becado) → RETRACT(solicitud_pendiente(nombre=?x))</p>
+                    <p><strong>Tareas:</strong></p>
+                    <p>a) Explica la semántica de cada regla usando las 4 interpretaciones (lógica, procedimental, de estado, causal).</p>
+                    <p>b) Con el hecho inicial {estudiante(nombre=María, promedio=9.5), solicitud_pendiente(nombre=María)}, traza los cambios de estado de la memoria de trabajo.</p>
+                    <p>c) ¿Qué pasa si R2 usa ASSERT en vez de MODIFY? ¿Cambia la semántica?</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="cuestionario">📝 Cuestionario</h2>
+                <div class="concept-grid">
+                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuál es la diferencia entre la sintaxis y la semántica de una regla?</p></div>
+                    <div class="concept-card"><h4>Pregunta 2</h4><p>Describe las cuatro interpretaciones semánticas de una regla de producción.</p></div>
+                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Cuál es la diferencia semántica entre ASSERT y MODIFY?</p></div>
+                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Por qué RETRACT puede ser peligroso si no se usa con cuidado?</p></div>
+                    <div class="concept-card"><h4>Pregunta 5</h4><p>Da un ejemplo donde la semántica causal sea diferente a la semántica lógica de la misma regla.</p></div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="conclusion">Conclusión</h2>
+                <p>La semántica de las reglas de producción determina el <strong>comportamiento real</strong> del sistema experto. Comprender qué significa cada regla — no solo cómo se escribe — es crucial para diseñar sistemas correctos, predecibles y mantenibles. El ingeniero de IA debe dominar tanto la sintaxis como la semántica para evitar efectos colaterales indeseados y garantizar que el sistema razone como el experto espera.</p>
+            </section>
+            <section class="reveal">
+                <h2 id="referencias">📚 Referencias</h2>
+                <ul>
+                    <li>Giarratano, J. C. & Riley, G. D. (2005). <em>Expert Systems: Principles and Programming</em> (4th ed.). Course Technology.</li>
+                    <li>Russell, S. & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Brachman, R. J. & Levesque, H. J. (2004). <em>Knowledge Representation and Reasoning</em>. Morgan Kaufmann.</li>
+                    <li>Newell, A. (1990). <em>Unified Theories of Cognition</em>. Harvard University Press.</li>
+                    <li>Davis, R. & King, J. J. (1977). An Overview of Production Systems. <em>Machine Intelligence</em>, 8, 300–332.</li>
+                </ul>
+            </section>
+            <nav class="article-nav reveal">
+                <a href="sintaxis-reglas-produccion.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Sintaxis de Reglas</span>
+                </a>
+                <a href="arquitectura-sistema-produccion.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Arquitectura del Sistema</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Métodos de inferencia en reglas: encadenamiento hacia adelante, hacia atrás y mixto en sistemas basados en reglas de IA.">
+    <title>Métodos de Inferencia en Reglas — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    </div>
+    <div class="reading-progress" id="readingProgress"></div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html#unidad1">Unidad 1</a></li>
+                <li><a href="../index.html#unidad2">Unidad 2</a></li>
+                <li><a href="../index.html#unidad3">Unidad 3</a></li>
+                <li><a href="../index.html#unidad4" aria-disabled="true" style="opacity:0.45;cursor:default;">Unidad 4</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+    <div class="page-wrapper">
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <span class="current">Métodos de Inferencia</span>
+            </div>
+            <h1>Métodos de <span class="gradient-text">Inferencia en Reglas</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 13 min</span>
+                <span class="article-meta-item">🏷️ Unidad III</span>
+                <span class="article-meta-item">📝 Tema 3.2</span>
+            </div>
+        </header>
+        <article class="article-content">
+            <section class="reveal">
+                <h2 id="que-es">¿Cómo razona un sistema de reglas?</h2>
+                <p>Una base de reglas por sí sola no hace nada — necesita un <strong>motor de inferencia</strong> que decida qué reglas aplicar, en qué orden, y cómo combinar sus resultados. Los <strong>métodos de inferencia</strong> son las estrategias que usa este motor para recorrer las reglas y llegar a conclusiones.</p>
+                <p>Imagina un detective con un tablero de pistas (hechos) y un manual de procedimientos (reglas). El método de inferencia es su <strong>estrategia de investigación</strong>: ¿empieza por las pistas y ve a dónde llevan? ¿O parte de una hipótesis y busca pistas que la confirmen?</p>
+            </section>
+            <section class="reveal">
+                <h2 id="forward">Encadenamiento hacia adelante (Forward Chaining)</h2>
+                <p>También llamado <strong>razonamiento dirigido por datos</strong>. Parte de los hechos conocidos y aplica reglas hasta llegar a una conclusión.</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Paso 1</div>
+                        <h4>Examinar hechos disponibles</h4>
+                        <p>Hechos iniciales: {fiebre=alta, tos=sí, dolor_cabeza=sí}</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Paso 2</div>
+                        <h4>Buscar reglas activables</h4>
+                        <p>R1: SI fiebre=alta Y tos=sí → gripe_probable. ¡Se activa!</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Paso 3</div>
+                        <h4>Agregar nuevo hecho</h4>
+                        <p>Hechos: {fiebre=alta, tos=sí, dolor_cabeza=sí, gripe_probable}</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Paso 4</div>
+                        <h4>Repetir hasta no haber más reglas</h4>
+                        <p>R5: SI gripe_probable → recomendar_reposo_y_líquidos. Se activa → conclusión final.</p>
+                    </div>
+                </div>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 ¿Cuándo usarlo?</div>
+                    <p>Cuando tienes <strong>muchos datos iniciales</strong> y quieres ver qué se puede concluir. Ideal para: monitoreo, alertas automáticas, clasificación.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="backward">Encadenamiento hacia atrás (Backward Chaining)</h2>
+                <p>También llamado <strong>razonamiento dirigido por objetivos</strong>. Parte de una hipótesis (meta) y busca hacia atrás los hechos que la confirmen.</p>
+                <div class="code-block">
+<span class="comment">// Meta: ¿El paciente tiene gripe?</span>
+
+<span class="keyword">Paso 1:</span> Buscar regla cuyo consecuente sea <span class="string">"gripe"</span>
+         → R1: SI fiebre=alta Y tos=sí <span class="function">ENTONCES</span> gripe
+
+<span class="keyword">Paso 2:</span> Verificar antecedentes de R1
+         → ¿fiebre=alta? Buscar en hechos... <span class="string">SÍ ✓</span>
+         → ¿tos=sí? Buscar en hechos... <span class="string">SÍ ✓</span>
+
+<span class="keyword">Paso 3:</span> Todos los antecedentes verificados
+         → <span class="function">Conclusión: gripe = VERDADERO</span>
+
+<span class="comment">// Si un antecedente no está en hechos,</span>
+<span class="comment">// busca reglas que lo deriven (recursión)</span>
+                </div>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 ¿Cuándo usarlo?</div>
+                    <p>Cuando tienes una <strong>hipótesis específica</strong> que quieres confirmar o negar. Ideal para: diagnóstico, planificación, consultoría. Es la base de <strong>Prolog</strong>.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="comparacion">Comparación de métodos</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Aspecto</th><th>Forward Chaining</th><th>Backward Chaining</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Dirección</strong></td><td>Datos → Conclusiones</td><td>Hipótesis → Datos</td></tr>
+                        <tr><td><strong>Inicio</strong></td><td>Hechos conocidos</td><td>Meta a verificar</td></tr>
+                        <tr><td><strong>Pregunta</strong></td><td>«¿Qué puedo concluir?»</td><td>«¿Es cierta esta hipótesis?»</td></tr>
+                        <tr><td><strong>Eficiencia</strong></td><td>Puede explorar reglas irrelevantes</td><td>Solo explora lo necesario</td></tr>
+                        <tr><td><strong>Ejemplo</strong></td><td>CLIPS, Drools, OPS5</td><td>Prolog, MYCIN</td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="reveal">
+                <h2 id="actividad">🎯 Actividad práctica</h2>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejercicio: Traza el motor de inferencia</div>
+                    <p><strong>Base de reglas:</strong></p>
+                    <p>R1: SI animal=tiene_plumas → es_ave</p>
+                    <p>R2: SI es_ave Y vuela → es_ave_voladora</p>
+                    <p>R3: SI es_ave Y NOT vuela → es_ave_no_voladora</p>
+                    <p>R4: SI es_ave_voladora Y canta → es_canario</p>
+                    <p>R5: SI es_ave_no_voladora Y nada → es_pingüino</p>
+                    <p><strong>Tareas:</strong></p>
+                    <p>a) Con hechos {tiene_plumas, vuela, canta}, traza el <strong>forward chaining</strong> paso a paso.</p>
+                    <p>b) Con meta «¿es_pingüino?» y hechos {tiene_plumas, nada, NOT vuela}, traza el <strong>backward chaining</strong>.</p>
+                    <p>c) ¿Qué método fue más eficiente en cada caso y por qué?</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="cuestionario">📝 Cuestionario</h2>
+                <div class="concept-grid">
+                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Qué es un motor de inferencia y cuál es su función dentro de un sistema basado en reglas?</p></div>
+                    <div class="concept-card"><h4>Pregunta 2</h4><p>Explica con tus palabras la diferencia entre forward chaining y backward chaining.</p></div>
+                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿En qué situaciones es mejor usar encadenamiento hacia adelante? Da un ejemplo real.</p></div>
+                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Qué es la resolución de conflictos y por qué es necesaria en forward chaining?</p></div>
+                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿Por qué se dice que Prolog usa backward chaining de forma nativa?</p></div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="conclusion">Conclusión</h2>
+                <p>Los métodos de inferencia son el <strong>cerebro algorítmico</strong> de los sistemas basados en reglas. Forward chaining es ideal para monitoreo y derivación automática; backward chaining es perfecto para diagnóstico y consultoría dirigida. Un ingeniero de IA competente sabe cuándo usar cada uno — y cuándo combinarlos en un enfoque mixto.</p>
+            </section>
+            <section class="reveal">
+                <h2 id="referencias">📚 Referencias</h2>
+                <ul>
+                    <li>Russell, S. & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Giarratano, J. C. & Riley, G. D. (2005). <em>Expert Systems: Principles and Programming</em> (4th ed.). Course Technology.</li>
+                    <li>Luger, G. F. (2009). <em>Artificial Intelligence</em> (6th ed.). Pearson.</li>
+                    <li>Bratko, I. (2012). <em>Prolog Programming for Artificial Intelligence</em> (4th ed.). Addison-Wesley.</li>
+                    <li>Jackson, P. (1998). <em>Introduction to Expert Systems</em> (3rd ed.). Addison-Wesley.</li>
+                </ul>
+            </section>
+            <nav class="article-nav reveal">
+                <a href="representacion-reglas.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Representación mediante Reglas</span>
+                </a>
+                <a href="reglas-produccion.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Reglas de Producción</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+</body>
+</html>

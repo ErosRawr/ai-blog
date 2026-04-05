@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reglas de producción en IA: el formalismo fundamental de los sistemas expertos. Estructura, componentes y funcionamiento.">
+    <title>Reglas de Producción — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    </div>
+    <div class="reading-progress" id="readingProgress"></div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html#unidad1">Unidad 1</a></li>
+                <li><a href="../index.html#unidad2">Unidad 2</a></li>
+                <li><a href="../index.html#unidad3">Unidad 3</a></li>
+                <li><a href="../index.html#unidad4" aria-disabled="true" style="opacity:0.45;cursor:default;">Unidad 4</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+    <div class="page-wrapper">
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <span class="current">Reglas de Producción</span>
+            </div>
+            <h1>Reglas de <span class="gradient-text">Producción</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 10 min</span>
+                <span class="article-meta-item">🏷️ Unidad III</span>
+                <span class="article-meta-item">📝 Tema 3.3</span>
+            </div>
+        </header>
+        <article class="article-content">
+            <section class="reveal">
+                <h2 id="que-son">¿Qué son las reglas de producción?</h2>
+                <p>Las <strong>reglas de producción</strong> son un formalismo introducido por Emil Post (1943) y popularizado por Allen Newell y Herbert Simon en la década de 1970. Son la forma más usada de representar conocimiento en <strong>sistemas expertos</strong>.</p>
+                <p>A diferencia de las reglas genéricas IF-THEN, las reglas de producción forman parte de un <strong>sistema formal</strong> con memoria de trabajo, base de reglas y un ciclo de reconocimiento-acción bien definido.</p>
+                <div class="callout">
+                    <div class="callout-title">📐 Definición formal</div>
+                    <p>Un <strong>sistema de producción</strong> consta de:<br>
+                    1. <strong>Memoria de trabajo</strong> (Working Memory): Conjunto de hechos actuales.<br>
+                    2. <strong>Base de reglas</strong> (Rule Base): Conjunto de reglas de producción.<br>
+                    3. <strong>Motor de inferencia</strong>: Mecanismo que ejecuta el ciclo Match → Conflict Resolution → Act.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="estructura">Estructura de una regla de producción</h2>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📋</div>
+                        <h4>Nombre / ID</h4>
+                        <p>Identificador único de la regla. Ejemplo: «R001_diagnostico_fiebre».</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔍</div>
+                        <h4>Antecedente (LHS)</h4>
+                        <p>Conjunto de condiciones (patrones) que se comparan con la memoria de trabajo. Usa operadores AND, OR, NOT.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">⚡</div>
+                        <h4>Consecuente (RHS)</h4>
+                        <p>Acciones a ejecutar: agregar/modificar/eliminar hechos en la memoria de trabajo, o ejecutar acciones externas.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🎯</div>
+                        <h4>Prioridad (opcional)</h4>
+                        <p>Valor numérico que define el orden de ejecución cuando varias reglas compiten (salience en CLIPS).</p>
+                    </div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="ciclo">El ciclo Reconocimiento-Acción</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Match</div>
+                        <h4>1. Comparación de patrones</h4>
+                        <p>El motor compara el antecedente de cada regla con los hechos en la memoria de trabajo. Las reglas cuyas condiciones se satisfacen forman el <strong>conjunto de conflicto</strong>.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Resolve</div>
+                        <h4>2. Resolución de conflictos</h4>
+                        <p>Si varias reglas pueden ejecutarse, se elige una usando estrategias: prioridad, especificidad (la regla más específica gana), recencia (hechos más nuevos primero), o refractariedad (no repetir la misma regla).</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Act</div>
+                        <h4>3. Ejecución</h4>
+                        <p>Se ejecuta el RHS de la regla elegida: se añaden, modifican o eliminan hechos. El ciclo vuelve a empezar.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Halt</div>
+                        <h4>4. Terminar</h4>
+                        <p>El ciclo termina cuando no hay más reglas activables o se alcanza una meta explícita.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="ejemplo">Ejemplo en pseudocódigo CLIPS</h2>
+                <div class="code-block">
+<span class="comment">; Regla de producción en estilo CLIPS</span>
+(<span class="keyword">defrule</span> <span class="function">diagnostico-gripe</span>
+   <span class="string">"Si el paciente tiene fiebre alta y tos, diagnosticar gripe"</span>
+   (<span class="function">sintoma</span> (nombre fiebre) (valor alta))
+   (<span class="function">sintoma</span> (nombre tos) (valor si))
+   =>
+   (<span class="function">assert</span> (<span class="function">diagnostico</span> (enfermedad gripe) (confianza 0.85)))
+   (<span class="function">printout</span> t <span class="string">"Diagnóstico: posible gripe (85%)"</span> crlf))
+
+<span class="comment">; Hechos en memoria de trabajo</span>
+(<span class="keyword">deffacts</span> <span class="function">paciente-actual</span>
+   (<span class="function">sintoma</span> (nombre fiebre) (valor alta))
+   (<span class="function">sintoma</span> (nombre tos) (valor si))
+   (<span class="function">sintoma</span> (nombre dolor-cabeza) (valor si)))
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="actividad">🎯 Actividad práctica</h2>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejercicio: Simula el ciclo Match-Resolve-Act</div>
+                    <p><strong>Reglas:</strong></p>
+                    <p>R1 (prioridad 5): SI temperatura > 38 Y tos → gripe</p>
+                    <p>R2 (prioridad 3): SI temperatura > 38 → fiebre</p>
+                    <p>R3 (prioridad 7): SI gripe → recetar_antigripal</p>
+                    <p>R4 (prioridad 2): SI fiebre → recetar_paracetamol</p>
+                    <p><strong>Memoria de trabajo inicial:</strong> {temperatura=39, tos=sí}</p>
+                    <p><strong>Tareas:</strong></p>
+                    <p>a) Ejecuta el ciclo Match-Resolve-Act completo. ¿En qué orden se disparan las reglas?</p>
+                    <p>b) ¿Qué pasa si R1 y R2 tienen la misma prioridad? ¿Cuál elegirías por especificidad?</p>
+                    <p>c) ¿El sistema receta paracetamol, antigripal, o ambos? Justifica.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="cuestionario">📝 Cuestionario</h2>
+                <div class="concept-grid">
+                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuáles son los tres componentes de un sistema de producción?</p></div>
+                    <div class="concept-card"><h4>Pregunta 2</h4><p>Describe las tres fases del ciclo reconocimiento-acción.</p></div>
+                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Qué es el «conjunto de conflicto» y por qué se necesita resolverlo?</p></div>
+                    <div class="concept-card"><h4>Pregunta 4</h4><p>Menciona tres estrategias de resolución de conflictos y explica cada una.</p></div>
+                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿Qué es la «refractariedad» y qué problema evita?</p></div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="conclusion">Conclusión</h2>
+                <p>Las reglas de producción son el <strong>formalismo estándar</strong> de los sistemas expertos clásicos. Su ciclo Match-Resolve-Act proporciona un mecanismo de razonamiento ordenado y predecible. Herramientas como CLIPS, Drools y Jess implementan este paradigma en la industria para configuradores de productos, sistemas de alertas, motores de reglas de negocio y diagnóstico automatizado.</p>
+            </section>
+            <section class="reveal">
+                <h2 id="referencias">📚 Referencias</h2>
+                <ul>
+                    <li>Giarratano, J. C. & Riley, G. D. (2005). <em>Expert Systems: Principles and Programming</em> (4th ed.). Course Technology.</li>
+                    <li>Newell, A. & Simon, H. A. (1972). <em>Human Problem Solving</em>. Prentice-Hall.</li>
+                    <li>Russell, S. & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Post, E. L. (1943). Formal Reductions of the General Combinatorial Decision Problem. <em>American Journal of Mathematics</em>, 65(2), 197–215.</li>
+                    <li>Forgy, C. L. (1982). Rete: A Fast Algorithm for the Many Pattern/Many Object Pattern Match Problem. <em>Artificial Intelligence</em>, 19(1), 17–37.</li>
+                </ul>
+            </section>
+            <nav class="article-nav reveal">
+                <a href="metodos-inferencia-reglas.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Métodos de Inferencia</span>
+                </a>
+                <a href="sintaxis-reglas-produccion.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Sintaxis de Reglas</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+</body>
+</html>

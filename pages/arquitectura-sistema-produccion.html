@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Arquitectura de un Sistema de Producción: hechos, base de conocimientos, mecanismo de control, memoria de trabajo y motor de inferencia.">
+    <title>Arquitectura de un Sistema de Producción — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    </div>
+    <div class="reading-progress" id="readingProgress"></div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="../index.html#unidad1">Unidad 1</a></li>
+                <li><a href="../index.html#unidad2">Unidad 2</a></li>
+                <li><a href="../index.html#unidad3">Unidad 3</a></li>
+                <li><a href="../index.html#unidad4" aria-disabled="true" style="opacity:0.45;cursor:default;">Unidad 4</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+    <div class="page-wrapper">
+        <header class="article-hero">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a><span class="separator">›</span>
+                <span class="current">Arquitectura del Sistema de Producción</span>
+            </div>
+            <h1>Arquitectura de un <span class="gradient-text">Sistema de Producción</span></h1>
+            <div class="article-meta">
+                <span class="article-meta-item">📖 Lectura: 12 min</span>
+                <span class="article-meta-item">🏷️ Unidad III</span>
+                <span class="article-meta-item">📝 Tema 3.6</span>
+            </div>
+        </header>
+        <article class="article-content">
+            <section class="reveal">
+                <h2 id="que-es">¿Cómo funciona un sistema de producción?</h2>
+                <p>Un <strong>sistema de producción</strong> es una arquitectura computacional completa para construir sistemas inteligentes basados en reglas. Es como una fábrica donde los hechos son la materia prima, las reglas son las máquinas, y el motor de inferencia es el capataz que organiza la producción.</p>
+                <div class="callout">
+                    <div class="callout-title">🏗️ Los tres pilares</div>
+                    <p>Todo sistema de producción tiene exactamente tres componentes:<br>
+                    1. <strong>Memoria de trabajo</strong> (hechos) — lo que el sistema sabe ahora.<br>
+                    2. <strong>Base de conocimientos</strong> (reglas) — lo que el sistema puede hacer.<br>
+                    3. <strong>Mecanismo de control</strong> (motor de inferencia) — cómo decide qué hacer.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="componentes">Componentes en detalle</h2>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📦</div>
+                        <h4>Memoria de trabajo</h4>
+                        <p>Base de datos dinámica de hechos actuales. Cambia durante la ejecución: hechos se agregan (assert), modifican (modify) o eliminan (retract). Es el «estado actual del mundo».</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📚</div>
+                        <h4>Base de conocimientos</h4>
+                        <p>Conjunto estático de reglas de producción que codifican el conocimiento experto. No cambia durante la ejecución. Es el «manual del experto».</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">⚙️</div>
+                        <h4>Motor de inferencia</h4>
+                        <p>El algoritmo que ejecuta el ciclo Match → Resolve → Act. Decide qué reglas aplicar en qué orden. Es el «cerebro organizador».</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🖥️</div>
+                        <h4>Interfaz de usuario</h4>
+                        <p>Componente opcional para recibir datos del usuario y mostrar resultados, explicaciones y recomendaciones del sistema.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="flujo">Flujo de ejecución completo</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Inicio</div>
+                        <h4>Carga de hechos iniciales</h4>
+                        <p>El usuario o un sistema externo introduce hechos en la memoria de trabajo: {temperatura=39, tos=sí, edad=25}.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Match</div>
+                        <h4>Pattern matching (algoritmo Rete)</h4>
+                        <p>El motor compara los patrones de todas las reglas con la memoria de trabajo usando el eficiente algoritmo Rete (Forgy, 1982). Resultado: conjunto de conflicto = {R1, R3, R7}.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Resolve</div>
+                        <h4>Resolución de conflictos</h4>
+                        <p>Selecciona la regla ganadora aplicando estrategias: prioridad, refractariedad (no repetir reglas con los mismos hechos), especificidad, recencia.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Act</div>
+                        <h4>Ejecución del consecuente</h4>
+                        <p>Se ejecutan las acciones del RHS: assert/modify/retract hechos, imprimir resultados, or halt.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Loop</div>
+                        <h4>Repetir hasta terminar</h4>
+                        <p>El ciclo vuelve a Match con la nueva memoria de trabajo. Termina cuando: no hay más reglas activables, se ejecuta HALT, o se alcanza la meta.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="rete">El algoritmo Rete</h2>
+                <p>El <strong>algoritmo Rete</strong> (Forgy, 1982) es la innovación clave que hace prácticos los sistemas de producción. En vez de comparar cada regla con cada hecho en cada ciclo (O(R×F)), construye una <strong>red de compilación</strong> que memoriza coincidencias parciales.</p>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Analogía</div>
+                    <p>Sin Rete: Un detective revisa <strong>todo el archivo</strong> de pistas cada vez que llega una nueva. Con Rete: Tiene un tablero organizado donde cada pista nueva se ubica automáticamente con las demás relacionadas. <strong>Solo procesa lo nuevo</strong>.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="actividad">🎯 Actividad práctica</h2>
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Ejercicio: Diseña la arquitectura completa</div>
+                    <p><strong>Dominio:</strong> Sistema experto para selección de carrera universitaria.</p>
+                    <p>1. Define la <strong>memoria de trabajo inicial</strong>: hechos sobre el estudiante (intereses, materias favoritas, habilidades, estilo de aprendizaje).</p>
+                    <p>2. Escribe la <strong>base de conocimientos</strong> con al menos 10 reglas que mapeen perfiles a carreras recomendadas.</p>
+                    <p>3. Dibuja el <strong>diagrama de arquitectura</strong> mostrando los tres componentes y sus relaciones.</p>
+                    <p>4. Simula una ejecución completa: muestra 3 ciclos Match-Resolve-Act con un estudiante ejemplo.</p>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="cuestionario">📝 Cuestionario</h2>
+                <div class="concept-grid">
+                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuáles son los tres componentes esenciales de un sistema de producción y cuál es la función de cada uno?</p></div>
+                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Cuál es la diferencia entre la memoria de trabajo y la base de conocimientos?</p></div>
+                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Qué es el algoritmo Rete y qué problema resuelve?</p></div>
+                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Qué es la refractariedad y por qué es importante?</p></div>
+                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿Bajo qué condiciones termina la ejecución de un sistema de producción?</p></div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="conclusion">Conclusión</h2>
+                <p>La arquitectura de un sistema de producción es el <strong>blueprint</strong> de los sistemas expertos clásicos. La separación clara entre conocimiento (base de reglas), datos (memoria de trabajo) y control (motor de inferencia) permite construir sistemas mantenibles, escalables y explicables. CLIPS, Drools y OPS5 son implementaciones industriales que han demostrado el poder de esta arquitectura.</p>
+            </section>
+            <section class="reveal">
+                <h2 id="referencias">📚 Referencias</h2>
+                <ul>
+                    <li>Forgy, C. L. (1982). Rete: A Fast Algorithm for Pattern Match. <em>Artificial Intelligence</em>, 19(1), 17–37.</li>
+                    <li>Newell, A. & Simon, H. A. (1972). <em>Human Problem Solving</em>. Prentice-Hall.</li>
+                    <li>Giarratano, J. C. & Riley, G. D. (2005). <em>Expert Systems</em> (4th ed.). Course Technology.</li>
+                    <li>Russell, S. & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Brownston, L. et al. (1985). <em>Programming Expert Systems in OPS5</em>. Addison-Wesley.</li>
+                </ul>
+            </section>
+            <nav class="article-nav reveal">
+                <a href="semantica-reglas-produccion.html" class="article-nav-link">
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">Semántica de Reglas</span>
+                </a>
+                <a href="espacios-estados.html" class="article-nav-link next">
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">Espacios de Estados</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">🤖 AI Blog</div>
+            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="../js/main.js"></script>
+</body>
+</html>
