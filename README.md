@@ -1,90 +1,192 @@
 # Blog de Inteligencia Artificial
 
-Un blog educativo moderno sobre los fundamentos de la Inteligencia Artificial, desarrollado utilizando únicamente HTML, CSS y JavaScript. Este proyecto fue creado como parte del curso de Inteligencia Artificial para presentar los conceptos principales de forma visual, clara y profesional.
+Blog educativo e interactivo sobre los fundamentos de la Inteligencia Artificial,
+desarrollado con HTML, CSS y JavaScript puro como proyecto final del curso de IA
+— Universidad Autónoma de Coahuila, FIME.
 
-## Vista general
+---
 
-El blog presenta los temas fundamentales de la Inteligencia Artificial mediante una interfaz moderna, responsiva y fácil de navegar. Cada tema está organizado en páginas individuales con explicaciones claras, diseño atractivo e imágenes relevantes.
+## Demo en vivo
 
-Este proyecto también funciona como demostración de habilidades en desarrollo frontend sin el uso de frameworks.
+[Ver blog en GitHub Pages](https://erosrawr.github.io/ai-blog)
+
+---
+
+## Vista previa
+
+![Preview del Blog](./assets/preview.png)
+
+---
+
+## Contenido del blog
+
+El blog cubre 4 unidades completas del curso de Inteligencia Artificial:
+
+### Unidad I — Introducción a la IA
+- 1.1 Introducción a la Inteligencia Artificial
+- 1.2 Historia de la IA
+- 1.3 Habilidades cognoscitivas según la psicología
+- 1.4 Proceso de razonamiento lógico (Axiomas, Teoremas)
+- 1.5 Modelo de adquisición del conocimiento
+- 1.6 Modelo cognoscitivo
+- 1.7 Agente inteligente, Sistemas Multi-Agente y Sistemas Ubicuos
+- 1.8 El papel de la heurística
+  - 1.8.1 Algoritmos de exploración de alternativas
+  - 1.8.2 Algoritmo A*
+  - 1.8.3 Algoritmos de búsqueda local
+
+### Unidad II — Representación del Conocimiento y Razonamiento
+- 2.1 Principios y Metodología de la IA
+- 2.2 Paradigmas de la IA
+- 2.3 Mapas conceptuales
+- 2.4 Redes semánticas
+- 2.5 Razonamiento monótono
+- 2.7 Conocimiento no-monótono y otras lógicas
+- 2.8 Razonamiento probabilístico
+- 2.9 Teorema de Bayes
+
+### Unidad III — Reglas y Búsqueda
+- 3.1 Representación del conocimiento mediante reglas
+- 3.2 Métodos de inferencia en reglas
+- 3.3 Reglas de producción
+- 3.4 Sintaxis de las reglas de producción
+- 3.5 Semántica de las reglas de producción
+- 3.6 Arquitectura de un Sistema de Producción
+- 3.7 Espacios de estados determinísticos y no determinísticos
+- 3.8 Búsqueda sistemática (profundidad y anchura)
+
+### Unidad IV — Aplicaciones con Técnicas de IA
+- 4.1 Robótica
+- 4.2 Redes Neuronales
+- 4.3 Visión Artificial
+- 4.4 Lógica Difusa (Fuzzy Logic)
+- 4.5 Procesamiento de Lenguaje Natural (PLN)
+- 4.6 Sistemas Expertos
+
+---
 
 ## Características
 
-* Diseño moderno con tema oscuro
-* Interfaz responsiva compatible con escritorio y dispositivos móviles
-* Navegación clara basada en tarjetas
-* Animaciones suaves y efectos visuales
-* Estructura organizada y escalable
-* Código limpio y mantenible
-* Compatible con GitHub Pages
+| Característica | Descripción |
+|---|---|
+| Diseño moderno | Tema oscuro con efectos glassmorphism |
+| Responsivo | Compatible con escritorio y móvil |
+| Quiz interactivo | Evaluación por tema con retroalimentación visual |
+| Recursos multimedia | Videos embebidos por tema |
+| Reportes en PDF | Descarga de prácticas por tema |
+| Sin frameworks | HTML, CSS y JS vanilla puro |
+| GitHub Pages | Desplegado y accesible en línea |
+| Animaciones | Efectos suaves con Intersection Observer |
+
+---
 
 ## Tecnologías utilizadas
 
-* HTML5
-* CSS3
-* JavaScript (Vanilla)
-* GitHub Pages (para despliegue)
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
+- GitHub Pages
 
-No se utilizaron frameworks ni librerías externas.
+Sin frameworks ni librerías externas. Todo desarrollado desde cero.
 
-## Temas cubiertos
-
-El blog incluye los siguientes temas:
-
-* Introducción a la Inteligencia Artificial
-* Historia de la Inteligencia Artificial
-* Habilidades cognoscitivas según la psicología
-* Teorías de la inteligencia (Conductismo, Gardner, etc.)
-* Proceso de razonamiento lógico
-* Modelo de adquisición del conocimiento
-* Modelo cognoscitivo
-* Modelo del agente inteligente
-* Sistemas multi-agente
-* Heurísticas
-* Algoritmos de búsqueda
-* Algoritmo A*
-* Algoritmos de búsqueda local
+---
 
 ## Estructura del proyecto
+
 ```
 /ai-blog
 │
-├── index.html
+├── index.html                  # Página principal
+│
 ├── css/
-│   ├── styles.css
-│   └── animations.css
+│   ├── styles.css              # Estilos globales
+│   └── animations.css          # Animaciones y transiciones
 │
 ├── js/
-│   └── main.js
+│   ├── main.js                 # Lógica principal
+│   └── quiz.js                 # Componente de evaluaciones
 │
 ├── pages/
-│   └── (páginas individuales de cada tema)
+│   ├── unidad1/                # Páginas Unidad I
+│   ├── unidad2/                # Páginas Unidad II
+│   ├── unidad3/                # Páginas Unidad III
+│   └── unidad4/                # Páginas Unidad IV
+│
+└── assets/
+    ├── img/                    # Imágenes del blog
+    └── pdf/                    # Reportes de prácticas
 ```
 
-## Objetivo del proyecto
+---
 
-El objetivo principal de este proyecto es:
+## Como ejecutar el proyecto
 
-* Presentar conceptos de Inteligencia Artificial de forma clara y visual
-* Practicar desarrollo frontend sin frameworks
-* Crear un proyecto profesional para portafolio
-* Demostrar habilidades en diseño web y organización de código
+Opción 1 — Abrir directo en el navegador:
 
-## Cómo ejecutar el proyecto
+```bash
+git clone https://github.com/ErosRawr/ai-blog.git
+open index.html
+```
 
-Simplemente abre el archivo:
+Opción 2 — Con Live Server (recomendado para desarrollo):
+Clic derecho en index.html en VS Code y selecciona "Open with Live Server".
 
-index.html
+Opción 3 — Ver en línea:
+https://erosrawr.github.io/ai-blog
 
-en cualquier navegador moderno.
+---
 
-También puede ser desplegado usando GitHub Pages.
+## Contenido mínimo por tema
+
+Cada tema del blog incluye:
+
+- [x] Nombre del tema y subtemas
+- [x] Fundamento teórico
+- [x] Práctica y actividades
+- [x] Reporte en PDF descargable
+- [x] Video explicativo embebido
+- [x] Evaluación con cuestionario interactivo
+- [x] Conclusión sobre el tema
+- [x] Referencias en formato APA
+
+---
+
+## Evaluación del proyecto
+
+| Criterio | Puntos |
+|---|---|
+| Explicación teórica clara y completa | 20 |
+| Ejercicio práctico y reportes | 20 |
+| Implementación de problemas reales | 20 |
+| Interfaz del blog (organización, diseño, navegación) | 15 |
+| Originalidad, creatividad y recursos multimedia | 15 |
+| Redacción, ortografía y presentación | 10 |
+| Total | 100 |
+
+---
 
 ## Autor
 
 Paolo Berumen
-Estudiante de Ingenieria en Sistemas
+Estudiante de Ingeniería en Sistemas Computacionales
+Universidad Autónoma de Coahuila — FIME
+Semestre 9 — 2025
+
+---
+
+## Información académica
+
+| Campo | Detalle |
+|---|---|
+| Materia | Inteligencia Artificial |
+| Docente | M.I. Liliana Guadalupe Alonso Sanchez |
+| Carrera | ISC — Semestre 9 |
+| Entrega | 25 de mayo de 2026 |
+| Institución | Universidad Autónoma de Coahuila |
+
+---
 
 ## Licencia
 
 Este proyecto es únicamente para fines educativos.
+2025 Paolo Berumen — Universidad Autónoma de Coahuila
