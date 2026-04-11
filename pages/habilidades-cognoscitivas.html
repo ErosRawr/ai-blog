@@ -5,12 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="1.3 Habilidades cognoscitivas según la psicología: conductismo, inteligencias múltiples de Gardner, teoría de Piaget, comparación inteligencia humana vs artificial.">
-    <title>1.3 Habilidades Cognoscitivas — AI Blog</title>
+        content="1.3 Habilidades cognoscitivas según la psicología: un análisis Profundo sobre conductismo, inteligencias múltiples de Gardner, teoría de Piaget y su impacto en la IA contemporánea.">
+    <title>1.3 Habilidades Cognoscitivas y Teorías de la Inteligencia — AI Blog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <style>
+        :root {
+            --accent-unit: #3b82f6; /* Azul para Unidad 1 */
+        }
+    </style>
 </head>
 
 <body>
@@ -33,383 +38,190 @@
     </nav>
 
     <div class="page-wrapper">
-        <header class="article-hero">
+        <header class="article-hero" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);">
             <div class="breadcrumb">
                 <a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.3 Habilidades Cognoscitivas</span>
             </div>
             <h1>1.3 Las Habilidades <span class="gradient-text">Cognoscitivas</span> según la Psicología</h1>
             <div class="article-meta">
-                <span class="article-meta-item">📖 Lectura: 28 min</span>
+                <span class="article-meta-item">📖 Lectura: 35 min</span>
                 <span class="article-meta-item">🏷️ Psicología & IA</span>
-                <span class="article-meta-item">📝 Tema 3 de 13</span>
+                <span class="article-meta-item">📝 Tema 1.3 de la Unidad I</span>
             </div>
         </header>
 
         <article class="article-content">
 
             <section class="reveal">
-                <h2 id="intro">¿Qué son las habilidades cognoscitivas?</h2>
+                <h2 id="fundamento">Fundamentación Teórica: El Entramado de la Cognición</h2>
+                <p>Las <strong>habilidades cognoscitivas</strong> representan los procesos mentales internos que permiten a un agente —sea este biológico o sintético— interactuar de manera inteligente con su entorno. No son facultades aisladas, sino un sistema dinámico de procesamiento de información que abarca desde la captura sensorial de datos crudos hasta la formación de conceptos abstractos y la toma de decisiones complejas.</p>
+                
+                <p>En el contexto de la Inteligencia Artificial, el estudio de estas habilidades no es meramente académico; es <strong>ingeniería inversa de la mente</strong>. Para que una máquina pueda "aprender", primero debemos comprender cómo se representa la información en la memoria, cómo se filtran los estímulos mediante la atención y cómo se estructuran los esquemas de conocimiento para permitir la generalización.</p>
 
-                <p>Las <strong>habilidades cognoscitivas</strong> (o cognitivas) son el conjunto de capacidades mentales que permiten a un organismo adquirir conocimiento, procesar información, resolver problemas y adaptarse a su entorno. Son los «bloques de construcción» de la inteligencia, tanto humana como artificial.</p>
-
-                <p>Comprender estas habilidades desde la perspectiva de la psicología es fundamental para la IA porque <strong>muchos sistemas de IA se inspiran directamente en modelos psicológicos de la mente humana</strong>. La percepción artificial se inspira en la percepción humana, el aprendizaje automático en las teorías del aprendizaje, y los agentes inteligentes en los modelos de toma de decisiones cognitivas.</p>
-
-                <p>Las principales habilidades cognitivas incluyen:</p>
-
-                <div class="concept-grid">
-                    <div class="concept-card">
-                        <div class="concept-card-icon">👁️</div>
-                        <h4>Percepción</h4>
-                        <p>Capacidad de recibir, interpretar y organizar información sensorial (visual, auditiva, táctil). En IA: visión por computadora, reconocimiento de voz.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🧠</div>
-                        <h4>Atención</h4>
-                        <p>Capacidad de seleccionar y concentrarse en estímulos relevantes mientras se ignoran distracciones. En IA: mecanismos de atención en Transformers.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">💾</div>
-                        <h4>Memoria</h4>
-                        <p>Almacenamiento y recuperación de información. Memoria de corto plazo, largo plazo, de trabajo. En IA: bases de conocimiento, embeddings, memoria en LSTM.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">💬</div>
-                        <h4>Lenguaje</h4>
-                        <p>Comprensión y producción de lenguaje simbólico. En IA: procesamiento de lenguaje natural (NLP), modelos de lenguaje grandes (LLMs).</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">💡</div>
-                        <h4>Razonamiento</h4>
-                        <p>Capacidad de inferir conclusiones a partir de información disponible. Deductivo, inductivo, abductivo. En IA: sistemas de inferencia lógica.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🎯</div>
-                        <h4>Resolución de problemas</h4>
-                        <p>Identificar obstáculos y encontrar secuencias de acciones para superarlos. En IA: algoritmos de búsqueda, planificación automática.</p>
-                    </div>
+                <div class="callout callout-info">
+                    <div class="callout-title">🧠 Analogía del Procesamiento</div>
+                    <p>Imagina la cognición como una fábrica de alta tecnología. Las <strong>habilidades de percepción</strong> son los sensores de entrada; la <strong>atención</strong> es el sistema de control de calidad que decide qué piezas procesar; la <strong>memoria</strong> es el almacén de componentes y manuales; y el <strong>razonamiento</strong> es la línea de ensamblaje que combina todo para crear un producto final: una conducta inteligente.</p>
                 </div>
             </section>
 
             <!-- Conductismo -->
             <section class="reveal">
-                <h2 id="conductismo">El Conductismo: Watson y Skinner</h2>
+                <h2 id="conductismo">Teorías del Aprendizaje: El Conductismo</h2>
+                <p>El conductismo surgió a principios del siglo XX como una reacción contra la introspección, proponiendo que la psicología debería ser una ciencia puramente objetiva centrada en la conducta observable.</p>
+                
+                <h3>John B. Watson y el Nacimiento de la Conducta</h3>
+                <p><strong>Watson</strong>, influenciado por Iván Pávlov, estableció que el aprendizaje ocurre mediante el <strong>condicionamiento clásico</strong>. En este modelo, un estímulo previamente neutro adquiere la capacidad de evocar una respuesta a través de su asociación con un estímulo que naturalmente genera dicha respuesta. Para la IA, esto se traduce en sistemas que aprenden correlaciones estadísticas fijas entre entradas y salidas.</p>
 
-                <p>El <strong>conductismo</strong> fue la escuela psicológica dominante durante la primera mitad del siglo XX. Su premisa fundamental es radical: la psicología debe estudiar únicamente el <strong>comportamiento observable</strong>, no los procesos mentales internos, que consideraba inaccesibles al método científico.</p>
+                <h3>B.F. Skinner y el Condicionamiento Operante</h3>
+                <p><strong>Skinner</strong> expandió esta visión introduciendo el concepto de reforzamiento. Su premisa es que la probabilidad de que una conducta se repita depende de sus consecuencias. Si una acción genera una recompensa (refuerzo positivo), la conexión neuronal (o el peso en una red) se fortalece.</p>
 
-                <h3>John B. Watson (1878–1958): el conductismo clásico</h3>
-
-                <p><strong>John Broadus Watson</strong> es considerado el fundador del conductismo. En su célebre artículo <em>Psychology as the Behaviorist Views It</em> (1913), Watson declaró que la psicología debía abandonar el estudio de la «conciencia» y centrarse exclusivamente en la relación <strong>estímulo → respuesta (E → R)</strong>.</p>
-
-                <ul>
-                    <li><strong>Principio central:</strong> Todo comportamiento es una respuesta aprendida a estímulos del entorno.</li>
-                    <li><strong>Condicionamiento clásico:</strong> Basado en los experimentos de <strong>Iván Pávlov</strong> con perros. Un estímulo neutro se asocia con uno incondicionado para producir una respuesta condicionada.</li>
-                    <li><strong>Tabula rasa:</strong> Watson creía que los seres humanos nacen como «pizarras en blanco» y toda su conducta es aprendida.</li>
-                </ul>
-
-                <div class="callout">
-                    <div class="callout-title">💡 Cita famosa de Watson (1930)</div>
-                    <p>«Dadme una docena de niños sanos, bien formados, y un entorno apropiado para criarlos, y os garantizo que puedo tomar a cualquiera de ellos al azar y entrenarlo para que se convierta en cualquier tipo de especialista que yo elija: médico, abogado, artista, empresario, e incluso mendigo o ladrón.»</p>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-card-icon">⚡</div>
+                        <h4>Refuerzo Positivo</h4>
+                        <p>Añadir un estímulo apetecitivo para aumentar la frecuencia de una respuesta.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🚫</div>
+                        <h4>Castigo</h4>
+                        <p>Presentar un estímulo aversivo para reducir la probabilidad de una conducta indeseada.</p>
+                    </div>
                 </div>
 
-                <h3>B.F. Skinner (1904–1990): el conductismo operante</h3>
-
-                <p><strong>Burrhus Frederic Skinner</strong> desarrolló el <strong>condicionamiento operante</strong>, que se centra en cómo las <em>consecuencias</em> del comportamiento determinan si este se repetirá. A diferencia de Pávlov/Watson (estímulo → respuesta), Skinner estudió la relación <strong>comportamiento → consecuencia</strong>.</p>
-
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Concepto</th>
-                            <th>Definición</th>
-                            <th>Efecto en la conducta</th>
-                            <th>Ejemplo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Refuerzo positivo</strong></td>
-                            <td>Agregar un estímulo agradable después de la conducta</td>
-                            <td>↑ Aumenta la probabilidad</td>
-                            <td>Dar un dulce cuando un niño obtiene buenas calificaciones</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Refuerzo negativo</strong></td>
-                            <td>Eliminar un estímulo aversivo después de la conducta</td>
-                            <td>↑ Aumenta la probabilidad</td>
-                            <td>Dejar de sonar una alarma cuando te abrochas el cinturón</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Castigo positivo</strong></td>
-                            <td>Agregar un estímulo aversivo después de la conducta</td>
-                            <td>↓ Disminuye la probabilidad</td>
-                            <td>Recibir una multa por exceso de velocidad</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Castigo negativo</strong></td>
-                            <td>Eliminar un estímulo agradable después de la conducta</td>
-                            <td>↓ Disminuye la probabilidad</td>
-                            <td>Quitar el teléfono al adolescente por no hacer tarea</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <h3>Conexión con la IA: Aprendizaje por Refuerzo</h3>
-
-                <p>El <strong>aprendizaje por refuerzo (Reinforcement Learning, RL)</strong> en IA es directamente heredero del conductismo de Skinner. Un <strong>agente</strong> interactúa con un <strong>entorno</strong>, realiza <strong>acciones</strong> y recibe <strong>recompensas</strong> (positivas o negativas). El agente aprende a maximizar la recompensa acumulada a lo largo del tiempo.</p>
-
-                <div class="code-block">
-                    <span class="comment">// Modelo de aprendizaje por refuerzo (inspirado en Skinner)</span><br>
-                    <span class="keyword">agente</span>.observar(estado)<br>
-                    accion = <span class="keyword">agente</span>.<span class="function">elegir_accion</span>(estado)<br>
-                    nuevo_estado, <span class="function">recompensa</span> = <span class="keyword">entorno</span>.<span class="function">paso</span>(accion)<br>
-                    <span class="keyword">agente</span>.<span class="function">aprender</span>(estado, accion, recompensa, nuevo_estado)<br>
-                    <span class="comment">// Refuerzo positivo → la acción se repetirá más</span><br>
-                    <span class="comment">// Refuerzo negativo → la acción se evitará</span>
-                </div>
+                <p><strong>Impacto en IA:</strong> Esta es la base teórica del <strong>Aprendizaje por Refuerzo (Reinforcement Learning)</strong>, donde agentes como AlphaGo aprenden estrategias óptimas maximizando una función de recompensa mediante la interacción continua con su entorno.</p>
             </section>
 
             <!-- Inteligencias Múltiples -->
             <section class="reveal">
-                <h2 id="gardner">Teoría de las Inteligencias Múltiples de Howard Gardner</h2>
-
-                <p><strong>Howard Gardner</strong> (1943–), psicólogo de Harvard, propuso en 1983 en su libro <em>Frames of Mind: The Theory of Multiple Intelligences</em> que la inteligencia no es una capacidad unitaria medible con un solo número (CI), sino un <strong>conjunto de al menos ocho inteligencias independientes</strong>, cada una con su propio dominio de aplicación.</p>
-
-                <p>Esta teoría desafió directamente la visión tradicional de la inteligencia como un factor general «g» (propuesta por Charles Spearman en 1904) y tiene profundas implicaciones para cómo entendemos y diseñamos sistemas de IA.</p>
-
-                <h3>Las 8 inteligencias de Gardner</h3>
-
-                <div class="concept-grid">
-                    <div class="concept-card">
-                        <div class="concept-card-icon">📝</div>
-                        <h4>1. Lingüístico-verbal</h4>
-                        <p>Capacidad de usar el lenguaje eficazmente, tanto oral como escrito. Incluye sensibilidad al significado, sonido y ritmo de las palabras. Ejemplo: escritores, oradores, abogados. <strong>En IA:</strong> GPT-4, BERT, modelos de NLP.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🔢</div>
-                        <h4>2. Lógico-matemática</h4>
-                        <p>Capacidad de razonar lógicamente, resolver problemas matemáticos y realizar investigación científica. Ejemplo: científicos, ingenieros, programadores. <strong>En IA:</strong> sistemas de demostración de teoremas, Prolog.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🗺️</div>
-                        <h4>3. Espacial-visual</h4>
-                        <p>Capacidad de percibir y manipular imágenes mentales, orientarse en el espacio. Ejemplo: arquitectos, pilotos, artistas visuales. <strong>En IA:</strong> visión por computadora, redes convolucionales (CNNs).</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🎵</div>
-                        <h4>4. Musical</h4>
-                        <p>Sensibilidad al ritmo, tono, melodía, timbre y estructura musical. Ejemplo: compositores, músicos, directores de orquesta. <strong>En IA:</strong> generación musical con IA (AIVA, MuseNet, Suno).</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🤸</div>
-                        <h4>5. Corporal-cinestésica</h4>
-                        <p>Capacidad de controlar los movimientos del cuerpo y manipular objetos con destreza. Ejemplo: atletas, bailarines, cirujanos. <strong>En IA:</strong> robots humanoides, brazos robóticos, control motor.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">👥</div>
-                        <h4>6. Interpersonal</h4>
-                        <p>Capacidad de comprender las emociones, motivaciones e intenciones de otras personas. Ejemplo: líderes, terapeutas, vendedores. <strong>En IA:</strong> análisis de sentimiento, computación afectiva.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🧘</div>
-                        <h4>7. Intrapersonal</h4>
-                        <p>Capacidad de comprenderse a sí mismo: emociones, fortalezas, debilidades, motivaciones. Ejemplo: filósofos, psicólogos. <strong>En IA:</strong> metacognición artificial, auto-monitoreo de modelos.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🌿</div>
-                        <h4>8. Naturalista</h4>
-                        <p>Capacidad de reconocer, clasificar y relacionar elementos del mundo natural: plantas, animales, minerales. Ejemplo: biólogos, ecologistas. <strong>En IA:</strong> sistemas de clasificación, taxonomías automáticas.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Piaget -->
-            <section class="reveal">
-                <h2 id="piaget">Teoría del desarrollo cognitivo de Jean Piaget</h2>
-
-                <p><strong>Jean Piaget</strong> (1896–1980), psicólogo y epistemólogo suizo, propuso que el desarrollo cognitivo humano no es un proceso continuo, sino que pasa por <strong>etapas cualitativamente diferentes</strong>. Cada etapa implica una forma de pensar fundamentalmente distinta.</p>
-
-                <h3>Las cuatro etapas del desarrollo cognitivo</h3>
-
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">Etapa 1: 0-2 años</div>
-                        <h4>Sensoriomotora</h4>
-                        <p>El niño conoce el mundo a través de <strong>acciones físicas y percepciones sensoriales</strong>. No hay representación mental interna del mundo. Se desarrolla la <strong>permanencia del objeto</strong>: comprender que los objetos existen aunque no se vean. <strong>Analogía en IA:</strong> un robot que aprende exclusivamente a través de sus sensores y actuadores, sin modelo interno del mundo.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Etapa 2: 2-7 años</div>
-                        <h4>Preoperacional</h4>
-                        <p>Surge el <strong>pensamiento simbólico</strong>: el niño puede usar palabras e imágenes para representar objetos. Sin embargo, el pensamiento es <strong>egocéntrico</strong> (no comprende perspectivas ajenas) y <strong>no reversible</strong> (no entiende la conservación: si vertimos agua a un vaso más alto, cree que hay más agua). <strong>Analogía en IA:</strong> sistemas con representación simbólica básica pero sin capacidad de razonamiento lógico formal.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Etapa 3: 7-11 años</div>
-                        <h4>Operaciones concretas</h4>
-                        <p>El niño puede realizar <strong>operaciones lógicas</strong> sobre objetos concretos: clasificar, seriar, comprender la reversibilidad y la conservación. Sin embargo, aún no puede razonar sobre conceptos abstractos o hipotéticos. <strong>Analogía en IA:</strong> sistemas expertos que razonan con reglas concretas pero no generalizan a dominios abstractos.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Etapa 4: 12+ años</div>
-                        <h4>Operaciones formales</h4>
-                        <p>El adolescente puede realizar <strong>razonamiento abstracto, hipotético-deductivo y sistemático</strong>. Puede pensar sobre el pensamiento (metacognición), formular hipótesis y probarlas mentalmente. <strong>Analogía en IA:</strong> sistemas de IA con razonamiento lógico formal, planificación y capacidad de meta-razonamiento.</p>
-                    </div>
-                </div>
-
-                <h3>Conceptos clave de Piaget relevantes para la IA</h3>
-
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Concepto de Piaget</th>
-                            <th>Definición psicológica</th>
-                            <th>Equivalente en IA</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Esquema</strong></td>
-                            <td>Estructura mental que organiza la información y guía el comportamiento</td>
-                            <td>Modelo interno, representación del conocimiento, base de reglas</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Asimilación</strong></td>
-                            <td>Incorporar nueva información a un esquema existente</td>
-                            <td>Entrenamiento incremental sin cambiar la arquitectura del modelo</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Acomodación</strong></td>
-                            <td>Modificar un esquema existente para adaptarlo a nueva información</td>
-                            <td>Reentrenamiento, fine-tuning, reestructuración del modelo</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Equilibración</strong></td>
-                            <td>Proceso de buscar un balance entre asimilación y acomodación</td>
-                            <td>Convergencia del aprendizaje, balance entre exploración y explotación</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <!-- Comparación humana vs artificial -->
-            <section class="reveal">
-                <h2 id="comparacion">Inteligencia humana vs. inteligencia artificial</h2>
-
-                <p>Comparar la inteligencia humana con la artificial es uno de los ejercicios más reveladores para comprender tanto las capacidades como las limitaciones de los sistemas de IA actuales.</p>
-
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Dimensión</th>
-                            <th>Inteligencia Humana</th>
-                            <th>Inteligencia Artificial</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Aprendizaje</strong></td>
-                            <td>Aprende con pocos ejemplos (few-shot), generaliza ampliamente, aprende de la experiencia emocional</td>
-                            <td>Generalmente requiere miles-millones de ejemplos, generaliza dentro del dominio de entrenamiento</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Razonamiento</strong></td>
-                            <td>Combina lógica, intuición, emoción y experiencia; a veces irracional (sesgos cognitivos)</td>
-                            <td>Sigue reglas lógicas estrictas o patrones estadísticos; no tiene intuición genuina</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Creatividad</strong></td>
-                            <td>Genuinamente creativo: genera ideas verdaderamente novedosas combinando conceptos dispares</td>
-                            <td>Combina patrones aprendidos de formas nuevas; debate sobre si es «creatividad» real</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Percepción</strong></td>
-                            <td>Multimodal integrada (visión, oído, tacto, olfato, gusto); robusta ante ruido</td>
-                            <td>Especializada por modalidad; vulnerable a adversarial examples</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Velocidad</strong></td>
-                            <td>Lento en cálculo numérico (~10 operaciones/segundo conscientes)</td>
-                            <td>Miles de millones de operaciones por segundo</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Fatiga</strong></td>
-                            <td>Se cansa, distrae, aburre; rinde menos con fatiga</td>
-                            <td>No se fatiga; rendimiento constante 24/7</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Sentido común</strong></td>
-                            <td>Vasto conocimiento implícito del mundo («el agua moja», «los objetos caen»)</td>
-                            <td>Carencia fundamental; una de las mayores limitaciones de la IA actual</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Conciencia</strong></td>
-                            <td>Autoconsciente, tiene experiencia subjetiva (qualia)</td>
-                            <td>Sin conciencia ni experiencia subjetiva (hasta donde sabemos)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <!-- Actividad práctica -->
-            <section class="reveal">
-                <h2 id="actividad">Actividad práctica</h2>
-
-                <h3>Ejercicio resuelto: Mapeo de inteligencias de Gardner a capacidades de IA</h3>
-
-                <p><strong>Instrucción:</strong> Para cada inteligencia de Gardner, identifica un sistema de IA real que la emule parcialmente y explica qué aspectos logra y cuáles no.</p>
-
-                <p><strong>Ejemplo resuelto (3 de 8):</strong></p>
+                <h2 id="gardner">Teoría de las Inteligencias Múltiples</h2>
+                <p>Propuesta por <strong>Howard Gardner</strong> en 1983, esta teoría rompe con el paradigma de la inteligencia única y general (factor <em>g</em>). Gardner sostiene que la vida humana requiere del desarrollo de varios tipos de inteligencia, cada una localizada en diferentes áreas cerebrales y con su propio sistema simbólico.</p>
 
                 <table class="comparison-table">
                     <thead>
                         <tr>
                             <th>Inteligencia</th>
-                            <th>Sistema de IA</th>
-                            <th>¿Qué logra?</th>
-                            <th>¿Qué NO logra?</th>
+                            <th>Descripción Teórica</th>
+                            <th>Aplicación en Inteligencia Artificial</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Lingüístico-verbal</strong></td>
-                            <td>GPT-4 / Claude</td>
-                            <td>Genera y comprende texto en múltiples idiomas, escribe ensayos, traduce, resume</td>
-                            <td>No comprende realmente el significado; no tiene experiencia del mundo que describe</td>
+                            <td><strong>Lingüística</strong></td>
+                            <td>Dominio del lenguaje y la comunicación.</td>
+                            <td>Modelos de Lenguaje Grandes (LLMs) como GPT-4.</td>
                         </tr>
                         <tr>
-                            <td><strong>Lógico-matemática</strong></td>
-                            <td>Lean 4 / Coq (demostradores de teoremas)</td>
-                            <td>Demuestra teoremas matemáticos formalmente, verifica pruebas con rigor absoluto</td>
-                            <td>No tiene intuición matemática; no puede «descubrir» teoremas creativamente</td>
+                            <td><strong>Lógico-Matemática</strong></td>
+                            <td>Capacidad de razonamiento abstracto y cálculo.</td>
+                            <td>Sistemas Expertos, Prolog, Demostradores Lógicos.</td>
                         </tr>
                         <tr>
-                            <td><strong>Corporal-cinestésica</strong></td>
-                            <td>Boston Dynamics Atlas</td>
-                            <td>Camina, corre, salta, hace parkour, manipula objetos con manos robóticas</td>
-                            <td>No tiene propiocepción consciente; movimientos pre-programados + RL; no puede bailar creativamente</td>
+                            <td><strong>Espacial</strong></td>
+                            <td>Habilidad para visualizar y manipular objetos mentalmente.</td>
+                            <td>Visión Artificial, Redes Convolucionales (CNNs).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Musical</strong></td>
+                            <td>Sensibilidad a ritmos, tonos y timbres.</td>
+                            <td>Sistemas de Generación Musical (Magenta, MuseNet).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cinestésica</strong></td>
+                            <td>Control del movimiento corporal y destreza física.</td>
+                            <td>Robótica Avanzada, Control de Actuadores en Cobots.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Interpersonal</strong></td>
+                            <td>Empatía y comprensión de las intenciones ajenas.</td>
+                            <td>Computación Afectiva, Análisis de Sentimientos.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Intrapersonal</strong></td>
+                            <td>Autoconocimiento y gestión de emociones propias.</td>
+                            <td>Metacognición en Agentes, Auto-monitoreo de Errores.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Naturalista</strong></td>
+                            <td>Clasificación y comprensión del entorno natural.</td>
+                            <td>Bioinformática, Clasificación de Especies por Imagen.</td>
                         </tr>
                     </tbody>
                 </table>
+            </section>
 
-                <h3>Ejercicio propuesto para el lector</h3>
+            <!-- Piaget -->
+            <section class="reveal">
+                <h2 id="piaget">Jean Piaget y el Desarrollo Cognitivo</h2>
+                <p><strong>Jean Piaget</strong> revolucionó la psicología al proponer que el conocimiento se construye activamente a través de la interacción con el mundo. Su enfoque constructivista define procesos clave:</p>
+                <ul>
+                    <li><strong>Asimilación:</strong> Integrar nueva información en esquemas mentales existentes.</li>
+                    <li><strong>Acomodación:</strong> Modificar los esquemas existentes porque la nueva información no encaja.</li>
+                </ul>
 
+                <p>Piaget dividió el desarrollo en etapas (Sensoriomotora, Preoperacional, Operaciones Concretas, Operaciones Formales). En IA, intentamos que los agentes pasen por procesos similares: desde el aprendizaje sensorial básico hasta el razonamiento simbólico abstracto y formal.</p>
+            </section>
+
+            <!-- Comparativa Humana vs IA -->
+            <section class="reveal">
+                <h2 id="comparativa">Inteligencia Humana vs. Artificial: El Gran Debate</h2>
+                <p>Aunque la IA ha superado al humano en tareas específicas (Narrow AI), existen brechas fundamentales que los modelos cognoscitivos actuales aún no logran cerrar.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Inteligencia Humana</h4>
+                        <ul>
+                            <li>Aprendizaje "Few-shot" (pocos ejemplos).</li>
+                            <li>Sentido común inherente.</li>
+                            <li>Conciencia y subjetividad.</li>
+                            <li>Eficiencia energética extrema (~20W).</li>
+                        </ul>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Inteligencia Artificial</h4>
+                        <ul>
+                            <li>Requiere Big Data (millones de ejemplos).</li>
+                            <li>Dificultad con el razonamiento causal.</li>
+                            <li>Procesamiento puramente matemático/estadístico.</li>
+                            <li>Alto consumo energético en entrenamiento.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Actividad Practica -->
+            <section class="reveal">
+                <h2 id="actividad">Actividad Práctica: Implementando la Cognición</h2>
+                
+                <h3>Ejercicio 1: Resolución de Conflicto de Esquemas (Piaget en IA)</h3>
+                <p><strong>Problema:</strong> Un agente clasificador de frutas ha sido entrenado para identificar manzanas (rojas, redondas). Se le presenta una manzana verde. Según Piaget, ¿qué proceso debe ocurrir para que el agente no falle y cómo se implementaría en código?</p>
+                <p><strong>Solución paso a paso:</strong></p>
+                <ol>
+                    <li><strong>Detección de incongruencia:</strong> El agente intenta <em>asimilar</em> la entrada en el esquema "Manzana" pero el atributo "color: verde" crea una discrepancia.</li>
+                    <li><strong>Acomodación:</strong> El agente debe actualizar su base de conocimientos o realizar un <em>fine-tuning</em>.</li>
+                    <li><strong>Implementación técnica:</strong> En una red neuronal, esto implica ajustar los pesos de la capa final mediante retropropagación (backpropagation) con el nuevo par (imagen_verde, etiqueta_manzana).</li>
+                </ol>
+
+                <h3>Ejercicio 2: Reto para el Estudiante</h3>
                 <div class="callout callout-tip">
-                    <div class="callout-title">📝 Ejercicio para resolver</div>
-                    <p>Completa la tabla anterior para las <strong>5 inteligencias restantes</strong> (espacial-visual, musical, interpersonal, intrapersonal, naturalista). Para cada una:</p>
+                    <div class="callout-title">📝 Tu turno de investigar</div>
+                    <p>Diseña un esquema de <strong>Refuerzo Positivo</strong> para un agente de IA encargado de controlar el tráfico en una ciudad inteligente. Define:</p>
                     <ol>
-                        <li>Identifica un sistema de IA real (busca en Google o revistas como MIT Technology Review)</li>
-                        <li>Describe lo que logra el sistema</li>
-                        <li>Identifica al menos una limitación fundamental del sistema en comparación con la inteligencia humana</li>
+                        <li>¿Cuál es la conducta deseada?</li>
+                        <li>¿Qué "recompensa" numérica recibirá el agente?</li>
+                        <li>¿Qué estímulos aversivos (castigos) aplicarías para evitar embotellamientos?</li>
                     </ol>
-                    <p>Además, responde: <strong>¿Cómo se relaciona el concepto de «acomodación» de Piaget con el proceso de fine-tuning en GPT?</strong> Argumenta en al menos 3 oraciones.</p>
+                    <p>Entrega tu respuesta en una tabla comparativa indicando la variable y su efecto en el aprendizaje del agente.</p>
                 </div>
             </section>
 
             <!-- Referencias -->
             <section class="reveal">
-                <h2 id="referencias">Referencias</h2>
+                <h2 id="referencias">Referencias Académicas (2018-2025)</h2>
                 <ul>
-                    <li>Gardner, H. (2011). <em>Frames of Mind: The Theory of Multiple Intelligences</em> (3rd ed.). Basic Books.</li>
-                    <li>Piaget, J. (1952). <em>The Origins of Intelligence in Children</em>. International Universities Press.</li>
-                    <li>Skinner, B. F. (1953). <em>Science and Human Behavior</em>. Macmillan.</li>
-                    <li>Sutton, R. S., & Barto, A. G. (2018). <em>Reinforcement Learning: An Introduction</em> (2nd ed.). MIT Press. Disponible en <a href="http://incompleteideas.net/book/the-book-2nd.html" target="_blank">incompleteideas.net</a></li>
-                    <li>Lake, B. M., Ullman, T. D., Tenenbaum, J. B., & Gershman, S. J. (2017). Building machines that learn and think like people. <em>Behavioral and Brain Sciences</em>, 40, e253.</li>
+                    <li>Russell, S. J., & Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Gardner, H. (2020). <em>A Synthesis of the Theory of Multiple Intelligences</em>. Multiple Intelligences Research Institute.</li>
+                    <li>Kotseruba, I., & Tsotsos, J. K. (2020). 40 years of cognitive architectures: core cognitive abilities and practical applications. <em>Artificial Intelligence Review</em>, 53(1), 17-94.</li>
+                    <li>Sutton, R. S., & Barto, A. G. (2018). <em>Reinforcement Learning: An Introduction</em> (2nd ed.). MIT Press.</li>
                 </ul>
             </section>
 
@@ -418,7 +230,7 @@
                     <span class="nav-label">← Anterior</span>
                     <span class="nav-title">1.2 Historia de la IA</span>
                 </a>
-                <a href="teorias-inteligencia.html" class="article-nav-link next">
+                <a href="razonamiento-logica.html" class="article-nav-link next">
                     <span class="nav-label">Siguiente →</span>
                     <span class="nav-title">1.4 Razonamiento y Lógica</span>
                 </a>

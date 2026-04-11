@@ -37,6 +37,12 @@
     --warning: #fbbf24;
     --info: #60a5fa;
 
+    /* Unit Colors */
+    --u1-color: #3b82f6; /* Blue */
+    --u2-color: #8b5cf6; /* Purple */
+    --u3-color: #10b981; /* Green */
+    --u4-color: #f59e0b; /* Orange */
+
     /* Typography */
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
@@ -707,6 +713,48 @@ strong {
         flex-direction: column;
     }
 }
+
+/* ---------- Unit Specific Helpers ---------- */
+/* Unidad 1 - Azul (Default) */
+.unit-1 { --accent-unit: var(--u1-color); }
+.card.unit-1::before { background: var(--u1-color); }
+.card.unit-1 .card-tag { background: rgba(59, 130, 246, 0.1); color: var(--u1-color); border-color: rgba(59, 130, 246, 0.2); }
+
+/* Unidad 2 - Morado (#8b5cf6) */
+.unit-2 { --accent-unit: var(--u2-color); }
+.unit-2 h1 .gradient-text, .unit-2 h2 .gradient-text { background: linear-gradient(135deg, var(--u2-color), #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.unit-2 .article-content h2::after { background: var(--u2-color); }
+.unit-2 .article-content h3 { color: var(--u2-color); }
+.unit-2 .callout { border-left-color: var(--u2-color); background: rgba(139, 92, 246, 0.1); }
+.unit-2 .btn-primary { background: linear-gradient(135deg, var(--u2-color), #7c3aed); }
+.unit-2 .article-content li::marker { color: var(--u2-color); }
+.unit-2 .breadcrumb .current { color: var(--u2-color); }
+.card.unit-2::before { background: var(--u2-color); }
+.card.unit-2 .card-tag { background: rgba(139, 92, 246, 0.1); color: var(--u2-color); border-color: rgba(139, 92, 246, 0.2); }
+
+/* Unidad 3 - Verde (#10b981) */
+.unit-3 { --accent-unit: var(--u3-color); }
+.unit-3 h1 .gradient-text, .unit-3 h2 .gradient-text { background: linear-gradient(135deg, var(--u3-color), #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.unit-3 .article-content h2::after { background: var(--u3-color); }
+.unit-3 .article-content h3 { color: var(--u3-color); }
+.unit-3 .callout { border-left-color: var(--u3-color); background: rgba(16, 185, 129, 0.1); }
+.unit-3 .btn-primary { background: linear-gradient(135deg, var(--u3-color), #059669); }
+.unit-3 .article-content li::marker { color: var(--u3-color); }
+.unit-3 .breadcrumb .current { color: var(--u3-color); }
+.card.unit-3::before { background: var(--u3-color); }
+.card.unit-3 .card-tag { background: rgba(16, 185, 129, 0.1); color: var(--u3-color); border-color: rgba(16, 185, 129, 0.2); }
+
+/* Unidad 4 - Naranja (#f59e0b) */
+.unit-4 { --accent-unit: var(--u4-color); }
+.unit-4 h1 .gradient-text, .unit-4 h2 .gradient-text { background: linear-gradient(135deg, var(--u4-color), #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.unit-4 .article-content h2::after { background: var(--u4-color); }
+.unit-4 .article-content h3 { color: var(--u4-color); }
+.unit-4 .callout { border-left-color: var(--u4-color); background: rgba(245, 158, 11, 0.1); }
+.unit-4 .btn-primary { background: linear-gradient(135deg, var(--u4-color), #d97706); }
+.unit-4 .article-content li::marker { color: var(--u4-color); }
+.unit-4 .breadcrumb .current { color: var(--u4-color); }
+.card.unit-4::before { background: var(--u4-color); }
+.card.unit-4 .card-tag { background: rgba(245, 158, 11, 0.1); color: var(--u4-color); border-color: rgba(245, 158, 11, 0.2); }
 
 /* ---------- Article / Page Content ---------- */
 .page-wrapper {

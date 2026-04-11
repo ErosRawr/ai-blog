@@ -1,37 +1,32 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Heurísticas en IA: atajos inteligentes para resolver problemas complejos cuando explorar todo el espacio es imposible.">
-    <title>Heurísticas — AI Blog</title>
+        content="1.8 El papel de la heurística en la IA: definición, importancia de los atajos cognitivos y comparación entre búsqueda ciega e informada.">
+    <title>1.8 El Papel de la Heurística — AI Blog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <style>
+        :root {
+            --accent-unit: #3b82f6; /* Azul para Unidad 1 */
+        }
+    </style>
 </head>
 
 <body>
-
     <div class="particles" aria-hidden="true">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
     </div>
-
     <div class="reading-progress" id="readingProgress"></div>
-
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../index.html" class="navbar-logo">
-                <span class="logo-icon">IA</span>
-                <span>AI Blog</span>
-            </a>
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
             <ul class="navbar-links" id="navLinks">
                 <li><a href="../index.html#unidad1">Unidad 1</a></li>
                 <li><a href="../index.html#unidad2">Unidad 2</a></li>
@@ -43,193 +38,116 @@
     </nav>
 
     <div class="page-wrapper">
-
-        <header class="article-hero">
+        <header class="article-hero" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);">
             <div class="breadcrumb">
-                <a href="../index.html">Inicio</a>
-                <span class="separator">›</span>
-                <span class="current">Heurísticas</span>
+                <a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.8 Heurísticas</span>
             </div>
-            <h1><span class="gradient-text">Heurísticas</span></h1>
+            <h1>1.8 El Papel de la <span class="gradient-text">Heurística</span> en la IA</h1>
             <div class="article-meta">
-                <span class="article-meta-item">📖 Lectura: 8 min</span>
-                <span class="article-meta-item">🏷️ Algoritmos</span>
-                <span class="article-meta-item">📝 Tema 10 de 13</span>
+                <span class="article-meta-item">📖 Lectura: 25 min</span>
+                <span class="article-meta-item">🏷️ Optimización</span>
+                <span class="article-meta-item">📝 Tema 1.8 de la Unidad I</span>
             </div>
         </header>
 
         <article class="article-content">
 
             <section class="reveal">
-                <h2 id="que-son">¿Qué son las heurísticas?</h2>
+                <h2 id="fundamento">Fundamento Teórico: ¿Qué es una Heurística?</h2>
+                <p>Una **heurística** es un "atajo mental" o una regla empírica que permite encontrar una solución a un problema de manera más rápida que los métodos exhaustivos, aunque no garantice encontrar la solución óptima en todos los casos.</p>
+                
+                <p>En IA, una función heurística $h(n)$ estima el costo desde un estado actual $n$ hasta el objetivo. Es el conocimiento del dominio aplicado al algoritmo de búsqueda para evitar explorar caminos inútiles.</p>
 
-                <p>Una <strong>heurística</strong> es un «atajo inteligente» para resolver problemas. Cuando el espacio
-                    de posibles soluciones es enorme y no puedes explorarlas todas, una heurística te ayuda a
-                    <strong>adivinar inteligentemente</strong> cuál es el camino más prometedor.
-                </p>
-
-                <p>Piénsalo con una analogía: imagina que buscas un restaurante en una ciudad desconocida. La búsqueda
-                    <strong>exhaustiva</strong> sería visitar TODOS los restaurantes y probar su comida. Obviamente
-                    imposible. Entonces usas <strong>heurísticas</strong>:
-                </p>
-
-                <ul>
-                    <li>«Si tiene muchos clientes, probablemente es bueno»</li>
-                    <li>«Si huele bien desde fuera, vale la pena entrar»</li>
-                    <li>«Si tiene buenas reseñas en Google, es una apuesta segura»</li>
-                </ul>
-
-                <p>Ninguna de estas reglas garantiza encontrar el MEJOR restaurante, pero te acercan mucho más rápido a
-                    una buena opción.</p>
-            </section>
-
-            <section class="reveal">
-                <h2 id="propiedades">Propiedades de una buena heurística</h2>
-
-                <div class="concept-grid concept-grid-4">
-                    <div class="concept-card">
-                        <div class="concept-card-icon">⚡</div>
-                        <h4>Eficiencia</h4>
-                        <p>Debe ser rápida de calcular. Si evaluar la heurística tarda tanto como resolver el problema,
-                            no sirve.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🎯</div>
-                        <h4>Informativa</h4>
-                        <p>Debe dar buenas estimaciones. Una heurística que siempre dice «cualquier camino es igual de
-                            bueno» no ayuda en nada.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">✅</div>
-                        <h4>Admisible</h4>
-                        <p>Nunca sobreestima el costo real. Siempre es optimista — dice «por lo menos te falta ESTO»,
-                            nunca más de lo real.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">📏</div>
-                        <h4>Consistente</h4>
-                        <p>La estimación respeta la desigualdad triangular: el atajo nunca es más largo que el camino
-                            real.</p>
-                    </div>
+                <div class="callout callout-info">
+                    <div class="callout-title">🧩 ¿Por qué es necesaria la heurística?</div>
+                    <p>Debido a la <strong>explosión combinatoria</strong>. En problemas complejos (como el ajedrez o la planificación de rutas globales), el número de estados posibles es tan inmenso que una computadora tardaría milenios en explorarlos todos. La heurística permite enfocar la "atención" del algoritmo en las zonas más prometedoras del espacio de estados.</p>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="ejemplos">Ejemplos de heurísticas famosas</h2>
-
-                <h3>Distancia Manhattan</h3>
-                <p>Para moverse en una cuadrícula (como las calles de una ciudad), la distancia Manhattan suma los
-                    movimientos horizontales y verticales por separado. Si estás en (1,1) y quieres llegar a (4,5), la
-                    distancia es |4-1| + |5-1| = 3 + 4 = <strong>7 movimientos</strong>.</p>
-
-                <div class="code-block">
-                    <span class="comment">// Distancia Manhattan</span><br>
-                    <span class="keyword">h</span>(nodo) = |x_actual - x_destino| + |y_actual - y_destino|<br><br>
-                    <span class="comment">// Ejemplo: de (1,1) a (4,5)</span><br>
-                    <span class="function">h</span> = |4 - 1| + |5 - 1| = 3 + 4 = <span class="string">7</span>
-                </div>
-
-                <h3>Distancia euclidiana</h3>
-                <p>La distancia «en línea recta» entre dos puntos. Útil cuando puedes moverte en cualquier dirección, no
-                    solo en horizontal y vertical.</p>
-
-                <h3>Heurísticas del mundo real</h3>
-                <ul>
-                    <li><strong>GPS:</strong> «La distancia en línea recta al destino» como estimación del camino
-                        restante.</li>
-                    <li><strong>Ajedrez:</strong> Contar piezas y sus valores (peón=1, caballo=3, torre=5, reina=9) como
-                        estimación de quién va ganando.</li>
-                    <li><strong>Puzzle de 15:</strong> Contar cuántas fichas están fuera de lugar o sumar sus distancias
-                        Manhattan al lugar correcto.</li>
-                </ul>
-            </section>
-
-            <section class="reveal">
-                <h2 id="admisibilidad">Admisibilidad: la regla de oro</h2>
-
-                <p>Una heurística es <strong>admisible</strong> si nunca <strong>sobreestima</strong> el costo real para
-                    llegar al objetivo. Esto es crucial para algoritmos como A*, porque garantiza que encontrará la
-                    solución óptima.</p>
-
-                <div class="callout">
-                    <div class="callout-title">🗺️ Analogía: el amigo optimista</div>
-                    <p>Imagina que le preguntas a un amigo «¿cuánto falta para llegar?». Si tu amigo siempre dice un
-                        número <strong>menor o igual</strong> a la distancia real, es admisible. Si a veces exagera y
-                        dice «¡faltan 100 km!» cuando solo faltan 10, no es admisible y podrías tomar una ruta
-                        subóptima.</p>
-                </div>
+                <h2 id="ciega-vs-heuristica">Búsqueda Ciega vs. Búsqueda Heurística</h2>
+                <p>La diferencia fundamental radica en el uso de información sobre el objetivo.</p>
 
                 <table class="comparison-table">
                     <thead>
                         <tr>
-                            <th>Heurística</th>
-                            <th>¿Admisible?</th>
-                            <th>¿Por qué?</th>
+                            <th>Característica</th>
+                            <th>Búsqueda Ciega (No informada)</th>
+                            <th>Búsqueda Heurística (Informada)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>h(n) = 0</strong></td>
-                            <td>✅ Sí</td>
-                            <td>Nunca sobreestima (siempre dice 0). Pero no es informativa.</td>
+                            <td><strong>Información</strong></td>
+                            <td>Solo conoce el estado actual y los posibles movimientos.</td>
+                            <td>Tiene una estimación de qué tan lejos está el objetivo.</td>
                         </tr>
                         <tr>
-                            <td><strong>Distancia en línea recta</strong></td>
-                            <td>✅ Sí</td>
-                            <td>La línea recta siempre es ≤ al camino real.</td>
+                            <td><strong>Eficiencia</strong></td>
+                            <td>Baja en espacios grandes (explora en todas direcciones).</td>
+                            <td>Alta (se dirige hacia el objetivo).</td>
                         </tr>
                         <tr>
-                            <td><strong>Distancia Manhattan</strong></td>
-                            <td>✅ Sí (en cuadrículas)</td>
-                            <td>Asume caminos sin obstáculos.</td>
+                            <td><strong>Garantía</strong></td>
+                            <td>Suele encontrar la solución si existe (con tiempo suficiente).</td>
+                            <td>Depende de la calidad de la heurística.</td>
                         </tr>
                         <tr>
-                            <td><strong>h(n) = distancia real × 2</strong></td>
-                            <td>❌ No</td>
-                            <td>Sobreestima: dice que falta el doble de lo real.</td>
+                            <td><strong>Ejemplos</strong></td>
+                            <td>BFS, DFS, Búsqueda de Costo Uniforme.</td>
+                            <td>Búsqueda Voraz, A*, Hill Climbing.</td>
                         </tr>
                     </tbody>
                 </table>
             </section>
 
             <section class="reveal">
-                <h2 id="dominancia">Dominancia: comparar heurísticas</h2>
+                <h2 id="propiedades">Propiedades de una Buena Heurística</h2>
+                <p>Para que una heurística sea útil en algoritmos avanzados como A*, debe cumplir:</p>
+                <ul>
+                    <li><strong>Admisibilidad:</strong> Nunca sobreestima el costo real para llegar al objetivo. Esto garantiza que encontraremos la solución óptima.</li>
+                    <li><strong>Consistencia (monotonía):</strong> Para cualquier nodo <em>n</em> y cualquier sucesor <em>n'</em>, el costo estimado de llegar al objetivo desde <em>n</em> no es mayor que el costo de ir de <em>n</em> a <em>n'</em> más el costo estimado desde <em>n'</em>.</li>
+                </ul>
+            </section>
 
-                <p>Si tenemos dos heurísticas admisibles h₁ y h₂, decimos que h₂ <strong>domina</strong> a h₁ si h₂(n) ≥
-                    h₁(n) para todos los nodos. Una heurística dominante es «mejor» porque da estimaciones más
-                    informativas sin perder admisibilidad.</p>
+            <section class="reveal">
+                <h2 id="actividad">Actividad Práctica: Estimación de Distancias</h2>
+                
+                <h3>Ejercicio 1: Distancia Manhattan vs. Euclidiana</h3>
+                <p><strong>Problema:</strong> En un mundo de cuadrícula (como una ciudad), un robot está en (0,0) y el objetivo es (3,4). Calcula dos tipos de heurísticas.</p>
+                <p><strong>Solución paso a paso:</strong></p>
+                <ol>
+                    <li><strong>Distancia Manhattan:</strong> $|x1 - x2| + |y1 - y2| = |0-3| + |0-4| = 3 + 4 = 7$. (Ideal si solo se puede mover en ángulos rectos).</li>
+                    <li><strong>Distancia Euclidiana:</strong> $\sqrt{(x1-x2)^2 + (y1-y2)^2} = \sqrt{3^2 + 4^2} = \sqrt{9+16} = 5$. (La línea recta técnica).</li>
+                    <li><strong>Conclusión:</strong> Ambas son heurísticas válidas, pero la Manhattan es más "realista" si el robot no puede atravesar edificios en diagonal.</li>
+                </ol>
 
+                <h3>Ejercicio 2: Reto para el Estudiante</h3>
                 <div class="callout callout-tip">
-                    <div class="callout-title">💡 Regla práctica</div>
-                    <p>Siempre prefiere la heurística que da valores <strong>más altos</strong> sin dejar de ser
-                        admisible. Mientras más se acerque al costo real, menos nodos necesita explorar el algoritmo.
-                    </p>
+                    <div class="callout-title">📝 Tu turno de pensar</div>
+                    <p>Imagina que estás diseñando una IA para resolver el <strong>puzzle de 8 piezas</strong>. Propón dos funciones heurísticas diferentes para estimar qué tan cerca está una configuración de la solución final. Clasifícalas de "más simple" a "más potente".</p>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="resumen">Resumen</h2>
+                <h2 id="referencias">Referencias Académicas (2018-2025)</h2>
                 <ul>
-                    <li>Las <strong>heurísticas</strong> son atajos inteligentes para resolver problemas cuando la
-                        búsqueda exhaustiva es imposible.</li>
-                    <li>Una buena heurística es eficiente, informativa, admisible y consistente.</li>
-                    <li>Ejemplos comunes: distancia Manhattan, distancia euclidiana, conteo de piezas.</li>
-                    <li>La <strong>admisibilidad</strong> (nunca sobreestimar) garantiza soluciones óptimas con A*.</li>
-                    <li>La <strong>dominancia</strong> nos ayuda a comparar y elegir la mejor heurística.</li>
+                    <li>Russell, S. J., & Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Pearl, J. (2013). <em>Heuristics: Intelligent Search Strategies for Computer Problem Solving</em>. Addison-Wesley (Obra clásica de referencia constante).</li>
+                    <li>Edelkamp, S., & Schrodl, S. (2024). <em>Heuristic Search: Theory and Applications</em>. Elsevier.</li>
                 </ul>
             </section>
 
             <nav class="article-nav reveal">
                 <a href="sistemas-multiagente.html" class="article-nav-link">
                     <span class="nav-label">← Anterior</span>
-                    <span class="nav-title">Sistemas Multi-agente</span>
+                    <span class="nav-title">1.7.1 Sistemas Multi-Agente</span>
                 </a>
                 <a href="algoritmos-busqueda.html" class="article-nav-link next">
                     <span class="nav-label">Siguiente →</span>
-                    <span class="nav-title">Algoritmos de Búsqueda</span>
+                    <span class="nav-title">1.8.1 Algoritmos de Exploración</span>
                 </a>
             </nav>
-
         </article>
     </div>
 
@@ -239,10 +157,8 @@
             <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
         </div>
     </footer>
-
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
     <script src="../js/main.js"></script>
-
 </body>
 
 </html>

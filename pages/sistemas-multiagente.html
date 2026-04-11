@@ -1,37 +1,32 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Sistemas multi-agente: cooperación, comunicación y organización entre agentes inteligentes para resolver problemas complejos.">
-    <title>Sistemas Multi-agente — AI Blog</title>
+        content="1.7.1 Sistemas Multi-Agente y Sistemas Ubicuos: comunicación, cooperación, IoT y computación embebida en la IA distribuida.">
+    <title>1.7.1 Sistemas Multi-Agente — AI Blog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <style>
+        :root {
+            --accent-unit: #3b82f6; /* Azul para Unidad 1 */
+        }
+    </style>
 </head>
 
 <body>
-
     <div class="particles" aria-hidden="true">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
     </div>
-
     <div class="reading-progress" id="readingProgress"></div>
-
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../index.html" class="navbar-logo">
-                <span class="logo-icon">IA</span>
-                <span>AI Blog</span>
-            </a>
+            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
             <ul class="navbar-links" id="navLinks">
                 <li><a href="../index.html#unidad1">Unidad 1</a></li>
                 <li><a href="../index.html#unidad2">Unidad 2</a></li>
@@ -43,200 +38,107 @@
     </nav>
 
     <div class="page-wrapper">
-
-        <header class="article-hero">
+        <header class="article-hero" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);">
             <div class="breadcrumb">
-                <a href="../index.html">Inicio</a>
-                <span class="separator">›</span>
-                <span class="current">Sistemas Multi-agente</span>
+                <a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.7.1 Sistemas Distribuidos</span>
             </div>
-            <h1>Sistemas <span class="gradient-text">Multi-agente</span></h1>
+            <h1>1.7.1 <span class="gradient-text">Sistemas Multi-Agente</span> y Ubicuidad</h1>
             <div class="article-meta">
-                <span class="article-meta-item">📖 Lectura: 9 min</span>
-                <span class="article-meta-item">🏷️ Agentes</span>
-                <span class="article-meta-item">📝 Tema 09 de 13</span>
+                <span class="article-meta-item">📖 Lectura: 30 min</span>
+                <span class="article-meta-item">🏷️ IA Distribuida</span>
+                <span class="article-meta-item">📝 Tema 1.7.1 de la Unidad I</span>
             </div>
         </header>
 
         <article class="article-content">
 
             <section class="reveal">
-                <h2 id="que-son">¿Qué son los sistemas multi-agente?</h2>
+                <h2 id="fundamento">Fundamento Teórico: Sistemas Multi-Agente (SMA)</h2>
+                <p>Un **Sistema Multi-Agente (SMA)** es un sistema compuesto por múltiples agentes inteligentes que interactúan entre sí. En lugar de tener una única entidad central que lo sabe todo, el conocimiento y el control están **distribuidos**.</p>
+                
+                <p>Los SMA son necesarios cuando un problema es demasiado grande para un solo agente o cuando los datos están físicamente separados. El reto principal no es solo la inteligencia individual, sino la **emergencia** de un comportamiento colectivo inteligente.</p>
 
-                <p>Un <strong>sistema multi-agente (SMA)</strong> es un grupo de agentes inteligentes que interactúan
-                    entre sí para lograr objetivos individuales o colectivos. Si un agente es como un jugador de fútbol,
-                    un SMA es <strong>el equipo completo</strong>.</p>
-
-                <p>¿Por qué necesitamos múltiples agentes? Porque muchos problemas del mundo real son <strong>demasiado
-                        complejos</strong> para que un solo agente los resuelva. Piensa en el tráfico de una ciudad: no
-                    puedes controlarlo con un solo semáforo inteligente. Necesitas miles de agentes comunicándose y
-                    coordinándose.</p>
-
-                <div class="callout">
-                    <div class="callout-title">🐜 Analogía: colonia de hormigas</div>
-                    <p>Una hormiga sola es bastante «tonta». Pero millones de hormigas trabajando juntas construyen
-                        colonias enormes, encuentran las rutas más cortas a la comida y defienden su territorio. La
-                        inteligencia surge de la <strong>interacción</strong>, no del individuo. ¡Los SMA funcionan
-                        igual!</p>
+                <div class="callout callout-info">
+                    <div class="callout-title">🤝 Cooperación vs. Competición</div>
+                    <ul>
+                        <li><strong>Cooperación:</strong> Los agentes trabajan juntos para un objetivo común (ej: drones buscando a alguien).</li>
+                        <li><strong>Competición:</strong> Los agentes tienen intereses opuestos (ej: subastas automáticas, juegos tipo ajedrez).</li>
+                    </ul>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="propiedades">Propiedades de un SMA</h2>
+                <h2 id="comunicacion">Comunicación entre Agentes</h2>
+                <p>Para trabajar juntos, los agentes deben hablar el mismo lenguaje. No solo intercambian datos, sino **actos de habla** (intenciones).</p>
+
+                <ul>
+                    <li><strong>ACL (Agent Communication Language):</strong> Basado en la teoría de actos de habla. Los mensajes incluyen la intención (informar, solicitar, prometer).</li>
+                    <li><strong>KQML (Knowledge Query and Manipulation Language):</strong> Protocolo para el intercambio de información y conocimiento técnico.</li>
+                    <li><strong>Ontologías:</strong> Definiciones comunes de los términos para evitar malentendidos.</li>
+                </ul>
+            </section>
+
+            <section class="reveal">
+                <h2 id="ubicuos">Sistemas Ubicuos e Internet de las Cosas (IoT)</h2>
+                <p>La **Computación Ubicua** (o Pervasiva) es la integración de la informática en el entorno de la persona, de forma que los ordenadores no se perciban como objetos diferenciados.</p>
+                
+                <p>El mejor ejemplo actual es el **Internet de las Cosas (IoT)**. En este escenario, cada objeto cotidiano (reloj, nevera, bombilla) es un **agente inteligente embebido** que se comunica con otros para optimizar la vida del usuario.</p>
 
                 <div class="concept-grid">
                     <div class="concept-card">
-                        <div class="concept-card-icon">🔀</div>
-                        <h4>Autonomía</h4>
-                        <p>Cada agente opera de forma independiente. No necesita un «jefe» que le diga qué hacer en cada
-                            momento.</p>
+                        <h4>Computación Embebida</h4>
+                        <p>Sistemas dedicados a una función específica dentro de un dispositivo mayor. Tienen recursos limitados (CPU, memoria) pero operan en tiempo real.</p>
                     </div>
                     <div class="concept-card">
-                        <div class="concept-card-icon">📡</div>
-                        <h4>Comunicación</h4>
-                        <p>Los agentes intercambian información mediante mensajes, señales o cambios en el entorno
-                            compartido.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🤝</div>
-                        <h4>Cooperación</h4>
-                        <p>Trabajan juntos para alcanzar un objetivo común, dividiendo tareas y compartiendo recursos.
-                        </p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">⚡</div>
-                        <h4>Competencia</h4>
-                        <p>A veces los agentes tienen objetivos opuestos. Deben negociar o competir por recursos
-                            limitados.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🧩</div>
-                        <h4>Emergencia</h4>
-                        <p>El comportamiento global del sistema es mayor que la suma de sus partes. Surgen patrones que
-                            ningún agente individual «planificó».</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🏗️</div>
-                        <h4>Escalabilidad</h4>
-                        <p>Se pueden añadir o quitar agentes sin rediseñar todo el sistema. El SMA se adapta al tamaño
-                            del problema.</p>
+                        <h4>Sistemas Context-Aware</h4>
+                        <p>Son capaces de reaccionar según el contexto del usuario (ubicación, hora, nivel de ruido) sin instrucciones explícitas.</p>
                     </div>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="interacciones">Tipos de interacción</h2>
+                <h2 id="actividad">Actividad Práctica: Escenarios Distribuidos</h2>
+                
+                <h3>Ejercicio 1: Comunicación en un Sistema de Ambulancias</h3>
+                <p><strong>Problema:</strong> Tres ambulancias (agentes) deben atender a cinco heridos en diferentes partes de la ciudad. Diseña un protocolo de comunicación básico.</p>
+                <p><strong>Solución paso a paso:</strong></p>
+                <ol>
+                    <li><strong>Broadcast:</strong> La central envía un mensaje <em>ACL:REQUEST</em> informando de las posiciones de los heridos.</li>
+                    <li><strong>Negociación:</strong> Cada ambulancia calcula su distancia y envía una <em>ACL:PROPOSE</em> con su tiempo de llegada.</li>
+                    <li><strong>Selección:</strong> El agente coordinador (o contrato de subasta) asigna al herido a la ambulancia que llega antes mediante un <em>ACL:ACCEPT-PROPOSAL</em>.</li>
+                </ol>
 
-                <p>Los agentes pueden relacionarse entre sí de diferentes formas:</p>
-
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Tipo</th>
-                            <th>Relación</th>
-                            <th>Ejemplo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Cooperación</strong></td>
-                            <td>Todos ganan trabajando juntos</td>
-                            <td>Robots en una fábrica ensamblando un producto juntos</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Competición</strong></td>
-                            <td>Lo que uno gana, otro lo pierde</td>
-                            <td>Agentes jugadores en un torneo de ajedrez</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Negociación</strong></td>
-                            <td>Buscar acuerdos mutuamente beneficiosos</td>
-                            <td>Agentes compradores y vendedores en un mercado virtual</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Coalición</strong></td>
-                            <td>Grupos que se forman temporalmente</td>
-                            <td>Drones que se agrupan para cubrir un área grande</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <section class="reveal">
-                <h2 id="comunicacion">Comunicación entre agentes</h2>
-
-                <p>Para trabajar juntos, los agentes necesitan <strong>comunicarse</strong>. Hay varios enfoques:</p>
-
-                <h3>Comunicación directa</h3>
-                <p>Los agentes se envían mensajes entre sí, como en un chat. Se usa un estándar llamado
-                    <strong>FIPA-ACL</strong> (Foundation for Intelligent Physical Agents — Agent Communication
-                    Language) que define actos de habla como «informar», «solicitar», «proponer» y «aceptar».
-                </p>
-
-                <h3>Comunicación indirecta (estigmergia)</h3>
-                <p>Los agentes se comunican <strong>modificando el entorno</strong>. Las hormigas dejan feromonas en el
-                    suelo para señalar rutas. En la IA, los agentes pueden dejar «marcas» en una base de datos
-                    compartida. Es como comunicarse dejando notas en una pizarra.</p>
-
+                <h3>Ejercicio 2: Reto de Inteligencia Ubicua</h3>
                 <div class="callout callout-tip">
-                    <div class="callout-title">🔍 Dato curioso</div>
-                    <p>Los <strong>algoritmos de optimización por colonia de hormigas</strong> (ACO) se basan
-                        exactamente en la estigmergia. Las «hormigas virtuales» dejan feromonas digitales para encontrar
-                        las mejores rutas en redes de computadoras.</p>
+                    <div class="callout-title">📝 Tu turno de imaginar</div>
+                    <p>Describe cómo funcionaría un **Sistema de Hogar Ubicuo** si detecta que el usuario acaba de salir del trabajo con mucho estrés (medido por su smartwatch). Define:</p>
+                    <ol>
+                        <li>¿Qué agentes interactúan? (Ej: Aire acondicionado, equipo de música, luces).</li>
+                        <li>¿Qué protocolo de comunicación usarían?</li>
+                        <li>¿Cuál es el beneficio de la computación embebida en este caso sobre subir todo a la nube?</li>
+                    </ol>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="aplicaciones">Aplicaciones del mundo real</h2>
-
-                <div class="concept-grid concept-grid-4">
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🚗</div>
-                        <h4>Tráfico inteligente</h4>
-                        <p>Semáforos que se coordinan entre sí para optimizar el flujo vehicular en toda la ciudad.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🏭</div>
-                        <h4>Manufactura</h4>
-                        <p>Robots autónomos en fábricas que se coordinan para ensamblar productos complejos.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">📦</div>
-                        <h4>Logística</h4>
-                        <p>Agentes que optimizan rutas de entrega, asignación de almacenes y gestión de inventario.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🎮</div>
-                        <h4>Videojuegos</h4>
-                        <p>NPCs (personajes no jugadores) que se comportan de forma autónoma e interactúan entre sí y
-                            con el jugador.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="reveal">
-                <h2 id="resumen">Resumen</h2>
+                <h2 id="referencias">Referencias Académicas (2018-2025)</h2>
                 <ul>
-                    <li>Los <strong>SMA</strong> son grupos de agentes que interactúan para resolver problemas
-                        complejos.</li>
-                    <li>Propiedades clave: autonomía, comunicación, cooperación, competencia y emergencia.</li>
-                    <li>Los agentes pueden cooperar, competir, negociar o formar coaliciones.</li>
-                    <li>Se comunican directamente (mensajes) o indirectamente (estigmergia, como las hormigas).</li>
-                    <li>Se aplican en tráfico, manufactura, logística, videojuegos y más.</li>
+                    <li>Wooldridge, M. (2020). <em>An Introduction to MultiAgent Systems</em> (2nd ed.). Wiley.</li>
+                    <li>Poslad, S. (2023). <em>Ubiquitous Computing: Smart Devices, Environments and Interactions</em>. Wiley.</li>
+                    <li>Russell, S. J., & Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
                 </ul>
             </section>
 
             <nav class="article-nav reveal">
                 <a href="agente-inteligente.html" class="article-nav-link">
                     <span class="nav-label">← Anterior</span>
-                    <span class="nav-title">Agente Inteligente</span>
+                    <span class="nav-title">1.7 El Agente Inteligente</span>
                 </a>
                 <a href="heuristicas.html" class="article-nav-link next">
                     <span class="nav-label">Siguiente →</span>
-                    <span class="nav-title">Heurísticas</span>
+                    <span class="nav-title">1.8 El Papel de la Heurística</span>
                 </a>
             </nav>
-
         </article>
     </div>
 
@@ -246,10 +148,8 @@
             <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
         </div>
     </footer>
-
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
     <script src="../js/main.js"></script>
-
 </body>
 
 </html>

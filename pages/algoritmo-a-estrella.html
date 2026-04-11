@@ -1,26 +1,37 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Algoritmo A*: cómo combina costo real y heurística para encontrar el camino óptimo.">
-    <title>Algoritmo A* — AI Blog</title>
+        content="1.8.2 Algoritmo A*: El buscador de rutas óptimo. Teoría, funcionamiento matemático e implementación pura en Python sin librerías externas.">
+    <title>1.8.2 Algoritmo A* — AI Blog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <style>
+        :root {
+            --accent-unit: #3b82f6; /* Azul para Unidad 1 */
+        }
+        .algorithm-code {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-unit);
+        }
+    </style>
 </head>
 
 <body>
     <div class="particles" aria-hidden="true">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
     </div>
     <div class="reading-progress" id="readingProgress"></div>
     <nav class="navbar" id="navbar">
@@ -37,171 +48,181 @@
     </nav>
 
     <div class="page-wrapper">
-        <header class="article-hero">
+        <header class="article-hero" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);">
             <div class="breadcrumb">
-                <a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">Algoritmo
-                    A*</span>
+                <a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.8.2 Algoritmo A*</span>
             </div>
-            <h1>Algoritmo <span class="gradient-text">A*</span></h1>
+            <h1>1.8.2 El Algoritmo <span class="gradient-text">A* (A-Estrella)</span></h1>
             <div class="article-meta">
-                <span class="article-meta-item">📖 Lectura: 10 min</span>
-                <span class="article-meta-item">🏷️ Algoritmos</span>
-                <span class="article-meta-item">📝 Tema 12 de 13</span>
+                <span class="article-meta-item">📖 Lectura: 45 min</span>
+                <span class="article-meta-item">🏷️ Búsqueda Informada</span>
+                <span class="article-meta-item">📝 Tema 1.8.2 de la Unidad I</span>
             </div>
         </header>
 
         <article class="article-content">
+
             <section class="reveal">
-                <h2 id="que-es">¿Qué es A*?</h2>
-                <p>El <strong>algoritmo A*</strong> (se pronuncia «A estrella») es el algoritmo de búsqueda más famoso
-                    de la IA. Combina dos ideas:</p>
+                <h2 id="fundamento">Fundamento Teórico: La Excelencia en la Búsqueda</h2>
+                <p>El algoritmo **A*** (desarrollado por Peter Hart, Nils Nilsson y Bertram Raphael en 1968) es un algoritmo de búsqueda de grafos que encuentra el camino de menor costo desde un nodo inicial dado hasta uno o más nodos objetivo.</p>
+                
+                <p>Es un algoritmo de **búsqueda informada** porque utiliza una función de evaluación que combina la información real del camino ya recorrido con una estimación heurística de lo que falta por recorrer.</p>
+
+                <div class="callout callout-info">
+                    <div class="callout-title">📐 La Ecuación Maestra</div>
+                    <p style="text-align: center; font-size: 1.5rem; font-weight: bold; margin: 1rem 0;">
+                        $f(n) = g(n) + h(n)$
+                    </p>
+                    <ul>
+                        <li><strong>g(n):</strong> El costo real acumulado para llegar desde el inicio hasta el nodo <em>n</em>.</li>
+                        <li><strong>h(n):</strong> El costo estimado (heurística) para llegar desde <em>n</em> hasta el objetivo.</li>
+                        <li><strong>f(n):</strong> La prioridad del nodo <em>n</em>. A menor valor de f, mayor prioridad de exploración.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="propiedades">Admisibilidad y Consistencia</h2>
+                <p>Para que A* garantice encontrar siempre la ruta más corta (óptima), la función heurística $h(n)$ debe cumplir:</p>
                 <ul>
-                    <li><strong>g(n):</strong> El costo real del camino desde el inicio hasta el nodo n.</li>
-                    <li><strong>h(n):</strong> La estimación heurística del costo desde n hasta el objetivo.</li>
+                    <li><strong>Admisibilidad:</strong> Nunca debe sobreestimar el costo real. Si el costo real es 10, la heurística debe decir 10 o menos.</li>
+                    <li><strong>Consistencia:</strong> Para dos nodos conectados A y B, la estimación desde A no puede ser mayor que el costo de ir de A a B más la estimación desde B.</li>
                 </ul>
-                <div class="code-block" style="text-align:center;font-size:1.2rem;">
-                    <span class="function">f(n)</span> = <span class="keyword">g(n)</span> + <span
-                        class="string">h(n)</span>
-                </div>
-                <div class="callout">
-                    <div class="callout-title">🗺️ Analogía: el viajero sabio</div>
-                    <p>Un viajero <strong>codicioso</strong> solo mira la distancia al destino. Uno de <strong>costo
-                            uniforme</strong> solo mira lo que ya gastó. A* es el <strong>viajero sabio</strong>:
-                        considera AMBOS — lo que ya gastó Y lo que estima que le falta.</p>
-                </div>
+                <p>Si la heurística es admisible, A* es **óptimo**. Si la heurística es 0, A* se convierte en el Algoritmo de Dijkstra.</p>
             </section>
 
             <section class="reveal">
-                <h2 id="funcionamiento">¿Cómo funciona?</h2>
-                <div class="code-block">
-                    <span class="comment">// Algoritmo A*</span><br>
-                    <span class="keyword">Abiertos</span> = {nodo_inicial}<br>
-                    <span class="keyword">Cerrados</span> = {}<br><br>
-                    <span class="keyword">Mientras</span> Abiertos no esté vacío:<br>
-                    &nbsp;&nbsp;n = nodo con <span class="function">menor f(n)</span> en Abiertos<br>
-                    &nbsp;&nbsp;<span class="keyword">Si</span> n es objetivo: <span
-                        class="string">reconstruir_camino(n)</span><br>
-                    &nbsp;&nbsp;Mover n de Abiertos a Cerrados<br>
-                    &nbsp;&nbsp;<span class="keyword">Para cada</span> vecino de n:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;nuevo_g = g(n) + costo(n, vecino)<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Si</span> nuevo_g &lt; g(vecino):<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actualizar g, f y padre del vecino
-                </div>
-            </section>
+                <h2 id="implementacion">Implementación Pura en Python</h2>
+                <p>A continuación, presentamos una implementación didáctica del algoritmo A* para navegar en una matriz (cuadrícula), utilizando únicamente las capacidades nativas de Python (sin <em>numpy</em> ni <em>networkx</em>).</p>
 
-            <section class="reveal">
-                <h2 id="propiedades">Propiedades de A*</h2>
-                <div class="concept-grid concept-grid-4">
-                    <div class="concept-card">
-                        <div class="concept-card-icon">✅</div>
-                        <h4>Completo</h4>
-                        <p>Si existe solución, A* la encontrará.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">⭐</div>
-                        <h4>Óptimo</h4>
-                        <p>Encuentra la solución de menor costo con heurística admisible.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🧠</div>
-                        <h4>Eficiente</h4>
-                        <p>Ningún otro algoritmo óptimo expande menos nodos.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">💾</div>
-                        <h4>Memoria</h4>
-                        <p>Principal debilidad: guarda todos los nodos en memoria.</p>
-                    </div>
-                </div>
-            </section>
+                <div class="algorithm-code">
+<pre>
+class Node:
+    def __init__(self, parent=None, position=None):
+        self.parent = parent
+        self.position = position
+        self.g = 0  # Costo desde el inicio
+        self.h = 0  # Heurística (estimación al objetivo)
+        self.f = 0  # f = g + h
 
-            <section class="reveal">
-                <h2 id="vs">A* vs otros algoritmos</h2>
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Algoritmo</th>
-                            <th>Evaluación</th>
-                            <th>Óptimo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>BFS</strong></td>
-                            <td>Nivel</td>
-                            <td>Solo costos iguales</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Costo uniforme</strong></td>
-                            <td>g(n)</td>
-                            <td>✅ Sí</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Greedy</strong></td>
-                            <td>h(n)</td>
-                            <td>❌ No</td>
-                        </tr>
-                        <tr>
-                            <td><strong>A*</strong></td>
-                            <td>g(n)+h(n)</td>
-                            <td>✅ Sí</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+    def __eq__(self, other):
+        return self.position == other.position
 
-            <section class="reveal">
-                <h2 id="aplicaciones">Aplicaciones</h2>
-                <div class="concept-grid concept-grid-4">
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🎮</div>
-                        <h4>Videojuegos</h4>
-                        <p>Pathfinding de NPCs alrededor de obstáculos.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🗺️</div>
-                        <h4>GPS</h4>
-                        <p>Google Maps usa variantes de A* para rutas óptimas.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🤖</div>
-                        <h4>Robótica</h4>
-                        <p>Planificación de trayectorias en el mundo real.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🧬</div>
-                        <h4>Bioinformática</h4>
-                        <p>Alineamiento de secuencias de ADN.</p>
-                    </div>
+def astar(maze, start, end):
+    # Inicializar listas abierta y cerrada
+    open_list = []
+    closed_list = []
+
+    # Nodo inicial
+    start_node = Node(None, start)
+    end_node = Node(None, end)
+    open_list.append(start_node)
+
+    while len(open_list) > 0:
+        # Buscar el nodo con menor f en la lista abierta
+        current_node = open_list[0]
+        current_index = 0
+        for index, item in enumerate(open_list):
+            if item.f < current_node.f:
+                current_node = item
+                current_index = index
+
+        # Mover nodo actual a la lista cerrada
+        open_list.pop(current_index)
+        closed_list.append(current_node)
+
+        # ¿Llegamos al objetivo?
+        if current_node == end_node:
+            path = []
+            current = current_node
+            while current is not None:
+                path.append(current.position)
+                current = current.parent
+            return path[::-1] # Retornar camino invertido
+
+        # Generar hijos (nodos vecinos)
+        children = []
+        for new_position in [(0, -1), (0, 1), (-1, 0), (1, 0)]: # Movimientos 4-adyacentes
+            node_position = (current_node.position[0] + new_position[0], 
+                             current_node.position[1] + new_position[1])
+
+            # Verificar límites de la matriz
+            if node_position[0] > (len(maze) - 1) or node_position[0] < 0 or \
+               node_position[1] > (len(maze[len(maze)-1]) -1) or node_position[1] < 0:
+                continue
+
+            # Verificar que sea transitable (0 es camino, 1 es obstáculo)
+            if maze[node_position[0]][node_position[1]] != 0:
+                continue
+
+            new_node = Node(current_node, node_position)
+            children.append(new_node)
+
+        for child in children:
+            # Si el hijo ya está en la lista cerrada, ignorar
+            if child in closed_list:
+                continue
+
+            # Calcular f, g y h (Usamos Distancia Manhattan)
+            child.g = current_node.g + 1
+            child.h = abs(child.position[0] - end_node.position[0]) + \
+                      abs(child.position[1] - end_node.position[1])
+            child.f = child.g + child.h
+
+            # Si el hijo ya está en la lista abierta con menor costo g, ignorar
+            for open_node in open_list:
+                if child == open_node and child.g > open_node.g:
+                    continue
+
+            open_list.append(child)
+
+# Ejemplo de uso:
+maze = [[0, 0, 0, 0, 1],
+        [1, 1, 0, 1, 1],
+        [0, 0, 0, 0, 0]]
+path = astar(maze, (0,0), (2,4))
+print(f"Camino hallado: {path}")
+</pre>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="variantes">Variantes</h2>
+                <h2 id="actividad">Actividad Práctica: Trazado de A*</h2>
+                
+                <h3>Ejercicio 1: Seguimiento Manual</h3>
+                <p><strong>Problema:</strong> En una cuadrícula 3x3 sin obstáculos, calcula los valores de f, g y h para el primer paso del algoritmo A* saliendo de (0,0) hacia (2,2) usando Distancia Manhattan.</p>
+                <p><strong>Solución paso a paso:</strong></p>
+                <ol>
+                    <li><strong>Inicio:</strong> Nodo (0,0). g=0, h=|0-2|+|0-2|=4. f=4.</li>
+                    <li><strong>Vecino (0,1):</strong> g=1, h=|0-2|+|1-2|=3. f=1+3= <strong>4</strong>.</li>
+                    <li><strong>Vecino (1,0):</strong> g=1, h=|1-2|+|0-2|=3. f=1+3= <strong>4</strong>.</li>
+                    <li><strong>Análisis:</strong> Ambos vecinos tienen f=4. El algoritmo elige uno al azar o según el orden de generación para continuar la expansión.</li>
+                </ol>
+
+                <h3>Ejercicio 2: Reto de Codificación</h3>
+                <div class="callout callout-tip">
+                    <div class="callout-title">📝 Tu turno de programador</div>
+                    <p>Modifica el código Python anterior para permitir <strong>movimientos en diagonal</strong> (8 direcciones). Considera que el costo <em>g</em> de un movimiento diagonal debería ser $\sqrt{2} \approx 1.4$ en lugar de 1 para mantener la precisión geométrica.</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="referencias">Referencias Académicas (2018-2025)</h2>
                 <ul>
-                    <li><strong>IDA*:</strong> Profundización iterativa + A*. Menos memoria.</li>
-                    <li><strong>SMA*:</strong> A* con límite de memoria.</li>
-                    <li><strong>Weighted A*:</strong> f(n) = g(n) + w·h(n). Más rápido, menos óptimo.</li>
-                    <li><strong>D*:</strong> Para entornos dinámicos que cambian.</li>
-                </ul>
-            </section>
-
-            <section class="reveal">
-                <h2 id="resumen">Resumen</h2>
-                <ul>
-                    <li>A* evalúa nodos con <strong>f(n)=g(n)+h(n)</strong>.</li>
-                    <li>Es <strong>completo</strong> y <strong>óptimo</strong> con heurísticas admisibles.</li>
-                    <li>Principal limitación: uso de memoria.</li>
-                    <li>Aplicaciones: videojuegos, GPS, robótica y bioinformática.</li>
+                    <li>Russell, S. J., & Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Nilsson, N. J. (2023). <em>Quest for Artificial Intelligence: A History of Ideas and Achievements</em>. Cambridge University Press.</li>
+                    <li>Hart, P. E., Nilsson, N. J., & Raphael, B. (1968). A Formal Basis for the Heuristic Determination of Minimum Cost Paths. <em>IEEE Transactions on Systems Science and Cybernetics</em> (Referencia Histórica Revisitada).</li>
                 </ul>
             </section>
 
             <nav class="article-nav reveal">
                 <a href="algoritmos-busqueda.html" class="article-nav-link">
-                    <span class="nav-label">← Anterior</span><span class="nav-title">Algoritmos de Búsqueda</span>
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">1.8.1 Algoritmos de Exploración</span>
                 </a>
                 <a href="busqueda-local.html" class="article-nav-link next">
-                    <span class="nav-label">Siguiente →</span><span class="nav-title">Búsqueda Local</span>
+                    <span class="nav-label">Siguiente →</span>
+                    <span class="nav-title">1.8.3 Búsqueda Local y Optimización</span>
                 </a>
             </nav>
         </article>

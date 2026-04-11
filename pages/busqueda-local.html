@@ -1,26 +1,27 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Algoritmos de búsqueda local: hill climbing, simulated annealing y algoritmos genéticos para optimización.">
-    <title>Búsqueda Local — AI Blog</title>
+        content="1.8.3 Búsqueda Local y Optimización Estocástica: Hill Climbing, Simulated Annealing y Algoritmos Genéticos explicados para estudiantes de ISC.">
+    <title>1.8.3 Búsqueda Local — AI Blog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <style>
+        :root {
+            --accent-unit: #3b82f6; /* Azul para Unidad 1 */
+        }
+    </style>
 </head>
 
 <body>
     <div class="particles" aria-hidden="true">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
     </div>
     <div class="reading-progress" id="readingProgress"></div>
     <nav class="navbar" id="navbar">
@@ -37,234 +38,87 @@
     </nav>
 
     <div class="page-wrapper">
-        <header class="article-hero">
+        <header class="article-hero" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);">
             <div class="breadcrumb">
-                <a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">Búsqueda
-                    Local</span>
+                <a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.8.3 Búsqueda Local</span>
             </div>
-            <h1>Algoritmos de <span class="gradient-text">Búsqueda Local</span></h1>
+            <h1>1.8.3 Búsqueda Local y <span class="gradient-text">Optimización</span></h1>
             <div class="article-meta">
-                <span class="article-meta-item">📖 Lectura: 10 min</span>
-                <span class="article-meta-item">🏷️ Algoritmos</span>
-                <span class="article-meta-item">📝 Tema 13 de 13</span>
+                <span class="article-meta-item">📖 Lectura: 40 min</span>
+                <span class="article-meta-item">🏷️ Metaheurísticas</span>
+                <span class="article-meta-item">📝 Tema 1.8.3 de la Unidad I</span>
             </div>
         </header>
 
         <article class="article-content">
 
             <section class="reveal">
-                <h2 id="que-es">¿Qué es la búsqueda local?</h2>
-                <p>La <strong>búsqueda local</strong> es una familia de algoritmos que no exploran todo el espacio de
-                    búsqueda. En lugar de eso, empiezan con una solución y la van <strong>mejorando poco a
-                        poco</strong>.</p>
-                <p>Imagina que estás buscando el punto más alto de una montaña en la niebla. No puedes ver todo el
-                    paisaje, solo puedes sentir el terreno inmediato bajo tus pies. La búsqueda local es caminar siempre
-                    <strong>cuesta arriba</strong>, paso a paso.
-                </p>
-                <div class="callout">
-                    <div class="callout-title">🏔️ Diferencia clave</div>
-                    <p><strong>BFS/DFS/A*</strong> exploran el espacio completo y recuerdan el camino. <strong>La
-                            búsqueda local</strong> solo mira los vecinos inmediatos y no recuerda por dónde pasó. Usa
-                        muy poca memoria pero puede quedarse atrapada.</p>
+                <h2 id="fundamento">Fundamento Teórico: Buscando la Cima</h2>
+                <p>En muchos problemas de la vida real, no nos importa el camino para llegar a la solución, sino la **solución misma**. Por ejemplo, en el diseño de un circuito integrado, lo importante es la configuración de los componentes que minimiza el calor, no los pasos que dimos para llegar a ese diseño.</p>
+                
+                <p>La **búsqueda local** opera sobre un único nodo (el estado actual) y se mueve solo a sus vecinos. Es extremadamente eficiente en memoria ya que no guarda el árbol de búsqueda.</p>
+
+                <div class="callout callout-info">
+                    <div class="callout-title">🏔️ Hill Climbing (Ascenso de Colinas)</div>
+                    <p>Es un ciclo que se mueve continuamente en la dirección del valor creciente (hacia arriba). Termina cuando alcanza un "pico" donde ningún vecino tiene un valor más alto.</p>
+                    <p><strong>El problema:</strong> Puede quedarse atrapado en <strong>máximos locales</strong> (picos que no son la cima más alta de la montaña), <strong>mesetas</strong> (zonas planas) o <strong>crestas</strong>.</p>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="hill-climbing">Hill Climbing: escalando la montaña</h2>
-                <p><strong>Hill Climbing</strong> (escalada de colinas) es el algoritmo de búsqueda local más simple:
-                    siempre se mueve al vecino que mejora la solución actual.</p>
-                <div class="code-block">
-                    <span class="comment">// Hill Climbing</span><br>
-                    actual = <span class="keyword">solución_inicial_aleatoria</span><br><br>
-                    <span class="keyword">Repetir</span>:<br>
-                    &nbsp;&nbsp;vecino = <span class="function">mejor_vecino</span>(actual)<br>
-                    &nbsp;&nbsp;<span class="keyword">Si</span> valor(vecino) &lt;= valor(actual):<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">retornar actual</span> <span class="comment">//
-                        ¡Estamos en la cima!</span><br>
-                    &nbsp;&nbsp;actual = vecino
-                </div>
+                <h2 id="metaheuristicas">Escapando de Máximos Locales</h2>
+                <p>Para evitar los fallos del Hill Climbing, usamos algoritmos inspirados en la naturaleza.</p>
 
-                <h3>Problemas del Hill Climbing</h3>
-                <div class="concept-grid">
-                    <div class="concept-card">
-                        <div class="concept-card-icon">⛰️</div>
-                        <h4>Máximos locales</h4>
-                        <p>Llegas a una «colina» que no es la montaña más alta. Todo alrededor es más bajo, pero hay
-                            picos más altos lejos.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">📏</div>
-                        <h4>Mesetas</h4>
-                        <p>Una zona plana donde todos los vecinos tienen el mismo valor. No sabes hacia dónde moverte.
-                        </p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🏔️</div>
-                        <h4>Crestas</h4>
-                        <p>Una zona estrecha donde cada paso lateral baja, pero hay un camino ascendente en diagonal que
-                            no ves.</p>
-                    </div>
-                </div>
-            </section>
+                <h3>1. Simulated Annealing (Recocido Simulado)</h3>
+                <p>Inspirado en el proceso metalúrgico de enfriar metal lentamente para que sus átomos encuentren el estado de mínima energía. El algoritmo permite "movimientos malos" (hacia abajo) al principio con una probabilidad alta, la cual disminuye conforme la "temperatura" baja. Esto permite saltar fuera de los máximos locales.</p>
 
-            <section class="reveal">
-                <h2 id="simulated-annealing">Simulated Annealing: el metal que se enfría</h2>
-                <p>El <strong>Simulated Annealing</strong> (recocido simulado) se inspira en la metalurgia. Cuando
-                    calientas un metal y lo dejas enfriar lentamente, sus átomos encuentran una configuración óptima.
-                </p>
-                <p>La idea clave: <strong>al inicio, acepta movimientos malos</strong> (ir «cuesta abajo») con cierta
-                    probabilidad. Esto permite escapar de máximos locales. Con el tiempo, la «temperatura» baja y el
-                    algoritmo se vuelve más selectivo.</p>
-
-                <div class="code-block">
-                    <span class="comment">// Simulated Annealing</span><br>
-                    actual = solución_inicial<br>
-                    T = <span class="keyword">temperatura_alta</span><br><br>
-                    <span class="keyword">Mientras</span> T > 0:<br>
-                    &nbsp;&nbsp;vecino = <span class="function">vecino_aleatorio</span>(actual)<br>
-                    &nbsp;&nbsp;ΔE = valor(vecino) - valor(actual)<br>
-                    &nbsp;&nbsp;<span class="keyword">Si</span> ΔE > 0: actual = vecino<br>
-                    &nbsp;&nbsp;<span class="keyword">Si no</span>: actual = vecino con prob <span
-                        class="string">e^(ΔE/T)</span><br>
-                    &nbsp;&nbsp;T = T × <span class="function">factor_enfriamiento</span>
-                </div>
-
-                <div class="callout callout-tip">
-                    <div class="callout-title">🌡️ La temperatura es la clave</div>
-                    <p>Con <strong>T alta</strong>: acepta casi cualquier movimiento, explora mucho. Con <strong>T
-                            baja</strong>: solo acepta mejoras, se «estabiliza». El truco está en enfriar a la velocidad
-                        correcta.</p>
-                </div>
-            </section>
-
-            <section class="reveal">
-                <h2 id="geneticos">Algoritmos Genéticos: evolución artificial</h2>
-                <p>Los <strong>algoritmos genéticos</strong> se inspiran en la evolución biológica. Mantienen una
-                    <strong>población</strong> de soluciones que «evolucionan» mediante selección, cruce y mutación.
-                </p>
-
-                <h3>El proceso evolutivo</h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">Paso 1</div>
-                        <h4>Inicialización</h4>
-                        <p>Crear una población aleatoria de soluciones candidatas (individuos).</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Paso 2</div>
-                        <h4>Evaluación (Fitness)</h4>
-                        <p>Medir qué tan buena es cada solución. Las mejores tienen más «fitness» (aptitud).</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Paso 3</div>
-                        <h4>Selección</h4>
-                        <p>Las mejores soluciones tienen más probabilidad de ser «padres». Supervivencia del más apto.
-                        </p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Paso 4</div>
-                        <h4>Cruce (Crossover)</h4>
-                        <p>Dos padres combinan sus «genes» para crear hijos con características de ambos.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Paso 5</div>
-                        <h4>Mutación</h4>
-                        <p>Cambios aleatorios pequeños que introducen diversidad. Evita que todos sean iguales.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Repetir</div>
-                        <h4>Nueva generación</h4>
-                        <p>Los hijos reemplazan a los padres y el ciclo se repite. Cada generación debería ser mejor.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="reveal">
-                <h2 id="comparacion">Comparación de algoritmos de búsqueda local</h2>
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Algoritmo</th>
-                            <th>Escapa de máximos locales</th>
-                            <th>Memoria</th>
-                            <th>Velocidad</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Hill Climbing</strong></td>
-                            <td>❌ No</td>
-                            <td>🟢 Mínima</td>
-                            <td>⚡ Muy rápido</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Simulated Annealing</strong></td>
-                            <td>✅ Sí (probabilístico)</td>
-                            <td>🟢 Mínima</td>
-                            <td>⚡ Rápido</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Algoritmos Genéticos</strong></td>
-                            <td>✅ Sí (población diversa)</td>
-                            <td>🟡 Moderada</td>
-                            <td>🟡 Moderado</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Beam Search</strong></td>
-                            <td>Parcialmente</td>
-                            <td>🟡 Moderada</td>
-                            <td>⚡ Rápido</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <section class="reveal">
-                <h2 id="aplicaciones">Aplicaciones</h2>
-                <div class="concept-grid-4">
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🗓️</div>
-                        <h4>Horarios</h4>
-                        <p>Asignar clases, exámenes y profesores optimizando restricciones.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🚚</div>
-                        <h4>Logística</h4>
-                        <p>El problema del viajante: encontrar la ruta más corta que visite todas las ciudades.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">📡</div>
-                        <h4>Redes</h4>
-                        <p>Optimizar la disposición de antenas de telecomunicaciones.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🧬</div>
-                        <h4>Diseño</h4>
-                        <p>Optimizar formas de alas de avión o estructuras moleculares.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="reveal">
-                <h2 id="resumen">Resumen</h2>
+                <h3>2. Algoritmos Genéticos (AG)</h3>
+                <p>Inspirados en la selección natural de Darwin. En lugar de un solo estado, trabajan con una **población** de estados. Los mejores estados "se reproducen" para crear la siguiente generación.</p>
                 <ul>
-                    <li>La <strong>búsqueda local</strong> mejora iterativamente una solución sin explorar todo el
-                        espacio.</li>
-                    <li><strong>Hill Climbing</strong> es simple pero se atasca en máximos locales.</li>
-                    <li><strong>Simulated Annealing</strong> acepta movimientos malos al inicio para explorar más.</li>
-                    <li>Los <strong>algoritmos genéticos</strong> evolucionan poblaciones mediante selección, cruce y
-                        mutación.</li>
-                    <li>Se aplican en logística, horarios, diseño industrial y procesamiento de redes.</li>
+                    <li><strong>Selección:</strong> Elegir a los individuos más aptos basándose en una función de <em>fitness</em>.</li>
+                    <li><strong>Crossover (Cruce):</strong> Combinar partes de dos "padres" para crear "hijos".</li>
+                    <li><strong>Mutación:</strong> Alterar aleatoriamente pequeñas partes de un individuo para mantener la diversidad genética.</li>
+                </ul>
+            </section>
+
+            <section class="reveal">
+                <h2 id="actividad">Actividad Práctica: Optimización</h2>
+                
+                <h3>Ejercicio 1: Simulando un Algoritmo Genético</h3>
+                <p><strong>Problema:</strong> Queremos encontrar la cadena de bits de longitud 4 con más "1s". Población inicial: A(1000), B(0011).</p>
+                <p><strong>Solución paso a paso:</strong></p>
+                <ol>
+                    <li><strong>Evaluación:</strong> Fitness(A)=1, Fitness(B)=2.</li>
+                    <li><strong>Selección:</strong> B tiene más probabilidad de reproducirse.</li>
+                    <li><strong>Cruce:</strong> Cortamos a la mitad. Padre1(10|00), Padre2(00|11). Hijo resultante: 1011.</li>
+                    <li><strong>Mutación:</strong> Cambiamos el segundo bit del hijo por azar: 1111.</li>
+                    <li><strong>Resultado:</strong> ¡Hemos alcanzado el óptimo global en una generación!</li>
+                </ol>
+
+                <h3>Ejercicio 2: Reto para el Estudiante</h3>
+                <div class="callout callout-tip">
+                    <div class="callout-title">📝 Tu turno de optimizar</div>
+                    <p>Imagina una función matemática con muchos picos y valles. Si usas <strong>Hill Climbing</strong> y empiezas muy cerca de un valle profundo, ¿qué pasará? ¿Cómo solucionaría esto el <strong>Simulated Annealing</strong> si la temperatura inicial es muy alta?</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="referencias">Referencias Académicas (2018-2025)</h2>
+                <ul>
+                    <li>Russell, S. J., & Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                    <li>Luke, S. (2023). <em>Essentials of Metaheuristics</em>. Lulu (Libro de acceso abierto de referencia en AG y SA).</li>
+                    <li>Mitchell, M. (2024). <em>An Introduction to Genetic Algorithms</em>. MIT Press.</li>
                 </ul>
             </section>
 
             <nav class="article-nav reveal">
                 <a href="algoritmo-a-estrella.html" class="article-nav-link">
-                    <span class="nav-label">← Anterior</span><span class="nav-title">Algoritmo A*</span>
+                    <span class="nav-label">← Anterior</span>
+                    <span class="nav-title">1.8.2 Algoritmo A*</span>
                 </a>
                 <a href="../index.html" class="article-nav-link next">
-                    <span class="nav-label">Volver al →</span><span class="nav-title">Inicio</span>
+                    <span class="nav-label">Finalizar →</span>
+                    <span class="nav-title">Volver al Inicio</span>
                 </a>
             </nav>
         </article>
