@@ -1,8 +1,29 @@
 /* ============================================
-   AI BLOG — Main JavaScript
+   AI BLOG — Main JavaScript v2.0
+   Quiz Engine, Theme Toggle, Sidebar, highlight.js
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // ---------- Theme Toggle (Light/Dark) ----------
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('ai-blog-theme');
+
+    if (savedTheme === 'light') {
+        document.documentElement.classList.add('light-theme');
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('light-theme');
+            const isLight = document.documentElement.classList.contains('light-theme');
+            localStorage.setItem('ai-blog-theme', isLight ? 'light' : 'dark');
+            themeToggle.textContent = isLight ? '🌙' : '☀️';
+        });
+        // Set initial icon
+        const isLight = document.documentElement.classList.contains('light-theme');
+        themeToggle.textContent = isLight ? '🌙' : '☀️';
+    }
 
     // ---------- Scroll Reveal ----------
     const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .timeline-item');
@@ -24,15 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---------- Navbar Scroll Effect ----------
     const navbar = document.querySelector('.navbar');
     if (navbar) {
-        let lastScrollY = 0;
         window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
-            if (currentScrollY > 50) {
+            if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
-            lastScrollY = currentScrollY;
         }, { passive: true });
     }
 
@@ -48,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
             menuToggle.setAttribute('aria-expanded', isOpen);
         });
 
-        // Close menu on link click
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -57,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Close on outside click
         document.addEventListener('click', (e) => {
             if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
                 navLinks.classList.remove('active');
@@ -67,7 +83,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ---------- Back to Top Button ----------
+    // ---------- Sidebar Active State ----------
+    const sidebarLinks = document.querySelectorAll('.sidebar-links a');
+    const currentPage = window.location.pathname.split('/').pop();
+
+    sidebarLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        const linkPage = href ? href.split('/').pop() : '';
+        if (linkPage === currentPage) {
+            link.classList.add('active');
+        }
+    });
+
+    // ---------- Mobile Sidebar Toggle ----------
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.querySelector('.sidebar');
+
+    if (sidebarToggle && sidebar) {
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
+
+        // Close sidebar on link click (mobile)
+        sidebar.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) {
+                    sidebar.classList.remove('open');
+                }
+            });
+        });
+    }
+
+    // ---------- Back to Top ----------
     const backToTop = document.querySelector('.back-to-top');
     if (backToTop) {
         window.addEventListener('scroll', () => {
@@ -83,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ---------- Reading Progress Bar ----------
+    // ---------- Reading Progress ----------
     const progressBar = document.querySelector('.reading-progress');
     if (progressBar) {
         window.addEventListener('scroll', () => {
@@ -94,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     }
 
-    // ---------- Card Mouse Glow Effect ----------
+    // ---------- Card Mouse Glow ----------
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
@@ -107,9 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ---------- Stagger Cards Animation ----------
-    const cardsGrid = document.querySelector('.cards-grid');
-    if (cardsGrid) {
-        const gridCards = cardsGrid.querySelectorAll('.card');
+    document.querySelectorAll('.cards-grid').forEach(grid => {
+        const gridCards = grid.querySelectorAll('.card');
         gridCards.forEach((card, index) => {
             card.classList.add('reveal');
             card.style.transitionDelay = `${index * 0.08}s`;
@@ -118,47 +164,111 @@ document.addEventListener('DOMContentLoaded', () => {
         const gridObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const children = entry.target.querySelectorAll('.card');
-                    children.forEach(child => child.classList.add('visible'));
+                    entry.target.querySelectorAll('.card').forEach(c => c.classList.add('visible'));
                     gridObserver.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.1 });
 
-        gridObserver.observe(cardsGrid);
-    }
+        gridObserver.observe(grid);
+    });
 
-    // ---------- Active TOC Highlighting ----------
-    const tocLinks = document.querySelectorAll('.toc-list a');
-    if (tocLinks.length > 0) {
-        const headings = [];
-        tocLinks.forEach(link => {
-            const id = link.getAttribute('href')?.replace('#', '');
-            if (id) {
-                const heading = document.getElementById(id);
-                if (heading) headings.push({ el: heading, link: link });
-            }
+    // ---------- Interactive Quiz Engine ----------
+    const quizSections = document.querySelectorAll('.quiz-section');
+
+    quizSections.forEach(quiz => {
+        const checkBtn = quiz.querySelector('.quiz-check-btn');
+        const scoreDisplay = quiz.querySelector('.quiz-score');
+        const quizCards = quiz.querySelectorAll('.quiz-card');
+
+        // Handle option selection
+        quizCards.forEach(card => {
+            const options = card.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.addEventListener('click', () => {
+                    // Don't allow changes after checking
+                    if (card.classList.contains('correct') || card.classList.contains('incorrect')) return;
+
+                    options.forEach(o => o.classList.remove('selected'));
+                    option.classList.add('selected');
+                });
+            });
         });
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            headings.forEach(({ el }) => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top <= 120) {
-                    current = el.id;
-                }
-            });
+        // Check answers
+        if (checkBtn) {
+            checkBtn.addEventListener('click', () => {
+                let correct = 0;
+                let total = quizCards.length;
 
-            tocLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
+                quizCards.forEach(card => {
+                    const selected = card.querySelector('.quiz-option.selected');
+                    const correctAnswer = card.dataset.answer;
+                    const feedback = card.querySelector('.quiz-feedback');
+                    const options = card.querySelectorAll('.quiz-option');
+
+                    // Disable all options
+                    options.forEach(o => o.classList.add('disabled'));
+
+                    if (selected) {
+                        const selectedLetter = selected.dataset.option;
+
+                        // Mark correct answer
+                        options.forEach(o => {
+                            if (o.dataset.option === correctAnswer) {
+                                o.classList.add('correct-answer');
+                            }
+                        });
+
+                        if (selectedLetter === correctAnswer) {
+                            correct++;
+                            card.classList.add('correct');
+                            if (feedback) {
+                                feedback.classList.add('correct-feedback', 'visible');
+                            }
+                        } else {
+                            card.classList.add('incorrect');
+                            selected.classList.add('wrong-answer');
+                            if (feedback) {
+                                feedback.classList.add('incorrect-feedback', 'visible');
+                            }
+                        }
+                    } else {
+                        // No answer selected — mark as incorrect
+                        card.classList.add('incorrect');
+                        options.forEach(o => {
+                            if (o.dataset.option === correctAnswer) {
+                                o.classList.add('correct-answer');
+                            }
+                        });
+                        if (feedback) {
+                            feedback.classList.add('incorrect-feedback', 'visible');
+                            feedback.textContent = '⚠️ No seleccionaste una respuesta. ' + feedback.textContent;
+                        }
+                    }
+                });
+
+                // Show score
+                if (scoreDisplay) {
+                    scoreDisplay.innerHTML = `Resultado: <span class="score-number">${correct}/${total}</span> respuestas correctas`;
+                    scoreDisplay.classList.add('visible');
                 }
+
+                // Hide check button
+                checkBtn.style.display = 'none';
+
+                // Scroll to score
+                scoreDisplay.scrollIntoView({ behavior: 'smooth', block: 'center' });
             });
-        }, { passive: true });
+        }
+    });
+
+    // ---------- highlight.js Init ----------
+    if (typeof hljs !== 'undefined') {
+        hljs.highlightAll();
     }
 
-    // ---------- Smooth scroll for anchor links ----------
+    // ---------- Smooth Scroll for Anchors ----------
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
             const target = document.querySelector(anchor.getAttribute('href'));
@@ -169,10 +279,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ---------- Console log ----------
+    // ---------- Console ----------
     console.log(
-        '%c🤖 Blog IA cargado correctamente',
-        'color: #38bdf8; font-size: 14px; font-weight: bold;'
+        '%c🤖 AI Blog v2.0 — Cargado correctamente',
+        'color: #4f8ef7; font-size: 14px; font-weight: bold;'
     );
 
 });

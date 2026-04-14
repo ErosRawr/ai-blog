@@ -1,161 +1,118 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="1.6 El modelo cognoscitivo: arquitecturas cognitivas, modelos mentales y la simulación del pensamiento humano en la Inteligencia Artificial.">
+    <meta name="description" content="1.6 El modelo cognoscitivo: arquitectura cognitiva, modelos mentales, representación y procesamiento del conocimiento en IA.">
     <title>1.6 Modelo Cognoscitivo — AI Blog</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/animations.css">
-    <style>
-        :root {
-            --accent-unit: #3b82f6; /* Azul para Unidad 1 */
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-
-<body>
-    <div class="particles" aria-hidden="true">
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-    </div>
+<body class="has-sidebar">
+    <div class="particles" aria-hidden="true"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div></div>
     <div class="reading-progress" id="readingProgress"></div>
-    <nav class="navbar" id="navbar">
-        <div class="navbar-inner">
-            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
-            <ul class="navbar-links" id="navLinks">
-                <li><a href="../index.html#unidad1">Unidad 1</a></li>
-                <li><a href="../index.html#unidad2">Unidad 2</a></li>
-                <li><a href="../index.html#unidad3">Unidad 3</a></li>
-                <li><a href="../index.html#unidad4">Unidad 4</a></li>
-            </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-        </div>
-    </nav>
+    <nav class="navbar" id="navbar"><div class="navbar-inner"><a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a><ul class="navbar-links" id="navLinks"><li><a href="../index.html#unidad1">Unidad 1</a></li><li><a href="../index.html#unidad2">Unidad 2</a></li><li><a href="../index.html#unidad3">Unidad 3</a></li><li><a href="../index.html#unidad4">Unidad 4</a></li></ul><div class="navbar-right"><button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button><button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button></div></div></nav>
+    <aside class="sidebar" id="sidebar"><div class="sidebar-section"><div class="sidebar-label">Unidad I — Fundamentos</div><ul class="sidebar-links"><li><a href="introduccion-ia.html"><span class="link-number">1.1</span> Introducción a la IA</a></li><li><a href="historia-ia.html"><span class="link-number">1.2</span> Historia de la IA</a></li><li><a href="habilidades-cognoscitivas.html"><span class="link-number">1.3</span> Habilidades Cognoscitivas</a></li><li><a href="razonamiento-logica.html"><span class="link-number">1.4</span> Razonamiento y Lógica</a></li><li><a href="adquisicion-conocimiento.html"><span class="link-number">1.5</span> Adquisición del Conocimiento</a></li><li><a href="modelo-cognoscitivo.html"><span class="link-number">1.6</span> Modelo Cognoscitivo</a></li><li><a href="agente-inteligente.html"><span class="link-number">1.7</span> Agentes Inteligentes</a></li><li><a href="heuristicas.html"><span class="link-number">1.8</span> Heurísticas</a></li><li><a href="algoritmos-busqueda.html"><span class="link-number">1.8.1</span> Algoritmos de Exploración</a></li><li><a href="algoritmo-a-estrella.html"><span class="link-number">1.8.2</span> Algoritmo A*</a></li><li><a href="busqueda-local.html"><span class="link-number">1.8.3</span> Búsqueda Local</a></li></ul></div></aside>
 
     <div class="page-wrapper">
-        <header class="article-hero" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);">
-            <div class="breadcrumb">
-                <a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.6 Modelo Cognoscitivo</span>
-            </div>
-            <h1>1.6 El <span class="gradient-text">Modelo Cognoscitivo</span> en la IA</h1>
-            <div class="article-meta">
-                <span class="article-meta-item">📖 Lectura: 30 min</span>
-                <span class="article-meta-item">🏷️ Arquitecturias Cognitivas</span>
-                <span class="article-meta-item">📝 Tema 1.6 de la Unidad I</span>
-            </div>
+        <header class="article-hero">
+            <div class="breadcrumb"><a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.6 Modelo Cognoscitivo</span></div>
+            <h1>1.6 El Modelo <span class="gradient-text">Cognoscitivo</span></h1>
+            <div class="article-meta"><span class="article-meta-item">📖 Lectura: 22 min</span><span class="article-meta-item">🏷️ Cognición</span><span class="article-meta-item">📝 Tema 6 de 11</span></div>
         </header>
 
         <article class="article-content">
-
             <section class="reveal">
-                <h2 id="fundamento">Fundamento Teórico: Simulando la Mente</h2>
-                <p>El **modelo cognoscitivo** en IA busca emular los procesos mentales humanos para construir sistemas que no solo resuelvan problemas, sino que lo hagan de una manera inspirada en cómo nosotros percibimos, razonamos y recordamos.</p>
-                
-                <p>A diferencia de los enfoques puramente matemáticos, el modelo cognitivo se basa en la premisa de que la inteligencia surge de la manipulación de **representaciones simbólicas** y la integración de diferentes módulos funcionales (memoria, percepción, toma de decisiones).</p>
-
-                <div class="callout callout-info">
-                    <div class="callout-title">🧠 ¿Qué es una Arquitectura Cognitiva?</div>
-                    <p>Es una hipótesis sobre las estructuras fijas que proporcionan el marco para la mente. Es como el "sistema operativo" de la inteligencia. Una arquitectura cognitiva define cómo se almacena el conocimiento (memoria declarativa vs. procedimental) y cómo se procesa (ciclo de reconocimiento-acción).</p>
-                </div>
+                <h2 id="fundamento">¿Qué es el modelo cognoscitivo?</h2>
+                <p>El <strong>modelo cognoscitivo</strong> (o modelo cognitivo) estudia cómo los seres humanos <strong>perciben, procesan, almacenan y utilizan la información</strong> para tomar decisiones y resolver problemas. A diferencia del conductismo (que solo ve inputs y outputs), la ciencia cognitiva abre la «caja negra» mental para modelar los procesos internos del pensamiento.</p>
+                <p>En IA, el enfoque cognoscitivo busca crear sistemas que no solo produzcan resultados correctos, sino que lo hagan <strong>de manera similar a cómo lo haría un humano</strong>. Esto incluye modelar la atención, la memoria, el razonamiento analógico y la toma de decisiones bajo incertidumbre.</p>
             </section>
 
             <section class="reveal">
-                <h2 id="arquitecturas">Arquitecturas Clave: SOAR y ACT-R</h2>
-                <p>Existen modelos que han intentado mapear la cognición humana en sistemas computacionales durante décadas.</p>
-
+                <h2 id="arquitectura">Arquitecturas cognitivas</h2>
+                <p>Una <strong>arquitectura cognitiva</strong> es un marco computacional que modela la estructura general de la cognición humana. Las más importantes son:</p>
                 <div class="concept-grid">
-                    <div class="concept-card">
-                        <h4>SOAR (State, Operator And Result)</h4>
-                        <p>Desarrollada por John Laird y Allen Newell. Se basa en la resolución de problemas en un <strong>espacio de estados</strong>. Cuando el sistema no sabe qué hacer (punto muerto), crea un sub-objetivo para aprender la regla que le falta (aprendizaje por <em>chunking</em>).</p>
-                    </div>
-                    <div class="concept-card">
-                        <h4>ACT-R (Adaptive Control of Thought—Rational)</h4>
-                        <p>Desarrollada por John R. Anderson. Intenta ser una teoría psicológica completa. Divide el conocimiento en <strong>Declarativo</strong> (hechos) y <strong>Procedimental</strong> (reglas de producción "si-entonces"). Utiliza un sistema de activación para decidir qué recuerdo es más relevante en cada momento.</p>
-                    </div>
+                    <div class="concept-card"><div class="concept-card-icon">🧠</div><h4>ACT-R (Anderson, 1993)</h4><p>Adaptive Control of Thought—Rational. Modela memoria declarativa (hechos) y procedimental (habilidades). Usado en investigación educativa y simulación cognitiva. Predice tiempos de respuesta y errores humanos.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">⚡</div><h4>SOAR (Laird, Newell, Rosenbloom, 1987)</h4><p>Arquitectura basada en estados, operadores y reglas. Combina búsqueda con aprendizaje. Usada en simulación militar y agentes inteligentes para videojuegos.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">🔄</div><h4>CLARION (Sun, 2002)</h4><p>Distingue conocimiento explícito (consciente) e implícito (subconsciente). Modela cómo el aprendizaje implícito se vuelve explícito con la experiencia.</p></div>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="modelos-mentales">Modelos Mentales y Representación</h2>
-                <p>Un **modelo mental** es una representación interna que un sistema inteligente construye para explicar cómo funciona algo en el mundo real. Permiten al sistema **simular situaciones futuras** sin necesidad de actuar físicamente.</p>
-                
-                <p>Para procesar el conocimiento, estos sistemas suelen usar:</p>
+                <h2 id="modelos-mentales">Modelos mentales y representación del conocimiento</h2>
+                <p>Los <strong>modelos mentales</strong> (Johnson-Laird, 1983) son representaciones internas que las personas usan para simular mentalmente situaciones y predecir resultados. En IA, los equivalentes son:</p>
+                <table class="comparison-table">
+                    <thead><tr><th>Modelo mental humano</th><th>Representación en IA</th><th>Ejemplo</th></tr></thead>
+                    <tbody>
+                        <tr><td>Categorías y conceptos</td><td>Ontologías, taxonomías</td><td>WordNet, Schema.org</td></tr>
+                        <tr><td>Relaciones causales</td><td>Redes bayesianas</td><td>Diagnóstico médico</td></tr>
+                        <tr><td>Esquemas (Piaget)</td><td>Frames (Minsky)</td><td>Frame «restaurante»</td></tr>
+                        <tr><td>Narrativas y guiones</td><td>Scripts (Schank)</td><td>Script «visita al doctor»</td></tr>
+                        <tr><td>Mapas espaciales</td><td>Grafos, matrices de adyacencia</td><td>Navegación robótica</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="reveal">
+                <h2 id="procesamiento">Procesamiento de información en sistemas cognitivos</h2>
+                <p>El modelo de procesamiento de información (Atkinson-Shiffrin, 1968) describe tres etapas: <strong>percepción → memoria de trabajo → memoria a largo plazo</strong>. En IA:</p>
                 <ul>
-                    <li><strong>Memoria de Corto Plazo (Working Memory):</strong> Contiene la información relevante para la tarea actual.</li>
-                    <li><strong>Memoria de Largo Plazo:</strong> Repositorio masivo de hechos (semántica) y experiencias (episódica).</li>
-                    <li><strong>Motor de Inferencia:</strong> El "procesador" que aplica las reglas de la memoria procedimental a los datos de la memoria de trabajo.</li>
+                    <li><strong>Percepción:</strong> Sensores, cámaras, micrófonos → CNNs, modelos de percepción.</li>
+                    <li><strong>Memoria de trabajo:</strong> Contexto activo, atención. En Transformers: el mecanismo de <strong>atención</strong> que decide qué información es relevante.</li>
+                    <li><strong>Memoria a largo plazo:</strong> Bases de conocimiento, parámetros entrenados, bases vectoriales (RAG).</li>
                 </ul>
             </section>
 
             <section class="reveal">
-                <h2 id="contexto">Autores e Historia</h2>
-                <p>El modelo cognoscitivo nació en la década de 1950 con la **Revolución Cognitiva**.</p>
-                <ul>
-                    <li><strong>Allen Newell y Herbert Simon:</strong> Ganadores del Premio Turing y padres de la IA simbólica. Propusieron que la mente es un "Sistema de Símbolos Físicos".</li>
-                    <li><strong>John Laird:</strong> Líder actual del proyecto SOAR, enfocándose en la creación de agentes autónomos inteligentes generales.</li>
-                </ul>
+                <h2 id="actividad">Actividad práctica</h2>
+                <h3>Ejercicio resuelto</h3>
+                <p><strong>Pregunta:</strong> Identifica qué componente de la arquitectura ACT-R corresponde a cada elemento de un chatbot moderno.</p>
+                <table class="comparison-table">
+                    <thead><tr><th>ACT-R</th><th>Chatbot (GPT)</th></tr></thead>
+                    <tbody>
+                        <tr><td>Memoria declarativa</td><td>Conocimiento en los parámetros entrenados (weights)</td></tr>
+                        <tr><td>Memoria procedimental</td><td>Capacidad de seguir instrucciones y generar respuestas</td></tr>
+                        <tr><td>Módulo visual</td><td>Input de texto (tokenización)</td></tr>
+                        <tr><td>Goal buffer</td><td>System prompt o instrucciones del usuario</td></tr>
+                    </tbody>
+                </table>
+                <h3>Ejercicio propuesto</h3>
+                <div class="callout callout-tip"><div class="callout-title">📝 Tu turno</div><p>Diseña un diagrama de una arquitectura cognitiva simplificada para un asistente virtual de atención al cliente. Incluye: módulo de percepción (NLP), memoria de trabajo (contexto de la conversación), memoria a largo plazo (base de conocimiento del producto) y módulo de acción (generación de respuesta).</p></div>
             </section>
 
-            <section class="reveal">
-                <h2 id="actividad">Actividad Práctica: Diseño de un Agente Cognitivo</h2>
-                
-                <h3>Ejercicio 1: Resolución por Chunking (SOAR)</h3>
-                <p><strong>Problema:</strong> Un agente en un laberinto llega a un callejón sin salida (bloqueo). Explica cómo lo resuelve el modelo SOAR.</p>
-                <p><strong>Solución paso a paso:</strong></p>
-                <ol>
-                    <li><strong>Detección de Impasse:</strong> El agente no tiene un operador para "atravesar la pared". Se produce un conflicto.</li>
-                    <li><strong>Sub-objetivo:</strong> El sistema crea automáticamente un nuevo objetivo para resolver el bloqueo: "Buscar camino alternativo".</li>
-                    <li><strong>Resolución:</strong> El agente explora, encuentra una salida y **crea una nueva regla de producción** (chunk) que dice: "Si llegas a este punto y hay pared, gira a la derecha".</li>
-                    <li><strong>Aprendizaje:</strong> La próxima vez, el agente usará la regla directamente sin generar el impasse.</li>
-                </ol>
+            <section class="reveal"><h2 id="reporte">Guía para reporte en PDF</h2><div class="report-guide"><h3>📄 Contenido</h3><ol><li>Portada.</li><li>Tabla comparativa de ACT-R, SOAR y CLARION.</li><li>Diagrama de la arquitectura cognitiva del ejercicio propuesto.</li><li>Análisis: ¿Los LLMs actuales son sistemas cognitivos?</li><li>Referencias APA.</li></ol></div></section>
 
-                <h3>Ejercicio 2: Reto para el Estudiante</h3>
-                <div class="callout callout-tip">
-                    <div class="callout-title">📝 Tu turno de modelar</div>
-                    <p>Dibuja un diagrama (o describe el flujo) de un <strong>Modelo Mental</strong> para una cafetera inteligente. Identifica:</p>
-                    <ol>
-                        <li>¿Qué información reside en su <strong>memoria declarativa</strong>? (Ej: Temperatura óptima del agua).</li>
-                        <li>¿Qué reglas residen en su <strong>memoria procedimental</strong>? (Ej: SI el depósito está vacío, ENTONCES encender luz roja).</li>
-                        <li>¿Cómo usaría su modelo mental para predecir que el café se desbordará si se pone una taza pequeña?</li>
-                    </ol>
+            <section class="reveal"><h2 id="video">Video explicativo</h2><div class="video-section"><div class="video-container"><iframe src="https://www.youtube.com/embed/bJ057SBkYtk" title="Ciencia Cognitiva e IA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div></div></section>
+
+            <section class="reveal">
+                <div class="quiz-section">
+                    <h2>📝 Evaluación — Tema 1.6</h2>
+                    <div class="quiz-score"></div>
+                    <div class="quiz-list">
+                        <div class="quiz-card" data-answer="b"><div class="quiz-question-number">Pregunta 1 de 5</div><div class="quiz-question">¿Qué arquitectura cognitiva modela memoria declarativa y procedimental?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> SOAR</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> ACT-R</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> CLARION</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> GPS</div></div><div class="quiz-feedback">✅ ACT-R (Anderson, 1993) distingue memoria declarativa (hechos) y procedimental (habilidades).</div></div>
+                        <div class="quiz-card" data-answer="a"><div class="quiz-question-number">Pregunta 2 de 5</div><div class="quiz-question">¿Qué estructura de IA es análoga a los «frames» de Minsky?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Esquemas de Piaget</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Redes neuronales</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Algoritmos genéticos</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Búsqueda A*</div></div><div class="quiz-feedback">✅ Los frames de Minsky son la versión IA de los esquemas de Piaget: estructuras para organizar conocimiento.</div></div>
+                        <div class="quiz-card" data-answer="c"><div class="quiz-question-number">Pregunta 3 de 5</div><div class="quiz-question">En el modelo Atkinson-Shiffrin, ¿cuáles son las 3 etapas del procesamiento?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Input, proceso, output</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Estímulo, respuesta, refuerzo</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Percepción, memoria de trabajo, memoria a largo plazo</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Codificación, almacenamiento, decodificación</div></div><div class="quiz-feedback">✅ El modelo de almacén triple: registro sensorial → memoria de trabajo → memoria a largo plazo.</div></div>
+                        <div class="quiz-card" data-answer="d"><div class="quiz-question-number">Pregunta 4 de 5</div><div class="quiz-question">¿Qué mecanismo de los Transformers es análogo a la «atención» cognitiva humana?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Backpropagation</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Función de activación</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Dropout</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Self-attention</div></div><div class="quiz-feedback">✅ El mecanismo de self-attention decide qué partes del input son relevantes, análogo a la atención selectiva humana.</div></div>
+                        <div class="quiz-card" data-answer="b"><div class="quiz-question-number">Pregunta 5 de 5</div><div class="quiz-question">¿Qué diferencia al modelo cognoscitivo del conductismo?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Solo se enfoca en el comportamiento</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Modela los procesos mentales internos (la «caja negra»)</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Ignora la percepción</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> No usa datos empíricos</div></div><div class="quiz-feedback">✅ El cognoscitivismo abre la «caja negra» conductista para modelar percepción, memoria, atención y razonamiento.</div></div>
+                    </div>
+                    <button class="quiz-check-btn">Verificar respuestas</button>
                 </div>
             </section>
 
-            <section class="reveal">
-                <h2 id="referencias">Referencias Académicas (2018-2025)</h2>
-                <ul>
-                    <li>Laird, J. E., & Rosenbloom, P. S. (2023). <em>The Soar Cognitive Architecture</em>. MIT Press.</li>
-                    <li>Kotseruba, I., & Tsotsos, J. K. (2020). 40 years of cognitive architectures: core cognitive abilities and practical applications. <em>Artificial Intelligence Review</em>, 53(1), 17-94.</li>
-                    <li>Anderson, J. R. (2020). <em>The Architecture of Cognition</em>. Psychology Press.</li>
-                </ul>
-            </section>
+            <section class="reveal"><div class="conclusion-section"><h2>🎯 Conclusión</h2><p>El modelo cognoscitivo proporciona el marco para diseñar sistemas de IA que simulan procesos mentales humanos. Arquitecturas como ACT-R y SOAR demuestran que es posible modelar computacionalmente la cognición. En la industria, los principios cognitivos se aplican en interfaces de usuario adaptativas, sistemas de tutoría inteligente, asistentes virtuales y diseño UX basado en modelos mentales.</p></div></section>
+
+            <section class="reveal"><h2 id="referencias">Referencias</h2><ul><li>Anderson, J. R. (2007). <em>How Can the Human Mind Occur in the Physical Universe?</em> Oxford University Press.</li><li>Laird, J. E. (2012). <em>The Soar Cognitive Architecture</em>. MIT Press.</li><li>Sun, R. (2020). <em>The Cambridge Handbook of Computational Cognitive Sciences</em>. Cambridge University Press.</li></ul></section>
 
             <nav class="article-nav reveal">
-                <a href="adquisicion-conocimiento.html" class="article-nav-link">
-                    <span class="nav-label">← Anterior</span>
-                    <span class="nav-title">1.5 Adquisición del Conocimiento</span>
-                </a>
-                <a href="agente-inteligente.html" class="article-nav-link next">
-                    <span class="nav-label">Siguiente →</span>
-                    <span class="nav-title">1.7 El Modelo del Agente Inteligente</span>
-                </a>
+                <a href="adquisicion-conocimiento.html" class="article-nav-link"><span class="nav-label">← Anterior</span><span class="nav-title">1.5 Adquisición del Conocimiento</span></a>
+                <a href="agente-inteligente.html" class="article-nav-link next"><span class="nav-label">Siguiente →</span><span class="nav-title">1.7 Agentes Inteligentes</span></a>
             </nav>
         </article>
     </div>
-
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-brand">🤖 AI Blog</div>
-            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
-        </div>
-    </footer>
+    <footer class="footer"><div class="footer-inner"><div class="footer-brand">🤖 AI Blog</div><p>Blog educativo sobre Inteligencia Artificial — © 2026</p></div></footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
-
 </html>

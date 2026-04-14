@@ -1,137 +1,234 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="1.8.3 Búsqueda Local y Optimización Estocástica: Hill Climbing, Simulated Annealing y Algoritmos Genéticos explicados para estudiantes de ISC.">
+    <meta name="description" content="1.8.3 Búsqueda local: Hill Climbing, Simulated Annealing y Algoritmos Genéticos para optimización.">
     <title>1.8.3 Búsqueda Local — AI Blog</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/animations.css">
-    <style>
-        :root {
-            --accent-unit: #3b82f6; /* Azul para Unidad 1 */
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-
-<body>
-    <div class="particles" aria-hidden="true">
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-    </div>
+<body class="has-sidebar">
+    <div class="particles" aria-hidden="true"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div></div>
     <div class="reading-progress" id="readingProgress"></div>
-    <nav class="navbar" id="navbar">
-        <div class="navbar-inner">
-            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
-            <ul class="navbar-links" id="navLinks">
-                <li><a href="../index.html#unidad1">Unidad 1</a></li>
-                <li><a href="../index.html#unidad2">Unidad 2</a></li>
-                <li><a href="../index.html#unidad3">Unidad 3</a></li>
-                <li><a href="../index.html#unidad4">Unidad 4</a></li>
-            </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-        </div>
-    </nav>
+    <nav class="navbar" id="navbar"><div class="navbar-inner"><a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a><ul class="navbar-links" id="navLinks"><li><a href="../index.html#unidad1">Unidad 1</a></li><li><a href="../index.html#unidad2">Unidad 2</a></li><li><a href="../index.html#unidad3">Unidad 3</a></li><li><a href="../index.html#unidad4">Unidad 4</a></li></ul><div class="navbar-right"><button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button><button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button></div></div></nav>
+    <aside class="sidebar" id="sidebar"><div class="sidebar-section"><div class="sidebar-label">Unidad I — Fundamentos</div><ul class="sidebar-links"><li><a href="introduccion-ia.html"><span class="link-number">1.1</span> Introducción a la IA</a></li><li><a href="historia-ia.html"><span class="link-number">1.2</span> Historia de la IA</a></li><li><a href="habilidades-cognoscitivas.html"><span class="link-number">1.3</span> Habilidades Cognoscitivas</a></li><li><a href="razonamiento-logica.html"><span class="link-number">1.4</span> Razonamiento y Lógica</a></li><li><a href="adquisicion-conocimiento.html"><span class="link-number">1.5</span> Adquisición del Conocimiento</a></li><li><a href="modelo-cognoscitivo.html"><span class="link-number">1.6</span> Modelo Cognoscitivo</a></li><li><a href="agente-inteligente.html"><span class="link-number">1.7</span> Agentes Inteligentes</a></li><li><a href="heuristicas.html"><span class="link-number">1.8</span> Heurísticas</a></li><li><a href="algoritmos-busqueda.html"><span class="link-number">1.8.1</span> Algoritmos de Exploración</a></li><li><a href="algoritmo-a-estrella.html"><span class="link-number">1.8.2</span> Algoritmo A*</a></li><li><a href="busqueda-local.html"><span class="link-number">1.8.3</span> Búsqueda Local</a></li></ul></div></aside>
 
     <div class="page-wrapper">
-        <header class="article-hero" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);">
-            <div class="breadcrumb">
-                <a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.8.3 Búsqueda Local</span>
-            </div>
-            <h1>1.8.3 Búsqueda Local y <span class="gradient-text">Optimización</span></h1>
-            <div class="article-meta">
-                <span class="article-meta-item">📖 Lectura: 40 min</span>
-                <span class="article-meta-item">🏷️ Metaheurísticas</span>
-                <span class="article-meta-item">📝 Tema 1.8.3 de la Unidad I</span>
-            </div>
+        <header class="article-hero">
+            <div class="breadcrumb"><a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.8.3 Búsqueda Local</span></div>
+            <h1>1.8.3 <span class="gradient-text">Búsqueda Local</span></h1>
+            <div class="article-meta"><span class="article-meta-item">📖 Lectura: 30 min</span><span class="article-meta-item">🏷️ Optimización</span><span class="article-meta-item">📝 Tema 11 de 11</span></div>
         </header>
 
         <article class="article-content">
-
             <section class="reveal">
-                <h2 id="fundamento">Fundamento Teórico: Buscando la Cima</h2>
-                <p>En muchos problemas de la vida real, no nos importa el camino para llegar a la solución, sino la **solución misma**. Por ejemplo, en el diseño de un circuito integrado, lo importante es la configuración de los componentes que minimiza el calor, no los pasos que dimos para llegar a ese diseño.</p>
-                
-                <p>La **búsqueda local** opera sobre un único nodo (el estado actual) y se mueve solo a sus vecinos. Es extremadamente eficiente en memoria ya que no guarda el árbol de búsqueda.</p>
-
-                <div class="callout callout-info">
-                    <div class="callout-title">🏔️ Hill Climbing (Ascenso de Colinas)</div>
-                    <p>Es un ciclo que se mueve continuamente en la dirección del valor creciente (hacia arriba). Termina cuando alcanza un "pico" donde ningún vecino tiene un valor más alto.</p>
-                    <p><strong>El problema:</strong> Puede quedarse atrapado en <strong>máximos locales</strong> (picos que no son la cima más alta de la montaña), <strong>mesetas</strong> (zonas planas) o <strong>crestas</strong>.</p>
-                </div>
-            </section>
-
-            <section class="reveal">
-                <h2 id="metaheuristicas">Escapando de Máximos Locales</h2>
-                <p>Para evitar los fallos del Hill Climbing, usamos algoritmos inspirados en la naturaleza.</p>
-
-                <h3>1. Simulated Annealing (Recocido Simulado)</h3>
-                <p>Inspirado en el proceso metalúrgico de enfriar metal lentamente para que sus átomos encuentren el estado de mínima energía. El algoritmo permite "movimientos malos" (hacia abajo) al principio con una probabilidad alta, la cual disminuye conforme la "temperatura" baja. Esto permite saltar fuera de los máximos locales.</p>
-
-                <h3>2. Algoritmos Genéticos (AG)</h3>
-                <p>Inspirados en la selección natural de Darwin. En lugar de un solo estado, trabajan con una **población** de estados. Los mejores estados "se reproducen" para crear la siguiente generación.</p>
+                <h2 id="fundamento">¿Qué es la búsqueda local?</h2>
+                <p>La <strong>búsqueda local</strong> es una familia de algoritmos de optimización que operan a partir de una <strong>solución inicial</strong> y la mejoran iterativamente moviéndose a <strong>soluciones vecinas</strong>. A diferencia de búsquedas como BFS o A*, la búsqueda local <strong>no guarda el camino completo</strong> ni explora todo el árbol; solo mantiene el estado actual y sus vecinos.</p>
+                <p>Estas técnicas son ideales cuando:</p>
                 <ul>
-                    <li><strong>Selección:</strong> Elegir a los individuos más aptos basándose en una función de <em>fitness</em>.</li>
-                    <li><strong>Crossover (Cruce):</strong> Combinar partes de dos "padres" para crear "hijos".</li>
-                    <li><strong>Mutación:</strong> Alterar aleatoriamente pequeñas partes de un individuo para mantener la diversidad genética.</li>
+                    <li>El espacio de búsqueda es <strong>enorme</strong> (millones de estados).</li>
+                    <li>Solo importa la <strong>solución</strong>, no el camino para llegar.</li>
+                    <li>Se necesita una <strong>solución rápida y buena</strong>, aunque no perfecta.</li>
                 </ul>
             </section>
 
             <section class="reveal">
-                <h2 id="actividad">Actividad Práctica: Optimización</h2>
-                
-                <h3>Ejercicio 1: Simulando un Algoritmo Genético</h3>
-                <p><strong>Problema:</strong> Queremos encontrar la cadena de bits de longitud 4 con más "1s". Población inicial: A(1000), B(0011).</p>
-                <p><strong>Solución paso a paso:</strong></p>
+                <h2 id="hill-climbing">Hill Climbing (Escalada)</h2>
+                <p><strong>Hill Climbing</strong> es el algoritmo de búsqueda local más simple. Funciona así:</p>
                 <ol>
-                    <li><strong>Evaluación:</strong> Fitness(A)=1, Fitness(B)=2.</li>
-                    <li><strong>Selección:</strong> B tiene más probabilidad de reproducirse.</li>
-                    <li><strong>Cruce:</strong> Cortamos a la mitad. Padre1(10|00), Padre2(00|11). Hijo resultante: 1011.</li>
-                    <li><strong>Mutación:</strong> Cambiamos el segundo bit del hijo por azar: 1111.</li>
-                    <li><strong>Resultado:</strong> ¡Hemos alcanzado el óptimo global en una generación!</li>
+                    <li>Comienza en un estado aleatorio.</li>
+                    <li>Evalúa todos los vecinos.</li>
+                    <li>Se mueve al vecino con mejor valor (si es mejor que el actual).</li>
+                    <li>Repite hasta que no haya vecino mejor → se detuvo en un pico.</li>
                 </ol>
 
-                <h3>Ejercicio 2: Reto para el Estudiante</h3>
-                <div class="callout callout-tip">
-                    <div class="callout-title">📝 Tu turno de optimizar</div>
-                    <p>Imagina una función matemática con muchos picos y valles. Si usas <strong>Hill Climbing</strong> y empiezas muy cerca de un valle profundo, ¿qué pasará? ¿Cómo solucionaría esto el <strong>Simulated Annealing</strong> si la temperatura inicial es muy alta?</p>
+                <div class="callout callout-warning">
+                    <div class="callout-title">⚠️ Problemas de Hill Climbing</div>
+                    <p><strong>Máximos locales:</strong> Se queda atrapado en un pico que no es el global.<br>
+                    <strong>Mesetas:</strong> Regiones planas donde todos los vecinos tienen el mismo valor.<br>
+                    <strong>Crestas:</strong> Superficies estrechas que son difíciles de recorrer.</p>
                 </div>
+
+                <pre><code class="language-python">import random
+
+def hill_climbing(f, generar_vecinos, x_inicial, max_iter=1000):
+    """
+    Hill climbing para maximización.
+    f: función objetivo a maximizar
+    generar_vecinos: genera vecinos del estado actual
+    """
+    actual = x_inicial
+    valor_actual = f(actual)
+    
+    for _ in range(max_iter):
+        vecinos = generar_vecinos(actual)
+        mejor_vecino = max(vecinos, key=f)
+        valor_vecino = f(mejor_vecino)
+        
+        if valor_vecino <= valor_actual:
+            break  # Máximo local alcanzado
+        
+        actual = mejor_vecino
+        valor_actual = valor_vecino
+    
+    return actual, valor_actual</code></pre>
             </section>
 
             <section class="reveal">
-                <h2 id="referencias">Referencias Académicas (2018-2025)</h2>
-                <ul>
-                    <li>Russell, S. J., & Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
-                    <li>Luke, S. (2023). <em>Essentials of Metaheuristics</em>. Lulu (Libro de acceso abierto de referencia en AG y SA).</li>
-                    <li>Mitchell, M. (2024). <em>An Introduction to Genetic Algorithms</em>. MIT Press.</li>
-                </ul>
+                <h2 id="simulated-annealing">Simulated Annealing (Recocido Simulado)</h2>
+                <p><strong>Simulated Annealing (SA)</strong>, propuesto por <strong>Kirkpatrick, Gelatt y Vecchi</strong> (1983), resuelve el problema de los máximos locales inspirándose en el proceso metalúrgico de <strong>recocido</strong>: calentar un metal y enfriarlo lentamente para obtener una estructura cristalina óptima.</p>
+                <p>La idea clave: <strong>permitir movimientos «malos» (subóptimos) con una probabilidad que decrece con el tiempo</strong>. Al inicio, el algoritmo explora libremente. Conforme la «temperatura» baja, se vuelve más selectivo.</p>
+
+                <div class="callout">
+                    <div class="callout-title">🌡️ Probabilidad de aceptación</div>
+                    <p>P(aceptar movimiento peor) = e^(−ΔE / T)</p>
+                    <p>Donde ΔE = cambio en la función objetivo y T = temperatura actual. A temperatura alta, se aceptan muchos movimientos malos. A temperatura baja, casi ninguno.</p>
+                </div>
+
+                <pre><code class="language-python">import random
+import math
+
+def simulated_annealing(f, generar_vecino, x_inicial, 
+                         T_inicial=1000, T_min=1, alpha=0.99):
+    """Simulated Annealing para maximización."""
+    actual = x_inicial
+    valor_actual = f(actual)
+    mejor = actual
+    valor_mejor = valor_actual
+    T = T_inicial
+    
+    while T > T_min:
+        vecino = generar_vecino(actual)
+        valor_vecino = f(vecino)
+        delta = valor_vecino - valor_actual
+        
+        # Aceptar si es mejor, o con probabilidad e^(δ/T)
+        if delta > 0 or random.random() < math.exp(delta / T):
+            actual = vecino
+            valor_actual = valor_vecino
+        
+        # Actualizar mejor solución global
+        if valor_actual > valor_mejor:
+            mejor = actual
+            valor_mejor = valor_actual
+        
+        T *= alpha  # Enfriar
+    
+    return mejor, valor_mejor</code></pre>
             </section>
 
+            <section class="reveal">
+                <h2 id="geneticos">Algoritmos Genéticos</h2>
+                <p>Los <strong>Algoritmos Genéticos (AG)</strong>, propuestos por <strong>John Holland</strong> (1975), se inspiran en la <strong>evolución biológica</strong>: mantienen una <strong>población</strong> de soluciones candidatas que evoluciona generación tras generación mediante <strong>selección, cruzamiento y mutación</strong>.</p>
+
+                <h3>Componentes fundamentales</h3>
+                <table class="comparison-table">
+                    <thead><tr><th>Concepto biológico</th><th>Equivalente en AG</th><th>Función</th></tr></thead>
+                    <tbody>
+                        <tr><td>Individuo</td><td>Solución candidata (cromosoma)</td><td>Una solución codificada</td></tr>
+                        <tr><td>Gen</td><td>Variable de decisión</td><td>Un componente de la solución</td></tr>
+                        <tr><td>Población</td><td>Conjunto de soluciones</td><td>Diversidad de búsqueda</td></tr>
+                        <tr><td>Aptitud (fitness)</td><td>Función objetivo</td><td>Qué tan buena es la solución</td></tr>
+                        <tr><td>Selección natural</td><td>Selección por torneo/ruleta</td><td>Los mejores se reproducen más</td></tr>
+                        <tr><td>Reproducción sexual</td><td>Crossover (cruzamiento)</td><td>Combinar genes de dos padres</td></tr>
+                        <tr><td>Mutación</td><td>Cambio aleatorio de un gen</td><td>Mantener diversidad</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>Pseudocódigo</h3>
+                <pre><code class="language-python">def algoritmo_genetico(fitness, n_poblacion=100, n_generaciones=500,
+                        prob_crossover=0.8, prob_mutacion=0.05):
+    # 1. Inicializar población aleatoria
+    poblacion = [crear_individuo_aleatorio() for _ in range(n_poblacion)]
+    
+    for gen in range(n_generaciones):
+        # 2. Evaluar fitness
+        aptitudes = [fitness(ind) for ind in poblacion]
+        
+        # 3. Selección (torneo)
+        padres = seleccion_torneo(poblacion, aptitudes)
+        
+        # 4. Crossover
+        hijos = []
+        for i in range(0, len(padres), 2):
+            if random.random() < prob_crossover:
+                h1, h2 = crossover(padres[i], padres[i+1])
+            else:
+                h1, h2 = padres[i], padres[i+1]
+            hijos.extend([h1, h2])
+        
+        # 5. Mutación
+        for i in range(len(hijos)):
+            if random.random() < prob_mutacion:
+                hijos[i] = mutar(hijos[i])
+        
+        # 6. Reemplazo
+        poblacion = hijos
+    
+    # Retornar el mejor individuo
+    return max(poblacion, key=fitness)</code></pre>
+            </section>
+
+            <section class="reveal">
+                <h2 id="comparacion">Comparación de algoritmos</h2>
+                <table class="comparison-table">
+                    <thead><tr><th>Criterio</th><th>Hill Climbing</th><th>Simulated Annealing</th><th>Algoritmos Genéticos</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Tipo</strong></td><td>Greedy</td><td>Estocástico</td><td>Poblacional</td></tr>
+                        <tr><td><strong>Escapa de locales</strong></td><td>❌ No</td><td>✅ Sí (con probabilidad)</td><td>✅ Sí (diversidad genética)</td></tr>
+                        <tr><td><strong>Memoria</strong></td><td>O(1)</td><td>O(1)</td><td>O(n)</td></tr>
+                        <tr><td><strong>Parámetros</strong></td><td>Ninguno</td><td>T₀, α, T_min</td><td>Pop size, Pc, Pm</td></tr>
+                        <tr><td><strong>Garantía óptimo</strong></td><td>❌</td><td>Teórica (T→0)</td><td>❌</td></tr>
+                        <tr><td><strong>Uso industria</strong></td><td>Prototipado rápido</td><td>VLSI, logística</td><td>Diseño, scheduling</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="reveal">
+                <h2 id="actividad">Actividad práctica</h2>
+                <h3>Ejercicio resuelto</h3>
+                <p><strong>Problema:</strong> Maximizar f(x) = −x² + 10x con Hill Climbing.</p>
+                <p>Derivada: f'(x) = −2x + 10 = 0 → x = 5 (máximo en x=5, f(5)=25).</p>
+                <p>Con Hill Climbing: Inicio x=0, vecinos x±1. x=0(0) → x=1(9) → x=2(16) → x=3(21) → x=4(24) → x=5(25) → x=6(24) ✗. Se detiene en x=5. ✅ Encontró el óptimo global (porque la función es unimodal).</p>
+
+                <h3>Ejercicio propuesto</h3>
+                <div class="callout callout-tip"><div class="callout-title">📝 Tu turno</div><p>Implementa Simulated Annealing en Python para maximizar f(x) = sin(x) × x en el rango [0, 20]. Ejecuta múltiples veces y registra si encuentra el máximo global. Experimenta con diferentes valores de α (0.99, 0.95, 0.9) y analiza el efecto en la convergencia.</p></div>
+            </section>
+
+            <section class="reveal"><h2 id="reporte">Guía para reporte en PDF</h2><div class="report-guide"><h3>📄 Contenido</h3><ol><li>Portada.</li><li>Diagrama de Hill Climbing mostrando máximo local vs. global.</li><li>Código Python ejecutado de Simulated Annealing.</li><li>Tabla de resultados con diferentes valores de α.</li><li>Tabla comparativa de los 3 algoritmos.</li><li>Conclusión: ¿Cuándo usar cada uno?</li><li>Referencias APA.</li></ol></div></section>
+
+            <section class="reveal"><h2 id="video">Video explicativo</h2><div class="video-section"><div class="video-container"><iframe src="https://www.youtube.com/embed/oSdPmxRCWgs" title="Genetic Algorithms Explained" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div></div></section>
+
+            <section class="reveal">
+                <div class="quiz-section">
+                    <h2>📝 Evaluación — Tema 1.8.3</h2>
+                    <div class="quiz-score"></div>
+                    <div class="quiz-list">
+                        <div class="quiz-card" data-answer="c"><div class="quiz-question-number">Pregunta 1 de 5</div><div class="quiz-question">¿Cuál es el principal problema de Hill Climbing?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Usa demasiada memoria</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Es demasiado lento</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Se queda atrapado en máximos locales</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> No puede manejar funciones continuas</div></div><div class="quiz-feedback">✅ Hill Climbing es greedy: acepta solo mejoras, por lo que se queda en el primer pico que encuentre.</div></div>
+                        <div class="quiz-card" data-answer="a"><div class="quiz-question-number">Pregunta 2 de 5</div><div class="quiz-question">¿Qué proceso metalúrgico inspira Simulated Annealing?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Recocido (calentamiento y enfriamiento lento)</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Forjado (golpear metal caliente)</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Galvanizado (recubrimiento de zinc)</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Soldadura (unión de metales)</div></div><div class="quiz-feedback">✅ Simulated Annealing simula el recocido metalúrgico para escapar de óptimos locales.</div></div>
+                        <div class="quiz-card" data-answer="d"><div class="quiz-question-number">Pregunta 3 de 5</div><div class="quiz-question">En algoritmos genéticos, ¿qué operador combina genes de dos padres?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Mutación</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Selección</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Inversión</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Crossover (cruzamiento)</div></div><div class="quiz-feedback">✅ El crossover combina información genética de dos padres para crear hijos con características de ambos.</div></div>
+                        <div class="quiz-card" data-answer="b"><div class="quiz-question-number">Pregunta 4 de 5</div><div class="quiz-question">¿Para qué sirve la mutación en algoritmos genéticos?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Para eliminar individuos débiles</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Para mantener la diversidad genética y evitar convergencia prematura</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Para evaluar la aptitud</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Para seleccionar los mejores padres</div></div><div class="quiz-feedback">✅ La mutación introduce variaciones aleatorias que mantienen la diversidad y evitan convergencia prematura a óptimos locales.</div></div>
+                        <div class="quiz-card" data-answer="c"><div class="quiz-question-number">Pregunta 5 de 5</div><div class="quiz-question">¿Qué fórmula determina la probabilidad de aceptar un movimiento peor en SA?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> P = 1 / T</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> P = ΔE × T</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> P = e^(−ΔE / T)</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> P = T / ΔE</div></div><div class="quiz-feedback">✅ P = e^(−ΔE/T). A temperatura alta, P es grande (acepta muchos). A T baja, P→0 (solo acepta mejoras).</div></div>
+                    </div>
+                    <button class="quiz-check-btn">Verificar respuestas</button>
+                </div>
+            </section>
+
+            <section class="reveal"><div class="conclusion-section"><h2>🎯 Conclusión</h2><p>La búsqueda local es esencial para problemas de optimización de gran escala donde las búsquedas exhaustivas son impracticables. Hill climbing es un punto de partida rápido pero miope. Simulated annealing añade exploración estocástica para escapar de óptimos locales. Los algoritmos genéticos aprovechan la diversidad poblacional para explorar el espacio de soluciones en paralelo. En la industria, estos algoritmos optimizan rutas de logística (TSP), diseño de circuitos (VLSI), scheduling de producción, y entrenamiento de redes neuronales.</p></div></section>
+
+            <section class="reveal"><h2 id="referencias">Referencias</h2><ul><li>Russell, S. J., & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson. Cap. 4.</li><li>Kirkpatrick, S., Gelatt, C. D., & Vecchi, M. P. (1983). Optimization by Simulated Annealing. <em>Science</em>, 220(4598), 671–680.</li><li>Mitchell, M. (1998). <em>An Introduction to Genetic Algorithms</em>. MIT Press.</li><li>Holland, J. H. (1975). <em>Adaptation in Natural and Artificial Systems</em>. University of Michigan Press.</li></ul></section>
+
             <nav class="article-nav reveal">
-                <a href="algoritmo-a-estrella.html" class="article-nav-link">
-                    <span class="nav-label">← Anterior</span>
-                    <span class="nav-title">1.8.2 Algoritmo A*</span>
-                </a>
-                <a href="../index.html" class="article-nav-link next">
-                    <span class="nav-label">Finalizar →</span>
-                    <span class="nav-title">Volver al Inicio</span>
-                </a>
+                <a href="algoritmo-a-estrella.html" class="article-nav-link"><span class="nav-label">← Anterior</span><span class="nav-title">1.8.2 Algoritmo A*</span></a>
+                <a href="../index.html" class="article-nav-link next"><span class="nav-label">Inicio →</span><span class="nav-title">Explorar todos los temas</span></a>
             </nav>
         </article>
     </div>
-
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-brand">🤖 AI Blog</div>
-            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
-        </div>
-    </footer>
+    <footer class="footer"><div class="footer-inner"><div class="footer-brand">🤖 AI Blog</div><p>Blog educativo sobre Inteligencia Artificial — © 2026</p></div></footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
-
 </html>

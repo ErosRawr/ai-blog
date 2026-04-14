@@ -1,167 +1,147 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="1.7 El modelo del agente inteligente: definiciones, propiedades, tipos y arquitecturas en la Inteligencia Artificial moderna.">
-    <title>1.7 Agente Inteligente — AI Blog</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/animations.css">
-    <style>
-        :root {
-            --accent-unit: #3b82f6; /* Azul para Unidad 1 */
-        }
-    </style>
+    <meta name="description" content="1.7 Agentes inteligentes, sistemas multi-agente y computación ubicua: tipos, arquitecturas PEAS, cooperación y IoT.">
+    <title>1.7 Agentes Inteligentes — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-
-<body>
-    <div class="particles" aria-hidden="true">
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-    </div>
+<body class="has-sidebar">
+    <div class="particles" aria-hidden="true"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div></div>
     <div class="reading-progress" id="readingProgress"></div>
-    <nav class="navbar" id="navbar">
-        <div class="navbar-inner">
-            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
-            <ul class="navbar-links" id="navLinks">
-                <li><a href="../index.html#unidad1">Unidad 1</a></li>
-                <li><a href="../index.html#unidad2">Unidad 2</a></li>
-                <li><a href="../index.html#unidad3">Unidad 3</a></li>
-                <li><a href="../index.html#unidad4">Unidad 4</a></li>
-            </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-        </div>
-    </nav>
+    <nav class="navbar" id="navbar"><div class="navbar-inner"><a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a><ul class="navbar-links" id="navLinks"><li><a href="../index.html#unidad1">Unidad 1</a></li><li><a href="../index.html#unidad2">Unidad 2</a></li><li><a href="../index.html#unidad3">Unidad 3</a></li><li><a href="../index.html#unidad4">Unidad 4</a></li></ul><div class="navbar-right"><button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button><button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button></div></div></nav>
+    <aside class="sidebar" id="sidebar"><div class="sidebar-section"><div class="sidebar-label">Unidad I — Fundamentos</div><ul class="sidebar-links"><li><a href="introduccion-ia.html"><span class="link-number">1.1</span> Introducción a la IA</a></li><li><a href="historia-ia.html"><span class="link-number">1.2</span> Historia de la IA</a></li><li><a href="habilidades-cognoscitivas.html"><span class="link-number">1.3</span> Habilidades Cognoscitivas</a></li><li><a href="razonamiento-logica.html"><span class="link-number">1.4</span> Razonamiento y Lógica</a></li><li><a href="adquisicion-conocimiento.html"><span class="link-number">1.5</span> Adquisición del Conocimiento</a></li><li><a href="modelo-cognoscitivo.html"><span class="link-number">1.6</span> Modelo Cognoscitivo</a></li><li><a href="agente-inteligente.html"><span class="link-number">1.7</span> Agentes Inteligentes</a></li><li><a href="heuristicas.html"><span class="link-number">1.8</span> Heurísticas</a></li><li><a href="algoritmos-busqueda.html"><span class="link-number">1.8.1</span> Algoritmos de Exploración</a></li><li><a href="algoritmo-a-estrella.html"><span class="link-number">1.8.2</span> Algoritmo A*</a></li><li><a href="busqueda-local.html"><span class="link-number">1.8.3</span> Búsqueda Local</a></li></ul></div></aside>
 
     <div class="page-wrapper">
-        <header class="article-hero" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);">
-            <div class="breadcrumb">
-                <a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.7 El Agente Inteligente</span>
-            </div>
-            <h1>1.7 El Modelo del <span class="gradient-text">Agente Inteligente</span></h1>
-            <div class="article-meta">
-                <span class="article-meta-item">📖 Lectura: 35 min</span>
-                <span class="article-meta-item">🏷️ Agentes de IA</span>
-                <span class="article-meta-item">📝 Tema 1.7 de la Unidad I</span>
-            </div>
+        <header class="article-hero">
+            <div class="breadcrumb"><a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.7 Agentes Inteligentes</span></div>
+            <h1>1.7 Agentes Inteligentes, <span class="gradient-text">Multi-Agentes y Ubicuos</span></h1>
+            <div class="article-meta"><span class="article-meta-item">📖 Lectura: 30 min</span><span class="article-meta-item">🏷️ Agentes</span><span class="article-meta-item">📝 Tema 7 de 11</span></div>
         </header>
 
         <article class="article-content">
-
             <section class="reveal">
-                <h2 id="fundamento">Fundamento Teórico: ¿Qué es un Agente?</h2>
-                <p>En IA, un **agente inteligente** es cualquier entidad capaz de **percibir** su entorno mediante sensores, **procesar** esa información y **actuar** sobre el entorno mediante actuadores para alcanzar sus objetivos. Es el concepto central de la IA moderna (Russell & Norvig).</p>
-                
-                <p>La inteligencia de un agente no reside solo en su capacidad de procesar datos, sino en su **racionalidad**: su capacidad de elegir siempre la acción que, dada su percepción y conocimiento, maximice su éxito esperado.</p>
-
-                <div class="callout callout-info">
-                    <div class="callout-title">📋 Especificación PEAS</div>
-                    <p>Para diseñar un agente, debemos definir sus cuatro componentes fundamentales:</p>
-                    <ul>
-                        <li><strong>P (Performance):</strong> Medida de rendimiento (éxito).</li>
-                        <li><strong>E (Environment):</strong> El entorno donde opera.</li>
-                        <li><strong>A (Actuators):</strong> Medios para realizar acciones.</li>
-                        <li><strong>S (Sensors):</strong> Medios para obtener información del entorno.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="reveal">
-                <h2 id="propiedades">Propiedades de los Agentes</h2>
-                <p>Un agente inteligente se distingue de un programa convencional por estas propiedades fundamentales:</p>
+                <h2 id="definicion">¿Qué es un agente inteligente?</h2>
+                <p>Un <strong>agente inteligente</strong> es cualquier entidad que <strong>percibe su entorno</strong> a través de sensores y <strong>actúa sobre él</strong> a través de actuadores, con el objetivo de maximizar una medida de rendimiento. Es el concepto central de la IA moderna (Russell & Norvig, 2021).</p>
+                <p>Un agente puede ser un robot físico, un programa de software, un chatbot, un termostato inteligente o incluso un ser humano. Lo que define al agente no es su naturaleza, sino su función: <strong>percibir → razonar → actuar</strong>.</p>
 
                 <div class="concept-grid">
-                    <div class="concept-card">
-                        <h4>Autonomía</h4>
-                        <p>Capacidad de operar sin intervención humana directa y tener control sobre sus acciones y estado interno.</p>
-                    </div>
-                    <div class="concept-card">
-                        <h4>Reactividad</h4>
-                        <p>Habilidad de percibir cambios en el entorno y responder a ellos de manera oportuna.</p>
-                    </div>
-                    <div class="concept-card">
-                        <h4>Proactividad</h4>
-                        <p>No solo responde al entorno, sino que toma la iniciativa basándose en sus propios objetivos.</p>
-                    </div>
-                    <div class="concept-card">
-                        <h4>Sociabilidad</h4>
-                        <p>Habilidad de interactuar con otros agentes (humanos o artificiales).</p>
-                    </div>
+                    <div class="concept-card"><div class="concept-card-icon">👀</div><h4>Sensores</h4><p>Reciben información del entorno. Cámaras, micrófonos, GPS, API de datos, input de texto.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">🧠</div><h4>Función agente</h4><p>Mapea la secuencia de percepciones a una acción: f: P* → A. Es la «inteligencia» del agente.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">🦾</div><h4>Actuadores</h4><p>Ejecutan acciones en el entorno. Motores, pantallas, altavoces, llamadas a API.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">📊</div><h4>Medida de rendimiento</h4><p>Criterio externo para evaluar el éxito del agente. Maximizar recompensa, minimizar error.</p></div>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="arquitecturas">Arquitecturas de Agentes</h2>
-                <p>La "anatomía mental" de un agente determina cómo procesa la información.</p>
-
-                <ul>
-                    <li><strong>Agentes de Reflejo Simple:</strong> Responden directamente a las percepciones actuales mediante reglas condición-acción (Si ocurre A, haz B).</li>
-                    <li><strong>Agentes basados en Modelos:</strong> Mantienen un estado interno que representa "el mundo que no ven ahora", permitiéndoles manejar entornos parcialmente observables.</li>
-                    <li><strong>Agentes basados en Objetivos:</strong> Actúan para alcanzar una meta específica; consideran el futuro antes de actuar.</li>
-                    <li><strong>Agentes basados en Utilidad:</strong> No solo buscan alcanzar la meta, sino hacerlo de la manera más eficiente o preferible (miden "qué tan feliz" les hace una acción).</li>
-                </ul>
-
-                <p><strong>Arquitecturas Híbridas:</strong> Combinan la rapidez de los reflejos (reactividad) con la inteligencia de la planificación (deliberación).</p>
+                <h2 id="peas">Descripción PEAS</h2>
+                <p>Todo agente se describe formalmente con cuatro componentes — <strong>PEAS</strong>:</p>
+                <table class="comparison-table">
+                    <thead><tr><th>Componente</th><th>Significado</th><th>Ejemplo: Coche autónomo</th><th>Ejemplo: Chatbot</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>P</strong>erformance</td><td>Medida de éxito</td><td>Seguridad, tiempo de viaje, confort</td><td>Satisfacción del usuario, resolución</td></tr>
+                        <tr><td><strong>E</strong>nvironment</td><td>Entorno</td><td>Calles, otros vehículos, peatones</td><td>Conversación de texto, contexto web</td></tr>
+                        <tr><td><strong>A</strong>ctuators</td><td>Efectores</td><td>Volante, acelerador, frenos</td><td>Texto generado, botones de acción</td></tr>
+                        <tr><td><strong>S</strong>ensors</td><td>Sensores</td><td>Cámaras, LiDAR, GPS, radar</td><td>Input de texto, historial, metadata</td></tr>
+                    </tbody>
+                </table>
             </section>
 
             <section class="reveal">
-                <h2 id="actividad">Actividad Práctica: Diseño de Agentes</h2>
-                
-                <h3>Ejercicio 1: Especificación PEAS de un Vehículo Autónomo</h3>
-                <p><strong>Problema:</strong> Define los componentes del agente que controla un coche que se conduce solo.</p>
-                <p><strong>Solución paso a paso:</strong></p>
-                <ol>
-                    <li><strong>Rendimiento (P):</strong> Seguridad, llegar al destino rápido, cumplir leyes de tráfico, confort del pasajero.</li>
-                    <li><strong>Entorno (E):</strong> Calles, otros coches, peatones, semáforos, clima.</li>
-                    <li><strong>Actuadores (A):</strong> Volante, acelerador, freno, luces intermitentes, pantalla/voz.</li>
-                    <li><strong>Sensores (S):</strong> Cámaras, LiDAR, radar, GPS, velocímetro, sensores de proximidad.</li>
-                </ol>
-
-                <h3>Ejercicio 2: Reto para el Estudiante</h3>
-                <div class="callout callout-tip">
-                    <div class="callout-title">📝 Tu turno de diseñar</div>
-                    <p>Diseña un <strong>Agente Basado en Utilidad</strong> para un brazo robótico recolector de frutas en una granja automatizada. Define su PEAS y responde:</p>
-                    <ol>
-                        <li>¿Por qué debe ser basado en utilidad y no solo en objetivos? (Pista: considera la calidad de la fruta).</li>
-                        <li>¿Cómo se manifiesta su propiedad de **autonomía** frente a cambios inesperados (ej: lluvia repentina)?</li>
-                    </ol>
+                <h2 id="tipos">Tipos de agentes (Russell & Norvig)</h2>
+                <div class="concept-grid">
+                    <div class="concept-card"><div class="concept-card-icon">1️⃣</div><h4>Reactivo simple</h4><p>Responde directamente a percepciones con reglas condición-acción. Sin memoria. Ej: termostato.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">2️⃣</div><h4>Reactivo basado en modelo</h4><p>Mantiene un modelo interno del mundo. Puede manejar observabilidad parcial. Ej: Roomba con mapa.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">3️⃣</div><h4>Basado en objetivos</h4><p>Tiene metas y planifica acciones para alcanzarlas. Ej: GPS, planificador de rutas.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">4️⃣</div><h4>Basado en utilidad</h4><p>Maximiza una función de utilidad cuando hay múltiples objetivos conflictivos. Ej: trading algorítmico.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">5️⃣</div><h4>Agente que aprende</h4><p>Tiene un componente de aprendizaje que mejora su desempeño con experiencia. Ej: AlphaGo, ChatGPT.</p></div>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="referencias">Referencias Académicas (2018-2025)</h2>
+                <h2 id="propiedades-entorno">Propiedades del entorno</h2>
+                <table class="comparison-table">
+                    <thead><tr><th>Propiedad</th><th>Descripción</th><th>Ejemplo plenamente</th><th>Ejemplo parcialmente</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Observable</strong></td><td>¿El agente ve todo el estado?</td><td>Ajedrez (totalmente)</td><td>Conducción (parcialmente)</td></tr>
+                        <tr><td><strong>Determinista</strong></td><td>¿El siguiente estado es predecible?</td><td>Ajedrez (sí)</td><td>Tráfico (no, estocástico)</td></tr>
+                        <tr><td><strong>Episódico</strong></td><td>¿Las acciones son independientes?</td><td>Clasificar imágenes (sí)</td><td>Conversación (no, secuencial)</td></tr>
+                        <tr><td><strong>Estático</strong></td><td>¿El entorno cambia mientras piensa?</td><td>Crucigramas (sí)</td><td>Conducción (no, dinámico)</td></tr>
+                        <tr><td><strong>Discreto</strong></td><td>¿Estados finitos o infinitos?</td><td>Ajedrez (discreto)</td><td>Conducción (continuo)</td></tr>
+                        <tr><td><strong>Multi-agente</strong></td><td>¿Hay otros agentes?</td><td>Solitario (no)</td><td>Tráfico (sí)</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="reveal">
+                <h2 id="multiagente">Sistemas Multi-Agente (MAS)</h2>
+                <p>Un <strong>sistema multi-agente</strong> es un sistema compuesto por múltiples agentes que interactúan entre sí. La interacción puede ser <strong>cooperativa</strong> (trabajan juntos) o <strong>competitiva</strong> (tienen objetivos opuestos).</p>
+                <div class="concept-grid">
+                    <div class="concept-card"><div class="concept-card-icon">🤝</div><h4>Cooperación</h4><p>Agentes trabajan juntos para un objetivo común. Ejemplo: enjambre de drones, robots de almacén Amazon.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">⚔️</div><h4>Competición</h4><p>Agentes con objetivos opuestos. Ejemplo: ajedrez, subastas, trading algorítmico.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">📡</div><h4>Comunicación</h4><p>Protocolos para intercambiar información: FIPA-ACL, mensajes, pizarra compartida.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">🏛️</div><h4>Negociación</h4><p>Mecanismos para resolver conflictos: subastas, votación, Contract Net Protocol.</p></div>
+                </div>
+                <p><strong>Frameworks:</strong> JADE (Java), MESA (Python), NetLogo (simulación).</p>
+            </section>
+
+            <section class="reveal">
+                <h2 id="ubicuos">Sistemas Ubicuos y la IA en todas partes</h2>
+                <p>La <strong>computación ubicua</strong> (Mark Weiser, 1991) imagina un mundo donde las computadoras están integradas en los objetos cotidianos, invisibles para el usuario, pero proporcionando servicios inteligentes continuamente.</p>
                 <ul>
-                    <li>Russell, S. J., & Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
-                    <li>Wooldridge, M. (2020). <em>An Introduction to MultiAgent Systems</em> (2nd ed.). Wiley.</li>
-                    <li>Luger, G. F. (2023). <em>Artificial Intelligence: Structures and Strategies for Complex Problem Solving</em> (7th ed.). Pearson.</li>
+                    <li><strong>IoT (Internet of Things):</strong> Sensores y dispositivos conectados que generan datos. Smart homes, wearables, sensores industriales.</li>
+                    <li><strong>Edge AI:</strong> Procesamiento de IA en el dispositivo, sin depender de la nube (TinyML, NVIDIA Jetson).</li>
+                    <li><strong>Ambient Intelligence (AmI):</strong> Entornos sensibles y adaptativos. Un hogar que ajusta iluminación, temperatura y música según tu estado de ánimo.</li>
                 </ul>
             </section>
+
+            <section class="reveal">
+                <h2 id="actividad">Actividad práctica</h2>
+                <h3>Ejercicio resuelto: Descripción PEAS</h3>
+                <p>Describe el PEAS de un agente aspiradora inteligente:</p>
+                <table class="comparison-table">
+                    <thead><tr><th>P</th><th>E</th><th>A</th><th>S</th></tr></thead>
+                    <tbody><tr><td>Limpieza máxima, eficiencia energética</td><td>Habitación con paredes, muebles, suciedad</td><td>Moverse, aspirar, girar</td><td>Sensor de suciedad, bumpers, IR</td></tr></tbody>
+                </table>
+                <h3>Ejercicio propuesto</h3>
+                <div class="callout callout-tip"><div class="callout-title">📝 Tu turno</div><p>Describe el PEAS de: (1) Un agente de recomendación de películas (Netflix), (2) Un dron de entrega de paquetes.</p></div>
+            </section>
+
+            <section class="reveal"><h2 id="reporte">Guía para reporte en PDF</h2><div class="report-guide"><h3>📄 Contenido</h3><ol><li>Portada.</li><li>Tabla PEAS resuelta para los dos agentes propuestos.</li><li>Clasificación de tipo de agente para cada caso.</li><li>Ensayo breve: «¿Cómo cambiarán los sistemas ubicuos con la IA generativa?»</li><li>Referencias APA.</li></ol></div></section>
+
+            <section class="reveal"><h2 id="video">Video explicativo</h2><div class="video-section"><div class="video-container"><iframe src="https://www.youtube.com/embed/nOcLHMpaPd4" title="Agentes Inteligentes" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div></div></section>
+
+            <section class="reveal">
+                <div class="quiz-section">
+                    <h2>📝 Evaluación — Tema 1.7</h2>
+                    <div class="quiz-score"></div>
+                    <div class="quiz-list">
+                        <div class="quiz-card" data-answer="c"><div class="quiz-question-number">Pregunta 1 de 5</div><div class="quiz-question">¿Qué componentes forman la descripción PEAS de un agente?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Percepción, Ejecución, Análisis, Síntesis</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Plan, Estado, Acción, Sensor</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Performance, Environment, Actuators, Sensors</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Programa, Entorno, Algoritmo, Sistema</div></div><div class="quiz-feedback">✅ PEAS = Performance, Environment, Actuators, Sensors — descripción formal de un agente.</div></div>
+                        <div class="quiz-card" data-answer="a"><div class="quiz-question-number">Pregunta 2 de 5</div><div class="quiz-question">¿Qué tipo de agente mantiene un modelo interno del mundo para manejar observabilidad parcial?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Reactivo basado en modelo</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Reactivo simple</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Basado en utilidad</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Basado en objetivos</div></div><div class="quiz-feedback">✅ El agente reactivo basado en modelo mantiene un estado interno que actualiza con cada percepción.</div></div>
+                        <div class="quiz-card" data-answer="d"><div class="quiz-question-number">Pregunta 3 de 5</div><div class="quiz-question">En un sistema multi-agente cooperativo, ¿qué protocolo permite a un agente subcontratar tareas?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> HTTP</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> TCP/IP</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> FIPA-ACL únicamente</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Contract Net Protocol</div></div><div class="quiz-feedback">✅ El Contract Net Protocol permite a un agente anunciar tareas y seleccionar al mejor ofertante.</div></div>
+                        <div class="quiz-card" data-answer="b"><div class="quiz-question-number">Pregunta 4 de 5</div><div class="quiz-question">¿Quién acuñó el concepto de «computación ubicua»?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Tim Berners-Lee</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Mark Weiser</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Alan Turing</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> John McCarthy</div></div><div class="quiz-feedback">✅ Mark Weiser (Xerox PARC, 1991) acuñó el término «ubiquitous computing».</div></div>
+                        <div class="quiz-card" data-answer="c"><div class="quiz-question-number">Pregunta 5 de 5</div><div class="quiz-question">¿Qué término describe el procesamiento de IA directamente en el dispositivo, sin enviar datos a la nube?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Cloud AI</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Fog Computing</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Edge AI</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Grid Computing</div></div><div class="quiz-feedback">✅ Edge AI procesa datos localmente en el dispositivo (TinyML, NVIDIA Jetson) para baja latencia y privacidad.</div></div>
+                    </div>
+                    <button class="quiz-check-btn">Verificar respuestas</button>
+                </div>
+            </section>
+
+            <section class="reveal"><div class="conclusion-section"><h2>🎯 Conclusión</h2><p>El concepto de agente inteligente es el pilar de la IA moderna. La descripción PEAS y la clasificación de tipos de agentes proporcionan un lenguaje formal para diseñar y evaluar sistemas inteligentes. Los sistemas multi-agente extienden este concepto a la cooperación y competición entre múltiples entidades, mientras que la computación ubicua y Edge AI llevan la inteligencia artificial a todos los dispositivos cotidianos. En la industria, estos conceptos se aplican en drones autónomos, cadenas de suministro, ciudades inteligentes y asistentes virtuales.</p></div></section>
+
+            <section class="reveal"><h2 id="referencias">Referencias</h2><ul><li>Russell, S. J., & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson. Caps. 2–5.</li><li>Wooldridge, M. (2009). <em>An Introduction to MultiAgent Systems</em> (2nd ed.). Wiley.</li><li>Weiser, M. (1991). The Computer for the 21st Century. <em>Scientific American</em>, 265(3), 94–104.</li><li>Shi, W., et al. (2020). Edge Computing: Vision and Challenges. <em>IEEE Internet of Things Journal</em>, 3(5), 637–646.</li></ul></section>
 
             <nav class="article-nav reveal">
-                <a href="modelo-cognoscitivo.html" class="article-nav-link">
-                    <span class="nav-label">← Anterior</span>
-                    <span class="nav-title">1.6 Modelo Cognoscitivo</span>
-                </a>
-                <a href="sistemas-multiagente.html" class="article-nav-link next">
-                    <span class="nav-label">Siguiente →</span>
-                    <span class="nav-title">1.7.1 Sistemas Multi-Agente y Ubicuidad</span>
-                </a>
+                <a href="modelo-cognoscitivo.html" class="article-nav-link"><span class="nav-label">← Anterior</span><span class="nav-title">1.6 Modelo Cognoscitivo</span></a>
+                <a href="heuristicas.html" class="article-nav-link next"><span class="nav-label">Siguiente →</span><span class="nav-title">1.8 Heurísticas</span></a>
             </nav>
         </article>
     </div>
-
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-brand">🤖 AI Blog</div>
-            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
-        </div>
-    </footer>
+    <footer class="footer"><div class="footer-inner"><div class="footer-brand">🤖 AI Blog</div><p>Blog educativo sobre Inteligencia Artificial — © 2026</p></div></footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
-
 </html>

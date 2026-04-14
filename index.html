@@ -11,11 +11,9 @@
     <meta name="author" content="AI Blog">
     <title>IA Blog — Inteligencia Artificial desde cero</title>
 
-    <!-- Google Fonts preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/animations.css">
 </head>
@@ -24,8 +22,6 @@
 
     <!-- Floating Particles -->
     <div class="particles" aria-hidden="true">
-        <div class="particle"></div>
-        <div class="particle"></div>
         <div class="particle"></div>
         <div class="particle"></div>
         <div class="particle"></div>
@@ -49,7 +45,10 @@
                 <li><a href="#unidad4">Unidad 4</a></li>
             </ul>
 
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
 
@@ -81,7 +80,7 @@
 
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <div class="hero-stat-number">13</div>
+                    <div class="hero-stat-number">11</div>
                     <div class="hero-stat-label">Temas — Unidad 1</div>
                 </div>
                 <div class="hero-stat">
@@ -105,7 +104,7 @@
         <div class="section-header reveal unit-1" id="unidad1">
             <span class="section-label">Unidad I — Fundamentos de la IA</span>
             <h2>Explora los temas</h2>
-            <p>Cada artículo explica conceptos de IA de forma accesible con analogías, ejemplos y visualizaciones.</p>
+            <p>Cada artículo explica conceptos de IA de forma accesible con analogías, ejemplos, quizzes y código.</p>
         </div>
 
         <div class="cards-grid">
@@ -115,8 +114,8 @@
                 <span class="card-number">01</span>
                 <div class="card-icon">🧠</div>
                 <h3>Introducción a la IA</h3>
-                <p>¿Qué es la inteligencia artificial? Conceptos básicos, definiciones y por qué importa hoy más que
-                    nunca.</p>
+                <p>¿Qué es la inteligencia artificial? Definiciones formales, ramas, IA débil vs fuerte, IA general vs
+                    estrecha.</p>
                 <div class="card-tags">
                     <span class="card-tag">Fundamentos</span>
                     <span class="card-tag">Definiciones</span>
@@ -129,8 +128,7 @@
                 <span class="card-number">02</span>
                 <div class="card-icon">📜</div>
                 <h3>Historia de la IA</h3>
-                <p>Desde Turing hasta ChatGPT: un recorrido por los momentos clave que definieron la inteligencia
-                    artificial.</p>
+                <p>Desde Turing hasta ChatGPT: hitos clave, inviernos de la IA y el resurgimiento con deep learning.</p>
                 <div class="card-tags">
                     <span class="card-tag">Historia</span>
                     <span class="card-tag">Evolución</span>
@@ -142,36 +140,22 @@
             <a href="pages/habilidades-cognoscitivas.html" class="card unit-1" id="card-habilidades">
                 <span class="card-number">03</span>
                 <div class="card-icon">🎯</div>
-                <h3>Habilidades Cognoscitivas</h3>
-                <p>Las capacidades mentales que nos hacen inteligentes, según la psicología: percepción, memoria,
-                    razonamiento…</p>
+                <h3>Habilidades Cognoscitivas y Teorías de la Inteligencia</h3>
+                <p>Conductismo, inteligencias múltiples de Gardner, Piaget y la comparación entre inteligencia humana e
+                    IA.</p>
                 <div class="card-tags">
                     <span class="card-tag">Psicología</span>
-                    <span class="card-tag">Cognición</span>
+                    <span class="card-tag">Gardner</span>
                 </div>
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
             <!-- Card 4 -->
-            <a href="pages/teorias-inteligencia.html" class="card unit-1" id="card-teorias">
-                <span class="card-number">04</span>
-                <div class="card-icon">💡</div>
-                <h3>Teorías de la Inteligencia</h3>
-                <p>Conductismo, inteligencias múltiples de Gardner, y cómo la psicología intenta explicar qué es ser
-                    inteligente.</p>
-                <div class="card-tags">
-                    <span class="card-tag">Gardner</span>
-                    <span class="card-tag">Conductismo</span>
-                </div>
-                <div class="card-arrow">Leer artículo →</div>
-            </a>
-
-            <!-- Card 5 -->
             <a href="pages/razonamiento-logica.html" class="card unit-1" id="card-razonamiento">
-                <span class="card-number">05</span>
+                <span class="card-number">04</span>
                 <div class="card-icon">⚙️</div>
                 <h3>Razonamiento y Lógica</h3>
-                <p>Axiomas, teoremas y demostración: cómo la lógica formal permite que las máquinas razonen paso a paso.
+                <p>Axiomas, teoremas, lógica proposicional y de predicados. Razonamiento deductivo e inductivo en IA.
                 </p>
                 <div class="card-tags">
                     <span class="card-tag">Lógica</span>
@@ -180,26 +164,26 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card 6 -->
+            <!-- Card 5 -->
             <a href="pages/adquisicion-conocimiento.html" class="card unit-1" id="card-conocimiento">
-                <span class="card-number">06</span>
+                <span class="card-number">05</span>
                 <div class="card-icon">📚</div>
                 <h3>Adquisición del Conocimiento</h3>
-                <p>¿Cómo aprenden las máquinas? Modelos, representaciones y métodos para capturar el saber humano.</p>
+                <p>Empirismo vs racionalismo, epistemología aplicada a la IA, cómo «aprenden» las máquinas desde una
+                    perspectiva filosófica.</p>
                 <div class="card-tags">
-                    <span class="card-tag">Aprendizaje</span>
-                    <span class="card-tag">Conocimiento</span>
+                    <span class="card-tag">Filosofía</span>
+                    <span class="card-tag">Epistemología</span>
                 </div>
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card 7 -->
+            <!-- Card 6 -->
             <a href="pages/modelo-cognoscitivo.html" class="card unit-1" id="card-cognoscitivo">
-                <span class="card-number">07</span>
+                <span class="card-number">06</span>
                 <div class="card-icon">🔬</div>
                 <h3>Modelo Cognoscitivo</h3>
-                <p>Cómo los modelos cognitivos simulan el pensamiento humano para crear sistemas inteligentes más
-                    naturales.</p>
+                <p>Arquitectura cognitiva, modelos mentales y sistemas de IA inspirados en la cognición humana.</p>
                 <div class="card-tags">
                     <span class="card-tag">Cognición</span>
                     <span class="card-tag">Modelos</span>
@@ -207,40 +191,28 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card 8 -->
+            <!-- Card 7 -->
             <a href="pages/agente-inteligente.html" class="card unit-1" id="card-agente">
-                <span class="card-number">08</span>
+                <span class="card-number">07</span>
                 <div class="card-icon">🤖</div>
-                <h3>Agente Inteligente</h3>
-                <p>Percibe, decide y actúa: el modelo fundamental del agente inteligente y sus tipos en la IA.</p>
+                <h3>Agentes Inteligentes, Multi-Agentes y Sistemas Ubicuos</h3>
+                <p>Definición, propiedades, tipos y arquitecturas de agentes. Sistemas multi-agente, IoT y computación
+                    ubicua.</p>
                 <div class="card-tags">
                     <span class="card-tag">Agentes</span>
-                    <span class="card-tag">PEAS</span>
+                    <span class="card-tag">Multi-agente</span>
+                    <span class="card-tag">IoT</span>
                 </div>
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card 9 -->
-            <a href="pages/sistemas-multiagente.html" class="card unit-1" id="card-multiagente">
-                <span class="card-number">09</span>
-                <div class="card-icon">🌐</div>
-                <h3>Sistemas Multi-agente</h3>
-                <p>Cuando los agentes trabajan juntos: cooperación, comunicación y organización en sistemas
-                    distribuidos.</p>
-                <div class="card-tags">
-                    <span class="card-tag">Cooperación</span>
-                    <span class="card-tag">Distribuido</span>
-                </div>
-                <div class="card-arrow">Leer artículo →</div>
-            </a>
-
-            <!-- Card 10 -->
+            <!-- Card 8 -->
             <a href="pages/heuristicas.html" class="card unit-1" id="card-heuristicas">
-                <span class="card-number">10</span>
+                <span class="card-number">08</span>
                 <div class="card-icon">🧩</div>
                 <h3>Heurísticas</h3>
-                <p>Atajos inteligentes: cómo las heurísticas ayudan a resolver problemas complejos sin explorar todo el
-                    espacio.</p>
+                <p>Atajos inteligentes: por qué las heurísticas son necesarias y la diferencia entre búsqueda ciega e
+                    informada.</p>
                 <div class="card-tags">
                     <span class="card-tag">Optimización</span>
                     <span class="card-tag">Atajos</span>
@@ -248,26 +220,26 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card 11 -->
+            <!-- Card 9 -->
             <a href="pages/algoritmos-busqueda.html" class="card unit-1" id="card-busqueda">
-                <span class="card-number">11</span>
+                <span class="card-number">09</span>
                 <div class="card-icon">🔍</div>
-                <h3>Algoritmos de Búsqueda</h3>
-                <p>BFS, DFS y más: los métodos sistemáticos que usan las máquinas para encontrar soluciones óptimas.</p>
+                <h3>Algoritmos de Exploración</h3>
+                <p>Árboles de búsqueda, espacio de estados, generación y prueba, backtracking con ejemplos visuales.</p>
                 <div class="card-tags">
-                    <span class="card-tag">BFS</span>
-                    <span class="card-tag">DFS</span>
+                    <span class="card-tag">Árboles</span>
+                    <span class="card-tag">Backtracking</span>
                 </div>
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card 12 -->
+            <!-- Card 10 -->
             <a href="pages/algoritmo-a-estrella.html" class="card unit-1" id="card-aestrella">
-                <span class="card-number">12</span>
+                <span class="card-number">10</span>
                 <div class="card-icon">⭐</div>
                 <h3>Algoritmo A*</h3>
-                <p>El rey de la búsqueda informada: cómo A* combina costo real y heurística para encontrar el camino
-                    óptimo.</p>
+                <p>El rey de la búsqueda informada: f(n) = g(n) + h(n), admisibilidad, ejemplo paso a paso y código
+                    Python.</p>
                 <div class="card-tags">
                     <span class="card-tag">A*</span>
                     <span class="card-tag">Pathfinding</span>
@@ -275,9 +247,9 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card 13 — Featured (full width) -->
-            <a href="pages/busqueda-local.html" class="card card-featured unit-1" id="card-local">
-                <span class="card-number">13</span>
+            <!-- Card 11 — Featured -->
+            <a href="pages/busqueda-local.html" class="card unit-1" id="card-local">
+                <span class="card-number">11</span>
                 <div class="card-icon">🏔️</div>
                 <h3>Búsqueda Local</h3>
                 <p>Hill climbing, simulated annealing y algoritmos genéticos: optimización cuando el espacio de búsqueda
@@ -300,12 +272,12 @@
 
         <div class="cards-grid cards-grid-2col">
 
-            <!-- Card U2-01 -->
             <a href="pages/principios-metodologia-ia.html" class="card" id="card-principios">
                 <span class="card-number">01</span>
                 <div class="card-icon">📐</div>
                 <h3>Principios y Metodología de la IA</h3>
-                <p>Fases de desarrollo, ciclo de vida de un proyecto de IA y enfoques metodológicos top-down vs. bottom-up.</p>
+                <p>Fases de desarrollo, ciclo de vida de un proyecto de IA y enfoques metodológicos top-down vs.
+                    bottom-up.</p>
                 <div class="card-tags">
                     <span class="card-tag">Metodología</span>
                     <span class="card-tag">Principios</span>
@@ -313,12 +285,12 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U2-02 -->
             <a href="pages/paradigmas-ia.html" class="card" id="card-paradigmas">
                 <span class="card-number">02</span>
                 <div class="card-icon">🧬</div>
                 <h3>Paradigmas de la IA</h3>
-                <p>IA simbólica, conexionista, evolutiva e híbrida: las cuatro escuelas de pensamiento de la inteligencia artificial.</p>
+                <p>IA simbólica, conexionista, evolutiva e híbrida: las cuatro escuelas de pensamiento de la
+                    inteligencia artificial.</p>
                 <div class="card-tags">
                     <span class="card-tag">Simbólico</span>
                     <span class="card-tag">Conexionista</span>
@@ -326,12 +298,12 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U2-03 -->
             <a href="pages/mapas-conceptuales.html" class="card" id="card-mapas">
                 <span class="card-number">03</span>
                 <div class="card-icon">🗺️</div>
                 <h3>Mapas Conceptuales</h3>
-                <p>Organiza y representa el conocimiento de forma visual: conceptos, relaciones, jerarquías y enlaces cruzados.</p>
+                <p>Organiza y representa el conocimiento de forma visual: conceptos, relaciones, jerarquías y enlaces
+                    cruzados.</p>
                 <div class="card-tags">
                     <span class="card-tag">Representación</span>
                     <span class="card-tag">Conocimiento</span>
@@ -339,12 +311,12 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U2-04 -->
             <a href="pages/redes-semanticas.html" class="card" id="card-redes-sem">
                 <span class="card-number">04</span>
                 <div class="card-icon">🕸️</div>
                 <h3>Redes Semánticas</h3>
-                <p>Grafos de conocimiento con nodos y arcos etiquetados: herencia, inferencia y la base de los Knowledge Graphs.</p>
+                <p>Grafos de conocimiento con nodos y arcos etiquetados: herencia, inferencia y la base de los Knowledge
+                    Graphs.</p>
                 <div class="card-tags">
                     <span class="card-tag">Grafos</span>
                     <span class="card-tag">Herencia</span>
@@ -352,12 +324,12 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U2-05 -->
             <a href="pages/razonamiento-monotono.html" class="card" id="card-monotono">
                 <span class="card-number">05</span>
                 <div class="card-icon">📏</div>
                 <h3>Razonamiento Monótono</h3>
-                <p>Lógica clásica e inferencia deductiva: cuando agregar información nunca invalida conclusiones previas.</p>
+                <p>Lógica clásica e inferencia deductiva: cuando agregar información nunca invalida conclusiones
+                    previas.</p>
                 <div class="card-tags">
                     <span class="card-tag">Lógica</span>
                     <span class="card-tag">Deducción</span>
@@ -365,12 +337,12 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U2-06 -->
             <a href="pages/conocimiento-no-monotono.html" class="card" id="card-no-monotono">
                 <span class="card-number">06</span>
                 <div class="card-icon">🔄</div>
                 <h3>Conocimiento No-Monótono</h3>
-                <p>Razonamiento por defecto, lógica difusa y circunscripción: cuando la nueva info puede cambiar tus conclusiones.</p>
+                <p>Razonamiento por defecto, lógica difusa y circunscripción: cuando la nueva info puede cambiar tus
+                    conclusiones.</p>
                 <div class="card-tags">
                     <span class="card-tag">Default Logic</span>
                     <span class="card-tag">Fuzzy</span>
@@ -378,12 +350,12 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U2-07 -->
             <a href="pages/razonamiento-probabilistico.html" class="card" id="card-probabilistico">
                 <span class="card-number">07</span>
                 <div class="card-icon">🎲</div>
                 <h3>Razonamiento Probabilístico</h3>
-                <p>Incertidumbre, distribuciones, redes bayesianas y Naive Bayes: decide racionalmente con información incompleta.</p>
+                <p>Incertidumbre, distribuciones, redes bayesianas y Naive Bayes: decide racionalmente con información
+                    incompleta.</p>
                 <div class="card-tags">
                     <span class="card-tag">Probabilidad</span>
                     <span class="card-tag">Bayesiano</span>
@@ -391,12 +363,12 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U2-08 -->
             <a href="pages/teorema-bayes.html" class="card" id="card-bayes">
                 <span class="card-number">08</span>
                 <div class="card-icon">📊</div>
                 <h3>Teorema de Bayes</h3>
-                <p>La ecuación más importante de la IA: actualiza creencias ante nueva evidencia. Ejemplos resueltos paso a paso con la paradoja de la base rate.</p>
+                <p>La ecuación más importante de la IA: actualiza creencias ante nueva evidencia. Ejemplos resueltos
+                    paso a paso.</p>
                 <div class="card-tags">
                     <span class="card-tag">Bayes</span>
                     <span class="card-tag">Inferencia</span>
@@ -410,17 +382,18 @@
         <div class="section-header reveal" style="margin-top: var(--space-3xl);" id="unidad3">
             <span class="section-label">Unidad III — Reglas y Búsqueda</span>
             <h2>Sistemas de Producción y Búsqueda</h2>
-            <p>Reglas de producción, motores de inferencia, arquitectura de sistemas expertos, espacios de estados y algoritmos de búsqueda.</p>
+            <p>Reglas de producción, motores de inferencia, arquitectura de sistemas expertos, espacios de estados y
+                algoritmos de búsqueda.</p>
         </div>
 
         <div class="cards-grid cards-grid-2col">
 
-            <!-- Card U3-01 -->
             <a href="pages/representacion-reglas.html" class="card" id="card-rep-reglas">
                 <span class="card-number">01</span>
                 <div class="card-icon">📜</div>
                 <h3>Representación mediante Reglas</h3>
-                <p>Reglas SI-ENTONCES para capturar conocimiento experto: tipos, ventajas, modularidad y transparencia.</p>
+                <p>Reglas SI-ENTONCES para capturar conocimiento experto: tipos, ventajas, modularidad y transparencia.
+                </p>
                 <div class="card-tags">
                     <span class="card-tag">IF-THEN</span>
                     <span class="card-tag">Conocimiento</span>
@@ -428,12 +401,12 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U3-02 -->
             <a href="pages/metodos-inferencia-reglas.html" class="card" id="card-metodos-inf">
                 <span class="card-number">02</span>
                 <div class="card-icon">⚙️</div>
                 <h3>Métodos de Inferencia</h3>
-                <p>Encadenamiento hacia adelante (forward) y hacia atrás (backward): cómo el motor de inferencia razona con reglas.</p>
+                <p>Encadenamiento hacia adelante (forward) y hacia atrás (backward): cómo el motor de inferencia razona
+                    con reglas.</p>
                 <div class="card-tags">
                     <span class="card-tag">Forward</span>
                     <span class="card-tag">Backward</span>
@@ -441,7 +414,6 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U3-03 -->
             <a href="pages/reglas-produccion.html" class="card" id="card-reglas-prod">
                 <span class="card-number">03</span>
                 <div class="card-icon">🏭</div>
@@ -454,12 +426,12 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U3-04 -->
             <a href="pages/sintaxis-reglas-produccion.html" class="card" id="card-sintaxis">
                 <span class="card-number">04</span>
                 <div class="card-icon">✍️</div>
                 <h3>Sintaxis de Reglas</h3>
-                <p>Variables, patrones, restricciones, operadores y la gramática formal para escribir reglas ejecutables.</p>
+                <p>Variables, patrones, restricciones, operadores y la gramática formal para escribir reglas
+                    ejecutables.</p>
                 <div class="card-tags">
                     <span class="card-tag">Sintaxis</span>
                     <span class="card-tag">Patrones</span>
@@ -467,7 +439,6 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U3-05 -->
             <a href="pages/semantica-reglas-produccion.html" class="card" id="card-semantica">
                 <span class="card-number">05</span>
                 <div class="card-icon">💡</div>
@@ -480,12 +451,12 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U3-06 -->
             <a href="pages/arquitectura-sistema-produccion.html" class="card" id="card-arquitectura">
                 <span class="card-number">06</span>
                 <div class="card-icon">🏧</div>
                 <h3>Arquitectura del Sistema</h3>
-                <p>Los tres pilares: memoria de trabajo, base de conocimientos y motor de inferencia. Algoritmo Rete.</p>
+                <p>Los tres pilares: memoria de trabajo, base de conocimientos y motor de inferencia. Algoritmo Rete.
+                </p>
                 <div class="card-tags">
                     <span class="card-tag">Arquitectura</span>
                     <span class="card-tag">Rete</span>
@@ -493,12 +464,12 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U3-07 -->
             <a href="pages/espacios-estados.html" class="card" id="card-espacios">
                 <span class="card-number">07</span>
                 <div class="card-icon">🗺️</div>
                 <h3>Espacios de Estados</h3>
-                <p>Representación formal de problemas: estados determinísticos vs. no determinísticos, grafos y transiciones.</p>
+                <p>Representación formal de problemas: estados determinísticos vs. no determinísticos, grafos y
+                    transiciones.</p>
                 <div class="card-tags">
                     <span class="card-tag">Estados</span>
                     <span class="card-tag">Grafos</span>
@@ -506,12 +477,12 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U3-08 -->
             <a href="pages/busqueda-sistematica.html" class="card" id="card-busq-sist">
                 <span class="card-number">08</span>
                 <div class="card-icon">🔍</div>
                 <h3>Búsqueda Sistemática</h3>
-                <p>BFS y DFS: los algoritmos fundamentales de búsqueda no informada con pseudocódigo y análisis de complejidad.</p>
+                <p>BFS y DFS: los algoritmos fundamentales de búsqueda no informada con pseudocódigo y análisis de
+                    complejidad.</p>
                 <div class="card-tags">
                     <span class="card-tag">BFS</span>
                     <span class="card-tag">DFS</span>
@@ -525,17 +496,18 @@
         <div class="section-header reveal" style="margin-top: var(--space-3xl);" id="unidad4">
             <span class="section-label">Unidad IV — Aplicaciones con Técnicas de IA</span>
             <h2>Tecnologías Aplicadas</h2>
-            <p>Robótica, redes neuronales, visión artificial, lógica difusa, procesamiento de lenguaje natural y sistemas expertos.</p>
+            <p>Robótica, redes neuronales, visión artificial, lógica difusa, procesamiento de lenguaje natural y
+                sistemas expertos.</p>
         </div>
 
         <div class="cards-grid cards-grid-3col">
 
-            <!-- Card U4-01 -->
             <a href="pages/robotica.html" class="card" id="card-robotica">
                 <span class="card-number">01</span>
                 <div class="card-icon">🤖</div>
                 <h3>Robótica</h3>
-                <p>Agentes físicos inteligentes: sensores, actuadores, cobots, ROS, cirugía robótica y autos autónomos.</p>
+                <p>Agentes físicos inteligentes: sensores, actuadores, cobots, ROS, cirugía robótica y autos autónomos.
+                </p>
                 <div class="card-tags">
                     <span class="card-tag">Robots</span>
                     <span class="card-tag">ROS</span>
@@ -543,7 +515,6 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U4-02 -->
             <a href="pages/redes-neuronales.html" class="card" id="card-redes-neuro">
                 <span class="card-number">02</span>
                 <div class="card-icon">🧠</div>
@@ -556,12 +527,12 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U4-03 -->
             <a href="pages/vision-artificial.html" class="card" id="card-vision">
                 <span class="card-number">03</span>
                 <div class="card-icon">👁️</div>
                 <h3>Visión Artificial</h3>
-                <p>Detección de objetos, segmentación, OpenCV, YOLO, SAM y aplicaciones en medicina y autos autónomos.</p>
+                <p>Detección de objetos, segmentación, OpenCV, YOLO, SAM y aplicaciones en medicina y autos autónomos.
+                </p>
                 <div class="card-tags">
                     <span class="card-tag">OpenCV</span>
                     <span class="card-tag">YOLO</span>
@@ -569,12 +540,12 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U4-04 -->
             <a href="pages/logica-difusa.html" class="card" id="card-fuzzy">
                 <span class="card-number">04</span>
                 <div class="card-icon">🌫️</div>
                 <h3>Lógica Difusa</h3>
-                <p>Conjuntos difusos, funciones de membresía, inferencia Mamdani, scikit-fuzzy y control inteligente.</p>
+                <p>Conjuntos difusos, funciones de membresía, inferencia Mamdani, scikit-fuzzy y control inteligente.
+                </p>
                 <div class="card-tags">
                     <span class="card-tag">Fuzzy</span>
                     <span class="card-tag">Control</span>
@@ -582,7 +553,6 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U4-05 -->
             <a href="pages/procesamiento-lenguaje-natural.html" class="card" id="card-pln">
                 <span class="card-number">05</span>
                 <div class="card-icon">💬</div>
@@ -595,7 +565,6 @@
                 <div class="card-arrow">Leer artículo →</div>
             </a>
 
-            <!-- Card U4-06 -->
             <a href="pages/sistemas-expertos.html" class="card" id="card-sist-exp">
                 <span class="card-number">06</span>
                 <div class="card-icon">🏥</div>
@@ -625,12 +594,9 @@
         </div>
     </footer>
 
-    <!-- Back to Top -->
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
 
-    <!-- Scripts -->
     <script src="js/main.js"></script>
-
 </body>
 
 </html>

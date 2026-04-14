@@ -1,241 +1,205 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="1.8.2 Algoritmo A*: El buscador de rutas óptimo. Teoría, funcionamiento matemático e implementación pura en Python sin librerías externas.">
+    <meta name="description" content="1.8.2 Algoritmo A*: búsqueda informada con f(n)=g(n)+h(n), admisibilidad, ejemplo paso a paso, código Python.">
     <title>1.8.2 Algoritmo A* — AI Blog</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/animations.css">
-    <style>
-        :root {
-            --accent-unit: #3b82f6; /* Azul para Unidad 1 */
-        }
-        .algorithm-code {
-            background: #1e1e1e;
-            color: #d4d4d4;
-            padding: 1.5rem;
-            border-radius: 8px;
-            font-family: 'Fira Code', monospace;
-            overflow-x: auto;
-            margin: 1.5rem 0;
-            border-left: 4px solid var(--accent-unit);
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-
-<body>
-    <div class="particles" aria-hidden="true">
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-    </div>
+<body class="has-sidebar">
+    <div class="particles" aria-hidden="true"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div></div>
     <div class="reading-progress" id="readingProgress"></div>
-    <nav class="navbar" id="navbar">
-        <div class="navbar-inner">
-            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
-            <ul class="navbar-links" id="navLinks">
-                <li><a href="../index.html#unidad1">Unidad 1</a></li>
-                <li><a href="../index.html#unidad2">Unidad 2</a></li>
-                <li><a href="../index.html#unidad3">Unidad 3</a></li>
-                <li><a href="../index.html#unidad4">Unidad 4</a></li>
-            </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-        </div>
-    </nav>
+    <nav class="navbar" id="navbar"><div class="navbar-inner"><a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a><ul class="navbar-links" id="navLinks"><li><a href="../index.html#unidad1">Unidad 1</a></li><li><a href="../index.html#unidad2">Unidad 2</a></li><li><a href="../index.html#unidad3">Unidad 3</a></li><li><a href="../index.html#unidad4">Unidad 4</a></li></ul><div class="navbar-right"><button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button><button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button></div></div></nav>
+    <aside class="sidebar" id="sidebar"><div class="sidebar-section"><div class="sidebar-label">Unidad I — Fundamentos</div><ul class="sidebar-links"><li><a href="introduccion-ia.html"><span class="link-number">1.1</span> Introducción a la IA</a></li><li><a href="historia-ia.html"><span class="link-number">1.2</span> Historia de la IA</a></li><li><a href="habilidades-cognoscitivas.html"><span class="link-number">1.3</span> Habilidades Cognoscitivas</a></li><li><a href="razonamiento-logica.html"><span class="link-number">1.4</span> Razonamiento y Lógica</a></li><li><a href="adquisicion-conocimiento.html"><span class="link-number">1.5</span> Adquisición del Conocimiento</a></li><li><a href="modelo-cognoscitivo.html"><span class="link-number">1.6</span> Modelo Cognoscitivo</a></li><li><a href="agente-inteligente.html"><span class="link-number">1.7</span> Agentes Inteligentes</a></li><li><a href="heuristicas.html"><span class="link-number">1.8</span> Heurísticas</a></li><li><a href="algoritmos-busqueda.html"><span class="link-number">1.8.1</span> Algoritmos de Exploración</a></li><li><a href="algoritmo-a-estrella.html"><span class="link-number">1.8.2</span> Algoritmo A*</a></li><li><a href="busqueda-local.html"><span class="link-number">1.8.3</span> Búsqueda Local</a></li></ul></div></aside>
 
     <div class="page-wrapper">
-        <header class="article-hero" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);">
-            <div class="breadcrumb">
-                <a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.8.2 Algoritmo A*</span>
-            </div>
-            <h1>1.8.2 El Algoritmo <span class="gradient-text">A* (A-Estrella)</span></h1>
-            <div class="article-meta">
-                <span class="article-meta-item">📖 Lectura: 45 min</span>
-                <span class="article-meta-item">🏷️ Búsqueda Informada</span>
-                <span class="article-meta-item">📝 Tema 1.8.2 de la Unidad I</span>
-            </div>
+        <header class="article-hero">
+            <div class="breadcrumb"><a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.8.2 Algoritmo A*</span></div>
+            <h1>1.8.2 Algoritmo <span class="gradient-text">A*</span></h1>
+            <div class="article-meta"><span class="article-meta-item">📖 Lectura: 30 min</span><span class="article-meta-item">🏷️ Pathfinding</span><span class="article-meta-item">📝 Tema 10 de 11</span></div>
         </header>
 
         <article class="article-content">
-
             <section class="reveal">
-                <h2 id="fundamento">Fundamento Teórico: La Excelencia en la Búsqueda</h2>
-                <p>El algoritmo **A*** (desarrollado por Peter Hart, Nils Nilsson y Bertram Raphael en 1968) es un algoritmo de búsqueda de grafos que encuentra el camino de menor costo desde un nodo inicial dado hasta uno o más nodos objetivo.</p>
-                
-                <p>Es un algoritmo de **búsqueda informada** porque utiliza una función de evaluación que combina la información real del camino ya recorrido con una estimación heurística de lo que falta por recorrer.</p>
-
-                <div class="callout callout-info">
-                    <div class="callout-title">📐 La Ecuación Maestra</div>
-                    <p style="text-align: center; font-size: 1.5rem; font-weight: bold; margin: 1rem 0;">
-                        $f(n) = g(n) + h(n)$
-                    </p>
-                    <ul>
-                        <li><strong>g(n):</strong> El costo real acumulado para llegar desde el inicio hasta el nodo <em>n</em>.</li>
-                        <li><strong>h(n):</strong> El costo estimado (heurística) para llegar desde <em>n</em> hasta el objetivo.</li>
-                        <li><strong>f(n):</strong> La prioridad del nodo <em>n</em>. A menor valor de f, mayor prioridad de exploración.</li>
+                <h2 id="fundamento">El rey de la búsqueda informada</h2>
+                <p>El <strong>algoritmo A*</strong> (pronunciado «A estrella»), publicado por <strong>Hart, Nilsson y Raphael</strong> en 1968, es el algoritmo de búsqueda informada más importante y utilizado en la historia de la IA. Combina las ventajas de la búsqueda de costo uniforme (Dijkstra) con una <strong>heurística</strong> que guía la exploración hacia el objetivo.</p>
+                <p>La función de evaluación de cada nodo es:</p>
+                <div class="callout">
+                    <div class="callout-title">📐 Fórmula fundamental de A*</div>
+                    <p><strong>f(n) = g(n) + h(n)</strong></p>
+                    <p>Donde:</p>
+                    <ul style="margin:0;padding-left:1.5rem;">
+                        <li><strong>g(n)</strong> = costo real del camino desde el inicio hasta n (conocido)</li>
+                        <li><strong>h(n)</strong> = estimación heurística del costo desde n hasta el objetivo (estimado)</li>
+                        <li><strong>f(n)</strong> = costo total estimado del camino a través de n</li>
                     </ul>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="propiedades">Admisibilidad y Consistencia</h2>
-                <p>Para que A* garantice encontrar siempre la ruta más corta (óptima), la función heurística $h(n)$ debe cumplir:</p>
+                <h2 id="propiedades">Propiedades de A*</h2>
+                <table class="comparison-table">
+                    <thead><tr><th>Propiedad</th><th>¿Cumple?</th><th>Condición</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Completo</strong></td><td>✅ Sí</td><td>Si hay solución y b es finito</td></tr>
+                        <tr><td><strong>Óptimo</strong></td><td>✅ Sí</td><td>Si h(n) es <strong>admisible</strong> (en búsqueda en árbol) o <strong>consistente</strong> (en búsqueda en grafo)</td></tr>
+                        <tr><td><strong>Tiempo</strong></td><td>O(b^d) en peor caso</td><td>Pero típicamente mucho mejor con buena h</td></tr>
+                        <tr><td><strong>Espacio</strong></td><td>O(b^d)</td><td>Guarda todos los nodos en memoria</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>Admisibilidad y Consistencia</h3>
                 <ul>
-                    <li><strong>Admisibilidad:</strong> Nunca debe sobreestimar el costo real. Si el costo real es 10, la heurística debe decir 10 o menos.</li>
-                    <li><strong>Consistencia:</strong> Para dos nodos conectados A y B, la estimación desde A no puede ser mayor que el costo de ir de A a B más la estimación desde B.</li>
+                    <li><strong>Admisible:</strong> h(n) ≤ h*(n) para todo n. Nunca sobreestima. Garantiza que A* encuentra la solución óptima.</li>
+                    <li><strong>Consistente:</strong> h(n) ≤ c(n,n') + h(n') para todo sucesor n'. Implica admisibilidad. Garantiza que los nodos se expanden en orden óptimo.</li>
                 </ul>
-                <p>Si la heurística es admisible, A* es **óptimo**. Si la heurística es 0, A* se convierte en el Algoritmo de Dijkstra.</p>
             </section>
 
             <section class="reveal">
-                <h2 id="implementacion">Implementación Pura en Python</h2>
-                <p>A continuación, presentamos una implementación didáctica del algoritmo A* para navegar en una matriz (cuadrícula), utilizando únicamente las capacidades nativas de Python (sin <em>numpy</em> ni <em>networkx</em>).</p>
+                <h2 id="pseudocodigo">Pseudocódigo</h2>
+                <pre><code class="language-plaintext">función A*(inicio, objetivo):
+    ABIERTOS ← cola de prioridad con {inicio, g=0, f=h(inicio)}
+    CERRADOS ← conjunto vacío
+    
+    mientras ABIERTOS no esté vacío:
+        n ← extraer nodo con menor f de ABIERTOS
+        
+        si n == objetivo:
+            retornar reconstruir_camino(n)
+        
+        agregar n a CERRADOS
+        
+        para cada sucesor s de n:
+            si s está en CERRADOS:
+                continuar
+            
+            g_nuevo ← g(n) + costo(n, s)
+            
+            si s no está en ABIERTOS o g_nuevo < g(s):
+                padre(s) ← n
+                g(s) ← g_nuevo
+                f(s) ← g(s) + h(s)
+                si s no está en ABIERTOS:
+                    agregar s a ABIERTOS
+    
+    retornar "No hay solución"</code></pre>
+            </section>
 
-                <div class="algorithm-code">
-<pre>
-class Node:
-    def __init__(self, parent=None, position=None):
-        self.parent = parent
-        self.position = position
-        self.g = 0  # Costo desde el inicio
-        self.h = 0  # Heurística (estimación al objetivo)
-        self.f = 0  # f = g + h
+            <section class="reveal">
+                <h2 id="ejemplo">Ejemplo paso a paso</h2>
+                <p>Grafo: S→A(1), S→B(4), A→B(2), A→C(5), B→C(1), C→G(3). Heurísticas: h(S)=7, h(A)=6, h(B)=2, h(C)=1, h(G)=0.</p>
+                <table class="comparison-table">
+                    <thead><tr><th>Paso</th><th>Nodo expandido</th><th>g</th><th>h</th><th>f=g+h</th><th>ABIERTOS (después)</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td><strong>S</strong></td><td>0</td><td>7</td><td>7</td><td>A(1+6=7), B(4+2=6)</td></tr>
+                        <tr><td>2</td><td><strong>B</strong> (f=6)</td><td>4</td><td>2</td><td>6</td><td>A(7), C(4+1+1=6)</td></tr>
+                        <tr><td>3</td><td><strong>C</strong> (f=6)</td><td>5</td><td>1</td><td>6</td><td>A(7), G(5+3+0=8)</td></tr>
+                        <tr><td>4</td><td><strong>A</strong> (f=7)</td><td>1</td><td>6</td><td>7</td><td>A→B(3+2=5)✗cerrado, A→C(6+1=7)✗, G(8)</td></tr>
+                        <tr><td>5</td><td><strong>G</strong> (f=8)</td><td>8</td><td>0</td><td>8</td><td>🎯 ¡Objetivo alcanzado!</td></tr>
+                    </tbody>
+                </table>
+                <p><strong>Camino óptimo:</strong> S → B → C → G, costo total = 8.</p>
+            </section>
 
-    def __eq__(self, other):
-        return self.position == other.position
+            <section class="reveal">
+                <h2 id="codigo">Implementación en Python</h2>
+                <pre><code class="language-python">import heapq
 
-def astar(maze, start, end):
-    # Inicializar listas abierta y cerrada
-    open_list = []
-    closed_list = []
+def a_star(grafo, inicio, objetivo, h):
+    """
+    Algoritmo A* con cola de prioridad.
+    grafo: dict {nodo: [(vecino, costo), ...]}
+    h: dict {nodo: valor_heurístico}
+    """
+    abiertos = [(h[inicio], 0, inicio, [inicio])]  # (f, g, nodo, camino)
+    cerrados = set()
+    g_mejor = {inicio: 0}
+    
+    while abiertos:
+        f, g, nodo, camino = heapq.heappop(abiertos)
+        
+        if nodo == objetivo:
+            return camino, g  # Camino óptimo y costo
+        
+        if nodo in cerrados:
+            continue
+        cerrados.add(nodo)
+        
+        for vecino, costo in grafo.get(nodo, []):
+            g_nuevo = g + costo
+            if vecino not in cerrados and \
+               (vecino not in g_mejor or g_nuevo < g_mejor[vecino]):
+                g_mejor[vecino] = g_nuevo
+                f_nuevo = g_nuevo + h.get(vecino, 0)
+                heapq.heappush(abiertos, (f_nuevo, g_nuevo, vecino, camino + [vecino]))
+    
+    return None, float('inf')
 
-    # Nodo inicial
-    start_node = Node(None, start)
-    end_node = Node(None, end)
-    open_list.append(start_node)
+# Ejemplo de uso
+grafo = {
+    'S': [('A', 1), ('B', 4)],
+    'A': [('B', 2), ('C', 5)],
+    'B': [('C', 1)],
+    'C': [('G', 3)]
+}
+h = {'S': 7, 'A': 6, 'B': 2, 'C': 1, 'G': 0}
 
-    while len(open_list) > 0:
-        # Buscar el nodo con menor f en la lista abierta
-        current_node = open_list[0]
-        current_index = 0
-        for index, item in enumerate(open_list):
-            if item.f < current_node.f:
-                current_node = item
-                current_index = index
+camino, costo = a_star(grafo, 'S', 'G', h)
+print(f"Camino: {' → '.join(camino)}")  # S → B → C → G
+print(f"Costo: {costo}")  # 8</code></pre>
+            </section>
 
-        # Mover nodo actual a la lista cerrada
-        open_list.pop(current_index)
-        closed_list.append(current_node)
-
-        # ¿Llegamos al objetivo?
-        if current_node == end_node:
-            path = []
-            current = current_node
-            while current is not None:
-                path.append(current.position)
-                current = current.parent
-            return path[::-1] # Retornar camino invertido
-
-        # Generar hijos (nodos vecinos)
-        children = []
-        for new_position in [(0, -1), (0, 1), (-1, 0), (1, 0)]: # Movimientos 4-adyacentes
-            node_position = (current_node.position[0] + new_position[0], 
-                             current_node.position[1] + new_position[1])
-
-            # Verificar límites de la matriz
-            if node_position[0] > (len(maze) - 1) or node_position[0] < 0 or \
-               node_position[1] > (len(maze[len(maze)-1]) -1) or node_position[1] < 0:
-                continue
-
-            # Verificar que sea transitable (0 es camino, 1 es obstáculo)
-            if maze[node_position[0]][node_position[1]] != 0:
-                continue
-
-            new_node = Node(current_node, node_position)
-            children.append(new_node)
-
-        for child in children:
-            # Si el hijo ya está en la lista cerrada, ignorar
-            if child in closed_list:
-                continue
-
-            # Calcular f, g y h (Usamos Distancia Manhattan)
-            child.g = current_node.g + 1
-            child.h = abs(child.position[0] - end_node.position[0]) + \
-                      abs(child.position[1] - end_node.position[1])
-            child.f = child.g + child.h
-
-            # Si el hijo ya está en la lista abierta con menor costo g, ignorar
-            for open_node in open_list:
-                if child == open_node and child.g > open_node.g:
-                    continue
-
-            open_list.append(child)
-
-# Ejemplo de uso:
-maze = [[0, 0, 0, 0, 1],
-        [1, 1, 0, 1, 1],
-        [0, 0, 0, 0, 0]]
-path = astar(maze, (0,0), (2,4))
-print(f"Camino hallado: {path}")
-</pre>
+            <section class="reveal">
+                <h2 id="aplicaciones">Aplicaciones de A*</h2>
+                <div class="concept-grid">
+                    <div class="concept-card"><div class="concept-card-icon">🗺️</div><h4>GPS y navegación</h4><p>Google Maps, Waze y sistemas de navegación usan variantes de A* para encontrar la ruta más corta en grafos de millones de nodos.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">🎮</div><h4>Videojuegos</h4><p>Pathfinding de NPCs. Todos los motores de juegos (Unity, Unreal) implementan A* para movimiento inteligente.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">🤖</div><h4>Robótica</h4><p>Planificación de movimientos de robots en entornos con obstáculos. ROS usa A* y sus variantes.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">🧬</div><h4>Bioinformática</h4><p>Alineamiento de secuencias de ADN, plegamiento de proteínas, diseño de fármacos.</p></div>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="actividad">Actividad Práctica: Trazado de A*</h2>
-                
-                <h3>Ejercicio 1: Seguimiento Manual</h3>
-                <p><strong>Problema:</strong> En una cuadrícula 3x3 sin obstáculos, calcula los valores de f, g y h para el primer paso del algoritmo A* saliendo de (0,0) hacia (2,2) usando Distancia Manhattan.</p>
-                <p><strong>Solución paso a paso:</strong></p>
-                <ol>
-                    <li><strong>Inicio:</strong> Nodo (0,0). g=0, h=|0-2|+|0-2|=4. f=4.</li>
-                    <li><strong>Vecino (0,1):</strong> g=1, h=|0-2|+|1-2|=3. f=1+3= <strong>4</strong>.</li>
-                    <li><strong>Vecino (1,0):</strong> g=1, h=|1-2|+|0-2|=3. f=1+3= <strong>4</strong>.</li>
-                    <li><strong>Análisis:</strong> Ambos vecinos tienen f=4. El algoritmo elige uno al azar o según el orden de generación para continuar la expansión.</li>
-                </ol>
+                <h2 id="actividad">Actividad práctica</h2>
+                <h3>Ejercicio propuesto</h3>
+                <div class="callout callout-tip"><div class="callout-title">📝 Tu turno</div><p>Ejecuta el código de A* proporcionado en Python. Luego modifica el grafo para agregar un camino directo S→G con costo 10. ¿A* sigue encontrando el camino óptimo S→B→C→G? ¿Por qué?</p></div>
+            </section>
 
-                <h3>Ejercicio 2: Reto de Codificación</h3>
-                <div class="callout callout-tip">
-                    <div class="callout-title">📝 Tu turno de programador</div>
-                    <p>Modifica el código Python anterior para permitir <strong>movimientos en diagonal</strong> (8 direcciones). Considera que el costo <em>g</em> de un movimiento diagonal debería ser $\sqrt{2} \approx 1.4$ en lugar de 1 para mantener la precisión geométrica.</p>
+            <section class="reveal"><h2 id="reporte">Guía para reporte en PDF</h2><div class="report-guide"><h3>📄 Contenido</h3><ol><li>Portada.</li><li>Explicación de f(n)=g(n)+h(n) con diagrama.</li><li>Tabla paso a paso del ejemplo resuelto.</li><li>Captura del código Python ejecutado.</li><li>Análisis del ejercicio propuesto (con y sin camino directo).</li><li>Referencias APA.</li></ol></div></section>
+
+            <section class="reveal"><h2 id="video">Video explicativo</h2><div class="video-section"><div class="video-container"><iframe src="https://www.youtube.com/embed/ySN5Wnu88nE" title="A* Search Algorithm" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div></div></section>
+
+            <section class="reveal">
+                <div class="quiz-section">
+                    <h2>📝 Evaluación — Tema 1.8.2</h2>
+                    <div class="quiz-score"></div>
+                    <div class="quiz-list">
+                        <div class="quiz-card" data-answer="c"><div class="quiz-question-number">Pregunta 1 de 5</div><div class="quiz-question">¿Qué fórmula define la función de evaluación de A*?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> f(n) = g(n) − h(n)</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> f(n) = h(n)</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> f(n) = g(n) + h(n)</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> f(n) = g(n) × h(n)</div></div><div class="quiz-feedback">✅ f(n) = g(n) + h(n) combina el costo real (g) con la estimación heurística (h).</div></div>
+                        <div class="quiz-card" data-answer="a"><div class="quiz-question-number">Pregunta 2 de 5</div><div class="quiz-question">¿Qué condición debe cumplir h(n) para que A* sea óptimo?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Ser admisible (nunca sobreestimar)</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Ser mayor que g(n)</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Ser cero para todos los nodos</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Ser computable en O(1)</div></div><div class="quiz-feedback">✅ Admisibilidad (h(n) ≤ h*(n)) garantiza que A* no descarte el camino óptimo.</div></div>
+                        <div class="quiz-card" data-answer="b"><div class="quiz-question-number">Pregunta 3 de 5</div><div class="quiz-question">¿Qué estructura de datos utiliza A* para seleccionar el siguiente nodo?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Cola FIFO</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Cola de prioridad (min-heap)</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Pila LIFO</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Lista circular</div></div><div class="quiz-feedback">✅ A* usa cola de prioridad ordenada por f(n) para siempre expandir el nodo más prometedor.</div></div>
+                        <div class="quiz-card" data-answer="d"><div class="quiz-question-number">Pregunta 4 de 5</div><div class="quiz-question">Si h(n)=0 para todo n, ¿a qué algoritmo se reduce A*?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> DFS</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> BFS</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Greedy Best-First</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Dijkstra (búsqueda de costo uniforme)</div></div><div class="quiz-feedback">✅ Con h(n)=0, f(n)=g(n), que es exactamente Dijkstra.</div></div>
+                        <div class="quiz-card" data-answer="c"><div class="quiz-question-number">Pregunta 5 de 5</div><div class="quiz-question">¿Quiénes publicaron el algoritmo A* en 1968?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Russell, Norvig, Pearl</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Dijkstra, Bellman, Ford</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Hart, Nilsson, Raphael</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Turing, McCarthy, Minsky</div></div><div class="quiz-feedback">✅ Peter Hart, Nils Nilsson y Bertram Raphael publicaron A* en IEEE Transactions on SSC (1968).</div></div>
+                    </div>
+                    <button class="quiz-check-btn">Verificar respuestas</button>
                 </div>
             </section>
 
-            <section class="reveal">
-                <h2 id="referencias">Referencias Académicas (2018-2025)</h2>
-                <ul>
-                    <li>Russell, S. J., & Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
-                    <li>Nilsson, N. J. (2023). <em>Quest for Artificial Intelligence: A History of Ideas and Achievements</em>. Cambridge University Press.</li>
-                    <li>Hart, P. E., Nilsson, N. J., & Raphael, B. (1968). A Formal Basis for the Heuristic Determination of Minimum Cost Paths. <em>IEEE Transactions on Systems Science and Cybernetics</em> (Referencia Histórica Revisitada).</li>
-                </ul>
-            </section>
+            <section class="reveal"><div class="conclusion-section"><h2>🎯 Conclusión</h2><p>A* es el algoritmo de búsqueda informada más utilizado en la industria. Su elegante combinación de costo real y estimación heurística lo hace óptimo y eficiente cuando se usa con heurísticas admisibles. Desde videojuegos hasta GPS, robótica y bioinformática, A* sigue siendo una pieza fundamental del toolkit del ingeniero ISC.</p></div></section>
+
+            <section class="reveal"><h2 id="referencias">Referencias</h2><ul><li>Hart, P. E., Nilsson, N. J., & Raphael, B. (1968). A Formal Basis for the Heuristic Determination of Minimum Cost Paths. <em>IEEE Transactions on SSC</em>, 4(2), 100–107.</li><li>Russell, S. J., & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson. Cap. 3.</li><li>Pearl, J. (1984). <em>Heuristics: Intelligent Search Strategies for Computer Problem Solving</em>. Addison-Wesley.</li></ul></section>
 
             <nav class="article-nav reveal">
-                <a href="algoritmos-busqueda.html" class="article-nav-link">
-                    <span class="nav-label">← Anterior</span>
-                    <span class="nav-title">1.8.1 Algoritmos de Exploración</span>
-                </a>
-                <a href="busqueda-local.html" class="article-nav-link next">
-                    <span class="nav-label">Siguiente →</span>
-                    <span class="nav-title">1.8.3 Búsqueda Local y Optimización</span>
-                </a>
+                <a href="algoritmos-busqueda.html" class="article-nav-link"><span class="nav-label">← Anterior</span><span class="nav-title">1.8.1 Algoritmos de Exploración</span></a>
+                <a href="busqueda-local.html" class="article-nav-link next"><span class="nav-label">Siguiente →</span><span class="nav-title">1.8.3 Búsqueda Local</span></a>
             </nav>
         </article>
     </div>
-
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-brand">🤖 AI Blog</div>
-            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
-        </div>
-    </footer>
+    <footer class="footer"><div class="footer-inner"><div class="footer-brand">🤖 AI Blog</div><p>Blog educativo sobre Inteligencia Artificial — © 2026</p></div></footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
-
 </html>

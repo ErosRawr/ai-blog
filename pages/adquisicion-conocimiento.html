@@ -1,173 +1,124 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="1.5 El modelo de adquisición del conocimiento según la filosofía: empirismo, racionalismo y la epistemología aplicada a la IA.">
+    <meta name="description" content="1.5 Adquisición del conocimiento según la filosofía: empirismo vs racionalismo, epistemología aplicada a la IA.">
     <title>1.5 Adquisición del Conocimiento — AI Blog</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/animations.css">
-    <style>
-        :root {
-            --accent-unit: #3b82f6; /* Azul para Unidad 1 */
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-
-<body>
-    <div class="particles" aria-hidden="true">
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-    </div>
+<body class="has-sidebar">
+    <div class="particles" aria-hidden="true"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div></div>
     <div class="reading-progress" id="readingProgress"></div>
-    <nav class="navbar" id="navbar">
-        <div class="navbar-inner">
-            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
-            <ul class="navbar-links" id="navLinks">
-                <li><a href="../index.html#unidad1">Unidad 1</a></li>
-                <li><a href="../index.html#unidad2">Unidad 2</a></li>
-                <li><a href="../index.html#unidad3">Unidad 3</a></li>
-                <li><a href="../index.html#unidad4">Unidad 4</a></li>
-            </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-        </div>
-    </nav>
+    <nav class="navbar" id="navbar"><div class="navbar-inner"><a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a><ul class="navbar-links" id="navLinks"><li><a href="../index.html#unidad1">Unidad 1</a></li><li><a href="../index.html#unidad2">Unidad 2</a></li><li><a href="../index.html#unidad3">Unidad 3</a></li><li><a href="../index.html#unidad4">Unidad 4</a></li></ul><div class="navbar-right"><button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button><button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button></div></div></nav>
+    <aside class="sidebar" id="sidebar"><div class="sidebar-section"><div class="sidebar-label">Unidad I — Fundamentos</div><ul class="sidebar-links"><li><a href="introduccion-ia.html"><span class="link-number">1.1</span> Introducción a la IA</a></li><li><a href="historia-ia.html"><span class="link-number">1.2</span> Historia de la IA</a></li><li><a href="habilidades-cognoscitivas.html"><span class="link-number">1.3</span> Habilidades Cognoscitivas</a></li><li><a href="razonamiento-logica.html"><span class="link-number">1.4</span> Razonamiento y Lógica</a></li><li><a href="adquisicion-conocimiento.html"><span class="link-number">1.5</span> Adquisición del Conocimiento</a></li><li><a href="modelo-cognoscitivo.html"><span class="link-number">1.6</span> Modelo Cognoscitivo</a></li><li><a href="agente-inteligente.html"><span class="link-number">1.7</span> Agentes Inteligentes</a></li><li><a href="heuristicas.html"><span class="link-number">1.8</span> Heurísticas</a></li><li><a href="algoritmos-busqueda.html"><span class="link-number">1.8.1</span> Algoritmos de Exploración</a></li><li><a href="algoritmo-a-estrella.html"><span class="link-number">1.8.2</span> Algoritmo A*</a></li><li><a href="busqueda-local.html"><span class="link-number">1.8.3</span> Búsqueda Local</a></li></ul></div></aside>
 
     <div class="page-wrapper">
-        <header class="article-hero" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);">
-            <div class="breadcrumb">
-                <a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.5 Adquisición del Conocimiento</span>
-            </div>
-            <h1>1.5 El Modelo de Adquisición del Conocimiento según la <span class="gradient-text">Filosofía</span></h1>
-            <div class="article-meta">
-                <span class="article-meta-item">📖 Lectura: 35 min</span>
-                <span class="article-meta-item">🏷️ Epistemología & IA</span>
-                <span class="article-meta-item">📝 Tema 1.5 de la Unidad I</span>
-            </div>
+        <header class="article-hero">
+            <div class="breadcrumb"><a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.5 Adquisición del Conocimiento</span></div>
+            <h1>1.5 Adquisición del <span class="gradient-text">Conocimiento según la Filosofía</span></h1>
+            <div class="article-meta"><span class="article-meta-item">📖 Lectura: 22 min</span><span class="article-meta-item">🏷️ Filosofía</span><span class="article-meta-item">📝 Tema 5 de 11</span></div>
         </header>
 
         <article class="article-content">
+            <section class="reveal">
+                <h2 id="fundamento">Epistemología y el problema del conocimiento</h2>
+                <p>La <strong>epistemología</strong> es la rama de la filosofía que estudia la naturaleza, el origen y los límites del conocimiento humano. La pregunta central es: <strong>¿cómo sabemos lo que sabemos?</strong> Esta pregunta es profundamente relevante para la IA, porque si queremos que una máquina «conozca» o «aprenda», primero debemos entender cómo se adquiere el conocimiento.</p>
+                <p>Desde la Antigüedad griega, dos corrientes filosóficas han dominado este debate: el <strong>empirismo</strong> (el conocimiento proviene de la experiencia sensorial) y el <strong>racionalismo</strong> (el conocimiento proviene de la razón pura).</p>
+            </section>
 
             <section class="reveal">
-                <h2 id="fundamento">Fundamento Teórico: ¿Qué podemos saber?</h2>
-                <p>La **epistemología** es la rama de la filosofía que estudia la naturaleza, el origen y la validez del conocimiento. En el desarrollo de la Inteligencia Artificial, la pregunta "¿Cómo adquiere conocimiento una máquina?" es la versión moderna del antiguo debate sobre cómo los humanos llegamos a conocer la realidad.</p>
-                
-                <p>Históricamente, la filosofía se ha dividido en dos grandes corrientes para explicar la adquisición del conocimiento: el <strong>racionalismo</strong> y el <strong>empirismo</strong>. Esta tensión no es solo histórica; define las dos arquitecturas dominantes en la IA contemporánea: la IA Simbólica (Top-down) y el Connectionismo/Deep Learning (Bottom-up).</p>
-
-                <div class="callout callout-info">
-                    <div class="callout-title">🏛️ Autores Principales</div>
-                    <ul>
-                        <li><strong>Platón y Descartes (Racionalismo):</strong> Creían en ideas innatas y en la razón como única fuente de verdad. En IA, esto equivale a programar reglas y hechos explícitos.</li>
-                        <li><strong>Aristóteles y John Locke (Empirismo):</strong> Propusieron la <em>Tabula Rasa</em>; el conocimiento viene solo de la experiencia sensorial. En IA, esto es el aprendizaje a partir de datos masivos.</li>
-                        <li><strong>Immanuel Kant (Síntesis):</strong> Arguyó que necesitamos tanto datos sensoriales como estructuras mentales previas para entender el mundo. Es el modelo tras la IA Híbrida moderna.</li>
-                    </ul>
+                <h2 id="empirismo">Empirismo: aprender de la experiencia</h2>
+                <p>El empirismo sostiene que <strong>todo conocimiento se origina en la experiencia sensorial</strong>. La mente al nacer es una <em>tabula rasa</em> (tabla en blanco) que se llena mediante la observación del mundo.</p>
+                <div class="timeline">
+                    <div class="timeline-item"><div class="timeline-date">Fundador</div><h4>John Locke (1632–1704)</h4><p>Propuso que la mente es una <em>tabula rasa</em>. Todo conocimiento proviene de la experiencia (sensación y reflexión). No existen ideas innatas.</p></div>
+                    <div class="timeline-item"><div class="timeline-date">Exponente</div><h4>David Hume (1711–1776)</h4><p>Distinguió entre impresiones (datos sensoriales) e ideas (copias de impresiones). Cuestionó la causalidad: solo observamos conjunción constante, no conexión necesaria.</p></div>
+                </div>
+                <div class="callout">
+                    <div class="callout-title">🔗 Conexión con la IA</div>
+                    <p>El <strong>aprendizaje automático supervisado</strong> es fundamentalmente empirista: el modelo comienza «vacío» (pesos aleatorios) y aprende exclusivamente de los datos de entrenamiento (experiencia). No tiene conocimiento innato; todo patrón se descubre a partir de observaciones.</p>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="empirismo-racionalismo">Empirismo vs. Racionalismo en la IA</h2>
-                <p>Esta dicotomía filosófica se manifiesta en la tecnología que usamos hoy en día para construir sistemas expertos y modelos de aprendizaje automático.</p>
+                <h2 id="racionalismo">Racionalismo: conocimiento a priori</h2>
+                <p>El racionalismo sostiene que <strong>existen verdades que la razón puede descubrir independientemente de la experiencia</strong>. Hay conocimiento innato o a priori.</p>
+                <div class="timeline">
+                    <div class="timeline-item"><div class="timeline-date">Fundador</div><h4>René Descartes (1596–1650)</h4><p>«Cogito, ergo sum» — la duda metódica como fundamento. Algunas ideas son innatas (concepto de Dios, verdades matemáticas).</p></div>
+                    <div class="timeline-item"><div class="timeline-date">Exponente</div><h4>Gottfried Leibniz (1646–1716)</h4><p>Propuso que la mente tiene estructuras innatas. Las verdades de razón son necesarias y no dependen de la experiencia.</p></div>
+                    <div class="timeline-item"><div class="timeline-date">Síntesis</div><h4>Immanuel Kant (1724–1804)</h4><p>Síntesis de empirismo y racionalismo. Existen categorías a priori (espacio, tiempo, causalidad) que estructuran la experiencia sensorial.</p></div>
+                </div>
+                <div class="callout">
+                    <div class="callout-title">🔗 Conexión con la IA</div>
+                    <p>Los <strong>sistemas expertos y la IA simbólica</strong> son racionalistas: el conocimiento se programa explícitamente como reglas lógicas (conocimiento a priori), no se descubre de los datos. El <strong>transfer learning</strong> también tiene elementos racionalistas: un modelo pre-entrenado contiene «conocimiento innato» que se transfiere a nuevas tareas.</p>
+                </div>
+            </section>
 
+            <section class="reveal">
+                <h2 id="comparacion">Empirismo vs. Racionalismo en IA</h2>
                 <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Corriente Filosófica</th>
-                            <th>Visión del Conocimiento</th>
-                            <th>Traducción en IA</th>
-                            <th>Ejemplo Tecnológico</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>Aspecto</th><th>Empirismo (datos)</th><th>Racionalismo (reglas)</th></tr></thead>
                     <tbody>
-                        <tr>
-                            <td><strong>Racionalismo</strong></td>
-                            <td>Deducción a partir de principios lógicos universales.</td>
-                            <td>IA Simbólica / Buen Viejo Estilo de IA (GOFAI).</td>
-                            <td>CLIPS, Prolog, Ontologías.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Empirismo</strong></td>
-                            <td>Inducción a partir de la observación de datos.</td>
-                            <td>IA Conexionista / Machine Learning.</td>
-                            <td>Redes Neuronales, Transformers (GPT, Gemini).</td>
-                        </tr>
+                        <tr><td><strong>Paradigma IA</strong></td><td>Machine Learning, Deep Learning</td><td>IA Simbólica, Sistemas Expertos</td></tr>
+                        <tr><td><strong>Fuente de conocimiento</strong></td><td>Datos de entrenamiento</td><td>Reglas programadas por expertos</td></tr>
+                        <tr><td><strong>Fortaleza</strong></td><td>Descubre patrones ocultos</td><td>Explícito, auditable, explicable</td></tr>
+                        <tr><td><strong>Debilidad</strong></td><td>«Caja negra», necesita muchos datos</td><td>Frágil, difícil de mantener</td></tr>
+                        <tr><td><strong>Ejemplo</strong></td><td>GPT-4, ResNet, AlphaFold</td><td>MYCIN, Prolog, CLIPS</td></tr>
+                        <tr><td><strong>Síntesis moderna</strong></td><td colspan="2">Neuro-simbólica: combina aprendizaje de datos con razonamiento lógico (DeepMind, IBM)</td></tr>
                     </tbody>
                 </table>
             </section>
 
             <section class="reveal">
-                <h2 id="maquinas-aprenden">¿Cómo "aprenden" las máquinas? Perspectiva Filosófica</h2>
-                <p>Desde una perspectiva filosófica, las máquinas no "entienden" el conocimiento en el sentido humano (el problema de la <em>Habitación China</em> de Searle), sino que realizan un proceso de **modelado funcional**.</p>
-                
-                <p>El aprendizaje en las máquinas se divide en tres enfoques filosóficos-técnicos:</p>
-                <ul>
-                    <li><strong>Adquisición por Instrucción:</strong> El programador "dicta" el conocimiento (Racionalismo puro).</li>
-                    <li><strong>Adquisición por Inducción:</strong> La máquina encuentra patrones en ejemplos (Empirismo puro).</li>
-                    <li><strong>Adquisición por Analogía:</strong> Resolver nuevos problemas aplicando soluciones de problemas similares previos.</li>
-                </ul>
+                <h2 id="actividad">Actividad práctica</h2>
+                <h3>Ejercicio resuelto</h3>
+                <p><strong>Pregunta:</strong> ¿ChatGPT aprende de forma empirista o racionalista?</p>
+                <p><strong>Respuesta:</strong> Principalmente <strong>empirista</strong>. GPT aprende estadísticamente de enormes volúmenes de texto (experiencia). No tiene reglas lógicas explícitas. Sin embargo, durante el RLHF (Reinforcement Learning from Human Feedback), se incorporan preferencias humanas que podrían verse como una forma de «guía racional» sobre los datos.</p>
 
-                <div class="callout">
-                    <div class="callout-title">🧠 El Problema de la Representación</div>
-                    <p>Para que una máquina adquiera conocimiento, este debe ser representado en una estructura de datos (grafos, vectores, reglas). La filosofía se pregunta si esa representación es el conocimiento mismo o solo una sombra de la realidad.</p>
-                </div>
+                <h3>Ejercicio propuesto</h3>
+                <div class="callout callout-tip"><div class="callout-title">📝 Tu turno</div><p>Analiza los siguientes sistemas y clasifícalos como empiristas, racionalistas o híbridos: (1) Un sistema experto de diagnóstico médico en CLIPS, (2) Un modelo de lenguaje pre-entrenado, (3) Un coche autónomo que combina reglas de tráfico con visión por computadora. Justifica cada clasificación.</p></div>
             </section>
 
             <section class="reveal">
-                <h2 id="actividad">Actividad Práctica: Epistemología Aplicada</h2>
-                
-                <h3>Ejercicio 1: Análisis de Adquisición de Conocimiento</h3>
-                <p><strong>Problema:</strong> Se desea crear una IA para identificar correos electrónicos de tipo "Spam". Analiza cómo abordaría el problema un Racionalista vs. un Empirista.</p>
-                <p><strong>Solución paso a paso:</strong></p>
-                <ol>
-                    <li><strong>Enfoque Racionalista:</strong> Definiría una lista de reglas explícitas (SI contiene "ganaste", SI el remitente es desconocido, ENTONCES es Spam). El conocimiento es estático y dado por el experto.</li>
-                    <li><strong>Enfoque Empirista:</strong> Proporcionaría a la IA un millón de correos marcados como "spam" y "no spam". La IA descubre por sí misma que ciertas combinaciones estadísticas de palabras indican spam.</li>
-                    <li><strong>Conclusión:</strong> El enfoque empirista es más flexible ante nuevas tácticas de spam, pero el racionalista es más fácil de explicar y auditar.</li>
-                </ol>
-
-                <h3>Ejercicio 2: Reto Filosófico-Técnico</h3>
-                <div class="callout callout-tip">
-                    <div class="callout-title">📝 Debate para el lector</div>
-                    <p>Imagina que una IA lee todos los libros de medicina del mundo pero nunca ha visto un paciente real. Según el <strong>empirismo de Locke</strong>, ¿tiene esa IA "conocimiento real" de la medicina?</p>
-                    <ol>
-                        <li>Argumenta tu postura en un párrafo de al menos 5 líneas.</li>
-                        <li>Identifica qué tipo de adquisición de conocimiento está usando esa IA (¿instrucción, inducción o analogía?).</li>
-                    </ol>
-                </div>
+                <h2 id="reporte">Guía para reporte en PDF</h2>
+                <div class="report-guide"><h3>📄 Contenido</h3><ol><li>Portada.</li><li>Resumen de empirismo y racionalismo con sus exponentes.</li><li>Tabla comparativa aplicada a paradigmas de IA.</li><li>Resolución del ejercicio propuesto.</li><li>Ensayo (300 palabras): «¿La IA neuro-simbólica es la síntesis kantiana de la IA?»</li><li>Referencias APA.</li></ol></div>
             </section>
 
             <section class="reveal">
-                <h2 id="referencias">Referencias Académicas (2018-2025)</h2>
-                <ul>
-                    <li>Müller, V. C. (Ed.). (2023). <em>Philosophy of Artificial Intelligence</em>. Cambridge University Press.</li>
-                    <li>Floridi, L. (2019). <em>The Logic of Information: A Theory of Philosophy as Conceptual Design</em>. Oxford University Press.</li>
-                    <li>Russell, S. J., & Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson (Capítulos sobre Filosofía y Ética).</li>
-                </ul>
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section"><div class="video-container"><iframe src="https://www.youtube.com/embed/gDMcZqAOkUE" title="Empirismo y Racionalismo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div></div>
             </section>
+
+            <section class="reveal">
+                <div class="quiz-section">
+                    <h2>📝 Evaluación — Tema 1.5</h2>
+                    <div class="quiz-score"></div>
+                    <div class="quiz-list">
+                        <div class="quiz-card" data-answer="b"><div class="quiz-question-number">Pregunta 1 de 5</div><div class="quiz-question">¿Qué corriente filosófica sostiene que todo conocimiento proviene de la experiencia sensorial?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Racionalismo</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Empirismo</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Idealismo</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Existencialismo</div></div><div class="quiz-feedback">✅ El empirismo (Locke, Hume) sostiene que la mente es una tabula rasa y todo conocimiento viene de la experiencia.</div></div>
+                        <div class="quiz-card" data-answer="c"><div class="quiz-question-number">Pregunta 2 de 5</div><div class="quiz-question">¿Qué paradigma de IA es más afín al racionalismo?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Deep Learning</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Redes neuronales</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Sistemas expertos (IA simbólica)</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Aprendizaje por refuerzo</div></div><div class="quiz-feedback">✅ Los sistemas expertos codifican conocimiento como reglas lógicas (a priori), sin aprender de datos.</div></div>
+                        <div class="quiz-card" data-answer="a"><div class="quiz-question-number">Pregunta 3 de 5</div><div class="quiz-question">¿Qué filósofo propuso que la mente es una «tabula rasa»?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> John Locke</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> René Descartes</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Immanuel Kant</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Platón</div></div><div class="quiz-feedback">✅ John Locke (1632–1704) propuso la tabula rasa: la mente nace vacía y se llena con experiencia.</div></div>
+                        <div class="quiz-card" data-answer="d"><div class="quiz-question-number">Pregunta 4 de 5</div><div class="quiz-question">¿Qué enfoque moderno busca combinar aprendizaje de datos con razonamiento simbólico?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Deep Learning puro</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Programación lógica</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Computación cuántica</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> IA Neuro-simbólica</div></div><div class="quiz-feedback">✅ La IA neuro-simbólica combina redes neuronales (empirismo) con razonamiento lógico (racionalismo).</div></div>
+                        <div class="quiz-card" data-answer="c"><div class="quiz-question-number">Pregunta 5 de 5</div><div class="quiz-question">¿Qué filósofo sintetizó empirismo y racionalismo con sus «categorías a priori»?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> David Hume</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> John Locke</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Immanuel Kant</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Francis Bacon</div></div><div class="quiz-feedback">✅ Kant propuso que existen categorías a priori (espacio, tiempo, causalidad) que estructuran la experiencia.</div></div>
+                    </div>
+                    <button class="quiz-check-btn">Verificar respuestas</button>
+                </div>
+            </section>
+
+            <section class="reveal"><div class="conclusion-section"><h2>🎯 Conclusión</h2><p>La epistemología proporciona los fundamentos filosóficos de cómo las máquinas adquieren conocimiento. El machine learning es esencialmente empirista; la IA simbólica es racionalista. La tendencia actual de IA neuro-simbólica busca una síntesis similar a la de Kant. Comprender estas raíces filosóficas ayuda a evaluar críticamente las capacidades y limitaciones de los sistemas de IA en aplicaciones industriales.</p></div></section>
+
+            <section class="reveal"><h2 id="referencias">Referencias</h2><ul><li>Russell, S. J., & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li><li>Garcez, A. d., & Lamb, L. C. (2023). Neurosymbolic AI: The 3rd Wave. <em>Artificial Intelligence Review</em>, 56, 12387–12406.</li><li>Locke, J. (1689/2004). <em>An Essay Concerning Human Understanding</em>. Penguin Classics.</li></ul></section>
 
             <nav class="article-nav reveal">
-                <a href="razonamiento-logica.html" class="article-nav-link">
-                    <span class="nav-label">← Anterior</span>
-                    <span class="nav-title">1.4 Razonamiento y Lógica</span>
-                </a>
-                <a href="modelo-cognoscitivo.html" class="article-nav-link next">
-                    <span class="nav-label">Siguiente →</span>
-                    <span class="nav-title">1.6 Modelo Cognoscitivo</span>
-                </a>
+                <a href="razonamiento-logica.html" class="article-nav-link"><span class="nav-label">← Anterior</span><span class="nav-title">1.4 Razonamiento y Lógica</span></a>
+                <a href="modelo-cognoscitivo.html" class="article-nav-link next"><span class="nav-label">Siguiente →</span><span class="nav-title">1.6 Modelo Cognoscitivo</span></a>
             </nav>
         </article>
     </div>
-
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-brand">🤖 AI Blog</div>
-            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
-        </div>
-    </footer>
+    <footer class="footer"><div class="footer-inner"><div class="footer-brand">🤖 AI Blog</div><p>Blog educativo sobre Inteligencia Artificial — © 2026</p></div></footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
-
 </html>

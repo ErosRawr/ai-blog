@@ -1,206 +1,166 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="1.4 El proceso de razonamiento según la lógica: axiomas, teoremas, lógica proposicional y de predicados aplicada a la Inteligencia Artificial.">
+    <meta name="description" content="1.4 El proceso de razonamiento según la lógica: axiomas, teoremas, lógica proposicional y de predicados, razonamiento deductivo e inductivo en IA.">
     <title>1.4 Razonamiento y Lógica — AI Blog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
-    <style>
-        :root {
-            --accent-unit: #3b82f6; /* Azul para Unidad 1 */
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-
-<body>
-    <div class="particles" aria-hidden="true">
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-    </div>
+<body class="has-sidebar">
+    <div class="particles" aria-hidden="true"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div></div>
     <div class="reading-progress" id="readingProgress"></div>
-    <nav class="navbar" id="navbar">
-        <div class="navbar-inner">
-            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
-            <ul class="navbar-links" id="navLinks">
-                <li><a href="../index.html#unidad1">Unidad 1</a></li>
-                <li><a href="../index.html#unidad2">Unidad 2</a></li>
-                <li><a href="../index.html#unidad3">Unidad 3</a></li>
-                <li><a href="../index.html#unidad4">Unidad 4</a></li>
-            </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-        </div>
-    </nav>
+    <nav class="navbar" id="navbar"><div class="navbar-inner"><a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a><ul class="navbar-links" id="navLinks"><li><a href="../index.html#unidad1">Unidad 1</a></li><li><a href="../index.html#unidad2">Unidad 2</a></li><li><a href="../index.html#unidad3">Unidad 3</a></li><li><a href="../index.html#unidad4">Unidad 4</a></li></ul><div class="navbar-right"><button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button><button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button></div></div></nav>
+    <aside class="sidebar" id="sidebar"><div class="sidebar-section"><div class="sidebar-label">Unidad I — Fundamentos</div><ul class="sidebar-links"><li><a href="introduccion-ia.html"><span class="link-number">1.1</span> Introducción a la IA</a></li><li><a href="historia-ia.html"><span class="link-number">1.2</span> Historia de la IA</a></li><li><a href="habilidades-cognoscitivas.html"><span class="link-number">1.3</span> Habilidades Cognoscitivas</a></li><li><a href="razonamiento-logica.html"><span class="link-number">1.4</span> Razonamiento y Lógica</a></li><li><a href="adquisicion-conocimiento.html"><span class="link-number">1.5</span> Adquisición del Conocimiento</a></li><li><a href="modelo-cognoscitivo.html"><span class="link-number">1.6</span> Modelo Cognoscitivo</a></li><li><a href="agente-inteligente.html"><span class="link-number">1.7</span> Agentes Inteligentes</a></li><li><a href="heuristicas.html"><span class="link-number">1.8</span> Heurísticas</a></li><li><a href="algoritmos-busqueda.html"><span class="link-number">1.8.1</span> Algoritmos de Exploración</a></li><li><a href="algoritmo-a-estrella.html"><span class="link-number">1.8.2</span> Algoritmo A*</a></li><li><a href="busqueda-local.html"><span class="link-number">1.8.3</span> Búsqueda Local</a></li></ul></div></aside>
 
     <div class="page-wrapper">
-        <header class="article-hero" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);">
-            <div class="breadcrumb">
-                <a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.4 Razonamiento y Lógica</span>
-            </div>
-            <h1>1.4 El Proceso de Razonamiento según la <span class="gradient-text">Lógica</span></h1>
-            <div class="article-meta">
-                <span class="article-meta-item">📖 Lectura: 30 min</span>
-                <span class="article-meta-item">🏷️ Lógica Formal</span>
-                <span class="article-meta-item">📝 Tema 1.4 de la Unidad I</span>
-            </div>
+        <header class="article-hero">
+            <div class="breadcrumb"><a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.4 Razonamiento y Lógica</span></div>
+            <h1>1.4 El proceso de <span class="gradient-text">Razonamiento según la Lógica</span></h1>
+            <div class="article-meta"><span class="article-meta-item">📖 Lectura: 25 min</span><span class="article-meta-item">🏷️ Lógica</span><span class="article-meta-item">📝 Tema 4 de 11</span></div>
         </header>
 
         <article class="article-content">
 
             <section class="reveal">
-                <h2 id="fundamento">Fundamento Teórico: La Estructura del Pensamiento Formal</h2>
-                <p>La **lógica** es la ciencia formal que estudia los principios de la demostración y la inferencia válida. En la IA, la lógica proporciona el marco matemático para representar el conocimiento y los mecanismos para derivar nuevas conclusiones a partir de hechos conocidos.</p>
-                
-                <p>Aristóteles definió la lógica como "el arte de la razón", pero en la computación moderna, la lógica es la **infraestructura del razonamiento automático**. Un sistema inteligente basado en lógica no "adivina" una respuesta basándose en probabilidades (como un LLM), sino que la **deduce** garantizando que si las premisas son verdaderas, la conclusión es inevitablemente verdadera.</p>
+                <h2 id="fundamento">Fundamento: ¿Qué es el razonamiento lógico?</h2>
+                <p>El <strong>razonamiento lógico</strong> es el proceso de derivar conclusiones válidas a partir de premisas dadas, siguiendo reglas formales. En IA, la lógica es uno de los pilares fundamentales: permite a los sistemas representar conocimiento de forma precisa y realizar inferencias garantizando la corrección de las conclusiones.</p>
+                <p>Los orígenes se remontan a <strong>Aristóteles</strong> (384–322 a.C.), quien formuló los silogismos, la primera forma de razonamiento lógico formalizado. En el siglo XIX, <strong>George Boole</strong> y <strong>Gottlob Frege</strong> formalizaron la lógica como sistema matemático.</p>
 
-                <div class="callout callout-info">
-                    <div class="callout-title">🏛️ Contexto Histórico: Autores Clave</div>
-                    <p>Aunque Aristóteles sentó las bases con el silogismo, la lógica aplicada a la IA le debe su existencia a:</p>
-                    <ul>
-                        <li><strong>George Boole (1815–1864):</strong> Inventó el álgebra booleana, permitiendo tratar la lógica como matemáticas.</li>
-                        <li><strong>Gottlob Frege (1848–1925):</strong> Creador de la lógica de predicados moderna.</li>
-                        <li><strong>John McCarthy (1927–2011):</strong> Propuso el uso de la lógica para el problema de la representación del conocimiento en el famoso "Advice Taker" (1958).</li>
-                    </ul>
-                </div>
+                <h3>Conceptos fundamentales</h3>
+                <ul>
+                    <li><strong>Axioma:</strong> Proposición que se acepta como verdadera sin demostración. Son los «puntos de partida» del razonamiento. Ejemplo: «Todo número tiene un sucesor».</li>
+                    <li><strong>Teorema:</strong> Proposición que se demuestra a partir de axiomas y reglas de inferencia. Ejemplo: «La suma de ángulos de un triángulo es 180°».</li>
+                    <li><strong>Demostración:</strong> Secuencia finita de pasos lógicos que conecta axiomas con un teorema.</li>
+                    <li><strong>Regla de inferencia:</strong> Procedimiento que permite derivar nuevas proposiciones de las existentes. Ej: Modus Ponens: si P→Q y P, entonces Q.</li>
+                </ul>
             </section>
 
             <section class="reveal">
-                <h2 id="axiomas">Axiomas, Teoremas y Demostración</h2>
-                <p>Todo sistema lógico formal se construye sobre tres pilares fundamentales:</p>
-
-                <div class="concept-grid">
-                    <div class="concept-card">
-                        <h4>Axiomas</h4>
-                        <p>Son proposiciones tan evidentes que se aceptan sin demostración. Son el punto de partida absoluto. Ejemplo: "A es igual a A" (Identidad).</p>
-                    </div>
-                    <div class="concept-card">
-                        <h4>Teoremas</h4>
-                        <p>Son sentencias cuya verdad se establece mediante un proceso de razonamiento llamado demostración.</p>
-                    </div>
-                    <div class="concept-card">
-                        <h4>Demostración</h4>
-                        <p>Es una secuencia finita de pasos que aplica reglas de inferencia a los axiomas para llegar al teorema.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="reveal">
-                <h2 id="logica-prop">Lógica Proposicional vs. Predicados</h2>
-                <p>En IA, utilizamos diferentes niveles de expresividad lógica según la complejidad del problema.</p>
-
-                <h3>1. Lógica Proposicional (Orden Cero)</h3>
-                <p>Se ocupa de proposiciones completas (p, q, r) que pueden ser verdaderas o falsas. Es simple pero limitada porque no puede hablar de objetos individuales ni de sus propiedades generales.</p>
-                <div class="code-block">
-                    Si p (Llueve) → q (Suelo mojado)<br>
-                    p es Verdadero<br>
-                    ∴ q es Verdadero
-                </div>
-
-                <h3>2. Lógica de Predicados (Primer Orden - FOL)</h3>
-                <p>Permite analizar la estructura interna de las proposiciones usando <strong>objetos</strong>, <strong>predicados</strong> y <strong>cuantificadores</strong> (Para todo ∀, Existe ∃).</p>
-                <div class="code-block">
-                    ∀x [Humano(x) → Mortal(x)]  // Todo humano es mortal<br>
-                    Humano(Sócrates)<br>
-                    ∴ Mortal(Sócrates)
-                </div>
-            </section>
-
-            <section class="reveal">
-                <h2 id="inductivo-deductivo">Razonamiento Deductivo e Inductivo en IA</h2>
-                <p>La IA moderna combina estos dos enfoques para crear sistemas robustos.</p>
+                <h2 id="proposicional">Lógica Proposicional</h2>
+                <p>La <strong>lógica proposicional</strong> (o lógica de enunciados) trabaja con proposiciones que son <strong>verdaderas o falsas</strong>, conectadas por operadores lógicos.</p>
 
                 <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Tipo de Razonamiento</th>
-                            <th>Flujo de Pensamiento</th>
-                            <th>Garantía de Verdad</th>
-                            <th>Aplicación en IA</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>Operador</th><th>Símbolo</th><th>Significado</th><th>Ejemplo</th></tr></thead>
                     <tbody>
-                        <tr>
-                            <td><strong>Deductivo</strong></td>
-                            <td>General → Particular</td>
-                            <td>Absoluta (si premisas verdaderas)</td>
-                            <td>Sistemas Expertos, Diagnóstico Médico, Prolog.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Inductivo</strong></td>
-                            <td>Particular → General</td>
-                            <td>Probabilística</td>
-                            <td>Machine Learning, Deep Learning (aprender patrones de datos).</td>
-                        </tr>
+                        <tr><td>Negación</td><td>¬</td><td>NO</td><td>¬P: «No llueve»</td></tr>
+                        <tr><td>Conjunción</td><td>∧</td><td>Y</td><td>P ∧ Q: «Llueve Y hace frío»</td></tr>
+                        <tr><td>Disyunción</td><td>∨</td><td>O</td><td>P ∨ Q: «Llueve O hace frío»</td></tr>
+                        <tr><td>Condicional</td><td>→</td><td>SI… ENTONCES</td><td>P → Q: «Si llueve, la calle se moja»</td></tr>
+                        <tr><td>Bicondicional</td><td>↔</td><td>SI Y SOLO SI</td><td>P ↔ Q: «Llueve sii la calle está mojada»</td></tr>
                     </tbody>
                 </table>
-            </section>
 
-            <section class="reveal">
-                <h2 id="actividad">Actividad Práctica: Demostraciones Lógicas</h2>
-                
-                <h3>Ejercicio 1: Resolución de Silogismo (Paso a Paso)</h3>
-                <p><strong>Problema:</strong> Demostrar que "Fido es Peludo" dadas las premisas:</p>
-                <ol>
-                    <li>∀x [Perro(x) → Mamífero(x)]</li>
-                    <li>∀x [Mamífero(x) → Peludo(x)]</li>
-                    <li>Perro(Fido)</li>
-                </ol>
-                <p><strong>Solución:</strong></p>
-                <ol>
-                    <li>Aplicamos <em>Instanciación Universal</em> en la Premisa 1 con x=Fido: Perro(Fido) → Mamífero(Fido).</li>
-                    <li>Usamos <em>Modus Ponens</em> con el hecho 3: Mamífero(Fido).</li>
-                    <li>Aplicamos <em>Instanciación Universal</em> en la Premisa 2: Mamífero(Fido) → Peludo(Fido).</li>
-                    <li>Usamos <em>Modus Ponens</em> otra vez: <strong>Peludo(Fido)</strong>. Q.E.D.</li>
-                </ol>
-
-                <h3>Ejercicio 2: Reto de Lógica de Predicados</h3>
-                <div class="callout callout-tip">
-                    <div class="callout-title">📝 Tu turno de formalizar</div>
-                    <p>Traduce las siguientes frases del lenguaje natural a Lógica de Predicados (Primer Orden):</p>
-                    <ol>
-                        <li>"Todos los estudiantes de ISC aman la IA."</li>
-                        <li>"Hay al menos un robot que sabe jugar ajedrez."</li>
-                        <li>"Si alguien es programador y es constante, entonces tendrá éxito."</li>
-                    </ol>
-                    <p>Pista: Usa predicados como Estudia(x, ISC), Ama(x, IA), sabe_jugar(x, Ajedrez), etc.</p>
+                <div class="callout">
+                    <div class="callout-title">📐 Modus Ponens</div>
+                    <p>Si «Llueve → La calle se moja» (P→Q) es verdadero, y «Llueve» (P) es verdadero, entonces podemos concluir «La calle se moja» (Q). Esta regla es la base del razonamiento en sistemas expertos y motores de inferencia.</p>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="referencias">Referencias Académicas (2018-2025)</h2>
+                <h2 id="predicados">Lógica de Predicados (Primer Orden)</h2>
+                <p>La <strong>lógica de predicados</strong> extiende la proposicional con <strong>variables, cuantificadores y predicados</strong>, permitiendo expresar relaciones y propiedades de objetos.</p>
                 <ul>
-                    <li>Russell, S. J., & Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
-                    <li>Brachman, R., & Levesque, H. (2023). <em>Knowledge Representation and Reasoning</em>. Morgan Kaufmann.</li>
-                    <li>Huth, M., & Ryan, M. (2019). <em>Logic in Computer Science: Modelling and Reasoning about Systems</em> (2nd ed.). Cambridge University Press.</li>
+                    <li><strong>Predicado:</strong> Función que asigna verdadero/falso. Ej: EsHumano(x), Mayor(x, y).</li>
+                    <li><strong>Cuantificador universal (∀):</strong> «Para todo». ∀x EsHumano(x) → EsMortal(x) — «Todo humano es mortal».</li>
+                    <li><strong>Cuantificador existencial (∃):</strong> «Existe al menos uno». ∃x EsEstudiante(x) ∧ SabeIA(x) — «Existe un estudiante que sabe IA».</li>
+                </ul>
+
+                <h3>Ejemplo de razonamiento en Prolog</h3>
+                <pre><code class="language-prolog">% Base de conocimiento
+humano(socrates).
+humano(platon).
+mortal(X) :- humano(X).
+
+% Consulta: ¿Es Sócrates mortal?
+?- mortal(socrates).
+% Respuesta: true</code></pre>
+            </section>
+
+            <section class="reveal">
+                <h2 id="deductivo-inductivo">Razonamiento deductivo vs. inductivo</h2>
+                <table class="comparison-table">
+                    <thead><tr><th>Tipo</th><th>Dirección</th><th>Certeza</th><th>Uso en IA</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Deductivo</strong></td><td>De lo general a lo particular</td><td>Conclusión necesaria (si las premisas son verdaderas)</td><td>Sistemas expertos, Prolog, verificación formal</td></tr>
+                        <tr><td><strong>Inductivo</strong></td><td>De lo particular a lo general</td><td>Conclusión probable (no garantizada)</td><td>Machine learning, minería de datos, generalización</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Analogía</div>
+                    <p><strong>Deductivo:</strong> «Todos los pájaros vuelan. Pedro es un pájaro. Por lo tanto, Pedro vuela.» (Garantizado si las premisas son correctas.)<br>
+                    <strong>Inductivo:</strong> «He visto 1000 cisnes blancos. Por lo tanto, todos los cisnes son blancos.» (Probable, pero puede existir un cisne negro.)</p>
+                </div>
+            </section>
+
+            <!-- ACTIVIDAD -->
+            <section class="reveal">
+                <h2 id="actividad">Actividad práctica</h2>
+                <h3>Ejercicio resuelto: Modus Ponens</h3>
+                <p>Dadas las siguientes premisas, obtén la conclusión usando Modus Ponens:</p>
+                <ol>
+                    <li>Si un alumno estudia IA, entonces comprende algoritmos. (EstudiaIA(x) → ComprendeAlgoritmos(x))</li>
+                    <li>María estudia IA. (EstudiaIA(María))</li>
+                </ol>
+                <p><strong>Conclusión:</strong> María comprende algoritmos. (ComprendeAlgoritmos(María)) ✅</p>
+
+                <h3>Ejercicio propuesto</h3>
+                <div class="callout callout-tip">
+                    <div class="callout-title">📝 Tu turno</div>
+                    <p>Formaliza en lógica de predicados: «Todos los programadores que conocen Python pueden usar TensorFlow. Juan es programador y conoce Python. ¿Puede Juan usar TensorFlow?» Resuelve paso a paso con Modus Ponens.</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="reporte">Guía para reporte en PDF</h2>
+                <div class="report-guide"><h3>📄 Contenido</h3><ol><li>Portada.</li><li>Explicación de axiomas, teoremas y reglas de inferencia con ejemplos propios.</li><li>Tabla de verdad para (P → Q) ∧ (Q → R) → (P → R).</li><li>Resolución del ejercicio propuesto.</li><li>Reflexión: Ventajas y limitaciones de la lógica en IA moderna.</li><li>Referencias APA.</li></ol></div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section"><div class="video-container"><iframe src="https://www.youtube.com/embed/wM2Iy6R6MZo" title="Lógica Proposicional" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div></div>
+            </section>
+
+            <section class="reveal">
+                <div class="quiz-section">
+                    <h2>📝 Evaluación — Tema 1.4</h2>
+                    <div class="quiz-score"></div>
+                    <div class="quiz-list">
+                        <div class="quiz-card" data-answer="b"><div class="quiz-question-number">Pregunta 1 de 5</div><div class="quiz-question">¿Qué es un axioma?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Una proposición demostrada</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Una proposición aceptada como verdadera sin demostración</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Una proposición falsa por definición</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Una regla de inferencia</div></div><div class="quiz-feedback">✅ Un axioma es un punto de partida del razonamiento que se acepta sin demostración.</div></div>
+                        <div class="quiz-card" data-answer="a"><div class="quiz-question-number">Pregunta 2 de 5</div><div class="quiz-question">En Modus Ponens, si P→Q es verdadero y P es verdadero, ¿qué se concluye?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Q es verdadero</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Q es falso</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> P es falso</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> No se puede concluir nada</div></div><div class="quiz-feedback">✅ Modus Ponens: de P→Q y P, se deriva Q necesariamente.</div></div>
+                        <div class="quiz-card" data-answer="c"><div class="quiz-question-number">Pregunta 3 de 5</div><div class="quiz-question">¿Qué símbolo representa el cuantificador universal en lógica de predicados?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> ∃</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> →</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> ∀</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> ∧</div></div><div class="quiz-feedback">✅ ∀ (para todo) es el cuantificador universal. ∃ es el existencial.</div></div>
+                        <div class="quiz-card" data-answer="d"><div class="quiz-question-number">Pregunta 4 de 5</div><div class="quiz-question">¿Qué tipo de razonamiento va de observaciones particulares a una regla general?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Deductivo</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Abductivo</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Analógico</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Inductivo</div></div><div class="quiz-feedback">✅ El razonamiento inductivo generaliza a partir de casos particulares. Es la base del machine learning.</div></div>
+                        <div class="quiz-card" data-answer="a"><div class="quiz-question-number">Pregunta 5 de 5</div><div class="quiz-question">¿Qué lenguaje de programación está basado directamente en lógica de predicados?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Prolog</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Python</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Java</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> LISP</div></div><div class="quiz-feedback">✅ Prolog (PROgramming in LOGic) está basado directamente en cláusulas de Horn de la lógica de predicados.</div></div>
+                    </div>
+                    <button class="quiz-check-btn">Verificar respuestas</button>
+                </div>
+            </section>
+
+            <section class="reveal"><div class="conclusion-section"><h2>🎯 Conclusión</h2><p>La lógica formal proporciona a la IA un marco riguroso para representar conocimiento y razonar con precisión. Los sistemas expertos, la programación lógica (Prolog) y la verificación formal dependen de lógica proposicional y de predicados. Aunque la IA moderna basada en aprendizaje automático utiliza razonamiento inductivo (estadístico), la lógica sigue siendo fundamental para la explicabilidad, la verificación de sistemas críticos y la representación del conocimiento.</p></div></section>
+
+            <section class="reveal">
+                <h2 id="referencias">Referencias</h2>
+                <ul>
+                    <li>Russell, S. J., & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson. Caps. 7-9.</li>
+                    <li>Brachman, R. J., & Levesque, H. J. (2022). <em>Knowledge Representation and Reasoning</em> (2nd ed.). Morgan Kaufmann.</li>
+                    <li>Clocksin, W. F., & Mellish, C. S. (2003). <em>Programming in Prolog</em> (5th ed.). Springer.</li>
                 </ul>
             </section>
 
             <nav class="article-nav reveal">
-                <a href="habilidades-cognoscitivas.html" class="article-nav-link">
-                    <span class="nav-label">← Anterior</span>
-                    <span class="nav-title">1.3 Habilidades Cognoscitivas</span>
-                </a>
-                <a href="adquisicion-conocimiento.html" class="article-nav-link next">
-                    <span class="nav-label">Siguiente →</span>
-                    <span class="nav-title">1.5 Adquisición del Conocimiento</span>
-                </a>
+                <a href="habilidades-cognoscitivas.html" class="article-nav-link"><span class="nav-label">← Anterior</span><span class="nav-title">1.3 Habilidades Cognoscitivas</span></a>
+                <a href="adquisicion-conocimiento.html" class="article-nav-link next"><span class="nav-label">Siguiente →</span><span class="nav-title">1.5 Adquisición del Conocimiento</span></a>
             </nav>
         </article>
     </div>
-
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-brand">🤖 AI Blog</div>
-            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
-        </div>
-    </footer>
+    <footer class="footer"><div class="footer-inner"><div class="footer-brand">🤖 AI Blog</div><p>Blog educativo sobre Inteligencia Artificial — © 2026</p></div></footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
-
 </html>

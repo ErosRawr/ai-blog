@@ -4,25 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="1.1 Introducción a la Inteligencia Artificial: definiciones formales, ramas principales, IA débil vs fuerte, IA general vs estrecha. Contenido académico completo para ISC.">
+    <meta name="description" content="1.1 Introducción a la Inteligencia Artificial: definiciones formales, ramas principales, IA débil vs fuerte, IA general vs estrecha.">
     <title>1.1 Introducción a la IA — AI Blog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 
-<body>
+<body class="has-sidebar">
     <div class="particles" aria-hidden="true">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
     </div>
     <div class="reading-progress" id="readingProgress"></div>
+
+    <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
             <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
@@ -32,9 +30,32 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad I — Fundamentos</div>
+            <ul class="sidebar-links">
+                <li><a href="introduccion-ia.html"><span class="link-number">1.1</span> Introducción a la IA</a></li>
+                <li><a href="historia-ia.html"><span class="link-number">1.2</span> Historia de la IA</a></li>
+                <li><a href="habilidades-cognoscitivas.html"><span class="link-number">1.3</span> Habilidades Cognoscitivas</a></li>
+                <li><a href="razonamiento-logica.html"><span class="link-number">1.4</span> Razonamiento y Lógica</a></li>
+                <li><a href="adquisicion-conocimiento.html"><span class="link-number">1.5</span> Adquisición del Conocimiento</a></li>
+                <li><a href="modelo-cognoscitivo.html"><span class="link-number">1.6</span> Modelo Cognoscitivo</a></li>
+                <li><a href="agente-inteligente.html"><span class="link-number">1.7</span> Agentes Inteligentes</a></li>
+                <li><a href="heuristicas.html"><span class="link-number">1.8</span> Heurísticas</a></li>
+                <li><a href="algoritmos-busqueda.html"><span class="link-number">1.8.1</span> Algoritmos de Exploración</a></li>
+                <li><a href="algoritmo-a-estrella.html"><span class="link-number">1.8.2</span> Algoritmo A*</a></li>
+                <li><a href="busqueda-local.html"><span class="link-number">1.8.3</span> Búsqueda Local</a></li>
+            </ul>
+        </div>
+    </aside>
 
     <div class="page-wrapper">
         <header class="article-hero">
@@ -45,13 +66,13 @@
             <div class="article-meta">
                 <span class="article-meta-item">📖 Lectura: 25 min</span>
                 <span class="article-meta-item">🏷️ Fundamentos</span>
-                <span class="article-meta-item">📝 Tema 1 de 13</span>
+                <span class="article-meta-item">📝 Tema 1 de 11</span>
             </div>
         </header>
 
         <article class="article-content">
 
-            <!-- SECCIÓN 1: ¿Qué es la Inteligencia Artificial? -->
+            <!-- FUNDAMENTO TEÓRICO -->
             <section class="reveal">
                 <h2 id="que-es">¿Qué es la Inteligencia Artificial?</h2>
 
@@ -68,326 +89,130 @@
 
                 <h3>Definiciones complementarias de IA</h3>
 
-                <p>A lo largo de la historia, distintos investigadores han propuesto definiciones que enfatizan diferentes aspectos de la disciplina:</p>
-
                 <table class="comparison-table">
                     <thead>
-                        <tr>
-                            <th>Autor / Fuente</th>
-                            <th>Definición</th>
-                            <th>Énfasis</th>
-                        </tr>
+                        <tr><th>Autor / Fuente</th><th>Definición</th><th>Énfasis</th></tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><strong>Alan Turing (1950)</strong></td>
-                            <td>Una máquina es inteligente si puede imitar respuestas humanas de forma que un interrogador no pueda distinguirla de un humano.</td>
-                            <td>Comportamiento observable</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Stuart Russell & Peter Norvig (2021)</strong></td>
-                            <td>La IA es el estudio de agentes que reciben percepciones del entorno y realizan acciones que maximizan una medida de rendimiento.</td>
-                            <td>Agentes racionales</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Elaine Rich (1983)</strong></td>
-                            <td>La IA es el estudio de cómo hacer que las computadoras hagan cosas que, por el momento, las personas hacen mejor.</td>
-                            <td>Ventaja humana</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Nils Nilsson (1998)</strong></td>
-                            <td>La IA está interesada en el comportamiento inteligente en artefactos. El comportamiento inteligente involucra percepción, razonamiento, aprendizaje, comunicación y acción en entornos complejos.</td>
-                            <td>Comportamiento inteligente</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Unión Europea (2019)</strong></td>
-                            <td>Sistemas de software (y posiblemente hardware) diseñados por humanos que, ante un objetivo complejo, actúan en la dimensión física o digital percibiendo su entorno, interpretando datos, razonando o procesando información derivada de los datos, y decidiendo la(s) mejor(es) acción(es) a tomar para lograr el objetivo dado.</td>
-                            <td>Regulación y política</td>
-                        </tr>
+                        <tr><td><strong>Alan Turing (1950)</strong></td><td>Una máquina es inteligente si puede imitar respuestas humanas de forma que un interrogador no pueda distinguirla de un humano.</td><td>Comportamiento observable</td></tr>
+                        <tr><td><strong>Russell & Norvig (2021)</strong></td><td>La IA es el estudio de agentes que reciben percepciones del entorno y realizan acciones que maximizan una medida de rendimiento.</td><td>Agentes racionales</td></tr>
+                        <tr><td><strong>Elaine Rich (1983)</strong></td><td>La IA es el estudio de cómo hacer que las computadoras hagan cosas que, por el momento, las personas hacen mejor.</td><td>Ventaja humana</td></tr>
+                        <tr><td><strong>Nils Nilsson (1998)</strong></td><td>La IA está interesada en el comportamiento inteligente en artefactos. El comportamiento inteligente involucra percepción, razonamiento, aprendizaje, comunicación y acción en entornos complejos.</td><td>Comportamiento inteligente</td></tr>
+                        <tr><td><strong>Unión Europea (2019)</strong></td><td>Sistemas de software diseñados por humanos que, ante un objetivo complejo, actúan percibiendo su entorno, interpretando datos, razonando y decidiendo las mejores acciones a tomar.</td><td>Regulación y política</td></tr>
                     </tbody>
                 </table>
             </section>
 
-            <!-- SECCIÓN 2: Los cuatro enfoques de la IA -->
+            <!-- LOS 4 ENFOQUES -->
             <section class="reveal">
                 <h2 id="enfoques">Los cuatro enfoques de la IA (Russell & Norvig)</h2>
 
-                <p>Russell y Norvig, en su obra clásica <em>Artificial Intelligence: A Modern Approach</em>, clasifican las definiciones de IA en cuatro categorías organizadas en dos dimensiones: <strong>pensamiento vs. comportamiento</strong> y <strong>humano vs. racional</strong>. Esta taxonomía es fundamental para comprender las diferentes escuelas de pensamiento en IA.</p>
+                <p>Russell y Norvig, en su obra clásica <em>Artificial Intelligence: A Modern Approach</em>, clasifican las definiciones de IA en cuatro categorías organizadas en dos dimensiones: <strong>pensamiento vs. comportamiento</strong> y <strong>humano vs. racional</strong>.</p>
 
                 <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Como humano</th>
-                            <th>Racionalmente</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th></th><th>Como humano</th><th>Racionalmente</th></tr></thead>
                     <tbody>
-                        <tr>
-                            <td><strong>Pensar</strong></td>
-                            <td><strong>Pensar como humano</strong> — Ciencia cognitiva. Modelar los procesos mentales humanos. Ejemplo: redes neuronales inspiradas en el cerebro.</td>
-                            <td><strong>Pensar racionalmente</strong> — Leyes del pensamiento (lógica). Usar silogismos y cálculo de predicados para llegar a conclusiones correctas.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Actuar</strong></td>
-                            <td><strong>Actuar como humano</strong> — Test de Turing. Un sistema pasa si un humano no puede distinguirlo de otro humano en una conversación.</td>
-                            <td><strong>Actuar racionalmente</strong> — Agentes racionales. Un agente que toma las acciones que maximizan el logro de sus objetivos dada la información disponible.</td>
-                        </tr>
+                        <tr><td><strong>Pensar</strong></td><td><strong>Pensar como humano</strong> — Ciencia cognitiva. Modelar los procesos mentales humanos.</td><td><strong>Pensar racionalmente</strong> — Leyes del pensamiento (lógica). Usar silogismos para llegar a conclusiones correctas.</td></tr>
+                        <tr><td><strong>Actuar</strong></td><td><strong>Actuar como humano</strong> — Test de Turing. Un sistema pasa si un humano no puede distinguirlo de otro humano.</td><td><strong>Actuar racionalmente</strong> — Agentes racionales. Un agente que toma las acciones que maximizan el logro de sus objetivos.</td></tr>
                     </tbody>
                 </table>
 
                 <div class="callout callout-tip">
                     <div class="callout-title">🎯 Enfoque dominante actual</div>
-                    <p>El enfoque de <strong>actuar racionalmente (agentes racionales)</strong> es el paradigma dominante en la IA moderna. No exige que el sistema piense como un humano ni que pase el Test de Turing, solo que tome las mejores decisiones posibles dada la información y los recursos disponibles. Este enfoque es más general y más susceptible al desarrollo científico que los otros tres.</p>
+                    <p>El enfoque de <strong>actuar racionalmente (agentes racionales)</strong> es el paradigma dominante en la IA moderna. No exige que el sistema piense como un humano ni que pase el Test de Turing, solo que tome las mejores decisiones posibles dada la información y los recursos disponibles.</p>
                 </div>
-
-                <h3>¿Por qué el enfoque de agente racional es preferido?</h3>
-                <ul>
-                    <li><strong>Generalidad:</strong> Incluye todos los comportamientos del Test de Turing y va más allá (un agente también puede actuar en el mundo físico).</li>
-                    <li><strong>No requiere perfección:</strong> La racionalidad perfecta no siempre es alcanzable; la <em>racionalidad acotada</em> (actuar lo mejor posible con recursos limitados) es viable.</li>
-                    <li><strong>Medible:</strong> Se puede evaluar objetivamente el rendimiento de un agente comparando sus acciones con las óptimas.</li>
-                    <li><strong>Aplicable:</strong> Es directamente aplicable al diseño de sistemas de software y hardware reales.</li>
-                </ul>
             </section>
 
-            <!-- SECCIÓN 3: Ramas de la IA -->
+            <!-- RAMAS -->
             <section class="reveal">
                 <h2 id="ramas">Ramas principales de la Inteligencia Artificial</h2>
 
-                <p>La IA es un campo amplio que se subdivide en múltiples áreas de investigación y aplicación. Cada rama aborda un aspecto diferente de la inteligencia:</p>
-
                 <div class="concept-grid">
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🧠</div>
-                        <h4>Aprendizaje Automático (ML)</h4>
-                        <p>Algoritmos que mejoran su rendimiento a partir de datos sin ser programados explícitamente. Incluye aprendizaje supervisado, no supervisado y por refuerzo. Es la rama más activa actualmente.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">💬</div>
-                        <h4>Procesamiento de Lenguaje Natural (NLP)</h4>
-                        <p>Comprensión y generación de lenguaje humano por computadoras. Incluye traducción automática, análisis de sentimiento, chatbots y modelos de lenguaje como GPT.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">👁️</div>
-                        <h4>Visión por Computadora</h4>
-                        <p>Interpretación de imágenes y video. Reconocimiento facial, detección de objetos, segmentación semántica. Aplicaciones en medicina, seguridad y vehículos autónomos.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🤖</div>
-                        <h4>Robótica</h4>
-                        <p>Diseño de agentes físicos que perciben y actúan en el mundo real. Combina IA con ingeniería mecánica y electrónica. Robots industriales, drones, asistentes domésticos.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">📊</div>
-                        <h4>Representación del Conocimiento</h4>
-                        <p>Formalización del conocimiento del mundo en estructuras que las máquinas puedan usar para razonar. Ontologías, grafos de conocimiento, redes semánticas y marcos (frames).</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🔍</div>
-                        <h4>Planificación y Búsqueda</h4>
-                        <p>Algoritmos para encontrar secuencias de acciones que lleven de un estado inicial a un estado objetivo. A*, búsqueda heurística, planificación automática.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🎲</div>
-                        <h4>Razonamiento Probabilístico</h4>
-                        <p>Manejo de incertidumbre mediante probabilidad. Redes bayesianas, modelos ocultos de Markov, filtros de partículas. Esencial cuando la información es incompleta.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🧬</div>
-                        <h4>Computación Evolutiva</h4>
-                        <p>Algoritmos inspirados en la evolución biológica: algoritmos genéticos, programación genética, estrategias evolutivas. Útiles para optimización compleja.</p>
-                    </div>
+                    <div class="concept-card"><div class="concept-card-icon">🧠</div><h4>Aprendizaje Automático (ML)</h4><p>Algoritmos que mejoran su rendimiento a partir de datos sin ser programados explícitamente. Incluye aprendizaje supervisado, no supervisado y por refuerzo.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">💬</div><h4>Procesamiento de Lenguaje Natural</h4><p>Comprensión y generación de lenguaje humano. Incluye traducción automática, análisis de sentimiento, chatbots y modelos como GPT.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">👁️</div><h4>Visión por Computadora</h4><p>Interpretación de imágenes y video. Reconocimiento facial, detección de objetos, segmentación semántica.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">🤖</div><h4>Robótica</h4><p>Diseño de agentes físicos que perciben y actúan en el mundo real. Combina IA con ingeniería mecánica y electrónica.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">📊</div><h4>Representación del Conocimiento</h4><p>Formalización del conocimiento en estructuras para razonamiento. Ontologías, grafos de conocimiento, redes semánticas.</p></div>
+                    <div class="concept-card"><div class="concept-card-icon">🔍</div><h4>Planificación y Búsqueda</h4><p>Algoritmos para encontrar secuencias de acciones desde un estado inicial hasta uno objetivo. A*, búsqueda heurística.</p></div>
                 </div>
             </section>
 
-            <!-- SECCIÓN 4: IA Débil vs IA Fuerte -->
+            <!-- IA DÉBIL VS FUERTE -->
             <section class="reveal">
                 <h2 id="debil-fuerte">IA Débil vs. IA Fuerte</h2>
 
-                <p>La distinción entre IA débil e IA fuerte es una de las más importantes en el campo y tiene profundas implicaciones filosóficas y técnicas. Fue articulada de manera influyente por el filósofo <strong>John Searle</strong> en 1980 con su famoso argumento de la «Habitación China».</p>
+                <p>La distinción fue articulada por el filósofo <strong>John Searle</strong> en 1980 con su famoso argumento de la «Habitación China».</p>
 
                 <h3>IA Débil (Weak AI / Narrow AI)</h3>
-                <p>La <strong>IA débil</strong> es la postura según la cual las máquinas pueden <em>simular</em> inteligencia pero no la <em>poseen</em> realmente. Un sistema de IA débil puede comportarse <em>como si</em> fuera inteligente en un dominio específico, sin tener comprensión, conciencia ni experiencia subjetiva.</p>
-
-                <ul>
-                    <li><strong>Alcance limitado:</strong> Cada sistema está diseñado para una tarea específica y no puede transferir su «conocimiento» a otros dominios.</li>
-                    <li><strong>Sin comprensión real:</strong> Un modelo de lenguaje puede generar texto coherente sin «entender» lo que dice.</li>
-                    <li><strong>Toda la IA actual es IA débil:</strong> Desde Siri hasta AlphaGo, desde GPT-4 hasta los coches autónomos de Waymo, todos son sistemas de IA estrecha.</li>
-                </ul>
+                <p>La <strong>IA débil</strong> es la postura según la cual las máquinas pueden <em>simular</em> inteligencia pero no la <em>poseen</em> realmente. Un sistema de IA débil puede comportarse <em>como si</em> fuera inteligente sin tener comprensión, conciencia ni experiencia subjetiva. <strong>Toda la IA actual es IA débil.</strong></p>
 
                 <div class="callout">
                     <div class="callout-title">🏮 La Habitación China de Searle (1980)</div>
-                    <p>Searle propone un experimento mental: imagina que estás encerrado en una habitación con un libro de reglas que te dice cómo responder a mensajes en chino. Recibes preguntas en chino por una ranura, sigues las reglas mecánicamente y devuelves respuestas en chino perfecto. Desde afuera, pareces hablar chino, pero tú <strong>no entiendes chino</strong> en absoluto. De manera análoga, una computadora puede manipular símbolos sin comprenderlos. Este argumento defiende la postura de la IA débil.</p>
+                    <p>Imagina que estás encerrado en una habitación con un libro de reglas que te dice cómo responder a mensajes en chino. Recibes preguntas en chino por una ranura, sigues las reglas mecánicamente y devuelves respuestas en chino perfecto. Desde afuera, pareces hablar chino, pero tú <strong>no entiendes chino</strong> en absoluto. Una computadora puede manipular símbolos sin comprenderlos.</p>
                 </div>
 
                 <h3>IA Fuerte (Strong AI)</h3>
-                <p>La <strong>IA fuerte</strong> es la hipótesis según la cual una máquina apropiadamente programada no solo simula inteligencia, sino que realmente <em>posee</em> mente, comprensión y conciencia. Según esta postura, un sistema de IA suficientemente avanzado tendría estados mentales genuinos: creencias, deseos, intenciones y experiencias subjetivas (qualia).</p>
-
-                <ul>
-                    <li><strong>Conciencia artificial:</strong> La máquina no solo procesa información, sino que «experimenta» y «comprende».</li>
-                    <li><strong>Estatus filosófico:</strong> Sigue siendo una hipótesis no demostrada. No existe consenso científico sobre si es alcanzable.</li>
-                    <li><strong>Implicaciones éticas:</strong> Si una IA es consciente, ¿tiene derechos? ¿Es ético apagarla?</li>
-                </ul>
+                <p>La <strong>IA fuerte</strong> es la hipótesis según la cual una máquina apropiadamente programada no solo simula inteligencia, sino que realmente <em>posee</em> mente, comprensión y conciencia. Sigue siendo una hipótesis no demostrada.</p>
 
                 <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Característica</th>
-                            <th>IA Débil</th>
-                            <th>IA Fuerte</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>Característica</th><th>IA Débil</th><th>IA Fuerte</th></tr></thead>
                     <tbody>
-                        <tr>
-                            <td>Comprensión</td>
-                            <td>Simula comprensión</td>
-                            <td>Posee comprensión genuina</td>
-                        </tr>
-                        <tr>
-                            <td>Conciencia</td>
-                            <td>No tiene conciencia</td>
-                            <td>Tiene experiencia subjetiva</td>
-                        </tr>
-                        <tr>
-                            <td>Dominio</td>
-                            <td>Tarea específica</td>
-                            <td>Cualquier tarea intelectual</td>
-                        </tr>
-                        <tr>
-                            <td>Estado actual</td>
-                            <td>✅ Existe (toda la IA actual)</td>
-                            <td>❌ Hipotético / no logrado</td>
-                        </tr>
-                        <tr>
-                            <td>Ejemplo</td>
-                            <td>AlphaGo, GPT-4, Siri</td>
-                            <td>HAL 9000, Data (Star Trek)</td>
-                        </tr>
+                        <tr><td>Comprensión</td><td>Simula comprensión</td><td>Posee comprensión genuina</td></tr>
+                        <tr><td>Conciencia</td><td>No tiene conciencia</td><td>Tiene experiencia subjetiva</td></tr>
+                        <tr><td>Dominio</td><td>Tarea específica</td><td>Cualquier tarea intelectual</td></tr>
+                        <tr><td>Estado actual</td><td>✅ Existe (toda la IA actual)</td><td>❌ Hipotético / no logrado</td></tr>
+                        <tr><td>Ejemplo</td><td>AlphaGo, GPT-4, Siri</td><td>HAL 9000, Data (Star Trek)</td></tr>
                     </tbody>
                 </table>
             </section>
 
-            <!-- SECCIÓN 5: IA General vs IA Estrecha -->
+            <!-- IA GENERAL VS ESTRECHA -->
             <section class="reveal">
                 <h2 id="general-estrecha">IA General (AGI) vs. IA Estrecha (ANI)</h2>
 
-                <p>Mientras que la distinción débil/fuerte es filosófica (¿la máquina <em>entiende</em>?), la distinción general/estrecha es <strong>técnica</strong> (¿cuán amplio es el rango de tareas que puede resolver?).</p>
-
-                <h3>IA Estrecha (Artificial Narrow Intelligence — ANI)</h3>
-                <p>Un sistema de IA estrecha es excelente en <strong>una tarea específica</strong> o un conjunto limitado de tareas relacionadas, pero no puede transferir sus capacidades a otros dominios. Es el tipo de IA que existe hoy en día.</p>
-
-                <div class="concept-grid">
-                    <div class="concept-card">
-                        <div class="concept-card-icon">♟️</div>
-                        <h4>Deep Blue (1997)</h4>
-                        <p>Venció al campeón mundial de ajedrez Garry Kasparov, pero no podía jugar damas ni mantener una conversación.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">🎮</div>
-                        <h4>AlphaGo (2016)</h4>
-                        <p>Venció al campeón mundial de Go Lee Sedol, pero no puede jugar ajedrez sin ser reprogramado completamente.</p>
-                    </div>
-                    <div class="concept-card">
-                        <div class="concept-card-icon">📝</div>
-                        <h4>GPT-4 (2023)</h4>
-                        <p>Genera texto impresionante, pero no puede percibir el mundo físico, manipular objetos ni tiene recuerdos persistentes.</p>
-                    </div>
-                </div>
-
-                <h3>IA General (Artificial General Intelligence — AGI)</h3>
-                <p>La <strong>AGI</strong> sería un sistema con la capacidad de comprender, aprender y aplicar conocimiento a <strong>cualquier dominio intelectual</strong> al que un ser humano pueda enfrentarse. No se trata solo de ser bueno en una tarea, sino de tener la flexibilidad cognitiva general que caracteriza a los humanos.</p>
+                <p>La distinción general/estrecha es <strong>técnica</strong>: ¿cuán amplio es el rango de tareas que puede resolver?</p>
 
                 <ul>
-                    <li><strong>Transferencia de conocimiento:</strong> Aprender algo en un dominio y aplicarlo en otro completamente diferente.</li>
-                    <li><strong>Razonamiento de sentido común:</strong> Comprender que el agua moja, que los objetos caen, que las personas tienen emociones.</li>
-                    <li><strong>Meta-aprendizaje:</strong> Aprender a aprender, es decir, mejorar sus propias estrategias de aprendizaje.</li>
-                    <li><strong>Estado actual:</strong> No existe AGI. Las estimaciones de cuándo se logrará varían desde «en 10 años» hasta «quizás nunca».</li>
+                    <li><strong>ANI (IA Estrecha):</strong> Excelente en una tarea específica. Deep Blue (ajedrez), AlphaGo (Go), GPT-4 (texto). Toda la IA actual.</li>
+                    <li><strong>AGI (IA General):</strong> Hipotética. Capacidad de resolver cualquier tarea intelectual humana con transferencia de conocimiento.</li>
+                    <li><strong>ASI (Superinteligencia):</strong> Concepto de Nick Bostrom (2014). Superaría toda capacidad humana. Puramente especulativa.</li>
                 </ul>
-
-                <h3>Superinteligencia Artificial (ASI)</h3>
-                <p>Concepto propuesto por <strong>Nick Bostrom (2014)</strong> en su libro <em>Superintelligence</em>. Una ASI superaría la inteligencia humana en <strong>todos</strong> los dominios: creatividad, resolución de problemas, habilidad social, investigación científica. Es un concepto especulativo que genera intenso debate ético.</p>
 
                 <div class="callout callout-warning">
                     <div class="callout-title">⚠️ Clasificación completa</div>
-                    <p><strong>ANI</strong> (IA Estrecha) → Toda la IA actual. Excelente en tareas específicas.<br>
-                    <strong>AGI</strong> (IA General) → Hipotética. Nivel humano en cualquier tarea intelectual.<br>
-                    <strong>ASI</strong> (Superinteligencia) → Especulativa. Superaría toda capacidad humana.<br>
-                    Estas categorías forman un espectro continuo, no compartimentos estancos.</p>
+                    <p><strong>ANI</strong> → Toda la IA actual. Excelente en tareas específicas.<br>
+                    <strong>AGI</strong> → Hipotética. Nivel humano en cualquier tarea intelectual.<br>
+                    <strong>ASI</strong> → Especulativa. Superaría toda capacidad humana.</p>
                 </div>
             </section>
 
-            <!-- SECCIÓN 6: Contexto e investigadores -->
+            <!-- INVESTIGADORES CLAVE -->
             <section class="reveal">
                 <h2 id="investigadores">Investigadores clave</h2>
 
-                <p>La IA no surgió de la nada. Es el resultado del trabajo de visionarios que sentaron las bases intelectuales y técnicas del campo:</p>
-
                 <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">Pionero</div>
-                        <h4>Alan Turing (1912–1954)</h4>
-                        <p>Matemático británico. Propuso el «Test de Turing» en su artículo <em>Computing Machinery and Intelligence</em> (1950). Formuló la pregunta «¿Pueden las máquinas pensar?» y diseñó la Máquina de Turing, fundamento teórico de toda la computación.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Fundador</div>
-                        <h4>John McCarthy (1927–2011)</h4>
-                        <p>Acuñó el término «Inteligencia Artificial» en 1956. Organizó la conferencia de Dartmouth. Creó el lenguaje LISP (1958), fundamental para la IA simbólica. Propuso el concepto de time-sharing.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Fundador</div>
-                        <h4>Marvin Minsky (1927–2016)</h4>
-                        <p>Co-fundador del MIT AI Lab. Propuso la teoría de los marcos (frames) para representación del conocimiento. Escribió <em>The Society of Mind</em> (1986), proponiendo que la inteligencia emerge de la interacción de agentes simples.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Referente</div>
-                        <h4>Stuart Russell & Peter Norvig</h4>
-                        <p>Autores de <em>Artificial Intelligence: A Modern Approach</em> (1ª ed. 1995, 4ª ed. 2021), el libro de texto de IA más utilizado en universidades de todo el mundo. Russell (UC Berkeley) y Norvig (Google) definieron el paradigma del agente racional.</p>
-                    </div>
+                    <div class="timeline-item"><div class="timeline-date">Pionero</div><h4>Alan Turing (1912–1954)</h4><p>Propuso el «Test de Turing» en 1950. Formuló la pregunta «¿Pueden las máquinas pensar?» y diseñó la Máquina de Turing, fundamento teórico de toda la computación.</p></div>
+                    <div class="timeline-item"><div class="timeline-date">Fundador</div><h4>John McCarthy (1927–2011)</h4><p>Acuñó el término «Inteligencia Artificial» en 1956. Organizó la conferencia de Dartmouth. Creó el lenguaje LISP (1958).</p></div>
+                    <div class="timeline-item"><div class="timeline-date">Fundador</div><h4>Marvin Minsky (1927–2016)</h4><p>Co-fundador del MIT AI Lab. Propuso la teoría de los marcos (frames) para representación del conocimiento. Escribió <em>The Society of Mind</em> (1986).</p></div>
+                    <div class="timeline-item"><div class="timeline-date">Referente</div><h4>Stuart Russell & Peter Norvig</h4><p>Autores de <em>Artificial Intelligence: A Modern Approach</em>, el libro de texto de IA más utilizado en universidades de todo el mundo.</p></div>
                 </div>
             </section>
 
-            <!-- SECCIÓN 7: Actividad práctica -->
+            <!-- ACTIVIDAD PRÁCTICA -->
             <section class="reveal">
                 <h2 id="actividad">Actividad práctica</h2>
 
                 <h3>Ejercicio resuelto: Clasificación de sistemas de IA</h3>
 
-                <p><strong>Instrucción:</strong> Para cada uno de los siguientes sistemas, clasifícalo según: (a) IA débil o IA fuerte, (b) IA estrecha o IA general, y (c) identifica el enfoque de Russell & Norvig que mejor lo describe.</p>
+                <p><strong>Instrucción:</strong> Para cada sistema, clasifícalo según: (a) IA débil o fuerte, (b) IA estrecha o general, (c) enfoque de Russell & Norvig.</p>
 
                 <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Sistema</th>
-                            <th>(a) Débil / Fuerte</th>
-                            <th>(b) Estrecha / General</th>
-                            <th>(c) Enfoque R&N</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>Sistema</th><th>Débil / Fuerte</th><th>Estrecha / General</th><th>Enfoque R&N</th></tr></thead>
                     <tbody>
-                        <tr>
-                            <td><strong>Filtro de spam de Gmail</strong></td>
-                            <td>IA Débil — no comprende el contenido, solo clasifica patrones</td>
-                            <td>IA Estrecha — solo clasifica correos</td>
-                            <td>Actuar racionalmente — maximiza la probabilidad de clasificar correctamente</td>
-                        </tr>
-                        <tr>
-                            <td><strong>ChatGPT</strong></td>
-                            <td>IA Débil — genera texto coherente sin comprensión real (argumento de Searle)</td>
-                            <td>IA Estrecha — aunque maneja múltiples dominios de texto, no puede percibir ni actuar en el mundo físico</td>
-                            <td>Actuar como humano — diseñado para producir respuestas indistinguibles de las de un humano</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Robot aspiradora Roomba</strong></td>
-                            <td>IA Débil — sigue algoritmos de navegación sin comprender el concepto de «limpiar»</td>
-                            <td>IA Estrecha — solo navega y aspira</td>
-                            <td>Actuar racionalmente — maximiza el área limpiada dada la información de sensores</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Data (Star Trek)</strong></td>
-                            <td>IA Fuerte — posee conciencia, emociones (las busca) y comprensión genuina</td>
-                            <td>IA General — maneja cualquier dominio intelectual</td>
-                            <td>Pensar y actuar como humano — diseñado para emular la cognición y comportamiento humano</td>
-                        </tr>
+                        <tr><td><strong>Filtro de spam de Gmail</strong></td><td>IA Débil</td><td>IA Estrecha</td><td>Actuar racionalmente</td></tr>
+                        <tr><td><strong>ChatGPT</strong></td><td>IA Débil — genera texto sin comprensión real</td><td>IA Estrecha</td><td>Actuar como humano</td></tr>
+                        <tr><td><strong>Roomba</strong></td><td>IA Débil — sigue algoritmos de navegación</td><td>IA Estrecha</td><td>Actuar racionalmente</td></tr>
+                        <tr><td><strong>Data (Star Trek)</strong></td><td>IA Fuerte — posee conciencia</td><td>IA General</td><td>Pensar y actuar como humano</td></tr>
                     </tbody>
                 </table>
 
@@ -395,32 +220,145 @@
 
                 <div class="callout callout-tip">
                     <div class="callout-title">📝 Ejercicio para resolver</div>
-                    <p>Clasifica los siguientes cinco sistemas usando las mismas tres categorías del ejercicio anterior. Justifica cada respuesta en al menos dos oraciones:</p>
+                    <p>Clasifica los siguientes sistemas usando las mismas tres categorías. Justifica cada respuesta:</p>
                     <ol>
-                        <li><strong>AlphaFold</strong> (predicción de estructura de proteínas de DeepMind)</li>
+                        <li><strong>AlphaFold</strong> (predicción de estructura de proteínas)</li>
                         <li><strong>Tesla Autopilot</strong> (conducción semi-autónoma)</li>
-                        <li><strong>DALL-E 3</strong> (generación de imágenes a partir de texto)</li>
+                        <li><strong>DALL-E 3</strong> (generación de imágenes)</li>
                         <li><strong>Watson de IBM</strong> (ganó Jeopardy! en 2011)</li>
-                        <li><strong>Sonny</strong> (el robot de la película <em>I, Robot</em>)</li>
+                        <li><strong>Sonny</strong> (el robot de <em>I, Robot</em>)</li>
                     </ol>
-                    <p><em>Pista: Todos los sistemas reales actuales son IA débil e IA estrecha. Los sistemas ficticios suelen representar IA fuerte o general.</em></p>
                 </div>
             </section>
 
-            <!-- SECCIÓN 8: Referencias -->
+            <!-- REPORTE PDF -->
+            <section class="reveal">
+                <h2 id="reporte">Guía para reporte en PDF</h2>
+                <div class="report-guide">
+                    <h3>📄 Contenido del reporte</h3>
+                    <ol>
+                        <li><strong>Portada:</strong> Nombre del alumno, materia, tema 1.1, fecha.</li>
+                        <li><strong>Introducción:</strong> ¿Qué es la IA y por qué es importante estudiarla?</li>
+                        <li><strong>Marco teórico:</strong> Resumen de las definiciones formales y los 4 enfoques de R&N.</li>
+                        <li><strong>Desarrollo:</strong> Tabla comparativa IA débil vs fuerte y ANI vs AGI vs ASI con ejemplos propios.</li>
+                        <li><strong>Actividad práctica:</strong> Resolución del ejercicio propuesto con justificaciones.</li>
+                        <li><strong>Conclusiones personales:</strong> Reflexión sobre el estado actual de la IA.</li>
+                        <li><strong>Referencias APA:</strong> Mínimo 3 fuentes académicas.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- VIDEO EMBEBIDO -->
+            <section class="reveal">
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/ad79nYk2keg" title="¿Qué es la Inteligencia Artificial?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EVALUACIÓN: 5 PREGUNTAS -->
+            <section class="reveal">
+                <div class="quiz-section" id="quiz-intro">
+                    <h2>📝 Evaluación — Tema 1.1</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+
+                    <div class="quiz-list">
+
+                        <!-- P1 -->
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">¿Quién acuñó el término «Inteligencia Artificial» y en qué año?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Alan Turing en 1950</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Marvin Minsky en 1960</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> John McCarthy en 1956</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Claude Shannon en 1948</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. John McCarthy acuñó el término en la conferencia de Dartmouth en 1956, considerada el nacimiento oficial de la IA como disciplina.</div>
+                        </div>
+
+                        <!-- P2 -->
+                        <div class="quiz-card" data-answer="d">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">Según Russell y Norvig, ¿cuál es el enfoque dominante en la IA moderna?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Pensar como humano</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Actuar como humano</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Pensar racionalmente</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Actuar racionalmente (agentes racionales)</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. El enfoque de agentes racionales es el más general, medible y aplicable. No requiere imitar al ser humano, solo tomar las mejores decisiones posibles.</div>
+                        </div>
+
+                        <!-- P3 -->
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">¿Qué argumento filosófico utilizó John Searle para defender la postura de la IA débil?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> El Test de Turing</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> La Habitación China</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> La paradoja de Gödel</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> El problema frame</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. La Habitación China (1980) demuestra que una máquina puede manipular símbolos siguiendo reglas sin comprender su significado, defendiendo así la postura de la IA débil.</div>
+                        </div>
+
+                        <!-- P4 -->
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">¿Cuál de los siguientes sistemas es un ejemplo de IA Estrecha (ANI)?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> AlphaGo de DeepMind</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> HAL 9000 de «2001: Odisea del Espacio»</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Data de Star Trek</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Skynet de Terminator</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. AlphaGo es un sistema real que solo puede jugar Go excepcionalmente bien, pero no puede transferir su conocimiento a otras tareas. Es IA estrecha.</div>
+                        </div>
+
+                        <!-- P5 -->
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">¿Qué diferencia fundamental existe entre la distinción IA débil/fuerte y la distinción ANI/AGI?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Son exactamente lo mismo, solo cambia la terminología</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> La primera es técnica y la segunda es filosófica</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> La primera es filosófica (¿entiende?) y la segunda es técnica (¿cuántas tareas?)</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> La primera se refiere al hardware y la segunda al software</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. IA débil/fuerte pregunta si la máquina realmente comprende (filosofía). ANI/AGI pregunta cuán amplio es su rango de tareas (capacidad técnica).</div>
+                        </div>
+
+                    </div>
+
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
+                </div>
+            </section>
+
+            <!-- CONCLUSIÓN -->
+            <section class="reveal">
+                <div class="conclusion-section">
+                    <h2>🎯 Conclusión</h2>
+                    <p>La Inteligencia Artificial es un campo multidisciplinario que combina ciencias de la computación, matemáticas, filosofía, psicología y lingüística para crear sistemas capaces de realizar tareas que requieren inteligencia. Comprender las distinciones fundamentales —IA débil vs. fuerte, estrecha vs. general, y los cuatro enfoques de Russell & Norvig— es esencial para cualquier profesional de la computación.</p>
+                    <p>En la industria actual, la IA se aplica masivamente en medicina (diagnóstico por imagen), finanzas (detección de fraudes), transporte (vehículos autónomos), entretenimiento (recomendaciones de contenido) y manufactura (control de calidad). Un ingeniero ISC que comprende estos fundamentos está mejor preparado para diseñar, implementar y evaluar soluciones de IA que generen valor real en cualquier dominio.</p>
+                </div>
+            </section>
+
+            <!-- REFERENCIAS APA -->
             <section class="reveal">
                 <h2 id="referencias">Referencias</h2>
-
                 <ul>
                     <li>Russell, S. J., & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson. ISBN: 978-0134610993.</li>
                     <li>McCarthy, J. (2007). What is Artificial Intelligence? Stanford University. Recuperado de <a href="http://jmc.stanford.edu/articles/whatisai.html" target="_blank">http://jmc.stanford.edu/articles/whatisai.html</a></li>
-                    <li>Turing, A. M. (1950). Computing Machinery and Intelligence. <em>Mind</em>, 59(236), 433–460. <a href="https://doi.org/10.1093/mind/LIX.236.433" target="_blank">https://doi.org/10.1093/mind/LIX.236.433</a></li>
+                    <li>Turing, A. M. (1950). Computing Machinery and Intelligence. <em>Mind</em>, 59(236), 433–460.</li>
                     <li>Searle, J. R. (1980). Minds, Brains, and Programs. <em>Behavioral and Brain Sciences</em>, 3(3), 417–424.</li>
                     <li>Bostrom, N. (2014). <em>Superintelligence: Paths, Dangers, Strategies</em>. Oxford University Press.</li>
                 </ul>
             </section>
 
-            <!-- Navegación -->
+            <!-- NAV -->
             <nav class="article-nav reveal">
                 <a href="../index.html" class="article-nav-link">
                     <span class="nav-label">← Anterior</span>
@@ -442,6 +380,7 @@
         </div>
     </footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
 

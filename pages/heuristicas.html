@@ -1,164 +1,135 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="1.8 El papel de la heurística en la IA: definición, importancia de los atajos cognitivos y comparación entre búsqueda ciega e informada.">
-    <title>1.8 El Papel de la Heurística — AI Blog</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/animations.css">
-    <style>
-        :root {
-            --accent-unit: #3b82f6; /* Azul para Unidad 1 */
-        }
-    </style>
+    <meta name="description" content="1.8 Heurísticas: atajos inteligentes para la resolución de problemas en IA.">
+    <title>1.8 Heurísticas — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-
-<body>
-    <div class="particles" aria-hidden="true">
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-    </div>
+<body class="has-sidebar">
+    <div class="particles" aria-hidden="true"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div></div>
     <div class="reading-progress" id="readingProgress"></div>
-    <nav class="navbar" id="navbar">
-        <div class="navbar-inner">
-            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
-            <ul class="navbar-links" id="navLinks">
-                <li><a href="../index.html#unidad1">Unidad 1</a></li>
-                <li><a href="../index.html#unidad2">Unidad 2</a></li>
-                <li><a href="../index.html#unidad3">Unidad 3</a></li>
-                <li><a href="../index.html#unidad4">Unidad 4</a></li>
-            </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-        </div>
-    </nav>
+    <nav class="navbar" id="navbar"><div class="navbar-inner"><a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a><ul class="navbar-links" id="navLinks"><li><a href="../index.html#unidad1">Unidad 1</a></li><li><a href="../index.html#unidad2">Unidad 2</a></li><li><a href="../index.html#unidad3">Unidad 3</a></li><li><a href="../index.html#unidad4">Unidad 4</a></li></ul><div class="navbar-right"><button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button><button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button></div></div></nav>
+    <aside class="sidebar" id="sidebar"><div class="sidebar-section"><div class="sidebar-label">Unidad I — Fundamentos</div><ul class="sidebar-links"><li><a href="introduccion-ia.html"><span class="link-number">1.1</span> Introducción a la IA</a></li><li><a href="historia-ia.html"><span class="link-number">1.2</span> Historia de la IA</a></li><li><a href="habilidades-cognoscitivas.html"><span class="link-number">1.3</span> Habilidades Cognoscitivas</a></li><li><a href="razonamiento-logica.html"><span class="link-number">1.4</span> Razonamiento y Lógica</a></li><li><a href="adquisicion-conocimiento.html"><span class="link-number">1.5</span> Adquisición del Conocimiento</a></li><li><a href="modelo-cognoscitivo.html"><span class="link-number">1.6</span> Modelo Cognoscitivo</a></li><li><a href="agente-inteligente.html"><span class="link-number">1.7</span> Agentes Inteligentes</a></li><li><a href="heuristicas.html"><span class="link-number">1.8</span> Heurísticas</a></li><li><a href="algoritmos-busqueda.html"><span class="link-number">1.8.1</span> Algoritmos de Exploración</a></li><li><a href="algoritmo-a-estrella.html"><span class="link-number">1.8.2</span> Algoritmo A*</a></li><li><a href="busqueda-local.html"><span class="link-number">1.8.3</span> Búsqueda Local</a></li></ul></div></aside>
 
     <div class="page-wrapper">
-        <header class="article-hero" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);">
-            <div class="breadcrumb">
-                <a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.8 Heurísticas</span>
-            </div>
-            <h1>1.8 El Papel de la <span class="gradient-text">Heurística</span> en la IA</h1>
-            <div class="article-meta">
-                <span class="article-meta-item">📖 Lectura: 25 min</span>
-                <span class="article-meta-item">🏷️ Optimización</span>
-                <span class="article-meta-item">📝 Tema 1.8 de la Unidad I</span>
-            </div>
+        <header class="article-hero">
+            <div class="breadcrumb"><a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.8 Heurísticas</span></div>
+            <h1>1.8 <span class="gradient-text">Heurísticas</span></h1>
+            <div class="article-meta"><span class="article-meta-item">📖 Lectura: 22 min</span><span class="article-meta-item">🏷️ Optimización</span><span class="article-meta-item">📝 Tema 8 de 11</span></div>
         </header>
 
         <article class="article-content">
-
             <section class="reveal">
-                <h2 id="fundamento">Fundamento Teórico: ¿Qué es una Heurística?</h2>
-                <p>Una **heurística** es un "atajo mental" o una regla empírica que permite encontrar una solución a un problema de manera más rápida que los métodos exhaustivos, aunque no garantice encontrar la solución óptima en todos los casos.</p>
-                
-                <p>En IA, una función heurística $h(n)$ estima el costo desde un estado actual $n$ hasta el objetivo. Es el conocimiento del dominio aplicado al algoritmo de búsqueda para evitar explorar caminos inútiles.</p>
+                <h2 id="definicion">¿Qué es una heurística?</h2>
+                <p>Una <strong>heurística</strong> (del griego <em>heuriskein</em>, «descubrir») es una <strong>regla práctica o atajo</strong> que permite encontrar soluciones buenas (aunque no necesariamente óptimas) a problemas complejos en un tiempo razonable. Es como un «sentido común» computacional.</p>
+                <p>En IA, las heurísticas son esenciales porque muchos problemas del mundo real tienen un espacio de búsqueda tan grande que <strong>sería imposible explorar todas las posibilidades</strong>. Por ejemplo, en ajedrez hay ~10⁴⁷ posiciones posibles; ni la computadora más rápida podría evaluarlas todas.</p>
 
-                <div class="callout callout-info">
-                    <div class="callout-title">🧩 ¿Por qué es necesaria la heurística?</div>
-                    <p>Debido a la <strong>explosión combinatoria</strong>. En problemas complejos (como el ajedrez o la planificación de rutas globales), el número de estados posibles es tan inmenso que una computadora tardaría milenios en explorarlos todos. La heurística permite enfocar la "atención" del algoritmo en las zonas más prometedoras del espacio de estados.</p>
+                <div class="callout">
+                    <div class="callout-title">🧩 Analogía del mundo real</div>
+                    <p>Imagina que estás perdido en una ciudad desconocida y quieres llegar a la estación de tren. Una estrategia óptima sería calcular todos los caminos posibles y elegir el más corto (imposible). Una heurística sería: «camina hacia donde escuchas trenes» o «sigue los letreros que dicen 'Estación'». No es garantía, pero funciona razonablemente bien.</p>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="ciega-vs-heuristica">Búsqueda Ciega vs. Búsqueda Heurística</h2>
-                <p>La diferencia fundamental radica en el uso de información sobre el objetivo.</p>
-
+                <h2 id="necesidad">¿Por qué son necesarias las heurísticas?</h2>
+                <p>La necesidad surge de la <strong>explosión combinatoria</strong>. Muchos problemas de IA son NP-difíciles:</p>
                 <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Característica</th>
-                            <th>Búsqueda Ciega (No informada)</th>
-                            <th>Búsqueda Heurística (Informada)</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>Problema</th><th>Espacio de búsqueda</th><th>Busqueda exhaustiva</th></tr></thead>
                     <tbody>
-                        <tr>
-                            <td><strong>Información</strong></td>
-                            <td>Solo conoce el estado actual y los posibles movimientos.</td>
-                            <td>Tiene una estimación de qué tan lejos está el objetivo.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Eficiencia</strong></td>
-                            <td>Baja en espacios grandes (explora en todas direcciones).</td>
-                            <td>Alta (se dirige hacia el objetivo).</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Garantía</strong></td>
-                            <td>Suele encontrar la solución si existe (con tiempo suficiente).</td>
-                            <td>Depende de la calidad de la heurística.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Ejemplos</strong></td>
-                            <td>BFS, DFS, Búsqueda de Costo Uniforme.</td>
-                            <td>Búsqueda Voraz, A*, Hill Climbing.</td>
-                        </tr>
+                        <tr><td>Ajedrez</td><td>~10⁴⁷ posiciones</td><td>Imposible</td></tr>
+                        <tr><td>Go</td><td>~10¹⁷⁰ posiciones</td><td>Imposible</td></tr>
+                        <tr><td>TSP (20 ciudades)</td><td>~10¹⁸ rutas</td><td>~100 años en PC moderna</td></tr>
+                        <tr><td>Cubo de Rubik</td><td>4.3×10¹⁹ estados</td><td>Difícil sin heurísticas</td></tr>
+                        <tr><td>Plegamiento de proteínas</td><td>Infinitas conformaciones</td><td>Se necesita AlphaFold</td></tr>
                     </tbody>
                 </table>
             </section>
 
             <section class="reveal">
-                <h2 id="propiedades">Propiedades de una Buena Heurística</h2>
-                <p>Para que una heurística sea útil en algoritmos avanzados como A*, debe cumplir:</p>
-                <ul>
-                    <li><strong>Admisibilidad:</strong> Nunca sobreestima el costo real para llegar al objetivo. Esto garantiza que encontraremos la solución óptima.</li>
-                    <li><strong>Consistencia (monotonía):</strong> Para cualquier nodo <em>n</em> y cualquier sucesor <em>n'</em>, el costo estimado de llegar al objetivo desde <em>n</em> no es mayor que el costo de ir de <em>n</em> a <em>n'</em> más el costo estimado desde <em>n'</em>.</li>
-                </ul>
+                <h2 id="ciega-vs-informada">Búsqueda ciega vs. búsqueda informada</h2>
+                <table class="comparison-table">
+                    <thead><tr><th>Característica</th><th>Búsqueda ciega (no informada)</th><th>Búsqueda informada (heurística)</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Conocimiento</strong></td><td>Solo conoce la estructura del problema</td><td>Tiene «intuición» sobre dónde buscar</td></tr>
+                        <tr><td><strong>Estrategia</strong></td><td>Explora sistemáticamente</td><td>Prioriza caminos prometedores</td></tr>
+                        <tr><td><strong>Eficiencia</strong></td><td>❌ Ineficiente en problemas grandes</td><td>✅ Mucho más eficiente</td></tr>
+                        <tr><td><strong>Completitud</strong></td><td>✅ Generalmente completa</td><td>Depende de la heurística</td></tr>
+                        <tr><td><strong>Optimalidad</strong></td><td>Algunos sí (BFS con costos uniformes)</td><td>Depende (A* con h admisible sí)</td></tr>
+                        <tr><td><strong>Algoritmos</strong></td><td>BFS, DFS, Dijkstra</td><td>A*, Greedy Best-First, IDA*</td></tr>
+                    </tbody>
+                </table>
             </section>
 
             <section class="reveal">
-                <h2 id="actividad">Actividad Práctica: Estimación de Distancias</h2>
-                
-                <h3>Ejercicio 1: Distancia Manhattan vs. Euclidiana</h3>
-                <p><strong>Problema:</strong> En un mundo de cuadrícula (como una ciudad), un robot está en (0,0) y el objetivo es (3,4). Calcula dos tipos de heurísticas.</p>
-                <p><strong>Solución paso a paso:</strong></p>
-                <ol>
-                    <li><strong>Distancia Manhattan:</strong> $|x1 - x2| + |y1 - y2| = |0-3| + |0-4| = 3 + 4 = 7$. (Ideal si solo se puede mover en ángulos rectos).</li>
-                    <li><strong>Distancia Euclidiana:</strong> $\sqrt{(x1-x2)^2 + (y1-y2)^2} = \sqrt{3^2 + 4^2} = \sqrt{9+16} = 5$. (La línea recta técnica).</li>
-                    <li><strong>Conclusión:</strong> Ambas son heurísticas válidas, pero la Manhattan es más "realista" si el robot no puede atravesar edificios en diagonal.</li>
-                </ol>
+                <h2 id="propiedades">Propiedades deseables de una heurística</h2>
+                <ul>
+                    <li><strong>Admisibilidad:</strong> Nunca sobreestima el costo real al objetivo. h(n) ≤ h*(n). Garantiza optimalidad en A*.</li>
+                    <li><strong>Consistencia (monotonicidad):</strong> h(n) ≤ c(n, n') + h(n') para todo sucesor n'. Más fuerte que admisibilidad.</li>
+                    <li><strong>Informatividad:</strong> Cuanto mayor sea h(n) (sin sobreestimar), más eficiente será la búsqueda. Se dice que h₂ <strong>domina</strong> a h₁ si h₂(n) ≥ h₁(n) para todo n.</li>
+                </ul>
 
-                <h3>Ejercicio 2: Reto para el Estudiante</h3>
                 <div class="callout callout-tip">
-                    <div class="callout-title">📝 Tu turno de pensar</div>
-                    <p>Imagina que estás diseñando una IA para resolver el <strong>puzzle de 8 piezas</strong>. Propón dos funciones heurísticas diferentes para estimar qué tan cerca está una configuración de la solución final. Clasifícalas de "más simple" a "más potente".</p>
+                    <div class="callout-title">🎯 Ejemplo: 8-puzzle</div>
+                    <p><strong>h₁ = fichas mal colocadas</strong> (contar cuántas fichas no están en su posición). <strong>h₂ = distancia Manhattan</strong> (suma de distancias de cada ficha a su posición objetivo). h₂ domina h₁ porque h₂(n) ≥ h₁(n) siempre, y A* con h₂ expande menos nodos.</p>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="referencias">Referencias Académicas (2018-2025)</h2>
-                <ul>
-                    <li>Russell, S. J., & Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
-                    <li>Pearl, J. (2013). <em>Heuristics: Intelligent Search Strategies for Computer Problem Solving</em>. Addison-Wesley (Obra clásica de referencia constante).</li>
-                    <li>Edelkamp, S., & Schrodl, S. (2024). <em>Heuristic Search: Theory and Applications</em>. Elsevier.</li>
-                </ul>
+                <h2 id="investigadores">Investigadores clave</h2>
+                <div class="timeline">
+                    <div class="timeline-item"><div class="timeline-date">1957</div><h4>Herbert Simon y Allen Newell</h4><p>Crearon el General Problem Solver (GPS) y formalizaron las heurísticas como herramientas de resolución de problemas.</p></div>
+                    <div class="timeline-item"><div class="timeline-date">1968</div><h4>Peter Hart, Nils Nilsson, Bertram Raphael</h4><p>Publicaron el algoritmo A*, el algoritmo de búsqueda heurística más importante de la historia.</p></div>
+                    <div class="timeline-item"><div class="timeline-date">1970s</div><h4>Judea Pearl</h4><p>Formalizó las propiedades de las heurísticas (admisibilidad, consistencia, dominancia) y su relación con la optimalidad.</p></div>
+                </div>
             </section>
 
+            <section class="reveal">
+                <h2 id="actividad">Actividad práctica</h2>
+                <h3>Ejercicio resuelto: Calcular h₁ y h₂ para el 8-puzzle</h3>
+                <p>Estado actual: [1, 2, 3, 4, _, 5, 7, 8, 6] — Estado objetivo: [1, 2, 3, 4, 5, 6, 7, 8, _]</p>
+                <p><strong>h₁ (fichas mal colocadas):</strong> 5 está en (1,2) pero debería estar en (1,1) ✗. 7 está en (2,0) pero debería estar en (2,1) ✗. 8 está en (2,1) pero debería estar en (2,2) ✗. 6 está en (2,2) pero debería estar en (1,2) ✗. _ no cuenta. <strong>h₁ = 4</strong></p>
+                <p><strong>h₂ (distancia Manhattan):</strong> 5: |2-1|+|1-1|=1. 7: |0-1|=1. 8: |1-2|=1. 6: |2-2|+|2-1|= 1 (fila) + 1 (col) =... sumando: <strong>h₂ = 4</strong>. (En este caso coinciden.)</p>
+
+                <h3>Ejercicio propuesto</h3>
+                <div class="callout callout-tip"><div class="callout-title">📝 Tu turno</div><p>Para el estado [2, 8, 3, 1, 6, 4, 7, _, 5], calcula h₁ y h₂ hacia el estado objetivo estándar. ¿Cuál es mayor? ¿Cuál harás más eficiente en A*?</p></div>
+            </section>
+
+            <section class="reveal"><h2 id="reporte">Guía para reporte en PDF</h2><div class="report-guide"><h3>📄 Contenido</h3><ol><li>Portada.</li><li>Definición de heurística con 3 ejemplos cotidianos.</li><li>Tabla de búsqueda ciega vs. informada.</li><li>Resolución del 8-puzzle propuesto.</li><li>Investigación: Nombra 3 heurísticas usadas en la industria (rutas, logística, manufactura).</li><li>Referencias APA.</li></ol></div></section>
+
+            <section class="reveal"><h2 id="video">Video explicativo</h2><div class="video-section"><div class="video-container"><iframe src="https://www.youtube.com/embed/6TsL96NAZCo" title="Heurísticas en IA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div></div></section>
+
+            <section class="reveal">
+                <div class="quiz-section">
+                    <h2>📝 Evaluación — Tema 1.8</h2>
+                    <div class="quiz-score"></div>
+                    <div class="quiz-list">
+                        <div class="quiz-card" data-answer="b"><div class="quiz-question-number">Pregunta 1 de 5</div><div class="quiz-question">¿Cuál es la principal diferencia entre búsqueda ciega e informada?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> La ciega usa más memoria</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> La informada usa una heurística para guiar la búsqueda</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> La ciega siempre es más rápida</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> La informada garantiza encontrar solución</div></div><div class="quiz-feedback">✅ La búsqueda informada (heurística) utiliza h(n) para priorizar caminos prometedores.</div></div>
+                        <div class="quiz-card" data-answer="a"><div class="quiz-question-number">Pregunta 2 de 5</div><div class="quiz-question">¿Qué significa que una heurística sea «admisible»?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Nunca sobreestima el costo real al objetivo</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Siempre encuentra la solución más rápida</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Es computable en tiempo polinómico</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Funciona para cualquier tipo de problema</div></div><div class="quiz-feedback">✅ Admisible: h(n) ≤ h*(n) siempre. Garantiza que A* encuentre la solución óptima.</div></div>
+                        <div class="quiz-card" data-answer="d"><div class="quiz-question-number">Pregunta 3 de 5</div><div class="quiz-question">En el 8-puzzle, ¿qué heurística domina a «fichas mal colocadas»?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Número de movimientos realizados</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Profundidad del nodo</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Costo uniforme</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Distancia Manhattan</div></div><div class="quiz-feedback">✅ La distancia Manhattan domina a fichas mal colocadas (es mayor o igual siempre).</div></div>
+                        <div class="quiz-card" data-answer="c"><div class="quiz-question-number">Pregunta 4 de 5</div><div class="quiz-question">¿Qué problema causa la «explosión combinatoria»?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Errores de hardware</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Falta de datos de entrenamiento</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Crecimiento exponencial del espacio de búsqueda</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Problemas de red</div></div><div class="quiz-feedback">✅ La explosión combinatoria hace que el número de estados crezca exponencialmente, haciendo impracticable la búsqueda exhaustiva.</div></div>
+                        <div class="quiz-card" data-answer="b"><div class="quiz-question-number">Pregunta 5 de 5</div><div class="quiz-question">¿Quiénes publicaron el algoritmo A* en 1968?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Turing, McCarthy, Minsky</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Hart, Nilsson, Raphael</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Russell, Norvig</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Simon, Newell, Shaw</div></div><div class="quiz-feedback">✅ Peter Hart, Nils Nilsson y Bertram Raphael publicaron A* en 1968.</div></div>
+                    </div>
+                    <button class="quiz-check-btn">Verificar respuestas</button>
+                </div>
+            </section>
+
+            <section class="reveal"><div class="conclusion-section"><h2>🎯 Conclusión</h2><p>Las heurísticas son el puente entre la teoría computacional y la resolución práctica de problemas complejos. Sin heurísticas, la mayoría de los problemas de IA serían intratables. Comprender las propiedades de admisibilidad y dominancia permite diseñar heurísticas efectivas para aplicaciones industriales: logística (TSP), robótica (planificación de rutas), videojuegos (pathfinding) y bioinformática (plegamiento de proteínas).</p></div></section>
+
+            <section class="reveal"><h2 id="referencias">Referencias</h2><ul><li>Russell, S. J., & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson. Caps. 3–4.</li><li>Pearl, J. (1984). <em>Heuristics: Intelligent Search Strategies for Computer Problem Solving</em>. Addison-Wesley.</li><li>Hart, P. E., Nilsson, N. J., & Raphael, B. (1968). A Formal Basis for the Heuristic Determination of Minimum Cost Paths. <em>IEEE Transactions on SSC</em>, 4(2), 100–107.</li></ul></section>
+
             <nav class="article-nav reveal">
-                <a href="sistemas-multiagente.html" class="article-nav-link">
-                    <span class="nav-label">← Anterior</span>
-                    <span class="nav-title">1.7.1 Sistemas Multi-Agente</span>
-                </a>
-                <a href="algoritmos-busqueda.html" class="article-nav-link next">
-                    <span class="nav-label">Siguiente →</span>
-                    <span class="nav-title">1.8.1 Algoritmos de Exploración</span>
-                </a>
+                <a href="agente-inteligente.html" class="article-nav-link"><span class="nav-label">← Anterior</span><span class="nav-title">1.7 Agentes Inteligentes</span></a>
+                <a href="algoritmos-busqueda.html" class="article-nav-link next"><span class="nav-label">Siguiente →</span><span class="nav-title">1.8.1 Algoritmos de Exploración</span></a>
             </nav>
         </article>
     </div>
-
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-brand">🤖 AI Blog</div>
-            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
-        </div>
-    </footer>
+    <footer class="footer"><div class="footer-inner"><div class="footer-brand">🤖 AI Blog</div><p>Blog educativo sobre Inteligencia Artificial — © 2026</p></div></footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
-
 </html>

@@ -1,171 +1,202 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="1.8.1 Algoritmos de exploración y búsqueda: espacio de estados, backtracking, generación y prueba, y estrategias de resolución de problemas en IA.">
-    <title>1.8.1 Algoritmos de Búsqueda y Exploración — AI Blog</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/animations.css">
-    <style>
-        :root {
-            --accent-unit: #3b82f6; /* Azul para Unidad 1 */
-        }
-    </style>
+    <meta name="description" content="1.8.1 Algoritmos de exploración: árboles de búsqueda, espacio de estados, BFS, DFS, backtracking.">
+    <title>1.8.1 Algoritmos de Exploración — AI Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-
-<body>
-    <div class="particles" aria-hidden="true">
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-    </div>
+<body class="has-sidebar">
+    <div class="particles" aria-hidden="true"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div></div>
     <div class="reading-progress" id="readingProgress"></div>
-    <nav class="navbar" id="navbar">
-        <div class="navbar-inner">
-            <a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a>
-            <ul class="navbar-links" id="navLinks">
-                <li><a href="../index.html#unidad1">Unidad 1</a></li>
-                <li><a href="../index.html#unidad2">Unidad 2</a></li>
-                <li><a href="../index.html#unidad3">Unidad 3</a></li>
-                <li><a href="../index.html#unidad4">Unidad 4</a></li>
-            </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-        </div>
-    </nav>
+    <nav class="navbar" id="navbar"><div class="navbar-inner"><a href="../index.html" class="navbar-logo"><span class="logo-icon">IA</span><span>AI Blog</span></a><ul class="navbar-links" id="navLinks"><li><a href="../index.html#unidad1">Unidad 1</a></li><li><a href="../index.html#unidad2">Unidad 2</a></li><li><a href="../index.html#unidad3">Unidad 3</a></li><li><a href="../index.html#unidad4">Unidad 4</a></li></ul><div class="navbar-right"><button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button><button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button></div></div></nav>
+    <aside class="sidebar" id="sidebar"><div class="sidebar-section"><div class="sidebar-label">Unidad I — Fundamentos</div><ul class="sidebar-links"><li><a href="introduccion-ia.html"><span class="link-number">1.1</span> Introducción a la IA</a></li><li><a href="historia-ia.html"><span class="link-number">1.2</span> Historia de la IA</a></li><li><a href="habilidades-cognoscitivas.html"><span class="link-number">1.3</span> Habilidades Cognoscitivas</a></li><li><a href="razonamiento-logica.html"><span class="link-number">1.4</span> Razonamiento y Lógica</a></li><li><a href="adquisicion-conocimiento.html"><span class="link-number">1.5</span> Adquisición del Conocimiento</a></li><li><a href="modelo-cognoscitivo.html"><span class="link-number">1.6</span> Modelo Cognoscitivo</a></li><li><a href="agente-inteligente.html"><span class="link-number">1.7</span> Agentes Inteligentes</a></li><li><a href="heuristicas.html"><span class="link-number">1.8</span> Heurísticas</a></li><li><a href="algoritmos-busqueda.html"><span class="link-number">1.8.1</span> Algoritmos de Exploración</a></li><li><a href="algoritmo-a-estrella.html"><span class="link-number">1.8.2</span> Algoritmo A*</a></li><li><a href="busqueda-local.html"><span class="link-number">1.8.3</span> Búsqueda Local</a></li></ul></div></aside>
 
     <div class="page-wrapper">
-        <header class="article-hero" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);">
-            <div class="breadcrumb">
-                <a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.8.1 Algoritmos de Búsqueda</span>
-            </div>
-            <h1>1.8.1 Algoritmos de <span class="gradient-text">Exploración</span> y Búsqueda</h1>
-            <div class="article-meta">
-                <span class="article-meta-item">📖 Lectura: 35 min</span>
-                <span class="article-meta-item">🏷️ Algoritmos de Búsqueda</span>
-                <span class="article-meta-item">📝 Tema 1.8.1 de la Unidad I</span>
-            </div>
+        <header class="article-hero">
+            <div class="breadcrumb"><a href="../index.html">Inicio</a><span class="separator">›</span><span class="current">1.8.1 Algoritmos de Exploración</span></div>
+            <h1>1.8.1 Algoritmos de <span class="gradient-text">Exploración</span></h1>
+            <div class="article-meta"><span class="article-meta-item">📖 Lectura: 28 min</span><span class="article-meta-item">🏷️ Búsqueda</span><span class="article-meta-item">📝 Tema 9 de 11</span></div>
         </header>
 
         <article class="article-content">
-
             <section class="reveal">
-                <h2 id="espacio-estados">El Espacio de Estados: La Geometría del Problema</h2>
-                <p>En IA, resolver un problema mediante búsqueda requiere formalizarlo como un **espacio de estados**. Este es un grafo (o árbol) donde cada nodo representa una configuración posible del problema y cada arista representa una acción legal.</p>
-                
-                <p>El objetivo de un algoritmo de búsqueda es encontrar un **camino óptimo** desde el estado inicial hasta el estado objetivo a través de este vasto océano de posibilidades.</p>
-
-                <div class="callout callout-info">
-                    <div class="callout-title">📐 Formalización del Espacio</div>
-                    <ul>
-                        <li><strong>S:</strong> Conjunto de todos los estados posibles.</li>
-                        <li><strong>A:</strong> Conjunto de acciones (operadores).</li>
-                        <li><strong>T(s, a):</strong> Función de transición que lleva de un estado a otro.</li>
-                        <li><strong>G:</strong> Prueba de objetivo.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="reveal">
-                <h2 id="estrategias">Estrategias Fundamentales de Exploración</h2>
-                <p>Existen métodos clásicos que forman la base de algoritmos más complejos.</p>
-
-                <h3>1. Generación y Prueba (Generate and Test)</h3>
-                <p>Es la forma más simple de búsqueda. El agente genera una posible solución, la prueba para ver si es el objetivo, y si no, repite el proceso. Es eficiente solo si el espacio de búsqueda es muy pequeño o si las soluciones son fáciles de generar pero difíciles de hallar.</p>
-
-                <h3>2. Backtracking (Vuelta Atrás)</h3>
-                <p>Es una mejora de DFS. El algoritmo explora un camino y, en cuanto detecta que ese camino no puede llevar a una solución válida (violación de restricciones), retrocede inmediatamente a la última decisión válida. Es fundamental en la resolución de Sudokus, N-Reinas y problemas de satisfacción de restricciones (CSP).</p>
-
-                <div class="code-block">
-                    <span class="comment">// Pseudocódigo simplificado de Backtracking</span><br>
-                    <span class="keyword">Función</span> Buscar(EstadoActual):<br>
-                    &nbsp;&nbsp;<span class="keyword">Si</span> EstadoActual es Objetivo: <span class="keyword">Retornar</span> Éxito<br>
-                    &nbsp;&nbsp;<span class="keyword">Para cada</span> Acción en PosiblesAcciones:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;NuevoEstado = Aplicar(Acción, EstadoActual)<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Si</span> esPrometedor(NuevoEstado):<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Si</span> Buscar(NuevoEstado) es Éxito: <span class="keyword">Retornar</span> Éxito<br>
-                    &nbsp;&nbsp;<span class="keyword">Retornar</span> Fallo <span class="comment">// Retroceso (Backtrack)</span>
-                </div>
-            </section>
-
-            <section class="reveal">
-                <h2 id="visual">Visualización: Árbol de Estados</h2>
-                <p>Imagina el problema de mover un robot en una línea L1, L2, L3. El árbol de estados muestra las ramificaciones de cada decisión.</p>
-                
-                <div class="concept-grid">
-                    <div class="concept-card">
-                        <h4>Nivel 0: Raíz</h4>
-                        <p>Estado Inicial: Robot en L2</p>
-                    </div>
-                    <div class="concept-card">
-                        <h4>Nivel 1: Sucesores</h4>
-                        <p>Opción A: Mover a L1<br>Opción B: Mover a L3</p>
-                    </div>
-                </div>
-                <p>A medida que añadimos acciones, el árbol crece exponencialmente. Aquí es donde la **heurística** (vista en el tema anterior) ayuda a podar las ramas innecesarias.</p>
-            </section>
-
-            <section class="reveal">
-                <h2 id="actividad">Actividad Práctica: Backtracking</h2>
-                
-                <h3>Ejercicio 1: El problema de las 4 Reinas (Paso a Paso)</h3>
-                <p><strong>Problema:</strong> Colocar 4 reinas en un tablero de 4x4 de forma que ninguna se ataque.</p>
-                <p><strong>Solución por Backtracking:</strong></p>
-                <ol>
-                    <li>Colocamos Reina 1 en (1,1).</li>
-                    <li>Intentamos colocar Reina 2 en la fila 2. Los espacios (2,1) y (2,2) están amenazados. La ponemos en (2,3).</li>
-                    <li>Intentamos Reina 3 en fila 3. Todas las columnas están amenazadas por R1 o R2. <strong>¡Bloqueo!</strong></li>
-                    <li><strong>Backtrack:</strong> Regresamos a la fila 2 y movemos R2 de (2,3) a (2,4).</li>
-                    <li>Ahora intentamos R3 en fila 3. El espacio (3,2) es libre.</li>
-                    <li>Intentamos R4 en fila 4... y así sucesivamente hasta completar o agotar la rama.</li>
-                </ol>
-
-                <h3>Ejercicio 2: Reto para el Estudiante</h3>
-                <div class="callout callout-tip">
-                    <div class="callout-title">📝 Tu turno de programar (lógicamente)</div>
-                    <p>Dada una pequeña red de ciudades A, B, C, D con las siguientes conexiones:</p>
-                    <ul>
-                        <li>A conectada con B y C.</li>
-                        <li>B conectada con D.</li>
-                        <li>C conectada con D.</li>
-                    </ul>
-                    <p>Dibuja el <strong>árbol de búsqueda</strong> para ir de A a D usando DFS. ¿Cuál es el orden de visita de los nodos? ¿Encuentra el camino más corto en pasos?</p>
-                </div>
-            </section>
-
-            <section class="reveal">
-                <h2 id="referencias">Referencias Académicas (2018-2025)</h2>
+                <h2 id="espacio-estados">El espacio de estados</h2>
+                <p>Un <strong>problema de búsqueda</strong> se formula como un <strong>espacio de estados</strong>: un grafo donde cada nodo representa un estado del problema y cada arista representa una acción que transforma un estado en otro. Formalmente:</p>
                 <ul>
-                    <li>Russell, S. J., & Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
-                    <li>Luger, G. F. (2023). <em>Artificial Intelligence: Structures and Strategies for Complex Problem Solving</em> (7th ed.). Pearson.</li>
-                    <li>Brassard, G., & Bratley, P. (2024). <em>Fundamentals of Algorithmics</em>. Pearson (Especial énfasis en Backtracking).</li>
+                    <li><strong>Estado inicial (s₀):</strong> El punto de partida.</li>
+                    <li><strong>Función sucesor (acciones):</strong> Dado un estado, qué estados son alcanzables.</li>
+                    <li><strong>Test de objetivo:</strong> ¿Este estado es la solución?</li>
+                    <li><strong>Costo de camino:</strong> Suma de los costos de las acciones hasta el estado actual.</li>
                 </ul>
             </section>
 
+            <section class="reveal">
+                <h2 id="arbol">Árbol de búsqueda</h2>
+                <p>El <strong>árbol de búsqueda</strong> es la estructura que se genera al explorar el espacio de estados. Cada nodo contiene:</p>
+                <ul>
+                    <li><strong>Estado:</strong> La configuración actual del problema.</li>
+                    <li><strong>Padre:</strong> El nodo desde el cual se llegó.</li>
+                    <li><strong>Acción:</strong> La acción que generó este nodo.</li>
+                    <li><strong>Costo del camino (g):</strong> Costo acumulado desde la raíz.</li>
+                    <li><strong>Profundidad:</strong> Número de acciones desde la raíz.</li>
+                </ul>
+                <div class="callout callout-warning">
+                    <div class="callout-title">⚠️ Árbol vs. Grafo</div>
+                    <p>El árbol puede tener nodos repetidos (un mismo estado se visita por diferentes caminos). La búsqueda en grafo mantiene una lista de «cerrados» (visited) para evitar ciclos. Esto reduce tiempo pero aumenta memoria.</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 id="bfs">Búsqueda en Anchura (BFS — Breadth-First Search)</h2>
+                <p>BFS explora <strong>todos los nodos de un nivel</strong> antes de pasar al siguiente. Usa una <strong>cola FIFO</strong>.</p>
+                <table class="comparison-table">
+                    <thead><tr><th>Propiedad</th><th>BFS</th></tr></thead>
+                    <tbody>
+                        <tr><td>Completa</td><td>✅ Sí (si b es finito)</td></tr>
+                        <tr><td>Óptima</td><td>✅ Sí (si los costos son uniformes)</td></tr>
+                        <tr><td>Tiempo</td><td>O(b^d)</td></tr>
+                        <tr><td>Espacio</td><td>O(b^d) — problema principal</td></tr>
+                    </tbody>
+                </table>
+                <p>Donde <strong>b</strong> = factor de ramificación (branching) y <strong>d</strong> = profundidad de la solución.</p>
+                <pre><code class="language-python">from collections import deque
+
+def bfs(grafo, inicio, objetivo):
+    cola = deque([(inicio, [inicio])])
+    visitados = {inicio}
+    
+    while cola:
+        nodo, camino = cola.popleft()
+        if nodo == objetivo:
+            return camino  # ¡Encontrado!
+        
+        for vecino in grafo[nodo]:
+            if vecino not in visitados:
+                visitados.add(vecino)
+                cola.append((vecino, camino + [vecino]))
+    
+    return None  # No hay solución</code></pre>
+            </section>
+
+            <section class="reveal">
+                <h2 id="dfs">Búsqueda en Profundidad (DFS — Depth-First Search)</h2>
+                <p>DFS explora <strong>lo más profundo posible</strong> antes de retroceder. Usa una <strong>pila LIFO</strong> (o recursión).</p>
+                <table class="comparison-table">
+                    <thead><tr><th>Propiedad</th><th>DFS</th></tr></thead>
+                    <tbody>
+                        <tr><td>Completa</td><td>❌ No (puede quedar en loops infinitos) — Sí con búsqueda en grafo</td></tr>
+                        <tr><td>Óptima</td><td>❌ No</td></tr>
+                        <tr><td>Tiempo</td><td>O(b^m) donde m = profundidad máxima</td></tr>
+                        <tr><td>Espacio</td><td>O(b·m) — mucho menor que BFS ✅</td></tr>
+                    </tbody>
+                </table>
+                <pre><code class="language-python">def dfs(grafo, inicio, objetivo):
+    pila = [(inicio, [inicio])]
+    visitados = set()
+    
+    while pila:
+        nodo, camino = pila.pop()
+        if nodo == objetivo:
+            return camino
+        if nodo in visitados:
+            continue
+        visitados.add(nodo)
+        
+        for vecino in grafo[nodo]:
+            pila.append((vecino, camino + [vecino]))
+    
+    return None</code></pre>
+            </section>
+
+            <section class="reveal">
+                <h2 id="comparacion">BFS vs. DFS: Comparación</h2>
+                <table class="comparison-table">
+                    <thead><tr><th>Criterio</th><th>BFS</th><th>DFS</th></tr></thead>
+                    <tbody>
+                        <tr><td>Estructura</td><td>Cola FIFO</td><td>Pila LIFO</td></tr>
+                        <tr><td>Completa</td><td>✅ Sí</td><td>❌ No siempre</td></tr>
+                        <tr><td>Óptima</td><td>✅ Sí (costos uniformes)</td><td>❌ No</td></tr>
+                        <tr><td>Memoria</td><td>❌ Exponencial</td><td>✅ Lineal</td></tr>
+                        <tr><td>Mejor para</td><td>Soluciones poco profundas</td><td>Soluciones muy profundas</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="reveal">
+                <h2 id="backtracking">Backtracking</h2>
+                <p>El <strong>backtracking</strong> es una variante de DFS que, al llegar a un callejón sin salida, <strong>retrocede</strong> al último punto de decisión y prueba la siguiente alternativa. Es fundamental para resolver problemas de satisfacción de restricciones (CSP) como Sudoku, N-Reinas y coloreo de mapas.</p>
+                <pre><code class="language-python">def n_reinas(n):
+    """Resolver el problema de las N-Reinas con backtracking."""
+    def es_seguro(tablero, fila, col):
+        for i in range(fila):
+            if tablero[i] == col or \
+               abs(tablero[i] - col) == abs(i - fila):
+                return False
+        return True
+    
+    def resolver(tablero, fila):
+        if fila == n:
+            return True  # ¡Todas las reinas colocadas!
+        for col in range(n):
+            if es_seguro(tablero, fila, col):
+                tablero[fila] = col
+                if resolver(tablero, fila + 1):
+                    return True
+                tablero[fila] = -1  # Backtrack
+        return False
+    
+    tablero = [-1] * n
+    resolver(tablero, 0)
+    return tablero</code></pre>
+            </section>
+
+            <section class="reveal">
+                <h2 id="actividad">Actividad práctica</h2>
+                <h3>Ejercicio resuelto</h3>
+                <p><strong>Problema:</strong> Dado el grafo A→B, A→C, B→D, B→E, C→F, D→G (objetivo), muestra el orden de visita con BFS y DFS.</p>
+                <p><strong>BFS (cola):</strong> A → B, C → D, E, F → G ✅. Orden: A, B, C, D, E, F, G.</p>
+                <p><strong>DFS (pila):</strong> A → B → D → G ✅. Orden: A, B, D, G. (Encuentra más rápido porque G está en la rama izquierda profunda)</p>
+
+                <h3>Ejercicio propuesto</h3>
+                <div class="callout callout-tip"><div class="callout-title">📝 Tu turno</div><p>Implement BFS y DFS en Python para el siguiente grafo: S→A(1), S→B(4), A→B(2), A→C(5), B→C(1), C→G(3). Encuentra el camino de S a G con ambos algoritmos. ¿Cuál es más corto? ¿Cuál se encontró primero?</p></div>
+            </section>
+
+            <section class="reveal"><h2 id="reporte">Guía para reporte en PDF</h2><div class="report-guide"><h3>📄 Contenido</h3><ol><li>Portada.</li><li>Diagrama del árbol de búsqueda para BFS y DFS del ejercicio propuesto.</li><li>Código Python ejecutado con capturas de pantalla.</li><li>Tabla comparativa de complejidad.</li><li>Conclusión: ¿Cuándo usar BFS vs DFS en un proyecto real?</li><li>Referencias APA.</li></ol></div></section>
+
+            <section class="reveal"><h2 id="video">Video explicativo</h2><div class="video-section"><div class="video-container"><iframe src="https://www.youtube.com/embed/pcKY4hjDrxk" title="BFS and DFS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div></div></section>
+
+            <section class="reveal">
+                <div class="quiz-section">
+                    <h2>📝 Evaluación — Tema 1.8.1</h2>
+                    <div class="quiz-score"></div>
+                    <div class="quiz-list">
+                        <div class="quiz-card" data-answer="a"><div class="quiz-question-number">Pregunta 1 de 5</div><div class="quiz-question">¿Qué estructura de datos utiliza BFS?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Cola FIFO</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Pila LIFO</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Cola de prioridad</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Montículo binario</div></div><div class="quiz-feedback">✅ BFS usa cola FIFO para explorar nivel por nivel.</div></div>
+                        <div class="quiz-card" data-answer="d"><div class="quiz-question-number">Pregunta 2 de 5</div><div class="quiz-question">¿Cuál es la principal ventaja de DFS sobre BFS?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Siempre es óptima</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Siempre es completa</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Es más rápida siempre</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Usa mucha menos memoria O(bm) vs O(b^d)</div></div><div class="quiz-feedback">✅ DFS usa memoria lineal O(bm), mientras BFS usa exponencial O(b^d).</div></div>
+                        <div class="quiz-card" data-answer="c"><div class="quiz-question-number">Pregunta 3 de 5</div><div class="quiz-question">¿Qué técnica retrocede al último punto de decisión cuando llega a un callejón sin salida?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Forward checking</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Beam search</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Backtracking</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Hill climbing</div></div><div class="quiz-feedback">✅ Backtracking retrocede al último punto de bifurcación para probar alternativas.</div></div>
+                        <div class="quiz-card" data-answer="b"><div class="quiz-question-number">Pregunta 4 de 5</div><div class="quiz-question">¿Qué componente NO forma parte de la formulación de un espacio de estados?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Estado inicial</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Función heurística</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Test de objetivo</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Función sucesor</div></div><div class="quiz-feedback">✅ La función heurística es parte de la búsqueda informada, no de la formulación básica del espacio de estados.</div></div>
+                        <div class="quiz-card" data-answer="a"><div class="quiz-question-number">Pregunta 5 de 5</div><div class="quiz-question">¿Qué significa que b=3 y d=4 en BFS?</div><div class="quiz-options"><div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Factor de ramificación 3, solución a profundidad 4 → explora hasta 3⁴=81 nodos</div><div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> 3 objetivos a profundidad 4</div><div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> 3 iteraciones con 4 expansiones</div><div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> 3 niveles con 4 nodos cada uno</div></div><div class="quiz-feedback">✅ b=3 (cada nodo tiene 3 hijos), d=4 (la solución está a profundidad 4). BFS explora O(b^d)=O(81).</div></div>
+                    </div>
+                    <button class="quiz-check-btn">Verificar respuestas</button>
+                </div>
+            </section>
+
+            <section class="reveal"><div class="conclusion-section"><h2>🎯 Conclusión</h2><p>Los algoritmos de exploración son la base de la resolución de problemas en IA. BFS garantiza encontrar la solución óptima pero consume mucha memoria; DFS es eficiente en memoria pero puede no encontrar la mejor solución. Backtracking es fundamental para problemas de satisfacción de restricciones. En la industria, estos algoritmos se usan en navegación GPS, resolución de puzzles, análisis de grafos sociales y verificación de software.</p></div></section>
+
+            <section class="reveal"><h2 id="referencias">Referencias</h2><ul><li>Russell, S. J., & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson. Cap. 3.</li><li>Cormen, T. H., et al. (2022). <em>Introduction to Algorithms</em> (4th ed.). MIT Press.</li><li>Korf, R. E. (2010). Artificial Intelligence Search Algorithms. <em>Handbook of Algorithms and Theory of Computation</em>. CRC Press.</li></ul></section>
+
             <nav class="article-nav reveal">
-                <a href="heuristicas.html" class="article-nav-link">
-                    <span class="nav-label">← Anterior</span>
-                    <span class="nav-title">1.8 El Papel de la Heurística</span>
-                </a>
-                <a href="algoritmo-a-estrella.html" class="article-nav-link next">
-                    <span class="nav-label">Siguiente →</span>
-                    <span class="nav-title">1.8.2 Algoritmo A*</span>
-                </a>
+                <a href="heuristicas.html" class="article-nav-link"><span class="nav-label">← Anterior</span><span class="nav-title">1.8 Heurísticas</span></a>
+                <a href="algoritmo-a-estrella.html" class="article-nav-link next"><span class="nav-label">Siguiente →</span><span class="nav-title">1.8.2 Algoritmo A*</span></a>
             </nav>
         </article>
     </div>
-
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-brand">🤖 AI Blog</div>
-            <p>Blog educativo sobre Inteligencia Artificial — © 2026</p>
-        </div>
-    </footer>
+    <footer class="footer"><div class="footer-inner"><div class="footer-brand">🤖 AI Blog</div><p>Blog educativo sobre Inteligencia Artificial — © 2026</p></div></footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
-
 </html>
