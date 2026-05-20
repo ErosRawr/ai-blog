@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-<body>
+<body class="has-sidebar">
     <div class="particles" aria-hidden="true">
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -25,7 +26,10 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
     <div class="page-wrapper">
@@ -33,13 +37,13 @@
             <div class="breadcrumb">
                 <a href="../index.html">Inicio</a>
                 <span class="separator">›</span>
-                <span class="current">Razonamiento Monótono</span>
+                <span class="current">2.5 Razonamiento Monótono</span>
             </div>
             <h1>Razonamiento <span class="gradient-text">Monótono</span></h1>
             <div class="article-meta">
                 <span class="article-meta-item">📖 Lectura: 11 min</span>
                 <span class="article-meta-item">🏷️ Unidad II</span>
-                <span class="article-meta-item">📝 Tema 2.5</span>
+                <span class="article-meta-item">📝 Tema 5 de 8</span>
             </div>
         </header>
         <article class="article-content">
@@ -151,8 +155,10 @@
                 </div>
             </section>
             <section class="reveal">
-                <h2 id="conclusion">Conclusión</h2>
+                <div class="conclusion-section">
+                    <h2>🎯 Conclusión</h2>
                 <p>El razonamiento monótono es la <strong>base sólida</strong> sobre la que se construye toda la lógica formal en IA. Su fortaleza (conclusiones que nunca se invalidan) es también su limitación (no puede modelar creencias revisables). Comprender sus propiedades y limitaciones es esencial para saber cuándo aplicarlo y cuándo recurrir a lógicas más flexibles como la no monótona o la probabilística.</p>
+                            </div>
             </section>
             <section class="reveal">
                 <h2 id="referencias">📚 Referencias</h2>
@@ -183,6 +189,7 @@
         </div>
     </footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
 </html>

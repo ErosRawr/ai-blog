@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-<body>
+<body class="has-sidebar">
     <div class="particles" aria-hidden="true">
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -25,7 +26,10 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
     <div class="page-wrapper">
@@ -33,13 +37,13 @@
             <div class="breadcrumb">
                 <a href="../index.html">Inicio</a>
                 <span class="separator">›</span>
-                <span class="current">Mapas Conceptuales</span>
+                <span class="current">2.3 Mapas Conceptuales</span>
             </div>
             <h1>Mapas <span class="gradient-text">Conceptuales</span> en IA</h1>
             <div class="article-meta">
                 <span class="article-meta-item">📖 Lectura: 10 min</span>
                 <span class="article-meta-item">🏷️ Unidad II</span>
-                <span class="article-meta-item">📝 Tema 2.3</span>
+                <span class="article-meta-item">📝 Tema 3 de 8</span>
             </div>
         </header>
         <article class="article-content">
@@ -126,8 +130,10 @@
                 </div>
             </section>
             <section class="reveal">
-                <h2 id="conclusion">Conclusión</h2>
+                <div class="conclusion-section">
+                    <h2>🎯 Conclusión</h2>
                 <p>Los mapas conceptuales son un <strong>puente entre la mente humana y la representación computacional del conocimiento</strong>. En IA, constituyen el primer paso para capturar, organizar y formalizar el conocimiento de un dominio. Dominar esta técnica te permite diseñar bases de conocimiento más robustas y colaborar eficientemente con expertos de dominio.</p>
+                            </div>
             </section>
             <section class="reveal">
                 <h2 id="referencias">📚 Referencias</h2>
@@ -158,6 +164,7 @@
         </div>
     </footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
 </html>

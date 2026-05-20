@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-<body>
+<body class="has-sidebar">
     <div class="particles" aria-hidden="true">
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -25,7 +26,10 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
     <div class="page-wrapper">
@@ -33,13 +37,13 @@
             <div class="breadcrumb">
                 <a href="../index.html">Inicio</a>
                 <span class="separator">›</span>
-                <span class="current">Teorema de Bayes</span>
+                <span class="current">2.8 Teorema de Bayes</span>
             </div>
             <h1>Teorema de <span class="gradient-text">Bayes</span></h1>
             <div class="article-meta">
                 <span class="article-meta-item">📖 Lectura: 14 min</span>
                 <span class="article-meta-item">🏷️ Unidad II</span>
-                <span class="article-meta-item">📝 Tema 2.9</span>
+                <span class="article-meta-item">📝 Tema 8 de 8</span>
             </div>
         </header>
         <article class="article-content">
@@ -180,8 +184,10 @@
                 </div>
             </section>
             <section class="reveal">
-                <h2 id="conclusion">Conclusión</h2>
+                <div class="conclusion-section">
+                    <h2>🎯 Conclusión</h2>
                 <p>El Teorema de Bayes es la <strong>piedra angular del razonamiento probabilístico</strong> en IA. Su elegancia radica en su simplicidad: con una sola ecuación, permite actualizar creencias de manera racional y cuantitativa. Desde filtros de spam hasta autos autónomos, Bayes está en el corazón de los sistemas inteligentes que toman decisiones bajo incertidumbre. Dominar esta herramienta te permite pensar como un <strong>ingeniero bayesiano</strong>: siempre dispuesto a cambiar de opinión ante nueva evidencia.</p>
+                            </div>
             </section>
             <section class="reveal">
                 <h2 id="referencias">📚 Referencias</h2>
@@ -212,6 +218,7 @@
         </div>
     </footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
 </html>

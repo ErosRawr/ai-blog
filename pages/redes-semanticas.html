@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-<body>
+<body class="has-sidebar">
     <div class="particles" aria-hidden="true">
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -25,7 +26,10 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
     <div class="page-wrapper">
@@ -33,13 +37,13 @@
             <div class="breadcrumb">
                 <a href="../index.html">Inicio</a>
                 <span class="separator">›</span>
-                <span class="current">Redes Semánticas</span>
+                <span class="current">2.4 Redes Semánticas</span>
             </div>
             <h1>Redes <span class="gradient-text">Semánticas</span></h1>
             <div class="article-meta">
                 <span class="article-meta-item">📖 Lectura: 12 min</span>
                 <span class="article-meta-item">🏷️ Unidad II</span>
-                <span class="article-meta-item">📝 Tema 2.4</span>
+                <span class="article-meta-item">📝 Tema 4 de 8</span>
             </div>
         </header>
         <article class="article-content">
@@ -149,8 +153,10 @@ Paciente_01 →<span class="function">presenta</span>→ Tos_severa
                 </div>
             </section>
             <section class="reveal">
-                <h2 id="conclusion">Conclusión</h2>
+                <div class="conclusion-section">
+                    <h2>🎯 Conclusión</h2>
                 <p>Las redes semánticas son una de las representaciones del conocimiento más intuitivas y poderosas en IA. Su capacidad de <strong>herencia, inferencia y visualización</strong> las hace ideales para modelar dominios complejos. Hoy siguen vigentes como la base conceptual de tecnologías modernas como los <strong>Knowledge Graphs</strong> (Google, Wikidata) y las ontologías de la web semántica.</p>
+                            </div>
             </section>
             <section class="reveal">
                 <h2 id="referencias">📚 Referencias</h2>
@@ -181,6 +187,7 @@ Paciente_01 →<span class="function">presenta</span>→ Tos_severa
         </div>
     </footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
 </html>

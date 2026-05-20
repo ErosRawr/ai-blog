@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -11,9 +11,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 
-<body>
+<body class="has-sidebar">
 
     <div class="particles" aria-hidden="true">
         <div class="particle"></div>
@@ -38,9 +39,29 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad II — Representación</div>
+            <ul class="sidebar-links">
+                <li><a href="principios-metodologia-ia.html"><span class="link-number">2.1</span> Principios y Metodología</a></li>
+                <li><a href="paradigmas-ia.html"><span class="link-number">2.2</span> Paradigmas de la IA</a></li>
+                <li><a href="mapas-conceptuales.html"><span class="link-number">2.3</span> Mapas Conceptuales</a></li>
+                <li><a href="redes-semanticas.html"><span class="link-number">2.4</span> Redes Semánticas</a></li>
+                <li><a href="razonamiento-monotono.html"><span class="link-number">2.5</span> Razonamiento Monótono</a></li>
+                <li><a href="conocimiento-no-monotono.html"><span class="link-number">2.6</span> Conocimiento No-Monótono</a></li>
+                <li><a href="razonamiento-probabilistico.html"><span class="link-number">2.7</span> Razonamiento Probabilístico</a></li>
+                <li><a href="teorema-bayes.html"><span class="link-number">2.8</span> Teorema de Bayes</a></li>
+            </ul>
+        </div>
+    </aside>
 
     <div class="page-wrapper">
 
@@ -48,13 +69,13 @@
             <div class="breadcrumb">
                 <a href="../index.html">Inicio</a>
                 <span class="separator">›</span>
-                <span class="current">Principios y Metodología de la IA</span>
+                <span class="current">2.1 Principios y Metodología de la IA</span>
             </div>
             <h1>Principios y <span class="gradient-text">Metodología de la IA</span></h1>
             <div class="article-meta">
                 <span class="article-meta-item">📖 Lectura: 12 min</span>
                 <span class="article-meta-item">🏷️ Unidad II</span>
-                <span class="article-meta-item">📝 Tema 2.1</span>
+                <span class="article-meta-item">📝 Tema 1 de 8</span>
             </div>
         </header>
 
@@ -196,37 +217,89 @@
                 </div>
             </section>
 
-            <!-- Cuestionario -->
+            
+            <!-- VIDEO EMBEBIDO -->
             <section class="reveal">
-                <h2 id="cuestionario">📝 Cuestionario de comprensión</h2>
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/YipzD293OIw" title="Video sobre Principios y Metodología" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
 
-                <div class="concept-grid">
-                    <div class="concept-card">
-                        <h4>Pregunta 1</h4>
-                        <p>¿Cuáles son los tres pilares fundamentales de la IA?</p>
+            <!-- EVALUACIÓN: 5 PREGUNTAS -->
+            <section class="reveal">
+                <div class="quiz-section" id="quiz-1">
+                    <h2>📝 Evaluación — Tema 2.1</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+
+                    <div class="quiz-list">
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">Pregunta interactiva 1 sobre Principios y Metodología</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Opción A</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Opción B correcta</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Opción C</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Opción D</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Esta es la respuesta correcta para el tema.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">Pregunta interactiva 2 sobre Principios y Metodología</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Opción A correcta</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Opción B</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Opción C</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Opción D</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">Pregunta interactiva 3 sobre Principios y Metodología</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Opción A</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Opción B</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Opción C correcta</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Opción D</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="d">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">Pregunta interactiva 4 sobre Principios y Metodología</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Opción A</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Opción B</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Opción C</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Opción D correcta</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">Pregunta interactiva 5 sobre Principios y Metodología</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Opción A correcta</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Opción B</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Opción C</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Opción D</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto.</div>
+                        </div>
                     </div>
-                    <div class="concept-card">
-                        <h4>Pregunta 2</h4>
-                        <p>¿Cuál es la diferencia principal entre el enfoque top-down y el bottom-up en IA?</p>
-                    </div>
-                    <div class="concept-card">
-                        <h4>Pregunta 3</h4>
-                        <p>¿Por qué la metodología de desarrollo en IA es más iterativa que la del software tradicional?</p>
-                    </div>
-                    <div class="concept-card">
-                        <h4>Pregunta 4</h4>
-                        <p>En la fase de «Selección de paradigma», ¿qué factores influyen en la elección de la técnica?</p>
-                    </div>
-                    <div class="concept-card">
-                        <h4>Pregunta 5</h4>
-                        <p>¿Qué papel juega la validación en el ciclo de vida de un sistema de IA y por qué es diferente al testing convencional?</p>
-                    </div>
+
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
                 </div>
             </section>
 
             <!-- Conclusión -->
             <section class="reveal">
-                <h2 id="conclusion">Conclusión</h2>
+                <div class="conclusion-section">
+                    <h2>🎯 Conclusión</h2>
 
                 <p>Los principios y la metodología de la IA no son solo teoría académica — son la <strong>columna vertebral</strong> de cualquier proyecto exitoso de inteligencia artificial. Dominar estas fases te permite abordar problemas complejos de manera sistemática, elegir las técnicas correctas y evitar los errores clásicos como lanzarse a codificar sin entender el problema.</p>
 
@@ -236,6 +309,7 @@
                     <div class="callout-title">🚀 Dato profesional</div>
                     <p>Según un estudio de Gartner (2024), el 85% de los proyectos de IA que fracasan lo hacen por problemas metodológicos (mala definición del problema, datos inadecuados o falta de validación), no por limitaciones técnicas.</p>
                 </div>
+                            </div>
             </section>
 
             <!-- Referencias -->
@@ -272,6 +346,7 @@
     </footer>
 
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="../js/main.js"></script>
 
 </body>

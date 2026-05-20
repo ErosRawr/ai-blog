@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -11,9 +11,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 
-<body>
+<body class="has-sidebar">
 
     <div class="particles" aria-hidden="true">
         <div class="particle"></div>
@@ -38,9 +39,29 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad II — Representación</div>
+            <ul class="sidebar-links">
+                <li><a href="principios-metodologia-ia.html"><span class="link-number">2.1</span> Principios y Metodología</a></li>
+                <li><a href="paradigmas-ia.html"><span class="link-number">2.2</span> Paradigmas de la IA</a></li>
+                <li><a href="mapas-conceptuales.html"><span class="link-number">2.3</span> Mapas Conceptuales</a></li>
+                <li><a href="redes-semanticas.html"><span class="link-number">2.4</span> Redes Semánticas</a></li>
+                <li><a href="razonamiento-monotono.html"><span class="link-number">2.5</span> Razonamiento Monótono</a></li>
+                <li><a href="conocimiento-no-monotono.html"><span class="link-number">2.6</span> Conocimiento No-Monótono</a></li>
+                <li><a href="razonamiento-probabilistico.html"><span class="link-number">2.7</span> Razonamiento Probabilístico</a></li>
+                <li><a href="teorema-bayes.html"><span class="link-number">2.8</span> Teorema de Bayes</a></li>
+            </ul>
+        </div>
+    </aside>
 
     <div class="page-wrapper">
 
@@ -48,13 +69,13 @@
             <div class="breadcrumb">
                 <a href="../index.html">Inicio</a>
                 <span class="separator">›</span>
-                <span class="current">Paradigmas de la IA</span>
+                <span class="current">2.2 Paradigmas de la IA</span>
             </div>
             <h1>Paradigmas de la <span class="gradient-text">Inteligencia Artificial</span></h1>
             <div class="article-meta">
                 <span class="article-meta-item">📖 Lectura: 12 min</span>
                 <span class="article-meta-item">🏷️ Unidad II</span>
-                <span class="article-meta-item">📝 Tema 2.2</span>
+                <span class="article-meta-item">📝 Tema 2 de 8</span>
             </div>
         </header>
 
@@ -200,41 +221,94 @@
                 </div>
             </section>
 
-            <!-- Cuestionario -->
+            
+            <!-- VIDEO EMBEBIDO -->
             <section class="reveal">
-                <h2 id="cuestionario">📝 Cuestionario de comprensión</h2>
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/qBvd03Yfejg" title="Video sobre Paradigmas de la IA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
 
-                <div class="concept-grid">
-                    <div class="concept-card">
-                        <h4>Pregunta 1</h4>
-                        <p>¿Qué significa que el paradigma simbólico sea «transparente» y por qué esto es una ventaja en aplicaciones médicas?</p>
+            <!-- EVALUACIÓN: 5 PREGUNTAS -->
+            <section class="reveal">
+                <div class="quiz-section" id="quiz-2">
+                    <h2>📝 Evaluación — Tema 2.2</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+
+                    <div class="quiz-list">
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">Pregunta interactiva 1 sobre Paradigmas de la IA</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Opción A</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Opción B correcta</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Opción C</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Opción D</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Esta es la respuesta correcta para el tema.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">Pregunta interactiva 2 sobre Paradigmas de la IA</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Opción A correcta</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Opción B</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Opción C</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Opción D</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">Pregunta interactiva 3 sobre Paradigmas de la IA</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Opción A</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Opción B</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Opción C correcta</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Opción D</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="d">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">Pregunta interactiva 4 sobre Paradigmas de la IA</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Opción A</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Opción B</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Opción C</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Opción D correcta</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">Pregunta interactiva 5 sobre Paradigmas de la IA</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Opción A correcta</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Opción B</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Opción C</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Opción D</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto.</div>
+                        </div>
                     </div>
-                    <div class="concept-card">
-                        <h4>Pregunta 2</h4>
-                        <p>¿Por qué las redes neuronales se consideran una «caja negra» y qué implicaciones éticas tiene esto?</p>
-                    </div>
-                    <div class="concept-card">
-                        <h4>Pregunta 3</h4>
-                        <p>Describe las tres operaciones fundamentales de un algoritmo evolutivo.</p>
-                    </div>
-                    <div class="concept-card">
-                        <h4>Pregunta 4</h4>
-                        <p>¿Por qué AlphaGo se considera un sistema híbrido? ¿Qué paradigmas combina?</p>
-                    </div>
-                    <div class="concept-card">
-                        <h4>Pregunta 5</h4>
-                        <p>Si tuvieras que diseñar un sistema para predecir terremotos, ¿qué paradigma(s) elegirías y por qué?</p>
-                    </div>
+
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
                 </div>
             </section>
 
             <!-- Conclusión -->
             <section class="reveal">
-                <h2 id="conclusion">Conclusión</h2>
+                <div class="conclusion-section">
+                    <h2>🎯 Conclusión</h2>
 
                 <p>Los paradigmas de la IA representan <strong>diferentes filosofías</strong> sobre cómo replicar la inteligencia. No existe un paradigma «mejor» en absoluto — cada uno brilla en contextos diferentes. El ingeniero moderno de IA debe conocer todos los paradigmas para elegir (o combinar) el más adecuado a cada problema.</p>
 
                 <p>La tendencia actual apunta fuertemente hacia los <strong>sistemas híbridos</strong> que combinan la explicabilidad de lo simbólico, la potencia de lo conexionista y la creatividad de lo evolutivo. Comprender estos paradigmas te da el marco mental para innovar en cualquier área de la IA.</p>
+                            </div>
             </section>
 
             <!-- Referencias -->
@@ -271,6 +345,7 @@
     </footer>
 
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="../js/main.js"></script>
 
 </body>
