@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -32,6 +32,24 @@
             </div>
         </div>
     </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad II — Representación</div>
+            <ul class="sidebar-links">
+                <li><a href="principios-metodologia-ia.html"><span class="link-number">2.1</span> Principios y Metodología</a></li>
+                <li><a href="paradigmas-ia.html"><span class="link-number">2.2</span> Paradigmas de la IA</a></li>
+                <li><a href="mapas-conceptuales.html"><span class="link-number">2.3</span> Mapas Conceptuales</a></li>
+                <li><a href="redes-semanticas.html"><span class="link-number">2.4</span> Redes Semánticas</a></li>
+                <li><a href="razonamiento-monotono.html"><span class="link-number">2.5</span> Razonamiento Monótono</a></li>
+                <li><a href="conocimiento-no-monotono.html"><span class="link-number">2.6</span> Conocimiento No-Monótono</a></li>
+                <li><a href="razonamiento-probabilistico.html"><span class="link-number">2.7</span> Razonamiento Probabilístico</a></li>
+                <li><a href="teorema-bayes.html"><span class="link-number">2.8</span> Teorema de Bayes</a></li>
+            </ul>
+        </div>
+    </aside>
+
     <div class="page-wrapper">
         <header class="article-hero">
             <div class="breadcrumb">
@@ -142,14 +160,82 @@ Paciente_01 →<span class="function">presenta</span>→ Tos_severa
                     <p>5. Dibuja la red usando <strong>draw.io</strong> o papel y describe 3 inferencias posibles.</p>
                 </div>
             </section>
+            <!-- VIDEO EMBEBIDO -->
             <section class="reveal">
-                <h2 id="cuestionario">📝 Cuestionario</h2>
-                <div class="concept-grid">
-                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuál es la diferencia entre una relación «es-un» y una relación «instancia-de»?</p></div>
-                    <div class="concept-card"><h4>Pregunta 2</h4><p>Explica el mecanismo de herencia de propiedades en redes semánticas con un ejemplo.</p></div>
-                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Qué es el «problema del diamante» en herencia múltiple?</p></div>
-                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Cómo se representan las excepciones a la herencia? Da un ejemplo.</p></div>
-                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿Qué ventajas tienen las redes semánticas sobre la lógica proposicional para representar conocimiento?</p></div>
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/Sgo0dzV9g3E" title="Video sobre Redes Semánticas" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EVALUACIÓN: 5 PREGUNTAS -->
+            <section class="reveal">
+                <div class="quiz-section" id="quiz-4">
+                    <h2>📝 Evaluación — Tema 2.4</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+
+                    
+                    <div class="quiz-list">
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">¿Qué tipo de relación representa la pertenencia a una categoría y permite la herencia?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> es-un (IS-A)</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> tiene-un (HAS-A)</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> causa</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> parte-de</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. "IS-A" establece la jerarquía principal para heredar propiedades.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">El principio por el cual "Perro" adquiere automáticamente la propiedad "Tiene metabolismo" de su nodo padre "Animal" se llama:</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Backpropagation</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Polimorfismo</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Herencia de propiedades</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Encapsulamiento</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. La herencia evita tener que definir atributos redundantes para cada nodo descendiente.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="d">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">¿Cuál es el "problema del diamante" en redes semánticas?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> La dificultad de dibujar grafos muy grandes.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Cuando los nodos se quedan sin memoria RAM.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> La lentitud de búsqueda en relaciones "tiene-un".</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Un conflicto de herencia múltiple cuando un nodo hereda propiedades contradictorias de dos padres.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Ocurre cuando hay ambigüedad sobre qué propiedad debe heredar el nodo hijo.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">En el ejemplo "Pingüino es-un Ave" pero "Pingüino NO-puede Volar", ¿qué mecanismo se está utilizando?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Razonamiento inductivo</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Excepciones locales o sobreescritura (overriding) de herencia</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Redes Neuronales Convolucionales</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Lógica borrosa (Fuzzy Logic)</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Las excepciones locales permiten sobrescribir propiedades heredadas por defecto.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">¿Cuál de las siguientes es una implementación moderna y a gran escala de los conceptos de redes semánticas?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Bases de datos relacionales simples (SQL).</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Knowledge Graphs (Ej. Google Knowledge Graph, Wikidata).</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Sistemas operativos de tiempo real.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Motores físicos para videojuegos.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Los grafos de conocimiento son redes semánticas gigantescas que estructuran información en la web.</div>
+                        </div>
+                    </div>
+
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
                 </div>
             </section>
             <section class="reveal">

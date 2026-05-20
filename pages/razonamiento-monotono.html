@@ -32,6 +32,24 @@
             </div>
         </div>
     </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad II — Representación</div>
+            <ul class="sidebar-links">
+                <li><a href="principios-metodologia-ia.html"><span class="link-number">2.1</span> Principios y Metodología</a></li>
+                <li><a href="paradigmas-ia.html"><span class="link-number">2.2</span> Paradigmas de la IA</a></li>
+                <li><a href="mapas-conceptuales.html"><span class="link-number">2.3</span> Mapas Conceptuales</a></li>
+                <li><a href="redes-semanticas.html"><span class="link-number">2.4</span> Redes Semánticas</a></li>
+                <li><a href="razonamiento-monotono.html"><span class="link-number">2.5</span> Razonamiento Monótono</a></li>
+                <li><a href="conocimiento-no-monotono.html"><span class="link-number">2.6</span> Conocimiento No-Monótono</a></li>
+                <li><a href="razonamiento-probabilistico.html"><span class="link-number">2.7</span> Razonamiento Probabilístico</a></li>
+                <li><a href="teorema-bayes.html"><span class="link-number">2.8</span> Teorema de Bayes</a></li>
+            </ul>
+        </div>
+    </aside>
+
     <div class="page-wrapper">
         <header class="article-hero">
             <div class="breadcrumb">
@@ -144,14 +162,83 @@
                     <p>d) Explica por qué este sistema es monótono.</p>
                 </div>
             </section>
+            
+            <!-- VIDEO EMBEBIDO -->
             <section class="reveal">
-                <h2 id="cuestionario">📝 Cuestionario</h2>
-                <div class="concept-grid">
-                    <div class="concept-card"><h4>Pregunta 1</h4><p>Define razonamiento monótono en tus propias palabras y da un ejemplo cotidiano.</p></div>
-                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Cuál es la diferencia entre lógica proposicional y lógica de predicados?</p></div>
-                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Qué es Modus Ponens y por qué es fundamental para la inferencia?</p></div>
-                    <div class="concept-card"><h4>Pregunta 4</h4><p>Menciona dos aplicaciones del razonamiento monótono en IA y explica por qué funciona bien en esos contextos.</p></div>
-                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿Por qué el razonamiento monótono no es suficiente para modelar el sentido común? Da un contraejemplo.</p></div>
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/KXpQI3fzzKg" title="Video sobre Razonamiento Monótono" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EVALUACIÓN: 5 PREGUNTAS -->
+            <section class="reveal">
+                <div class="quiz-section" id="quiz-5">
+                    <h2>📝 Evaluación — Tema 2.5</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+
+                    <div class="quiz-list">
+
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">En el razonamiento monótono, ¿qué ocurre si añadimos nueva información a nuestra base de conocimientos?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Se invalidan todas las conclusiones previas.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Ninguna conclusión previa se invalida; lo verdadero sigue siendo verdadero.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> El sistema colapsa por contradicciones lógicas.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Se requiere reiniciar el motor de inferencia.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. La propiedad clave de la monotonía es que agregar premisas nunca retira conclusiones (Γ ∪ {β} ⊢ α).</div>
+                        </div>
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">¿Cuál de las siguientes lógicas es inherentemente monótona?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Lógica difusa (Fuzzy Logic).</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Lógica por defecto (Default Logic).</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Lógica clásica de predicados de primer orden.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Lógica probabilística.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. La lógica clásica (proposicional y predicados) es la base del razonamiento monótono.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">¿Qué afirma la regla de inferencia "Modus Ponens"?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Si p → q es verdad, y p es verdad, entonces q es verdad.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Si p y q son verdad, entonces p o q es falso.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Todo lo que es verdadero puede ser derivado (Completitud).</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Las conclusiones pueden cambiar con el tiempo.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Es la regla deductiva más fundamental del razonamiento lógico.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="d">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">¿Cuál de estos sistemas es ideal para implementar razonamiento monótono?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Modelos del lenguaje masivos (LLMs) que generan texto creativo.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Sistemas de visión artificial que detectan peatones.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Redes neuronales convolucionales para reconocimiento facial.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Demostradores automáticos de teoremas matemáticos (ej. Coq).</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. La demostración matemática requiere la certeza irrevocable del razonamiento monótono.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">¿Por qué el razonamiento monótono no es suficiente para modelar el "sentido común" del ser humano?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Porque en la vida real, nueva información frecuentemente nos obliga a retractarnos de conclusiones pasadas.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Porque el sentido común solo se puede programar en ensamblador.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Porque el ser humano nunca saca conclusiones a partir de premisas lógicas.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Porque el razonamiento monótono es probabilístico.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. El mundo real está lleno de excepciones que la lógica monótona no maneja bien.</div>
+                        </div>
+                    </div>
+
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
                 </div>
             </section>
             <section class="reveal">

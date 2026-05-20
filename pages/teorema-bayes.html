@@ -32,6 +32,24 @@
             </div>
         </div>
     </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad II — Representación</div>
+            <ul class="sidebar-links">
+                <li><a href="principios-metodologia-ia.html"><span class="link-number">2.1</span> Principios y Metodología</a></li>
+                <li><a href="paradigmas-ia.html"><span class="link-number">2.2</span> Paradigmas de la IA</a></li>
+                <li><a href="mapas-conceptuales.html"><span class="link-number">2.3</span> Mapas Conceptuales</a></li>
+                <li><a href="redes-semanticas.html"><span class="link-number">2.4</span> Redes Semánticas</a></li>
+                <li><a href="razonamiento-monotono.html"><span class="link-number">2.5</span> Razonamiento Monótono</a></li>
+                <li><a href="conocimiento-no-monotono.html"><span class="link-number">2.6</span> Conocimiento No-Monótono</a></li>
+                <li><a href="razonamiento-probabilistico.html"><span class="link-number">2.7</span> Razonamiento Probabilístico</a></li>
+                <li><a href="teorema-bayes.html"><span class="link-number">2.8</span> Teorema de Bayes</a></li>
+            </ul>
+        </div>
+    </aside>
+
     <div class="page-wrapper">
         <header class="article-hero">
             <div class="breadcrumb">
@@ -173,14 +191,83 @@
                     <p><strong>Tip:</strong> Usa la fórmula de probabilidad total para calcular P(defecto) primero.</p>
                 </div>
             </section>
+            
+            <!-- VIDEO EMBEBIDO -->
             <section class="reveal">
-                <h2 id="cuestionario">📝 Cuestionario</h2>
-                <div class="concept-grid">
-                    <div class="concept-card"><h4>Pregunta 1</h4><p>Escribe el Teorema de Bayes y explica qué representa cada término con un ejemplo.</p></div>
-                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Qué es la «paradoja de la base rate» y por qué es relevante en pruebas médicas?</p></div>
-                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Cuál es la diferencia entre la probabilidad prior y la posterior?</p></div>
-                    <div class="concept-card"><h4>Pregunta 4</h4><p>En el contexto de un filtro de spam, ¿qué representan P(H), P(E|H) y P(H|E)?</p></div>
-                    <div class="concept-card"><h4>Pregunta 5</h4><p>Si una prueba médica tiene 100% de sensibilidad pero solo 50% de especificidad, ¿es una buena prueba? Justifica usando Bayes.</p></div>
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/TCeZwZgYorA" title="Video sobre Teorema de Bayes" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EVALUACIÓN: 5 PREGUNTAS -->
+            <section class="reveal">
+                <div class="quiz-section" id="quiz-8">
+                    <h2>📝 Evaluación — Tema 2.8</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+
+                    <div class="quiz-list">
+
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">El Teorema de Bayes nos permite responder lógicamente a la pregunta:</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> ¿Qué algoritmo de ordenamiento es más rápido?</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> ¿Cómo debo actualizar mis creencias (probabilidad de una hipótesis) al observar nueva evidencia?</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> ¿Cómo demuestro que P es diferente de NP?</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> ¿Cuál es la ruta más corta en un grafo?</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Bayes es el marco matemático para actualizar la certidumbre ante nuevos datos.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">En la fórmula de Bayes P(H|E) = [P(E|H) * P(H)] / P(E), ¿qué representa P(H)?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> La probabilidad a priori (Prior): mi creencia inicial en la Hipótesis antes de ver evidencia.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> La probabilidad a posteriori (Posterior): la creencia actualizada.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> La Evidencia (Evidence): qué tan común son los datos en general.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> La Verosimilitud (Likelihood): probabilidad de los datos dada la hipótesis.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. El "Prior" es el conocimiento histórico que tienes sobre la hipótesis.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="d">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">¿Cuál es una falacia común que el Teorema de Bayes ayuda a corregir (ej. en pruebas médicas)?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> La falacia del apostador.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> El dilema del prisionero.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> El sesgo de confirmación.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> La falacia de la tasa base (Ignorar cuán rara es la enfermedad originalmente P(H)).</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Incluso con un test muy preciso, si la enfermedad es rarísima (tasa base baja), la probabilidad posterior será baja.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">En el contexto del Teorema de Bayes, ¿qué es la "Verosimilitud" (Likelihood) P(E|H)?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> La probabilidad de que la hipótesis sea falsa.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> La probabilidad de la hipótesis dados los datos.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> La probabilidad de observar esa Evidencia asumiendo que la Hipótesis es cierta (ej. sensibilidad de la prueba médica).</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> La constante de normalización.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Responde a: "si estuvieras enfermo, ¿cuál es la probabilidad de dar positivo?".</div>
+                        </div>
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">¿Qué significa que las Redes Bayesianas se pueden actualizar en tiempo real?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Que el Posterior (P(H|E)) calculado tras una evidencia se convierte en el nuevo Prior (P(H)) para la siguiente evidencia.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Que siempre requieren internet 5G.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Que no usan memoria RAM.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Que pueden compilar el código C++ al instante.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. El aprendizaje bayesiano es iterativo: las creencias se actualizan cíclicamente con cada nuevo dato observado.</div>
+                        </div>
+                    </div>
+
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
                 </div>
             </section>
             <section class="reveal">

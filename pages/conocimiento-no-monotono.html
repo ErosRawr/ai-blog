@@ -32,6 +32,24 @@
             </div>
         </div>
     </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad II — Representación</div>
+            <ul class="sidebar-links">
+                <li><a href="principios-metodologia-ia.html"><span class="link-number">2.1</span> Principios y Metodología</a></li>
+                <li><a href="paradigmas-ia.html"><span class="link-number">2.2</span> Paradigmas de la IA</a></li>
+                <li><a href="mapas-conceptuales.html"><span class="link-number">2.3</span> Mapas Conceptuales</a></li>
+                <li><a href="redes-semanticas.html"><span class="link-number">2.4</span> Redes Semánticas</a></li>
+                <li><a href="razonamiento-monotono.html"><span class="link-number">2.5</span> Razonamiento Monótono</a></li>
+                <li><a href="conocimiento-no-monotono.html"><span class="link-number">2.6</span> Conocimiento No-Monótono</a></li>
+                <li><a href="razonamiento-probabilistico.html"><span class="link-number">2.7</span> Razonamiento Probabilístico</a></li>
+                <li><a href="teorema-bayes.html"><span class="link-number">2.8</span> Teorema de Bayes</a></li>
+            </ul>
+        </div>
+    </aside>
+
     <div class="page-wrapper">
         <header class="article-hero">
             <div class="breadcrumb">
@@ -139,14 +157,83 @@
                     <p>d) Propón una situación donde la lógica difusa sería más apropiada que la lógica por defecto.</p>
                 </div>
             </section>
+            
+            <!-- VIDEO EMBEBIDO -->
             <section class="reveal">
-                <h2 id="cuestionario">📝 Cuestionario</h2>
-                <div class="concept-grid">
-                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuál es la diferencia fundamental entre razonamiento monótono y no-monótono? Da un ejemplo de cada uno.</p></div>
-                    <div class="concept-card"><h4>Pregunta 2</h4><p>Explica qué es una «regla por defecto» y cuándo se bloquea su aplicación.</p></div>
-                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Qué es la suposición del mundo cerrado y cómo se aplica en bases de datos SQL?</p></div>
-                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿En qué se diferencia la lógica difusa de la lógica probabilística?</p></div>
-                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿Por qué el razonamiento no-monótono es esencial para modelar el sentido común en IA?</p></div>
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/EZ-A2Wj-6CA" title="Video sobre Conocimiento No-Monótono" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EVALUACIÓN: 5 PREGUNTAS -->
+            <section class="reveal">
+                <div class="quiz-section" id="quiz-6">
+                    <h2>📝 Evaluación — Tema 2.6</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+
+                    <div class="quiz-list">
+
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">¿Qué caracteriza al razonamiento no monótono frente al monótono?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Solo se puede aplicar en matemáticas puras.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Las conclusiones son siempre 100% certeras e irrevocables.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Las conclusiones previas pueden ser retractadas o invalidadas si llega nueva evidencia.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Nunca utiliza reglas lógicas de ningún tipo.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Permite revisar y anular conclusiones (non-monotonicity) ante información novedosa.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">El problema clásico de Tweety ("Las aves vuelan, Tweety es un ave, pero Tweety es un pingüino") es un ejemplo de:</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Razonamiento por defecto (Default Reasoning).</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Teorema de completitud de Gödel.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Backpropagation.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Razonamiento estrictamente monótono.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Asumimos por defecto que las aves vuelan, a menos que se demuestre que es una excepción.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">¿Qué es el principio del "Mundo Cerrado" (Closed World Assumption)?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> La suposición de que existen infinitos universos paralelos.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Asumir que cualquier hecho que no sea verdadero en la base de datos es automáticamente falso.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Evitar que el sistema se conecte a Internet por seguridad.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Asumir que toda base de datos contiene errores.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Muy común en bases de datos: lo que no está especificado como cierto, se asume falso (negación por fallo).</div>
+                        </div>
+                        <div class="quiz-card" data-answer="d">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">¿Qué rama de la lógica usa variables lingüísticas y permite que algo sea "parcialmente verdadero" (ej. temperatura 0.7)?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Lógica de Primer Orden (FOL).</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Lógica Proposicional Clásica.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Circunscripción (Circumscription).</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Lógica Difusa (Fuzzy Logic).</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. La lógica borrosa/difusa maneja grados de verdad entre 0 y 1.</div>
+                        </div>
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">En los sistemas Truth Maintenance Systems (TMS), ¿cuál es su función principal?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Descargar actualizaciones de seguridad en la nube.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Procesar imágenes en tiempo real.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Mantener la consistencia de las creencias, retractando conclusiones cuando sus justificaciones fallan.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Programar redes neuronales profundas en Python.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Administran la dependencia entre creencias para revocar hechos cuando es necesario.</div>
+                        </div>
+                    </div>
+
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
                 </div>
             </section>
             <section class="reveal">
