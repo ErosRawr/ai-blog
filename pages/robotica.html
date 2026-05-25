@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-<body>
+<body class="has-sidebar">
     <div class="particles" aria-hidden="true">
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -25,9 +26,25 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad IV — Aplicaciones de IA</div>
+            <ul class="sidebar-links">
+                <li><a href="robotica.html" class="active"><span class="link-number">4.1</span> Robótica</a></li>
+                <li><a href="redes-neuronales.html"><span class="link-number">4.2</span> Redes Neuronales</a></li>
+                <li><a href="vision-computacional.html"><span class="link-number">4.3</span> Visión Computacional</a></li>
+                <li><a href="procesamiento-lenguaje.html"><span class="link-number">4.4</span> Procesamiento de Lenguaje Natural</a></li>
+            </ul>
+        </div>
+    </aside>
+
     <div class="page-wrapper">
         <header class="article-hero">
             <div class="breadcrumb">
@@ -42,7 +59,6 @@
             </div>
         </header>
         <article class="article-content">
-            <!-- 4.1.1 Conceptos básicos -->
             <section class="reveal">
                 <h2 id="conceptos">4.1.1 Conceptos Básicos</h2>
                 <p>La <strong>robótica</strong> es la rama de la IA que diseña, construye y programa <strong>agentes físicos</strong> (robots) capaces de percibir su entorno, tomar decisiones y actuar en el mundo real. Un robot es, en esencia, un agente inteligente con un <strong>cuerpo físico</strong>.</p>
@@ -77,7 +93,6 @@
                 </div>
             </section>
 
-            <!-- 4.1.2 Clasificación -->
             <section class="reveal">
                 <h2 id="clasificacion">4.1.2 Clasificación de Robots</h2>
                 <table class="comparison-table">
@@ -98,7 +113,6 @@
                 </div>
             </section>
 
-            <!-- 4.1.3 Desarrollos actuales -->
             <section class="reveal">
                 <h2 id="desarrollos">4.1.3 Desarrollos Actuales y Aplicaciones</h2>
                 <div class="timeline">
@@ -151,13 +165,80 @@
             </section>
 
             <section class="reveal">
-                <h2 id="cuestionario">📝 Cuestionario</h2>
-                <div class="concept-grid">
-                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuáles son los cuatro componentes fundamentales de un robot y qué función cumple cada uno?</p></div>
-                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Cuál es la diferencia entre un robot teleoperado, semiautónomo y autónomo? Da un ejemplo de cada uno.</p></div>
-                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Qué son los cobots y qué ventajas ofrecen respecto a los robots industriales tradicionales?</p></div>
-                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Qué es ROS y por qué es importante en el desarrollo de robots modernos?</p></div>
-                    <div class="concept-card"><h4>Pregunta 5</h4><p>Describe una aplicación actual de la robótica con IA en el sector salud y explica qué técnicas de IA utiliza.</p></div>
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/bHOrWkkXWmM" title="Video sobre Robótica e IA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <div class="quiz-section" id="quiz-4-1">
+                    <h2>📝 Evaluación — Tema 4.1</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+                    <div class="quiz-list">
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">¿Cuáles son los componentes fundamentales que interactúan para conformar un robot físico inteligente?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Solo actuadores motores y paquetes de baterías.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Sensores, Actuadores, Controlador y Software de IA.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> SLAM, entornos de Gazebo y sistemas ROS.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Conexión Wi-Fi, Servidores Cloud y Redes Neuronales exclusivamente.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Estos cuatro elementos proporcionan las bases para la captura de datos, procesamiento y acción física en el mundo real.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">¿Cuál es el ciclo lógico de retroalimentación continua que rige a un agente robótico en su entorno?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Codificar → Compilar → Desplegar</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Match → Resolve → Act</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Percibir → Planificar → Actuar</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Ingesta de datos → Limpieza → Entrenamiento</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Este bucle continuo permite que el robot interprete el mundo, tome una decisión basada en sus algoritmos y luego ejecute un movimiento antes de volver a observar.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">¿Qué característica principal define a un "Cobot" dentro de la industria manufacturera moderna?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Es un robot diseñado estrictamente para operaciones militares y policiales.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Es un sistema robótico sin actuadores físicos reales, existiendo solo en simulaciones (Gemelo Digital).</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Es un robot construido para trabajar de manera conjunta y segura junto a humanos en un mismo espacio de trabajo.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Es un robot que depende 100% de ser manejado por un operador a control remoto (teleoperado).</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Los robots colaborativos (cobots) cuentan con avanzados sensores de fuerza y limitadores de velocidad para prevenir daños a los operarios humanos cercanos.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">En el ámbito de las herramientas de desarrollo, ¿qué significa y representa el acrónimo ROS?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Robotic Online Simulator - Una web para modelado 3D de piezas industriales.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Recurrent Omnidirectional System - El sistema de llantas que usa el rover Perseverance.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Robot Operating System - El framework de software estandarizado a nivel mundial para programar y controlar robots.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Reactive Object Storage - Una base de datos exclusiva para visión computacional.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. A pesar de llevar "OS" en el nombre, funciona como un conjunto de librerías y herramientas (framework) vital para comunicar hardware y software robótico.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">Respecto a los desarrollos industriales actuales, ¿cómo logran los brazos robóticos modernos adaptar su comportamiento a tareas nuevas de manera autónoma?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Mediante la implementación de sistemas de Reinforcement Learning (Aprendizaje por refuerzo) que aprenden mediante prueba y error.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Usando algoritmos de encadenamiento hacia atrás con reglas de producción estáticas.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Por medio de algoritmos puros de búsqueda sistemática a ciegas (como DFS o BFS).</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Esperando a que un programador reescriba su código C++ en cada ciclo operativo.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Las redes neuronales profundas y el aprendizaje por refuerzo permiten a los robots ajustar sus patrones de agarre o manufactura enfrentando escenarios no pre-programados.</div>
+                        </div>
+                    </div>
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
                 </div>
             </section>
 
@@ -196,6 +277,9 @@
         </div>
     </footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
     <script src="../js/main.js"></script>
 </body>
 </html>
