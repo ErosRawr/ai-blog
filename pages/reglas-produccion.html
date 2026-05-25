@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-<body>
+<body class="has-sidebar">
     <div class="particles" aria-hidden="true">
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -25,9 +26,25 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad III — Razonamiento</div>
+            <ul class="sidebar-links">
+                <li><a href="representacion-reglas.html"><span class="link-number">3.1</span> Representación por Reglas</a></li>
+                <li><a href="metodos-inferencia-reglas.html"><span class="link-number">3.2</span> Métodos de Inferencia</a></li>
+                <li><a href="reglas-produccion.html" class="active"><span class="link-number">3.3</span> Reglas de Producción</a></li>
+                <li><a href="sintaxis-reglas-produccion.html"><span class="link-number">3.4</span> Sintaxis de Reglas</a></li>
+            </ul>
+        </div>
+    </aside>
+
     <div class="page-wrapper">
         <header class="article-hero">
             <div class="breadcrumb">
@@ -55,9 +72,10 @@
                     3. <strong>Motor de inferencia</strong>: Mecanismo que ejecuta el ciclo Match → Conflict Resolution → Act.</p>
                 </div>
             </section>
+            
             <section class="reveal">
                 <h2 id="estructura">Estructura de una regla de producción</h2>
-                <div class="concept-grid">
+                <div class="concept-grid concept-grid-4">
                     <div class="concept-card">
                         <div class="concept-card-icon">📋</div>
                         <h4>Nombre / ID</h4>
@@ -80,6 +98,7 @@
                     </div>
                 </div>
             </section>
+            
             <section class="reveal">
                 <h2 id="ciclo">El ciclo Reconocimiento-Acción</h2>
                 <div class="timeline">
@@ -105,25 +124,27 @@
                     </div>
                 </div>
             </section>
+            
             <section class="reveal">
                 <h2 id="ejemplo">Ejemplo en pseudocódigo CLIPS</h2>
                 <div class="code-block">
-<span class="comment">; Regla de producción en estilo CLIPS</span>
-(<span class="keyword">defrule</span> <span class="function">diagnostico-gripe</span>
-   <span class="string">"Si el paciente tiene fiebre alta y tos, diagnosticar gripe"</span>
-   (<span class="function">sintoma</span> (nombre fiebre) (valor alta))
-   (<span class="function">sintoma</span> (nombre tos) (valor si))
+<pre><code class="language-lisp">; Regla de producción en estilo CLIPS
+(defrule diagnostico-gripe
+   "Si el paciente tiene fiebre alta y tos, diagnosticar gripe"
+   (sintoma (nombre fiebre) (valor alta))
+   (sintoma (nombre tos) (valor si))
    =>
-   (<span class="function">assert</span> (<span class="function">diagnostico</span> (enfermedad gripe) (confianza 0.85)))
-   (<span class="function">printout</span> t <span class="string">"Diagnóstico: posible gripe (85%)"</span> crlf))
+   (assert (diagnostico (enfermedad gripe) (confianza 0.85)))
+   (printout t "Diagnóstico: posible gripe (85%)" crlf))
 
-<span class="comment">; Hechos en memoria de trabajo</span>
-(<span class="keyword">deffacts</span> <span class="function">paciente-actual</span>
-   (<span class="function">sintoma</span> (nombre fiebre) (valor alta))
-   (<span class="function">sintoma</span> (nombre tos) (valor si))
-   (<span class="function">sintoma</span> (nombre dolor-cabeza) (valor si)))
+; Hechos en memoria de trabajo
+(deffacts paciente-actual
+   (sintoma (nombre fiebre) (valor alta))
+   (sintoma (nombre tos) (valor si))
+   (sintoma (nombre dolor-cabeza) (valor si)))</code></pre>
                 </div>
             </section>
+            
             <section class="reveal">
                 <h2 id="actividad">🎯 Actividad práctica</h2>
                 <div class="callout callout-tip">
@@ -140,20 +161,90 @@
                     <p>c) ¿El sistema receta paracetamol, antigripal, o ambos? Justifica.</p>
                 </div>
             </section>
+
             <section class="reveal">
-                <h2 id="cuestionario">📝 Cuestionario</h2>
-                <div class="concept-grid">
-                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuáles son los tres componentes de un sistema de producción?</p></div>
-                    <div class="concept-card"><h4>Pregunta 2</h4><p>Describe las tres fases del ciclo reconocimiento-acción.</p></div>
-                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Qué es el «conjunto de conflicto» y por qué se necesita resolverlo?</p></div>
-                    <div class="concept-card"><h4>Pregunta 4</h4><p>Menciona tres estrategias de resolución de conflictos y explica cada una.</p></div>
-                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿Qué es la «refractariedad» y qué problema evita?</p></div>
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/Y97hAQaqVNU" title="Video sobre Reglas de Producción" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
                 </div>
             </section>
+
             <section class="reveal">
-                <h2 id="conclusion">Conclusión</h2>
+                <div class="quiz-section" id="quiz-3-3">
+                    <h2>📝 Evaluación — Tema 3.3</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+                    <div class="quiz-list">
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">¿Cuáles son los tres componentes esenciales que constituyen la definición formal de un sistema de producción?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Compilador, Base de datos relacional e Interfaz de red.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Algoritmo genérico, Árbol de búsqueda y Heurísticas complejas.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Memoria de trabajo (Working Memory), Base de reglas (Rule Base) y Motor de inferencia.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Código intermedio, Estructuras condicionales anidadas y Consola de salida.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Estos tres elementos estructuran formalmente el almacenamiento de hechos, reglas lógicas y el mecanismo de control.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">¿Cuál es el orden secuencial correcto de las tres fases principales del ciclo Reconocimiento-Acción?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Match (Comparación), Resolve (Resolución de conflictos) y Act (Ejecución).</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Act (Ejecución), Halt (Parada) y Match (Comparación).</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Resolve (Resolución), Ingest (Entrada) y Assert (Inyección).</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Match (Comparación), Terminate (Terminación) y Clear (Limpieza).</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. El motor detecta reglas emparejadas, resuelve prioridades y luego ejecuta la acción.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">¿A qué se refiere el término «conjunto de conflicto» en un sistema experto de producción?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> A los errores sintácticos detectados en el motor en tiempo de ejecución.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Al grupo de reglas cuyas condiciones (antecedentes) se satisfacen simultáneamente con los hechos actuales.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> A la saturación de memoria por ciclos redundantes de inyección de hechos.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> A las reglas que tienen el mismo identificador único o nombre duplicado.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Son las reglas en competencia que el motor debe filtrar a través de la estrategia de resolución de conflictos.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="d">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">¿Qué estrategia se aplica en la resolución de conflictos si se desea priorizar la regla que use los hechos añadidos más recientemente?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Refractariedad.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Especificidad del antecedente.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Salience explícita.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Recencia (Recency).</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. La recencia da prioridad a las reglas activadas por la información fresca que acaba de entrar a la memoria de trabajo.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">¿Qué problema crítico previene la propiedad de «refractariedad» dentro del motor de inferencia?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Que el sistema dispare cíclicamente la misma regla de forma indefinida bajo los mismos hechos, evitando bucles infinitos.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Que las variables globales del script pierdan su tipado estricto.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> El bloqueo de la interfaz gráfica por falta de renderizado síncrono.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> La eliminación accidental de hechos estructurales base de la base de datos.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. La refractariedad asegura que una regla ya ejecutada no se vuelva a disparar con los mismos hechos que causaron su disparo previo.</div>
+                        </div>
+                    </div>
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2>Conclusión</h2>
                 <p>Las reglas de producción son el <strong>formalismo estándar</strong> de los sistemas expertos clásicos. Su ciclo Match-Resolve-Act proporciona un mecanismo de razonamiento ordenado y predecible. Herramientas como CLIPS, Drools y Jess implementan este paradigma en la industria para configuradores de productos, sistemas de alertas, motores de reglas de negocio y diagnóstico automatizado.</p>
             </section>
+            
             <section class="reveal">
                 <h2 id="referencias">📚 Referencias</h2>
                 <ul>
@@ -164,6 +255,7 @@
                     <li>Forgy, C. L. (1982). Rete: A Fast Algorithm for the Many Pattern/Many Object Pattern Match Problem. <em>Artificial Intelligence</em>, 19(1), 17–37.</li>
                 </ul>
             </section>
+            
             <nav class="article-nav reveal">
                 <a href="metodos-inferencia-reglas.html" class="article-nav-link">
                     <span class="nav-label">← Anterior</span>
@@ -183,6 +275,9 @@
         </div>
     </footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
     <script src="../js/main.js"></script>
 </body>
 </html>

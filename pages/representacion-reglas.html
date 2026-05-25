@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Representación del conocimiento mediante reglas en IA: reglas SI-ENTONCES, bases de conocimiento y sistemas basados en reglas.">
+    <meta name="description" content="Representación del conocimiento mediante reglas en IA: reglas SI-ENTONCES, bases de conocimiento, sistemas expertos y motor de inferencia.">
     <title>Representación mediante Reglas — AI Blog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-<body>
+<body class="has-sidebar">
     <div class="particles" aria-hidden="true">
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -25,21 +26,39 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad III — Representación Avanzada</div>
+            <ul class="sidebar-links">
+                <li><a href="representacion-reglas.html"><span class="link-number">3.1</span> Representación mediante Reglas</a></li>
+                <li><a href="metodos-inferencia-reglas.html"><span class="link-number">3.2</span> Métodos de Inferencia</a></li>
+                <li><a href="sistemas-expertos.html"><span class="link-number">3.3</span> Sistemas Expertos</a></li>
+                <li><a href="encadenamiento-hacia-adelante.html"><span class="link-number">3.4</span> Encadenamiento Adelante</a></li>
+                <li><a href="encadenamiento-hacia-atras.html"><span class="link-number">3.5</span> Encadenamiento Atrás</a></li>
+            </ul>
+        </div>
+    </aside>
+
     <div class="page-wrapper">
         <header class="article-hero">
             <div class="breadcrumb">
                 <a href="../index.html">Inicio</a>
                 <span class="separator">›</span>
-                <span class="current">Representación mediante Reglas</span>
+                <span class="current">3.1 Representación mediante Reglas</span>
             </div>
             <h1>Representación del Conocimiento <span class="gradient-text">mediante Reglas</span></h1>
             <div class="article-meta">
-                <span class="article-meta-item">📖 Lectura: 11 min</span>
+                <span class="article-meta-item">📖 Lectura: 13 min</span>
                 <span class="article-meta-item">🏷️ Unidad III</span>
-                <span class="article-meta-item">📝 Tema 3.1</span>
+                <span class="article-meta-item">📝 Tema 1 de 5</span>
             </div>
         </header>
         <article class="article-content">
@@ -48,35 +67,55 @@
                 <p>Las <strong>reglas</strong> son una de las formas más naturales e intuitivas de representar el conocimiento humano en un sistema de IA. Tienen la forma <strong>SI condición ENTONCES acción</strong> (IF-THEN), y permiten codificar el saber de un experto de forma que la máquina pueda razonar con él.</p>
                 <p>Piensa en cómo un médico piensa: «SI el paciente tiene fiebre alta Y tos persistente, ENTONCES sospechar neumonía». Ese razonamiento condicional es exactamente lo que las reglas capturan.</p>
                 <div class="callout">
-                    <div class="callout-title">📐 Formato general</div>
-                    <p><strong>SI</strong> &lt;condición₁&gt; Y &lt;condición₂&gt; Y ... Y &lt;condiciónₙ&gt;<br>
-                    <strong>ENTONCES</strong> &lt;conclusión&gt; o &lt;acción&gt;<br><br>
-                    La parte SI se llama <strong>antecedente</strong> (o LHS — Left Hand Side).<br>
-                    La parte ENTONCES se llama <strong>consecuente</strong> (o RHS — Right Hand Side).</p>
+                    <div class="callout-title">📐 Estructura general de una regla</div>
+                    <p style="font-size: 1.2rem; font-weight: 600; color: var(--accent-light); margin: var(--space-md) 0;">SI &lt;antecedente&gt; ENTONCES &lt;consecuente&gt;</p>
+                    <p><strong>Antecedente (LHS — Left Hand Side):</strong> Lista de condiciones conectadas con operadores lógicos (Y, O, NO). Es la premisa.<br>
+                    <strong>Consecuente (RHS — Right Hand Side):</strong> Conclusión o acción a ejecutar si el antecedente es verdadero.<br><br>
+                    <strong>Ejemplo:</strong> SI (temperatura > 38°C) Y (tos persistente) ENTONCES (sospechar neumonía)</p>
                 </div>
             </section>
             <section class="reveal">
-                <h2 id="ventajas">Ventajas de la representación por reglas</h2>
+                <h2 id="ventajas">Ventajas y desventajas de las reglas</h2>
                 <div class="concept-grid concept-grid-4">
                     <div class="concept-card">
                         <div class="concept-card-icon">🗣️</div>
                         <h4>Naturalidad</h4>
-                        <p>Se parecen al razonamiento humano. Los expertos pueden entenderlas y validarlas fácilmente.</p>
+                        <p>Se parecen al razonamiento humano. Los expertos pueden entenderlas y validarlas fácilmente sin necesidad de entrenamiento técnico.</p>
                     </div>
                     <div class="concept-card">
                         <div class="concept-card-icon">🧩</div>
                         <h4>Modularidad</h4>
-                        <p>Cada regla es independiente. Puedes agregar, eliminar o modificar reglas sin afectar las demás.</p>
+                        <p>Cada regla es independiente. Puedes agregar, eliminar o modificar reglas sin afectar significativamente las demás.</p>
                     </div>
                     <div class="concept-card">
                         <div class="concept-card-icon">🔍</div>
-                        <h4>Transparencia</h4>
-                        <p>Se puede explicar exactamente por qué el sistema tomó una decisión mostrando la cadena de reglas usadas.</p>
+                        <h4>Explicabilidad</h4>
+                        <p>Se puede explicar exactamente por qué el sistema tomó una decisión mostrando la cadena de reglas usadas (trazabilidad).</p>
                     </div>
                     <div class="concept-card">
-                        <div class="concept-card-icon">📏</div>
+                        <div class="concept-card-icon">⚡</div>
+                        <h4>Eficiencia</h4>
+                        <p>Motor de inferencia optimizado. Para dominios bien definidos, las reglas pueden ser muy rápidas en ejecución.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">⚠️</div>
+                        <h4>Fragilidad</h4>
+                        <p>Cambios pequeños en el mundo real requieren muchas nuevas reglas. El sistema puede ser frágil ante situaciones no anticipadas.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">📊</div>
+                        <h4>Escalabilidad limitada</h4>
+                        <p>Bases de conocimiento muy grandes (miles de reglas) se vuelven difíciles de mantener y pueden tener conflictos.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🎯</div>
                         <h4>Formalismo</h4>
-                        <p>Tienen una sintaxis formal y precisa que se puede implementar computacionalmente sin ambigüedad.</p>
+                        <p>Sintaxis formal y precisa que se puede implementar computacionalmente sin ambigüedad. Compatible con lógica de primer orden.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-card-icon">🔗</div>
+                        <h4>Encadenamiento</h4>
+                        <p>Se pueden conectar en cadenas (hacia adelante o atrás) para resolver problemas complejos. Las conclusiones se convierten en nuevas premisas.</p>
                     </div>
                 </div>
             </section>
@@ -84,63 +123,215 @@
                 <h2 id="tipos">Tipos de reglas</h2>
                 <table class="comparison-table">
                     <thead>
-                        <tr><th>Tipo</th><th>Formato</th><th>Ejemplo</th></tr>
+                        <tr><th>Tipo</th><th>Formato</th><th>Ejemplo</th><th>Uso</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td><strong>Regla de deducción</strong></td><td>SI hechos ENTONCES conclusión</td><td>SI llueve ENTONCES el piso está mojado</td></tr>
-                        <tr><td><strong>Regla de acción</strong></td><td>SI condición ENTONCES acción</td><td>SI semáforo rojo ENTONCES frenar</td></tr>
-                        <tr><td><strong>Regla con certeza</strong></td><td>SI cond ENTONCES concl (FC=0.8)</td><td>SI fiebre Y tos ENTONCES gripe (80%)</td></tr>
-                        <tr><td><strong>Regla con negación</strong></td><td>SI cond Y NO cond₂ ENTONCES...</td><td>SI ave Y NO pingüino ENTONCES vuela</td></tr>
+                        <tr><td><strong>Deducción</strong></td><td>SI hechos ENTONCES conclusión</td><td>SI llueve ENTONCES piso mojado</td><td>Diagnóstico, clasificación</td></tr>
+                        <tr><td><strong>Acción</strong></td><td>SI condición ENTONCES acción</td><td>SI T > 100°C ENTONCES apagar horno</td><td>Control de sistemas</td></tr>
+                        <tr><td><strong>Con certeza</strong></td><td>SI cond ENTONCES concl (CF=0.8)</td><td>SI fiebre Y tos ENTONCES gripe (80%)</td><td>Razonamiento bajo incertidumbre</td></tr>
+                        <tr><td><strong>Negación</strong></td><td>SI cond Y NO cond₂ ENTONCES...</td><td>SI ave Y NO pingüino ENTONCES vuela</td><td>Lógica de defecto</td></tr>
                     </tbody>
                 </table>
             </section>
             <section class="reveal">
-                <h2 id="ejemplo">Ejemplo: sistema de diagnóstico de autos</h2>
-                <div class="code-block">
-<span class="comment">// Base de reglas — Diagnóstico automotriz</span>
+                <h2 id="ejemplo-paso-a-paso">Ejemplo paso a paso: diagnóstico automotriz</h2>
+                <p>Veamos cómo un sistema de reglas rastrea el razonamiento para diagnosticar problemas de un automóvil. Primero, definimos la base de reglas:</p>
+                
+                <pre><code class="language-txt">// BASE DE REGLAS — Diagnóstico Automotriz
 
-<span class="keyword">Regla 1:</span> <span class="function">SI</span> motor_no_arranca <span class="function">Y</span> luces_no_encienden
-          <span class="function">ENTONCES</span> <span class="string">batería_descargada</span>
+Regla 1: SI motor_no_arranca Y luces_no_encienden
+         ENTONCES batería_descargada (CF: 0.95)
 
-<span class="keyword">Regla 2:</span> <span class="function">SI</span> motor_no_arranca <span class="function">Y</span> luces_encienden
-          <span class="function">ENTONCES</span> <span class="string">motor_de_arranque_dañado</span>
+Regla 2: SI motor_no_arranca Y luces_encienden
+         ENTONCES motor_de_arranque_dañado (CF: 0.85)
 
-<span class="keyword">Regla 3:</span> <span class="function">SI</span> batería_descargada
-          <span class="function">ENTONCES</span> <span class="string">recargar_o_reemplazar_batería</span>
+Regla 3: SI motor_no_arranca Y sonido_clic_repetido
+         ENTONCES batería_agotada (CF: 0.90)
 
-<span class="keyword">Regla 4:</span> <span class="function">SI</span> motor_arranca <span class="function">Y</span> humo_negro
-          <span class="function">ENTONCES</span> <span class="string">mezcla_de_combustible_rica</span>
+Regla 4: SI batería_descargada
+         ENTONCES acción: recargar_o_reemplazar_batería
 
-<span class="comment">// Si reportan: motor_no_arranca + luces_no_encienden</span>
-<span class="comment">// → Regla 1 se activa → batería_descargada</span>
-<span class="comment">// → Regla 3 se activa → recargar_o_reemplazar_batería</span>
+Regla 5: SI motor_arranca Y humo_negro
+         ENTONCES mezcla_de_combustible_rica (CF: 0.75)
+
+Regla 6: SI motor_arranca Y humo_azul
+         ENTONCES quema_aceite (CF: 0.80)</code></pre>
+
+                <p style="margin-top: var(--space-lg);">Ahora, el usuario reporta estos síntomas. El motor rastrea cómo el sistema razona:</p>
+
+                <pre><code class="language-txt">// HECHOS OBSERVADOS (entrada del usuario)
+motor_no_arranca = true
+luces_no_encienden = true
+sonido_clic_repetido = false
+
+// ═══════════════════════════════════════
+// CICLO DE INFERENCIA
+// ═══════════════════════════════════════
+
+// PASO 1: Motor compara hechos con antecedentes
+//  ✓ Regla 1 coincide: motor_no_arranca=T Y luces_no_encienden=T
+
+// PASO 2: Ejecutar Regla 1
+Conclusión: batería_descargada = true (CF: 0.95)
+
+// PASO 3: Nuevo hecho agregado, verificar de nuevo
+//  ✓ Regla 4 ahora coincide: batería_descargada=T
+
+// PASO 4: Ejecutar Regla 4
+Acción: RECARGAR O REEMPLAZAR BATERÍA
+
+// PASO 5: No hay más reglas que aplicar → FIN</code></pre>
+
+                <div class="callout callout-tip">
+                    <div class="callout-title">💡 Observa el encadenamiento</div>
+                    <p>La conclusión de <strong>Regla 1</strong> (batería_descargada) se convierte en un nuevo hecho que activa <strong>Regla 4</strong>. Esto es <strong>encadenamiento hacia adelante</strong> y es el corazón del razonamiento basado en reglas.</p>
                 </div>
             </section>
+            <section class="reveal">
+                <h2 id="ciclo-inferencia">El ciclo de inferencia</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">1. Matching</div>
+                        <h4>¿Cuáles reglas aplican?</h4>
+                        <p>El motor compara los hechos actuales con los antecedentes de todas las reglas. Las que coinciden van a la <strong>agenda de conflictos</strong>.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2. Resolución</div>
+                        <h4>¿Cuál regla ejecutar?</h4>
+                        <p>Si hay múltiples reglas candidatas, se aplica una estrategia (FIFO, por especificidad, por factor de certeza, etc.).</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">3. Ejecución</div>
+                        <h4>Ejecutar la regla ganadora</h4>
+                        <p>Se agregan nuevos hechos a la base de datos de trabajo. Las conclusiones se añaden y pueden activar nuevas reglas.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">4. Iteración</div>
+                        <h4>Repetir hasta convergencia</h4>
+                        <p>El ciclo se repite hasta que no hay más reglas que se puedan activar, o se alcanza la meta.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="reveal">
+                <h2 id="aplicaciones-mundo-real">Aplicaciones en el mundo real</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Dominio</th><th>Ejemplo de Regla</th><th>Ventaja</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Medicina</strong></td><td>SI síntomas Y pruebas ENTONCES diagnóstico</td><td>Explica razonamiento al médico</td></tr>
+                        <tr><td><strong>Derecho</strong></td><td>SI hechos Y precedentes ENTONCES sentencia</td><td>Garantiza consistencia legal</td></tr>
+                        <tr><td><strong>Soporte técnico</strong></td><td>SI error Y contexto ENTONCES solución</td><td>Escalable a muchos casos</td></tr>
+                        <tr><td><strong>Control industrial</strong></td><td>SI temperatura ENTONCES acción de control</td><td>Tiempo real, determinístico</td></tr>
+                        <tr><td><strong>Sistemas financieros</strong></td><td>SI métricas ENTONCES aprobar/rechazar crédito</td><td>Trazabilidad regulatoria</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- VIDEO EMBEBIDO -->
+            <section class="reveal">
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/qhWbGujfaZU" title="Representación mediante Reglas en IA - Español" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
+
             <section class="reveal">
                 <h2 id="actividad">🎯 Actividad práctica</h2>
                 <div class="callout callout-tip">
                     <div class="callout-title">💡 Ejercicio: Diseña un sistema de reglas</div>
                     <p><strong>Dominio:</strong> Soporte técnico de una empresa de software.</p>
-                    <p>1. Define al menos <strong>8 reglas</strong> para diagnosticar problemas comunes (internet, impresora, software, permisos, etc.).</p>
-                    <p>2. Identifica los <strong>hechos iniciales</strong> que el sistema necesita (¿qué preguntas hace al usuario?).</p>
+                    <p><strong>Tareas:</strong></p>
+                    <p>1. Define al menos <strong>8 reglas</strong> para diagnosticar problemas comunes (conexión internet, impresora, permisos de usuario, software corrupto, etc.).</p>
+                    <p>2. Identifica los <strong>hechos iniciales</strong> que el sistema necesita recopilar (¿qué preguntas hace al usuario?).</p>
                     <p>3. Muestra cómo se encadenan al menos <strong>3 reglas</strong> para llegar a una solución.</p>
-                    <p>4. ¿Qué pasa si dos reglas pueden activarse al mismo tiempo? Propón una estrategia de resolución.</p>
+                    <p>4. ¿Qué pasa si dos reglas pueden activarse simultáneamente? Propón una estrategia de resolución de conflictos.</p>
+                    <p><strong>Bonus:</strong> Asigna factores de certeza (CF) a tus reglas basándote en la confiabilidad de cada diagnóstico.</p>
                 </div>
             </section>
+
+            <!-- EVALUACIÓN: 5 PREGUNTAS -->
             <section class="reveal">
-                <h2 id="cuestionario">📝 Cuestionario</h2>
-                <div class="concept-grid">
-                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Qué es el antecedente y el consecuente de una regla? Da un ejemplo.</p></div>
-                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Por qué se dice que las reglas son «modulares»? ¿Qué ventaja práctica tiene esto?</p></div>
-                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Cuál es la diferencia entre una regla de deducción y una regla de acción?</p></div>
-                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Cómo se manejan las reglas con factor de certeza? ¿Qué problema resuelven?</p></div>
-                    <div class="concept-card"><h4>Pregunta 5</h4><p>Menciona dos dominios del mundo real donde las reglas sean la mejor forma de representar el conocimiento y justifica por qué.</p></div>
+                <div class="quiz-section" id="quiz-3-1">
+                    <h2>📝 Evaluación — Tema 3.1</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+
+                    <div class="quiz-list">
+
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">¿Cuál es la estructura básica de una regla en IA?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> MIENTRAS condición HACER acción</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> SI antecedente ENTONCES consecuente (IF-THEN)</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> FUNCIÓN (parámetros) → resultado</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> OBJETO.atributo = valor</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Las reglas IF-THEN son la forma estándar de representación basada en reglas.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="d">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">En la regla «SI temperatura > 38°C Y tos persistente ENTONCES sospechar neumonía», ¿cuál es el antecedente?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> sospechar neumonía</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> neumonía</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> persistente</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> (temperatura > 38°C) Y (tos persistente)</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. El antecedente es la parte SI (LHS) — las condiciones que deben cumplirse.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">¿Qué ventaja principal tienen las reglas en términos de explicabilidad?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Se puede rastrear exactamente qué reglas se activaron y en qué orden para llegar a una conclusión.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Las reglas nunca pueden estar equivocadas.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> No requieren mantenimiento ni actualización.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Funcionan igual de bien con datos ruidosos que con datos limpios.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. La trazabilidad es una fortaleza clave de los sistemas basados en reglas, especialmente en medicina y derecho.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">¿Qué es el «encadenamiento» en sistemas de reglas?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Un tipo de cerraduras de seguridad en sistemas informáticos.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Ejecutar reglas en orden alfabético.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Las conclusiones de una regla se convierten en hechos/premisas que activan otras reglas.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Conectar físicamente múltiples computadoras en red.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. El encadenamiento permite construir razonamientos complejos a partir de reglas simples.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">¿Cuál es una limitación importante de los sistemas basados en reglas?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> No pueden procesar texto.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Bases muy grandes (miles de reglas) se vuelven difíciles de mantener y pueden tener conflictos.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Requieren más memoria que redes neuronales.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Solo funcionan en supercomputadoras.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. La escalabilidad es un desafío real en sistemas expertos complejos.</div>
+                        </div>
+                    </div>
+
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
                 </div>
             </section>
+
             <section class="reveal">
-                <h2 id="conclusion">Conclusión</h2>
-                <p>Las reglas son el <strong>mecanismo más intuitivo</strong> para capturar el conocimiento experto en sistemas de IA. Su naturalidad, modularidad y transparencia las hacen ideales para dominios donde la explicabilidad es crucial (medicina, derecho, soporte técnico). Aunque tienen limitaciones con conocimiento muy complejo o difuso, siguen siendo la base de los sistemas expertos y la columna vertebral de motores de reglas empresariales como <strong>Drools</strong> y <strong>CLIPS</strong>.</p>
+                <div class="conclusion-section">
+                    <h2>🎯 Conclusión</h2>
+                    <p>Las reglas son el <strong>mecanismo más intuitivo</strong> para capturar el conocimiento experto en sistemas de IA. Su naturalidad, modularidad y transparencia las hacen ideales para dominios donde la explicabilidad es crucial: medicina, derecho, soporte técnico, control industrial. Aunque tienen limitaciones con conocimiento muy complejo o difuso, siguen siendo la base de los <strong>sistemas expertos</strong> y la columna vertebral de motores de reglas empresariales como <strong>Drools</strong>, <strong>CLIPS</strong> y <strong>Jess</strong>. En la siguiente sección, exploraremos los métodos de inferencia que permiten a estas reglas razonar de manera efectiva.</p>
+                </div>
             </section>
+
             <section class="reveal">
                 <h2 id="referencias">📚 Referencias</h2>
                 <ul>
@@ -151,6 +342,7 @@
                     <li>Luger, G. F. (2009). <em>Artificial Intelligence: Structures and Strategies for Complex Problem Solving</em> (6th ed.). Pearson.</li>
                 </ul>
             </section>
+
             <nav class="article-nav reveal">
                 <a href="teorema-bayes.html" class="article-nav-link">
                     <span class="nav-label">← Anterior</span>
@@ -170,6 +362,7 @@
         </div>
     </footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
 </html>

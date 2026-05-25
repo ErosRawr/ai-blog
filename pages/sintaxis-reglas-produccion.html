@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-<body>
+<body class="has-sidebar">
     <div class="particles" aria-hidden="true">
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -25,9 +26,25 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad III — Razonamiento</div>
+            <ul class="sidebar-links">
+                <li><a href="representacion-reglas.html"><span class="link-number">3.1</span> Representación por Reglas</a></li>
+                <li><a href="metodos-inferencia-reglas.html"><span class="link-number">3.2</span> Métodos de Inferencia</a></li>
+                <li><a href="reglas-produccion.html"><span class="link-number">3.3</span> Reglas de Producción</a></li>
+                <li><a href="sintaxis-reglas-produccion.html" class="active"><span class="link-number">3.4</span> Sintaxis de Reglas</a></li>
+            </ul>
+        </div>
+    </aside>
+
     <div class="page-wrapper">
         <header class="article-hero">
             <div class="breadcrumb">
@@ -46,16 +63,16 @@
                 <h2 id="formato">Formato sintáctico general</h2>
                 <p>La <strong>sintaxis</strong> define la forma correcta de escribir una regla de producción. Es el «idioma formal» que el motor de inferencia puede leer y ejecutar. Toda regla sigue una estructura precisa:</p>
                 <div class="code-block">
-<span class="comment">// Estructura general de una regla de producción</span>
-<span class="keyword">REGLA</span> &lt;nombre_único&gt;
-  <span class="keyword">PRIORIDAD</span>: &lt;número&gt;           <span class="comment">// opcional</span>
-  <span class="keyword">SI</span>
-    &lt;patrón₁&gt; <span class="function">Y</span>
-    &lt;patrón₂&gt; <span class="function">Y</span>
-    <span class="function">NO</span> &lt;patrón₃&gt;
-  <span class="keyword">ENTONCES</span>
+                    <pre><code class="language-plaintext">// Estructura general de una regla de producción
+REGLA &lt;nombre_único&gt;
+  PRIORIDAD: &lt;número&gt;           // opcional
+  SI
+    &lt;patrón₁&gt; Y
+    &lt;patrón₂&gt; Y
+    NO &lt;patrón₃&gt;
+  ENTONCES
     &lt;acción₁&gt;
-    &lt;acción₂&gt;
+    &lt;acción₂&gt;</code></pre>
                 </div>
             </section>
             <section class="reveal">
@@ -77,27 +94,27 @@
             <section class="reveal">
                 <h2 id="clips">Sintaxis en CLIPS (ejemplo real)</h2>
                 <div class="code-block">
-<span class="comment">; Definición de template (estructura de hechos)</span>
-(<span class="keyword">deftemplate</span> <span class="function">paciente</span>
+                    <pre><code class="language-lisp">; Definición de template (estructura de hechos)
+(deftemplate paciente
    (slot nombre)
    (slot edad (type INTEGER))
    (slot temperatura (type FLOAT)))
 
-<span class="comment">; Regla con variables y restricciones</span>
-(<span class="keyword">defrule</span> <span class="function">fiebre-alta</span>
-   (<span class="function">paciente</span>
-      (nombre <span class="string">?nom</span>)
-      (temperatura <span class="string">?t</span>&:(> <span class="string">?t</span> 38.5)))
+; Regla con variables y restricciones
+(defrule fiebre-alta
+   (paciente
+      (nombre ?nom)
+      (temperatura ?t&:(> ?t 38.5)))
    =>
-   (<span class="function">assert</span> (alerta (paciente <span class="string">?nom</span>) (tipo fiebre-alta)))
-   (<span class="function">printout</span> t <span class="string">"ALERTA: "</span> <span class="string">?nom</span> <span class="string">" tiene fiebre alta: "</span> <span class="string">?t</span> <span class="string">"°C"</span> crlf))
+   (assert (alerta (paciente ?nom) (tipo fiebre-alta)))
+   (printout t "ALERTA: " ?nom " tiene fiebre alta: " ?t "°C" crlf))
 
-<span class="comment">; Regla con negación</span>
-(<span class="keyword">defrule</span> <span class="function">sin-alergias</span>
-   (<span class="function">paciente</span> (nombre <span class="string">?nom</span>))
-   (<span class="keyword">not</span> (<span class="function">alergia</span> (paciente <span class="string">?nom</span>)))
+; Regla con negación
+(defrule sin-alergias
+   (paciente (nombre ?nom))
+   (not (alergia (paciente ?nom)))
    =>
-   (<span class="function">printout</span> t <span class="string">?nom</span> <span class="string">" no tiene alergias registradas"</span> crlf))
+   (printout t ?nom " no tiene alergias registradas" crlf))</code></pre>
                 </div>
             </section>
             <section class="reveal">
@@ -114,18 +131,87 @@
                     <p>4. Muestra la traza de ejecución para un cliente ejemplo.</p>
                 </div>
             </section>
+
             <section class="reveal">
-                <h2 id="cuestionario">📝 Cuestionario</h2>
-                <div class="concept-grid">
-                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuál es la diferencia entre una constante y una variable en una regla de producción?</p></div>
-                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Qué es un «patrón» en el antecedente de una regla y cómo se compara con la memoria de trabajo?</p></div>
-                    <div class="concept-card"><h4>Pregunta 3</h4><p>Escribe una regla de producción en pseudocódigo para: «si un estudiante tiene promedio >= 9.0 y asistencia >= 90%, entonces beca aprobada».</p></div>
-                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Qué hace la acción «retract» en el consecuente de una regla?</p></div>
-                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿Por qué necesitamos templates/deftemplate en CLIPS en lugar de hechos simples?</p></div>
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/zUmvz6SWEF4" title="Video sobre Sintaxis de Reglas" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
                 </div>
             </section>
+
             <section class="reveal">
-                <h2 id="conclusion">Conclusión</h2>
+                <div class="quiz-section" id="quiz-3-4">
+                    <h2>📝 Evaluación — Tema 3.4</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+                    <div class="quiz-list">
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">¿Cuál es la diferencia fundamental entre una constante y una variable en el antecedente de una regla?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> La constante cambia de valor durante la ejecución, la variable es estática.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> La constante exige una coincidencia literal exacta, mientras que la variable actúa como un comodín que unifica con cualquier valor.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Las variables solo pueden usarse en el consecuente (RHS).</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> No hay diferencia en motores modernos como CLIPS.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Las variables hacen que las reglas sean reutilizables para múltiples hechos distintos.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">¿Qué representa exactamente un «patrón» dentro de la memoria de trabajo?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Un bucle condicional FOR.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Una plantilla estructural que se utiliza para buscar hechos coincidentes.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> El mecanismo que detiene la ejecución del motor.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Una función matemática que calcula prioridades.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. El patrón es la condición específica que un hecho debe satisfacer para que la regla se active.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">¿Cómo se traduciría correctamente a pseudocódigo formal la regla: "Si un estudiante tiene promedio >= 9.0 y asistencia >= 90%, entonces beca aprobada"?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> SI (estudiante (promedio ?p&gt;=9.0) (asistencia ?a&gt;=90)) ENTONCES (assert (beca aprobada))</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> SI beca aprobada ENTONCES promedio >= 9.0 Y asistencia >= 90</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> (assert estudiante) => (promedio 9.0)</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> SI estudiante ENTONCES promedio = 9.0 OR asistencia = 90</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Se declaran las restricciones lógicas en el antecedente y se añade el nuevo hecho en el consecuente.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">¿Cuál es el efecto de la instrucción «retract» cuando se ejecuta en el consecuente de una regla?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Retrocede la ejecución al inicio del programa.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Imprime un valor en la terminal.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Elimina permanentemente un hecho específico de la memoria de trabajo.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Modifica la prioridad (salience) de la regla en tiempo real.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Se utiliza para borrar hechos que ya no son válidos, manteniendo la memoria de trabajo actualizada.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">¿Por qué es una buena práctica utilizar construcciones como `deftemplate` en lugar de agregar hechos simples aislados?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Permiten definir estructuras complejas con atributos nombrados (slots) y tipos de datos fuertes.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Aumentan la velocidad del motor de inferencia en un 500%.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Son la única manera de imprimir resultados en CLIPS.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Evitan que el usuario tenga que escribir la sección ENTONCES de la regla.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Aportan una sintaxis estructurada, similar a las clases u objetos, garantizando orden y evitando errores de tipado.</div>
+                        </div>
+                    </div>
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2>Conclusión</h2>
                 <p>Dominar la sintaxis de las reglas de producción es <strong>esencial</strong> para implementar sistemas expertos funcionales. La sintaxis formal garantiza que las reglas sean precisas, no ambiguas y ejecutables por un motor de inferencia. Las variables, restricciones y patrones son las herramientas que convierten el conocimiento experto en código procesable.</p>
             </section>
             <section class="reveal">
@@ -157,6 +243,9 @@
         </div>
     </footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
     <script src="../js/main.js"></script>
 </body>
 </html>
