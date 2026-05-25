@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-<body>
+<body class="has-sidebar">
     <div class="particles" aria-hidden="true">
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -25,9 +26,27 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad IV — Aplicaciones de IA</div>
+            <ul class="sidebar-links">
+                <li><a href="robotica.html"><span class="link-number">4.1</span> Robótica</a></li>
+                <li><a href="redes-neuronales.html"><span class="link-number">4.2</span> Redes Neuronales</a></li>
+                <li><a href="vision-artificial.html"><span class="link-number">4.3</span> Visión Artificial</a></li>
+                <li><a href="logica-difusa.html" class="active"><span class="link-number">4.4</span> Lógica Difusa</a></li>
+                <li><a href="procesamiento-lenguaje-natural.html"><span class="link-number">4.5</span> Procesamiento de Lenguaje Natural</a></li>
+                <li><a href="sistemas-expertos.html"><span class="link-number">4.6</span> Sistemas Expertos</a></li>  
+            </ul>
+        </div>
+    </aside>
+
     <div class="page-wrapper">
         <header class="article-hero">
             <div class="breadcrumb">
@@ -42,7 +61,7 @@
             </div>
         </header>
         <article class="article-content">
-            <!-- 4.4.1 Conceptos básicos -->
+            
             <section class="reveal">
                 <h2 id="conceptos">4.4.1 Conceptos Básicos</h2>
                 <p>La <strong>lógica difusa</strong> (fuzzy logic), propuesta por Lotfi Zadeh en 1965, extiende la lógica clásica para manejar <strong>grados de verdad</strong> en lugar de verdadero/falso absoluto. Permite razonar con conceptos vagos como «alto», «caliente», «rápido» — tal como lo hace el pensamiento humano.</p>
@@ -97,12 +116,11 @@
                     <div class="timeline-item">
                         <div class="timeline-date">Paso 4</div>
                         <h4>Defuzzificación</h4>
-                        <p>Convertir el conjunto difuso agregado en un valor numérico: ventilador = 72% de velocidad.</p>
+                        <p>Convertir el conjunto difuso agregado en un valor numérico concreto: ventilador = 72% de velocidad.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- 4.4.2 Desarrollos actuales -->
             <section class="reveal">
                 <h2 id="desarrollos">4.4.2 Desarrollos Actuales y Aplicaciones</h2>
                 <table class="comparison-table">
@@ -111,7 +129,7 @@
                     </thead>
                     <tbody>
                         <tr><td><strong>Electrodomésticos</strong></td><td>Control inteligente de lavadoras, aires acondicionados</td><td>Lavadoras Samsung/LG con fuzzy logic</td></tr>
-                        <tr><td><strong>Automóviles</strong></td><td>Control de transmisión, ABS, suspension</td><td>Toyota, Honda, Nissan</td></tr>
+                        <tr><td><strong>Automóviles</strong></td><td>Control de transmisión, ABS, suspensión</td><td>Toyota, Honda, Nissan</td></tr>
                         <tr><td><strong>Control industrial</strong></td><td>Regulación de procesos, PLC difusos</td><td>Cementos, siderurgia, plantas químicas</td></tr>
                         <tr><td><strong>Medicina</strong></td><td>Diagnóstico con síntomas imprecisos</td><td>Sistemas de apoyo a la decisión clínica</td></tr>
                         <tr><td><strong>Neuro-fuzzy</strong></td><td>Combinación de RN + fuzzy logic</td><td>ANFIS (Adaptive Neuro-Fuzzy Inference System)</td></tr>
@@ -133,20 +151,125 @@
                     <p>Diseña un sistema difuso que calcule el porcentaje de propina en un restaurante basado en la calidad del servicio y la comida.</p>
                     <p>1. <strong>Variables de entrada</strong>: servicio (0-10), calidad_comida (0-10).</p>
                     <p>2. <strong>Variable de salida</strong>: propina (5%-25%).</p>
-                    <p>3. Define <strong>funciones de membresía</strong>: pobre, aceptable, excelente (para cada variable).</p>
-                    <p>4. Escribe <strong>9 reglas difusas</strong> (3×3 combinaciones).</p>
-                    <p>5. Implementa en Python con <code>scikit-fuzzy</code> y calcula la propina para servicio=7.5, comida=9.0.</p>
+                    
+                    <p>A continuación tienes una implementación de referencia en Python utilizando <code>scikit-fuzzy</code>:</p>
+
+<pre><code class="language-python">import numpy as np
+import skfuzzy as fuzz
+from skfuzzy import control as ctrl
+
+# 1. Definir las variables de entrada y salida del universo
+servicio = ctrl.Antecedent(np.arange(0, 11, 1), 'servicio')
+comida = ctrl.Antecedent(np.arange(0, 11, 1), 'comida')
+propina = ctrl.Consequent(np.arange(5, 26, 1), 'propina')
+
+# 2. Poblado automático de funciones de membresía (poor, average, good)
+servicio.automf(3)
+comida.automf(3)
+
+# 3. Definir funciones de membresía triangulares personalizadas para la salida
+propina['baja'] = fuzz.trimf(propina.universe, [5, 5, 15])
+propina['media'] = fuzz.trimf(propina.universe, [5, 15, 25])
+propina['alta'] = fuzz.trimf(propina.universe, [15, 25, 25])
+
+# 4. Establecer la base de conocimiento (Reglas Difusas)
+regla1 = ctrl.Rule(servicio['poor'] | comida['poor'], propina['baja'])
+regla2 = ctrl.Rule(servicio['average'], propina['media'])
+regla3 = ctrl.Rule(servicio['good'] & comida['good'], propina['alta'])
+
+# 5. Configurar el motor de inferencia y simulación
+controlador_propinas = ctrl.ControlSystem([regla1, regla2, regla3])
+asignacion = ctrl.ControlSystemSimulation(controlador_propinas)
+
+# Enviar valores de prueba al sistema
+asignacion.input['servicio'] = 7.5
+asignacion.input['comida'] = 9.0
+
+# Ejecutar el proceso de computación (Inferencia + Defuzzificación)
+asignacion.compute()
+print(f"Propina calculada: {asignacion.output['propina']:.2f}%")
+</code></pre>
+                    <p>3. Ejecuta el script en tu entorno local. Modifica las entradas para <code>servicio=2.0</code> y <code>comida=4.0</code>. ¿Cómo responde el centroide de salida?</p>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="cuestionario">📝 Cuestionario</h2>
-                <div class="concept-grid">
-                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuál es la diferencia fundamental entre la lógica clásica (booleana) y la lógica difusa?</p></div>
-                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Qué es una función de membresía y cuáles son las formas más comunes?</p></div>
-                    <div class="concept-card"><h4>Pregunta 3</h4><p>Explica los 4 pasos del proceso de inferencia difusa.</p></div>
-                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Qué es la defuzzificación y por qué es necesaria?</p></div>
-                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿Qué es un sistema neuro-fuzzy (ANFIS) y qué ventaja ofrece sobre un sistema difuso puro?</p></div>
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/ayfoP7Tqa-s" title="Introducción a la Lógica Difusa y Sistemas Difusos" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <div class="quiz-section" id="quiz-4-4">
+                    <h2>📝 Evaluación — Tema 4.4</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+                    <div class="quiz-list">
+                        
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">¿Cuál es la diferencia fundamental entre la lógica clásica (booleana) y la lógica difusa?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> La lógica clásica solo maneja texto y la difusa se restringe a números enteros.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> La lógica clásica evalúa la verdad de manera binaria (0 o 1), mientras que la lógica difusa permite grados de pertenencia continuos dentro del intervalo [0, 1].</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> La lógica difusa no hace uso de operadores como AND u OR.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> La lógica clásica es determinista y la difusa es puramente un cálculo probabilístico de eventos futuros.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. La lógica difusa rompe el principio del tercero excluido de la lógica binaria tradicional, permitiendo modelar matices intermedios en conceptos ambiguos.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">¿Qué función cumple una "Función de Membresía" (Membership Function) en un sistema difuso?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Determina el límite de memoria dinámica que requiere el algoritmo en ejecución.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Convierte cadenas de caracteres lingüísticos en código binario puro de máquina.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Asigna a un valor cuantitativo continuo su correspondiente grado de pertenencia semántico a un conjunto difuso específico.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Se encarga de mezclar las salidas de múltiples bases de datos relacionales automáticamente.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Las funciones de membresía definen la curva matemática (triangular, gaussiana, etc.) que mapea las entradas físicas en el dominio difuso.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">¿Por qué es estrictamente necesario el paso de "Defuzzificación" al final del proceso de inferencia difusa?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Porque los actuadores y hardware del mundo real exigen comandos numéricos precisos y concretos para operar, no un conjunto difuso.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Para codificar los datos en formato JSON para servicios web en la nube.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Con la finalidad de reducir la complejidad de tiempo de cómputo del script de Python.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Para descartar las reglas de producción que dieron un valor igual a cero.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Los sistemas físicos necesitan una acción exacta (ej. ajustar el motor a 72.5 RPM), por lo que métodos como el Centroide transforman la salida abstracta en un número real nítido.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">¿Cuál es el orden secuencial correcto de las etapas que componen el Pipeline de un motor de inferencia difusa?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Defuzzificación → Inferencia → Fuzzificación → Agregación</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Fuzzificación → Evaluación de Reglas → Agregación → Defuzzificación</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Agregación → Inferencia → Selección → Normalización</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Fuzzificación → Codificación → Limpieza → Optimización</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. El flujo procesa los datos de entrada puros, mapea su membresía, dispara las reglas de control, combina los mapas resultantes y extrae el valor de salida numérico final.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">¿Qué ventaja principal ofrece un sistema Neuro-Difuso Adaptativo (ANFIS) comparado con un diseño difuso convencional?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> No requiere el uso de librerías ni dependencias externas en su compilación.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Reemplaza por completo las reglas lingüísticas lógicas por código puramente determinista.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Combina la legibilidad e interpretabilidad de las reglas difusas con la capacidad de autoaprendizaje de las Redes Neuronales para ajustar los parámetros de membresía basándose en datos.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Elimina cualquier necesidad de implementar la etapa de defuzzificación.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. ANFIS aprovecha algoritmos similares a backpropagation para calibrar de forma automática las formas de las curvas difusas a partir de registros históricos de entrenamiento.</div>
+                        </div>
+
+                    </div>
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
                 </div>
             </section>
 
@@ -171,7 +294,7 @@
                     <span class="nav-label">← Anterior</span>
                     <span class="nav-title">Visión Artificial</span>
                 </a>
-                <a href="procesamiento-lenguaje-natural.html" class="article-nav-link next">
+                <a href="procesamiento-lenguaje.html" class="article-nav-link next">
                     <span class="nav-label">Siguiente →</span>
                     <span class="nav-title">Procesamiento de Lenguaje Natural</span>
                 </a>
@@ -185,6 +308,9 @@
         </div>
     </footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
     <script src="../js/main.js"></script>
 </body>
 </html>

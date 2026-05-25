@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-<body>
+<body class="has-sidebar">
     <div class="particles" aria-hidden="true">
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -25,9 +26,27 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad IV — Aplicaciones de IA</div>
+            <ul class="sidebar-links">
+                <li><a href="robotica.html"><span class="link-number">4.1</span> Robótica</a></li>
+                <li><a href="redes-neuronales.html"><span class="link-number">4.2</span> Redes Neuronales</a></li>
+                <li><a href="vision-artificial.html"><span class="link-number">4.3</span> Visión Artificial</a></li>
+                <li><a href="logica-difusa.html"><span class="link-number">4.4</span> Lógica Difusa</a></li>
+                <li><a href="procesamiento-lenguaje-natural.html" class="active"><span class="link-number">4.5</span> Procesamiento de Lenguaje Natural</a></li>
+                <li><a href="sistemas-expertos.html"><span class="link-number">4.6</span> Sistemas Expertos</a></li>  
+            </ul>
+        </div>
+    </aside>
+
     <div class="page-wrapper">
         <header class="article-hero">
             <div class="breadcrumb">
@@ -42,7 +61,6 @@
             </div>
         </header>
         <article class="article-content">
-            <!-- 4.5.1 Conceptos básicos -->
             <section class="reveal">
                 <h2 id="conceptos">4.5.1 Conceptos Básicos</h2>
                 <p>El <strong>Procesamiento de Lenguaje Natural (PLN/NLP)</strong> es el campo de la IA que permite a las máquinas <strong>entender, interpretar y generar lenguaje humano</strong>. Es la tecnología detrás de ChatGPT, traductores automáticos, asistentes de voz y buscadores modernos.</p>
@@ -77,7 +95,6 @@
                 </div>
             </section>
 
-            <!-- 4.5.2 Desarrollos actuales -->
             <section class="reveal">
                 <h2 id="desarrollos">4.5.2 Desarrollos Actuales y Aplicaciones</h2>
                 <div class="timeline">
@@ -122,23 +139,114 @@
             <section class="reveal">
                 <h2 id="actividad">🎯 Actividad Práctica</h2>
                 <div class="callout callout-tip">
-                    <div class="callout-title">💡 Ejercicio: Análisis de sentimiento</div>
-                    <p>1. Instala NLTK y descarga VADER: <code>import nltk; nltk.download('vader_lexicon')</code>.</p>
-                    <p>2. Analiza el sentimiento de 10 reseñas reales de productos (Amazon, Google Reviews).</p>
-                    <p>3. Clasifica cada reseña como positiva, negativa o neutra usando <code>SentimentIntensityAnalyzer</code>.</p>
-                    <p>4. Compara los resultados de VADER con tu propia evaluación humana. ¿Coinciden?</p>
-                    <p>5. Repite el ejercicio con <strong>Hugging Face</strong>: <code>from transformers import pipeline; classifier = pipeline("sentiment-analysis")</code>. ¿Es más preciso?</p>
+                    <div class="callout-title">💡 Ejercicio: Análisis de Sentimiento Comparativo</div>
+                    <p>Vamos a comparar el enfoque clásico (NLTK) con un enfoque moderno basado en Transformers (Hugging Face) para analizar la misma oración.</p>
+                    
+<pre><code class="language-python">import nltk
+from nltk.sentiment import SentimentIntensityAnalyzer
+from transformers import pipeline
+
+# 1. Configurar y usar NLTK (Léxico clásico VADER)
+nltk.download('vader_lexicon', quiet=True)
+sia = SentimentIntensityAnalyzer()
+
+reseña = "El producto es increíble, me encantó la calidad pero el envío fue algo lento."
+
+print("--- Análisis de Sentimiento con NLTK ---")
+puntajes_nltk = sia.polarity_scores(reseña)
+print(f"Resultados VADER: {puntajes_nltk}")
+# Salida esperada: Un diccionario con scores negativos, neutrales, positivos y el "compound" (total).
+
+# 2. Configurar y usar Hugging Face (Modelo Deep Learning preentrenado)
+print("\n--- Análisis de Sentimiento con Transformers ---")
+# Descarga automáticamente un modelo multilingüe para sentimiento
+clasificador = pipeline("sentiment-analysis", model="nlptown/bert-base-multilingual-uncased-sentiment")
+
+resultado_hf = clasificador(reseña)
+print(f"Resultados HuggingFace: {resultado_hf}")
+# Salida esperada: Una etiqueta (ej. "4 stars") y su nivel de confianza (score).
+</code></pre>
+                    <p><strong>Análisis:</strong> Ejecuta el código. ¿Cómo maneja VADER la conjunción "pero" en comparación con la comprensión contextual completa del modelo de Hugging Face?</p>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="cuestionario">📝 Cuestionario</h2>
-                <div class="concept-grid">
-                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Qué es la tokenización y por qué BPE (Byte-Pair Encoding) es el método preferido en LLMs?</p></div>
-                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Qué son los word embeddings y por qué son mejores que Bag of Words para representar texto?</p></div>
-                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Cuál es la diferencia fundamental entre BERT y GPT en cuanto a su arquitectura y uso?</p></div>
-                    <div class="concept-card"><h4>Pregunta 4</h4><p>Menciona tres tareas de NLP con su herramienta recomendada.</p></div>
-                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿Qué es el análisis de sentimiento y cómo se aplica en marketing digital?</p></div>
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/Tg1MjMIVArc" title="¿Qué es el NLP? Explicación de Procesamiento de Lenguaje Natural" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <div class="quiz-section" id="quiz-4-5">
+                    <h2>📝 Evaluación — Tema 4.5</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+                    <div class="quiz-list">
+                        
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">¿Por qué el algoritmo de tokenización BPE (Byte-Pair Encoding) es el estándar en los Grandes Modelos de Lenguaje (LLMs)?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Porque procesa únicamente caracteres individuales, reduciendo el tamaño del modelo a un megabyte.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Porque divide inteligentemente las palabras raras o desconocidas en subpalabras frecuentes, logrando un balance perfecto entre eficiencia y vocabulario.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Porque elimina todas las vocales de un texto automáticamente para acelerar el entrenamiento.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Porque solo funciona con el idioma inglés, evitando confusiones de traducción.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. BPE fusiona los pares de bytes más comunes, creando "tokens" que pueden ser palabras enteras (si son muy comunes) o fragmentos (para palabras complejas).</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">¿Qué ventaja clave ofrecen los "Word Embeddings" (como Word2Vec) sobre los métodos tradicionales como "Bag of Words" (BoW)?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Capturan relaciones semánticas y de contexto espacial, permitiendo entender que "rey" está relacionado con "reina".</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Consumen exactamente el mismo espacio de memoria pero corren más rápido en Python.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Se limitan a contar la frecuencia de aparición de una palabra en un texto, ignorando la gramática.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Eliminan la necesidad de realizar tokenización previa.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Los Embeddings representan las palabras como vectores densos en un espacio multidimensional donde palabras con significados similares están matemáticamente cerca.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">En la arquitectura Transformer, ¿cuál es la diferencia principal entre los modelos BERT y GPT?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> BERT genera imágenes a partir de texto, mientras que GPT es exclusivo para audio.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> GPT fue creado por Google en 2018, y BERT por OpenAI en 2020.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> BERT es bidireccional (usa el codificador/encoder) ideal para comprender contexto global; GPT es unidireccional (usa el decodificador/decoder) ideal para generar texto.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Son exactamente la misma arquitectura pero programados en lenguajes distintos.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. BERT "lee" toda la frase al mismo tiempo para extraer significado (ideal para búsqueda), mientras GPT predice la siguiente palabra leyendo de izquierda a derecha (ideal para chat).</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">Si necesitas extraer automáticamente nombres de personas, ubicaciones geográficas y fechas de un artículo de noticias, ¿qué tarea de NLP estás realizando?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> POS Tagging (Etiquetado gramatical)</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Análisis de Sentimiento</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> NER (Named Entity Recognition - Reconocimiento de Entidades Nombradas)</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Traducción Automática</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. El NER es vital para estructurar información libre, y librerías modernas como spaCy lo ejecutan con alta precisión.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="d">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">¿Qué librería está consolidada como el framework principal para orquestar y construir aplicaciones avanzadas (como RAG o agentes) conectando LLMs con bases de datos?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> VADER</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Word2Vec</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> NLTK</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> LangChain</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. LangChain permite que un LLM tenga "memoria", lea documentos externos y ejecute herramientas encadenadas para crear asistentes virtuales completos.</div>
+                        </div>
+
+                    </div>
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
                 </div>
             </section>
 
@@ -163,7 +271,7 @@
                     <span class="nav-label">← Anterior</span>
                     <span class="nav-title">Lógica Difusa</span>
                 </a>
-                <a href="sistemas-expertos.html" class="article-nav-link next">
+                <a href="sistema-experto.html" class="article-nav-link next">
                     <span class="nav-label">Siguiente →</span>
                     <span class="nav-title">Sistemas Expertos</span>
                 </a>
@@ -177,6 +285,9 @@
         </div>
     </footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
     <script src="../js/main.js"></script>
 </body>
 </html>

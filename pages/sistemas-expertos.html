@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-<body>
+<body class="has-sidebar">
     <div class="particles" aria-hidden="true">
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -25,9 +26,27 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad IV — Aplicaciones de IA</div>
+            <ul class="sidebar-links">
+                <li><a href="robotica.html"><span class="link-number">4.1</span> Robótica</a></li>
+                <li><a href="redes-neuronales.html"><span class="link-number">4.2</span> Redes Neuronales</a></li>
+                <li><a href="vision-artificial.html"><span class="link-number">4.3</span> Visión Artificial</a></li>
+                <li><a href="logica-difusa.html"><span class="link-number">4.4</span> Lógica Difusa</a></li>
+                <li><a href="procesamiento-lenguaje-natural.html"><span class="link-number">4.5</span> Procesamiento de Lenguaje Natural</a></li>
+                <li><a href="sistemas-expertos.html" class="active"><span class="link-number">4.6</span> Sistemas Expertos</a></li>  
+            </ul>
+        </div>
+    </aside>
+
     <div class="page-wrapper">
         <header class="article-hero">
             <div class="breadcrumb">
@@ -42,7 +61,6 @@
             </div>
         </header>
         <article class="article-content">
-            <!-- 4.6.1 Conceptos básicos -->
             <section class="reveal">
                 <h2 id="conceptos">4.6.1 Conceptos Básicos</h2>
                 <p>Un <strong>sistema experto (SE)</strong> es un programa de IA que emula el <strong>conocimiento y razonamiento de un experto humano</strong> en un dominio específico. Fue la primera aplicación comercial exitosa de la IA, popularizada en los años 80.</p>
@@ -74,7 +92,6 @@
                 </div>
             </section>
 
-            <!-- 4.6.2 Clasificación -->
             <section class="reveal">
                 <h2 id="clasificacion">4.6.2 Clasificación de Sistemas Expertos</h2>
                 <table class="comparison-table">
@@ -93,7 +110,6 @@
                 </table>
             </section>
 
-            <!-- 4.6.3 Desarrollos actuales -->
             <section class="reveal">
                 <h2 id="desarrollos">4.6.3 Desarrollos Actuales y Aplicaciones</h2>
                 <div class="timeline">
@@ -135,24 +151,123 @@
             <section class="reveal">
                 <h2 id="actividad">🎯 Actividad Práctica</h2>
                 <div class="callout callout-tip">
-                    <div class="callout-title">💡 Ejercicio: Construye un mini sistema experto</div>
-                    <p><strong>Dominio:</strong> Diagnóstico de problemas de red en una empresa.</p>
-                    <p>1. Entrevista a un «experto» (puedes ser tú mismo): lista los 10 problemas de red más comunes y sus síntomas.</p>
-                    <p>2. Codifica al menos <strong>15 reglas</strong> en pseudocódigo o con la librería <strong>Experta</strong> de Python.</p>
-                    <p>3. Implementa el <strong>módulo de explicación</strong>: cuando dé un diagnóstico, debe mostrar las reglas que usó.</p>
-                    <p>4. Prueba con 5 casos de prueba. ¿El SE diagnostica correctamente?</p>
-                    <p>5. ¿Qué límites tiene tu sistema? ¿Qué haría falta para desplegarlo en producción?</p>
+                    <div class="callout-title">💡 Ejercicio: Construye un mini sistema experto con Python</div>
+                    <p>A continuación desarrollaremos un prototipo funcional para un sistema de diagnóstico de problemas de red utilizando la librería <code>experta</code> (una evolución de Pyknow inspirada en CLIPS).</p>
+                    
+<pre><code class="language-python">from experta import *
+
+class ProblemaRed(Fact):
+    """Estructura de hechos para la memoria de trabajo."""
+    pass
+
+class DiagnosticoRed(KnowledgeEngine):
+    # Regla 1: Falla de energía
+    @Rule(ProblemaRed(sintoma='sin_conexion'), ProblemaRed(luces_router='apagadas'))
+    def falla_energia(self):
+        print("Diagnóstico: El router no tiene energía. Solución: Revisa la conexión eléctrica o el adaptador.")
+
+    # Regla 2: Caída del ISP
+    @Rule(ProblemaRed(sintoma='internet_lento_o_nulo'), ProblemaRed(luces_router='parpadean_rojo'))
+    def falla_isp(self):
+        print("Diagnóstico: Falla en el servicio de tu proveedor. Solución: Contacta a soporte técnico (ISP).")
+
+    # Regla 3: Falla de Servidor DNS
+    @Rule(ProblemaRed(sintoma='sin_conexion'), ProblemaRed(luces_router='encendidas_verde'))
+    def falla_dns(self):
+        print("Diagnóstico: Posible fallo de DNS. Solución: Intenta cambiar los DNS de tu dispositivo (ej. 8.8.8.8).")
+
+# Instanciación y ejecución del motor de inferencia
+motor = DiagnosticoRed()
+motor.reset() # Prepara la memoria de trabajo vacía
+
+# Insertamos hechos en la memoria de trabajo del sistema
+motor.declare(ProblemaRed(sintoma='sin_conexion', luces_router='encendidas_verde'))
+
+# Disparamos el motor para evaluar reglas e inferir la respuesta
+print("--- Iniciando Análisis del Sistema Experto ---")
+motor.run()
+</code></pre>
+                    <p><strong>Análisis:</strong> Copia este código, instálalo con <code>pip install experta</code> y experimenta cambiando los hechos. ¿Qué sucede si ingresas un hecho para el cual el sistema no tiene una regla codificada?</p>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="cuestionario">📝 Cuestionario</h2>
-                <div class="concept-grid">
-                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuáles son los 6 componentes de la arquitectura de un sistema experto?</p></div>
-                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Cuál es la diferencia entre un SE de diagnóstico y uno de configuración? Da un ejemplo de cada uno.</p></div>
-                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Qué es el «módulo de explicación» y por qué es una ventaja clave de los SE sobre los modelos de ML?</p></div>
-                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Qué fue MYCIN y por qué fue un hito en la historia de la IA?</p></div>
-                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿En qué situaciones un SE basado en reglas es preferible a un LLM como ChatGPT?</p></div>
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/tCnJtIyWQ6w" title="Explicación de los Sistemas Expertos" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <div class="quiz-section" id="quiz-4-6">
+                    <h2>📝 Evaluación — Tema 4.6</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+                    <div class="quiz-list">
+                        
+                        <div class="quiz-card" data-answer="d">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">¿Cuál es el componente responsable de aplicar las reglas sobre los hechos actuales para generar una nueva conclusión?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> La Memoria de Trabajo</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> La Base de Conocimientos</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> La Interfaz de Usuario</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> El Motor de Inferencia</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. El motor de inferencia actúa como el "cerebro" lógico, usando encadenamiento hacia adelante (forward chaining) o hacia atrás (backward chaining) para emparejar reglas y disparar resultados.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">¿Qué función vital cumple el "Ingeniero del Conocimiento" en el desarrollo de un Sistema Experto?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Es la persona que consulta al sistema una vez terminado para resolver sus problemas del día a día.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Es el especialista en software que entrevista al experto humano y traduce o programa su experiencia empírica en reglas formales para la máquina.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Es un ente de Inteligencia Artificial que extrae la información directamente de la web sin ayuda humana.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Se encarga exclusivamente de diseñar la interfaz visual (UI/UX) del sistema.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Es el puente entre el profesional experto (como un médico experimentado) y el código de la base de conocimientos.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">¿Cuál es la diferencia primordial entre un Sistema Experto de "Diagnóstico" y uno de "Configuración"?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> El de diagnóstico busca identificar la causa de un problema a través de síntomas (ej. MYCIN); el de configuración busca diseñar de forma óptima un sistema complejo (ej. ensamblar una computadora).</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> El de configuración es analógico, mientras que el de diagnóstico requiere hardware especializado cuántico.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Son sinónimos; ambos realizan exactamente la misma tarea en industrias diferentes.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> El diagnóstico se usa en robótica industrial, y la configuración solo en medicina preventiva.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Tienen objetivos finales distintos: encontrar el error (diagnóstico) versus crear un plan de ensamblaje (configuración).</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">A diferencia de los Modelos de Lenguaje Grandes (LLMs), una gran ventaja del Módulo de Explicación de los SE es:</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Que hablan en múltiples idiomas nativamente.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Que pueden conectarse y navegar por internet en tiempo real para encontrar la respuesta.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Su total explicabilidad y transparencia. Permiten justificar la conclusión alcanzada mostrando el camino exacto de las reglas que se activaron (sin "cajas negras").</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Su capacidad para aprender de manera autónoma sin que se le ingresen reglas nuevas.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Esta trazabilidad estricta los hace indispensables en sectores como la salud, la banca o la aviación comercial.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">Históricamente, ¿por qué es tan famoso el proyecto MYCIN (desarrollado en Stanford en 1976)?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Fue el primer programa en derrotar a un humano en el ajedrez.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Fue el creador del algoritmo de Redes Neuronales convolucionales.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Fue pionero como sistema experto capaz de diagnosticar infecciones bacterianas de la sangre introduciendo el uso de "factores de certeza", compitiendo con la precisión humana.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Logró traducir 20 idiomas diferentes en tiempo real durante la guerra fría.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. MYCIN fue fundamental para demostrarle a la industria que la Inteligencia Artificial podía resolver problemas del mundo real y tener utilidad médica.</div>
+                        </div>
+
+                    </div>
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
                 </div>
             </section>
 
@@ -191,6 +306,9 @@
         </div>
     </footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
     <script src="../js/main.js"></script>
 </body>
 </html>

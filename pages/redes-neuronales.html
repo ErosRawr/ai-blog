@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-<body>
+<body class="has-sidebar">
     <div class="particles" aria-hidden="true">
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -25,9 +26,27 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad IV — Aplicaciones de IA</div>
+            <ul class="sidebar-links">
+                <li><a href="robotica.html"><span class="link-number">4.1</span> Robótica</a></li>
+                <li><a href="redes-neuronales.html" class="active"><span class="link-number">4.2</span> Redes Neuronales</a></li>
+                <li><a href="vision-artificial.html"><span class="link-number">4.3</span> Visión Artificial</a></li>
+                <li><a href="logica-difusa.html"><span class="link-number">4.4</span> Lógica Difusa</a></li>
+                <li><a href="procesamiento-lenguaje-natural.html"><span class="link-number">4.5</span> Procesamiento de Lenguaje Natural</a></li>
+                <li><a href="sistemas-expertos.html"><span class="link-number">4.6</span> Sistemas Expertos</a></li>  
+            </ul>
+        </div>
+    </aside>
+
     <div class="page-wrapper">
         <header class="article-hero">
             <div class="breadcrumb">
@@ -42,7 +61,7 @@
             </div>
         </header>
         <article class="article-content">
-            <!-- 4.2.1 Conceptos básicos -->
+            
             <section class="reveal">
                 <h2 id="conceptos">4.2.1 Conceptos Básicos</h2>
                 <p>Una <strong>red neuronal artificial (RNA)</strong> es un modelo computacional inspirado en el cerebro humano. Consiste en unidades de procesamiento (<strong>neuronas</strong>) organizadas en capas y conectadas por <strong>pesos</strong> que se ajustan mediante entrenamiento.</p>
@@ -80,7 +99,6 @@
                 </div>
             </section>
 
-            <!-- 4.2.2 Clasificación -->
             <section class="reveal">
                 <h2 id="clasificacion">4.2.2 Clasificación de Redes Neuronales</h2>
                 <table class="comparison-table">
@@ -99,7 +117,6 @@
                 </table>
             </section>
 
-            <!-- 4.2.3 Desarrollos actuales -->
             <section class="reveal">
                 <h2 id="desarrollos">4.2.3 Desarrollos Actuales y Aplicaciones</h2>
                 <div class="timeline">
@@ -136,24 +153,116 @@
             <section class="reveal">
                 <h2 id="actividad">🎯 Actividad Práctica</h2>
                 <div class="callout callout-tip">
-                    <div class="callout-title">💡 Ejercicio: Clasifica con una CNN</div>
-                    <p><strong>Escenario:</strong> Clasifica imágenes del dataset MNIST (dígitos escritos a mano) usando TensorFlow/Keras.</p>
-                    <p>1. Carga el dataset MNIST con <code>tf.keras.datasets.mnist</code>.</p>
-                    <p>2. Construye una CNN: Conv2D → MaxPool → Conv2D → MaxPool → Flatten → Dense → Softmax.</p>
-                    <p>3. Entrena por 5 epochs y reporta la accuracy en el set de prueba.</p>
-                    <p>4. Visualiza las predicciones incorrectas. ¿Qué dígitos confunde más la red?</p>
-                    <p>5. ¿Cómo mejorarías la precisión? (data augmentation, más capas, dropout).</p>
+                    <div class="callout-title">💡 Ejercicio: Construye una CNN en Keras</div>
+                    <p><strong>Escenario:</strong> Clasificar imágenes del dataset MNIST (dígitos escritos a mano) usando TensorFlow/Keras.</p>
+                    
+<pre><code class="language-python">import tensorflow as tf
+from tensorflow.keras import layers, models
+
+# 1. Definición de la arquitectura Convolucional (CNN)
+modelo = models.Sequential([
+    # Capa de entrada y extracción de características espaciales
+    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),
+    layers.MaxPooling2D((2, 2)),
+    
+    # Capas ocultas más profundas
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.MaxPooling2D((2, 2)),
+    
+    # Aplanado y clasificación final
+    layers.Flatten(),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(10, activation='softmax') # 10 clases (dígitos 0-9)
+])
+
+# 2. Compilación del modelo
+modelo.compile(optimizer='adam',
+               loss='sparse_categorical_crossentropy',
+               metrics=['accuracy'])
+
+# (El siguiente paso sería model.fit(x_train, y_train, epochs=5))
+</code></pre>
+                    <p><strong>Tareas:</strong><br>
+                    1. Analiza el código anterior: ¿por qué la última capa tiene exactamente 10 neuronas?<br>
+                    2. Investiga por qué se utiliza la función de activación `softmax` al final y `relu` en las capas ocultas.</p>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="cuestionario">📝 Cuestionario</h2>
-                <div class="concept-grid">
-                    <div class="concept-card"><h4>Pregunta 1</h4><p>Explica la fórmula de una neurona artificial y el papel de la función de activación.</p></div>
-                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Cuál es la diferencia entre una CNN y una RNN? ¿Para qué tipo de datos es mejor cada una?</p></div>
-                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Qué es backpropagation y cómo se relaciona con gradient descent?</p></div>
-                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Por qué los Transformers han revolucionado tanto el NLP como la visión artificial?</p></div>
-                    <div class="concept-card"><h4>Pregunta 5</h4><p>Menciona tres aplicaciones actuales de redes neuronales profundas y la arquitectura que utiliza cada una.</p></div>
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/jKCQsndqEGQ" title="Introducción a las Redes Neuronales" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <div class="quiz-section" id="quiz-4-2">
+                    <h2>📝 Evaluación — Tema 4.2</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+                    <div class="quiz-list">
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">En el contexto del cálculo matemático de una neurona artificial, ¿qué función cumple la "función de activación"?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Exclusivamente sumar los pesos estáticos y el sesgo (bias).</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Introducir no-linealidad al modelo, permitiéndole aprender y representar patrones complejos y curvas del mundo real.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Almacenar los datos crudos del entrenamiento directamente en la memoria RAM del sistema.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Compilar los tensores matriciales en lenguaje de máquina binario.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Sin una función de activación (como ReLU o Sigmoide), no importa cuántas capas tenga la red, el sistema solo podría resolver problemas estrictamente lineales.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">¿Cuál es la principal diferencia arquitectónica y de aplicación entre las Redes Convolucionales (CNN) y las Redes Recurrentes (RNN)?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Las CNN procesan texto de forma lineal y las RNN renderizan gráficos tridimensionales.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> No existe diferencia conceptual, solo difieren en el framework comercial empleado.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Las CNN extraen características espaciales (ideales para imágenes), mientras que las RNN mantienen un estado de memoria para secuencias temporales (texto, audio).</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Las CNN no hacen uso de pesos entrenables y las RNN carecen de capas de agrupación (pooling).</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Las CNN utilizan filtros para barrer áreas en cuadrículas (píxeles), y las RNN usan bucles internos para recordar iteraciones previas en secuencias.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">¿Qué describe con exactitud el algoritmo de retropropagación (Backpropagation) en el entrenamiento de redes profundas?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Es el mecanismo que calcula el gradiente del error (loss) y lo propaga hacia atrás para actualizar los pesos de la red de salida hacia entrada.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Es una técnica para exportar y realizar copias de seguridad de los modelos entrenados hacia contenedores Docker.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Un tipo especializado de neurona biológica que se conecta únicamente de forma retrógrada.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Un proceso puramente estético empleado en los modelos de difusión (Stable Diffusion).</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Backpropagation utiliza la regla de la cadena del cálculo diferencial para determinar cómo ajustar cada peso individual y minimizar el margen de error.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">¿Por qué la arquitectura Transformer (base de GPT) ha logrado sustituir a las RNN en el Procesamiento de Lenguaje Natural moderno?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Porque sus modelos ocupan considerablemente menos espacio en los discos de los servidores.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Porque descartan la recurrencia secuencial a favor de mecanismos de "Atención", permitiendo procesar palabras en paralelo y capturar contextos lejanos con eficacia.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Porque limitan su funcionamiento de forma nativa a la programación orientada a objetos convencional.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Porque no requieren de fases extensas de pre-entrenamiento intensivo con datos.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. El mecanismo de auto-atención (self-attention) permite a los Transformers relacionar cada palabra con todas las demás simultáneamente, rompiendo el cuello de botella secuencial de las RNN.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">Si el objetivo es construir un sistema de inteligencia artificial capaz de generar imágenes inéditas fotorrealistas a partir de descripciones de texto, ¿qué familias de arquitecturas son las indicadas?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Perceptrones multicapa (MLP) tradicionales en combinación con árboles de regresión matemática.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Modelos Generativos como Redes Generativas Antagónicas (GANs) o Modelos de Difusión.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Autoencoders (Auto-codificadores) lineales clásicos de una sola vía.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Exclusivamente Redes Neuronales Recurrentes del tipo Long Short-Term Memory (LSTM).</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Las GANs enfrentan a un generador contra un discriminador, mientras que los Modelos de Difusión iteran para eliminar ruido y formar imágenes nítidas, dominando la generación visual contemporánea.</div>
+                        </div>
+                    </div>
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
                 </div>
             </section>
 
@@ -192,6 +301,9 @@
         </div>
     </footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
     <script src="../js/main.js"></script>
 </body>
 </html>

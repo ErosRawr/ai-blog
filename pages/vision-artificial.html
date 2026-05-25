@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-<body>
+<body class="has-sidebar">
     <div class="particles" aria-hidden="true">
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -25,9 +26,27 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad IV — Aplicaciones de IA</div>
+            <ul class="sidebar-links">
+                <li><a href="robotica.html"><span class="link-number">4.1</span> Robótica</a></li>
+                <li><a href="redes-neuronales.html"><span class="link-number">4.2</span> Redes Neuronales</a></li>
+                <li><a href="vision-artificial.html" class="active"><span class="link-number">4.3</span> Visión Artificial</a></li>
+                <li><a href="logica-difusa.html"><span class="link-number">4.4</span> Lógica Difusa</a></li>
+                <li><a href="procesamiento-lenguaje-natural.html"><span class="link-number">4.5</span> Procesamiento de Lenguaje Natural</a></li>
+                <li><a href="sistemas-expertos.html"><span class="link-number">4.6</span> Sistemas Expertos</a></li>  
+            </ul>
+        </div>
+    </aside>
+
     <div class="page-wrapper">
         <header class="article-hero">
             <div class="breadcrumb">
@@ -42,7 +61,6 @@
             </div>
         </header>
         <article class="article-content">
-            <!-- 4.3.1 Conceptos básicos -->
             <section class="reveal">
                 <h2 id="conceptos">4.3.1 Conceptos Básicos</h2>
                 <p>La <strong>visión artificial</strong> (computer vision) es el campo de la IA que permite a las máquinas <strong>interpretar y entender imágenes y videos</strong> de la misma forma que lo hace el sistema visual humano. Es la capacidad de «ver» y extraer significado de lo visual.</p>
@@ -60,7 +78,7 @@
                     <div class="concept-card">
                         <div class="concept-card-icon">🔍</div>
                         <h4>Extracción de features</h4>
-                        <p>Detectar bordes, texturas, esquinas, colores. Clásico: SIFT, HOG. Moderno: CNNs aprenden features automáticamente.</p>
+                        <p>Detectar bordes, texturas, esquinas. Clásico: SIFT, HOG. Moderno: CNNs aprenden features automáticamente.</p>
                     </div>
                     <div class="concept-card">
                         <div class="concept-card-icon">🎯</div>
@@ -79,7 +97,6 @@
                 </div>
             </section>
 
-            <!-- 4.3.2 Desarrollos actuales -->
             <section class="reveal">
                 <h2 id="desarrollos">4.3.2 Desarrollos Actuales y Aplicaciones</h2>
                 <table class="comparison-table">
@@ -127,20 +144,105 @@
                     <div class="callout-title">💡 Ejercicio: Detección con OpenCV + YOLO</div>
                     <p>1. Instala OpenCV (<code>pip install opencv-python</code>) y Ultralytics (<code>pip install ultralytics</code>).</p>
                     <p>2. Carga una imagen con varias personas y objetos.</p>
-                    <p>3. Usa YOLO preentrenado para detectar objetos: <code>from ultralytics import YOLO; model = YOLO("yolov8n.pt"); results = model("imagen.jpg")</code></p>
-                    <p>4. Dibuja los bounding boxes y etiquetas sobre la imagen.</p>
-                    <p>5. ¿Cuántos objetos detectó? ¿Con qué confianza? ¿Hubo falsos positivos?</p>
+                    <p>3. Ejecuta el siguiente script en Python para detectar objetos:</p>
+                    <pre><code class="language-python">from ultralytics import YOLO
+import cv2
+
+# Cargar modelo YOLOv8 preentrenado
+model = YOLO("yolov8n.pt")
+
+# Ejecutar inferencia en la imagen
+results = model("imagen.jpg")
+
+# Mostrar resultados
+for r in results:
+    im_array = r.plot()  # Dibuja bounding boxes
+    cv2.imshow("YOLOv8 Deteccion", im_array)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+</code></pre>
+                    <p>4. ¿Cuántos objetos detectó? ¿Con qué confianza? ¿Hubo falsos positivos?</p>
                 </div>
             </section>
 
             <section class="reveal">
-                <h2 id="cuestionario">📝 Cuestionario</h2>
-                <div class="concept-grid">
-                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuál es la diferencia entre clasificación de imagen, detección de objetos y segmentación semántica?</p></div>
-                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Qué es OpenCV y para qué se utiliza en proyectos de visión artificial?</p></div>
-                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Por qué las CNNs reemplazaron a los métodos clásicos (SIFT, HOG) en visión artificial?</p></div>
-                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Qué hace YOLO diferente a otros detectores de objetos y por qué es tan rápido?</p></div>
-                    <div class="concept-card"><h4>Pregunta 5</h4><p>Describe una aplicación de visión artificial en medicina y explica su impacto.</p></div>
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/USNui_O1GZ8" title="Explicación de Computer Vision y YOLO" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <div class="quiz-section" id="quiz-4-3">
+                    <h2>📝 Evaluación — Tema 4.3</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+                    <div class="quiz-list">
+                        
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">¿Cuál es la diferencia principal entre Clasificación de Imagen y Detección de Objetos?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> La clasificación usa redes neuronales, la detección usa lógica difusa.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> La clasificación dice "qué" hay en toda la imagen; la detección dice "qué" hay y "dónde" está usando cajas limitadoras (bounding boxes).</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Son exactamente lo mismo, solo cambian los frameworks utilizados.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> La detección separa la imagen píxel por píxel; la clasificación solo detecta bordes.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. La clasificación etiqueta la imagen completa, mientras que la detección localiza múltiples objetos específicos mediante coordenadas.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">¿Qué aportó el modelo AlexNet en el año 2012 al campo de la visión artificial?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Fue el primer algoritmo clásico (como SIFT) en funcionar en tiempo real.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Permitió segmentar el fondo de una imagen para videollamadas.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Demostró de forma contundente que las Redes Neuronales Convolucionales (CNN) superaban a los métodos clásicos de extracción manual de características.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Fue el primer dron comercial en utilizar visión por computadora.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. La contundente victoria de AlexNet en la competencia ImageNet catalizó la revolución del Deep Learning.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="d">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">¿Cuál es la ventaja principal de la arquitectura YOLO (You Only Look Once)?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Solo funciona con imágenes en blanco y negro, lo que ahorra memoria.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Requiere múltiples pasadas sobre la imagen, siendo lento pero extremadamente preciso a nivel píxel.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Es la única arquitectura que no requiere ser entrenada previamente.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Procesa la imagen completa en una sola pasada como un problema de regresión, logrando detecciones en tiempo real (30+ FPS).</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. YOLO transformó la detección de objetos de un proceso lento de dos etapas a uno altamente eficiente para aplicaciones en tiempo real (como autos autónomos).</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">¿En qué etapa del pipeline clásico de Visión Artificial se ubica el uso de filtros para reducir ruido o normalizar el contraste?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Interpretación</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Adquisición</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Preprocesamiento</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Extracción de Features</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. El preprocesamiento es vital para limpiar la imagen "cruda" antes de intentar extraer características o interpretarla.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">Segmentación Semántica se refiere a:</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Clasificar a qué categoría pertenece cada píxel individual de la imagen.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Leer y extraer el texto contenido dentro de un letrero.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Dibujar un único cuadro delimitador que encierra todos los objetos.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Estimar el esqueleto 3D o pose de una persona.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. A diferencia de los bounding boxes, la segmentación semántica "pinta" regiones exactas clasificando píxel por píxel.</div>
+                        </div>
+
+                    </div>
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
                 </div>
             </section>
 
@@ -179,6 +281,9 @@
         </div>
     </footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
     <script src="../js/main.js"></script>
 </body>
 </html>
