@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-<body>
+<body class="has-sidebar">
     <div class="particles" aria-hidden="true">
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -25,9 +26,30 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad III — Sistemas Basados en Conocimiento</div>
+            <ul class="sidebar-links">
+                <li><a href="representacion-reglas.html"><span class="link-number">3.1</span> Representación mediante Reglas</a></li>
+                <li><a href="metodos-inferencia-reglas.html"><span class="link-number">3.2</span> Métodos de Inferencia</a></li>
+                <li><a href="reglas-produccion.html"><span class="link-number">3.3</span> Reglas de Producción</a></li>
+                <li><a href="sintaxis-reglas-produccion.html"><span class="link-number">3.4</span> Sintaxis de Reglas</a></li>
+                <li><a href="semantica-reglas-produccion.html"><span class="link-number">3.5</span> Semántica de Reglas</a></li>
+                <li><a href="arquitectura-sistema-produccion.html" class="active"><span class="link-number">3.6</span> Arquitectura del Sistema</a></li>
+                <li><a href="espacios-estados.html"><span class="link-number">3.7</span> Espacio de Estados</a></li>
+                <li><a href="busqueda-sistematica.html"><span class="link-number">3.8</span> Búsqueda Sistemática</a></li>
+            </ul>
+        </div>
+    </aside>
+
     <div class="page-wrapper">
         <header class="article-hero">
             <div class="breadcrumb">
@@ -128,13 +150,82 @@
                 </div>
             </section>
             <section class="reveal">
-                <h2 id="cuestionario">📝 Cuestionario</h2>
-                <div class="concept-grid">
-                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Cuáles son los tres componentes esenciales de un sistema de producción y cuál es la función de cada uno?</p></div>
-                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Cuál es la diferencia entre la memoria de trabajo y la base de conocimientos?</p></div>
-                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Qué es el algoritmo Rete y qué problema resuelve?</p></div>
-                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Qué es la refractariedad y por qué es importante?</p></div>
-                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿Bajo qué condiciones termina la ejecución de un sistema de producción?</p></div>
+                <h2 id="video">Video explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/XjfwMuQ-RRU" title="Video sobre Arquitectura de Sistemas de Producción" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <div class="quiz-section" id="quiz-3-6">
+                    <h2>📝 Evaluación — Tema 3.6</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+
+                    <div class="quiz-list">
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">¿Cuáles son los tres componentes esenciales de un sistema de producción?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> CPU, RAM, Almacenamiento.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Entrada, Proceso, Salida.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Memoria de trabajo, Base de conocimientos, Motor de inferencia.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Interfaz, Usuario, Sistema.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Estos tres componentes forman la arquitectura completa del sistema experto.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">¿Cuál es la diferencia principal entre la memoria de trabajo y la base de conocimientos?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> No hay diferencia, son lo mismo con nombres diferentes.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Memoria de trabajo = hechos dinámicos; Base de conocimientos = reglas estáticas.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> La memoria de trabajo es más importante.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Base de conocimientos = hechos; Memoria de trabajo = reglas.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. La memoria cambia durante la ejecución; las reglas permanecen constantes.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="d">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">¿Qué es el algoritmo Rete y qué problema resuelve?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Un algoritmo de criptografía.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Un método para eliminar reglas.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Un algoritmo de búsqueda en profundidad.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Un algoritmo eficiente para pattern matching que memoriza coincidencias parciales.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Rete reduce la complejidad de O(R×F) a tiempo prácticamente lineal.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">¿Qué es la refractariedad en la resolución de conflictos?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Una estrategia que evita que la misma regla se ejecute dos veces con los mismos hechos.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Un tipo de regla que falla siempre.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> La resistencia del sistema a nuevas reglas.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Un mecanismo de propagación de calor.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. La refractariedad previene bucles infinitos causados por la misma regla.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">¿Bajo cuáles de estas condiciones termina la ejecución de un sistema de producción?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Solo cuando se ejecuta HALT.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Solo cuando no hay más reglas activables.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Cuando no hay más reglas activables, se ejecuta HALT, o se alcanza la meta.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Nunca termina; es un proceso infinito.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Hay múltiples condiciones de terminación según el diseño del sistema.</div>
+                        </div>
+                    </div>
+
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
                 </div>
             </section>
             <section class="reveal">
@@ -170,6 +261,7 @@
         </div>
     </footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
 </html>

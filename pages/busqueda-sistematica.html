@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-<body>
+<body class="has-sidebar">
     <div class="particles" aria-hidden="true">
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -25,9 +26,28 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad III — Razonamiento y Búsqueda</div>
+            <ul class="sidebar-links">
+                <li><a href="representacion-reglas.html"><span class="link-number">3.1</span> Representación por Reglas</a></li>
+                <li><a href="metodos-inferencia-reglas.html"><span class="link-number">3.2</span> Métodos de Inferencia</a></li>
+                <li><a href="reglas-produccion.html"><span class="link-number">3.3</span> Reglas de Producción</a></li>
+                <li><a href="sintaxis-reglas-produccion.html"><span class="link-number">3.4</span> Sintaxis de Reglas</a></li>
+                <li><a href="arquitectura-sistema-produccion.html"><span class="link-number">3.5</span> Arquitectura del Sistema</a></li>
+                <li><a href="espacios-estados.html"><span class="link-number">3.6</span> Espacios de Estados</a></li>
+                <li><a href="busqueda-sistematica.html" class="active"><span class="link-number">3.7</span> Búsqueda Sistemática</a></li>
+            </ul>
+        </div>
+    </aside>
+
     <div class="page-wrapper">
         <header class="article-hero">
             <div class="breadcrumb">
@@ -38,7 +58,7 @@
             <div class="article-meta">
                 <span class="article-meta-item">📖 Lectura: 14 min</span>
                 <span class="article-meta-item">🏷️ Unidad III</span>
-                <span class="article-meta-item">📝 Tema 3.8</span>
+                <span class="article-meta-item">📝 Tema 3.7</span>
             </div>
         </header>
         <article class="article-content">
@@ -47,27 +67,31 @@
                 <p>La <strong>búsqueda sistemática</strong> es una estrategia de exploración que garantiza recorrer el espacio de estados de forma <strong>completa y ordenada</strong>, sin usar heurísticas. Son métodos «ciegos» (no informados): no saben qué tan cerca están de la meta, solo exploran metódicamente.</p>
                 <p>Imagina que buscas tus llaves en tu casa. La búsqueda sistemática sería revisar <strong>cada habitación, cada cajón, cada rincón</strong> en un orden predefinido. No es inteligente, pero si las llaves están ahí, las encontrarás.</p>
             </section>
+            
             <section class="reveal">
                 <h2 id="bfs">Búsqueda en Anchura (BFS — Breadth-First Search)</h2>
                 <p>Explora <strong>nivel por nivel</strong>: primero todos los nodos a distancia 1, luego distancia 2, luego 3... Usa una <strong>cola (FIFO)</strong> como estructura de datos.</p>
+                
                 <div class="code-block">
-<span class="keyword">función</span> <span class="function">BFS</span>(estado_inicial, es_meta):
-    cola ← [estado_inicial]
-    visitados ← {estado_inicial}
+<pre><code class="language-python">def algoritmo_bfs(estado_inicial, es_meta):
+    # Estructura FIFO (First-In, First-Out)
+    cola = [estado_inicial]
+    visitados = {estado_inicial}
 
-    <span class="keyword">mientras</span> cola no esté vacía:
-        nodo ← cola.<span class="function">dequeue</span>()     <span class="comment">// sacar del frente</span>
+    while len(cola) > 0:
+        nodo = cola.pop(0)     # Extraer del frente de la cola
 
-        <span class="keyword">si</span> <span class="function">es_meta</span>(nodo):
-            <span class="keyword">retornar</span> <span class="string">camino_hasta(nodo)</span>
+        if es_meta(nodo):
+            return camino_hasta(nodo)
 
-        <span class="keyword">para cada</span> sucesor <span class="keyword">en</span> <span class="function">expandir</span>(nodo):
-            <span class="keyword">si</span> sucesor <span class="keyword">no en</span> visitados:
-                visitados.<span class="function">add</span>(sucesor)
-                cola.<span class="function">enqueue</span>(sucesor)  <span class="comment">// agregar al final</span>
+        for sucesor in expandir(nodo):
+            if sucesor not in visitados:
+                visitados.add(sucesor)
+                cola.append(sucesor)  # Insertar al final de la cola
 
-    <span class="keyword">retornar</span> <span class="string">"No hay solución"</span>
+    return "No hay solución"</code></pre>
                 </div>
+                
                 <div class="concept-grid">
                     <div class="concept-card">
                         <div class="concept-card-icon">✅</div>
@@ -91,27 +115,31 @@
                     </div>
                 </div>
             </section>
+            
             <section class="reveal">
                 <h2 id="dfs">Búsqueda en Profundidad (DFS — Depth-First Search)</h2>
                 <p>Explora <strong>rama por rama</strong>: va tan profundo como puede por una rama antes de retroceder (backtrack). Usa una <strong>pila (LIFO)</strong> o recursión.</p>
+                
                 <div class="code-block">
-<span class="keyword">función</span> <span class="function">DFS</span>(estado_inicial, es_meta):
-    pila ← [estado_inicial]
-    visitados ← {estado_inicial}
+<pre><code class="language-python">def algoritmo_dfs(estado_inicial, es_meta):
+    # Estructura LIFO (Last-In, First-Out)
+    pila = [estado_inicial]
+    visitados = {estado_inicial}
 
-    <span class="keyword">mientras</span> pila no esté vacía:
-        nodo ← pila.<span class="function">pop</span>()          <span class="comment">// sacar del tope</span>
+    while len(pila) > 0:
+        nodo = pila.pop()          # Extraer del tope de la pila
 
-        <span class="keyword">si</span> <span class="function">es_meta</span>(nodo):
-            <span class="keyword">retornar</span> <span class="string">camino_hasta(nodo)</span>
+        if es_meta(nodo):
+            return camino_hasta(nodo)
 
-        <span class="keyword">para cada</span> sucesor <span class="keyword">en</span> <span class="function">expandir</span>(nodo):
-            <span class="keyword">si</span> sucesor <span class="keyword">no en</span> visitados:
-                visitados.<span class="function">add</span>(sucesor)
-                pila.<span class="function">push</span>(sucesor)   <span class="comment">// agregar al tope</span>
+        for sucesor in expandir(nodo):
+            if sucesor not in visitados:
+                visitados.add(sucesor)
+                pila.append(sucesor)   # Agregar al tope de la pila
 
-    <span class="keyword">retornar</span> <span class="string">"No hay solución"</span>
+    return "No hay solución"</code></pre>
                 </div>
+                
                 <div class="concept-grid">
                     <div class="concept-card">
                         <div class="concept-card-icon">⚠️</div>
@@ -135,6 +163,7 @@
                     </div>
                 </div>
             </section>
+            
             <section class="reveal">
                 <h2 id="comparacion">Comparación directa</h2>
                 <table class="comparison-table">
@@ -151,6 +180,7 @@
                     </tbody>
                 </table>
             </section>
+            
             <section class="reveal">
                 <h2 id="actividad">🎯 Actividad práctica</h2>
                 <div class="callout callout-tip">
@@ -165,20 +195,90 @@
                     <p>e) Implementa ambos algoritmos en Python o pseudocódigo y verifica tus trazas.</p>
                 </div>
             </section>
+
             <section class="reveal">
-                <h2 id="cuestionario">📝 Cuestionario</h2>
-                <div class="concept-grid">
-                    <div class="concept-card"><h4>Pregunta 1</h4><p>¿Por qué BFS y DFS se consideran «búsquedas no informadas»?</p></div>
-                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Qué estructura de datos usa BFS y cuál usa DFS? ¿Cómo afecta el orden de exploración?</p></div>
-                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿En qué situaciones BFS es mejor que DFS? ¿Y viceversa?</p></div>
-                    <div class="concept-card"><h4>Pregunta 4</h4><p>¿Qué es IDDFS (Iterative Deepening) y por qué combina las ventajas de ambos?</p></div>
-                    <div class="concept-card"><h4>Pregunta 5</h4><p>Si b=10 y d=5, ¿cuántos nodos (aproximadamente) almacena BFS en el peor caso?</p></div>
+                <h2 id="video">Video Explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/5_gY5HypOLg" title="Algoritmos de Búsqueda No Informada BFS y DFS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
                 </div>
             </section>
+
+            <section class="reveal">
+                <div class="quiz-section" id="quiz-3-7">
+                    <h2>📝 Evaluación — Tema 3.7</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+                    <div class="quiz-list">
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">¿Por qué BFS y DFS se consideran algoritmos de «búsqueda no informada» o ciega?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Porque no almacenan los nodos expandidos previamente en la estructura de memoria de trabajo.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Porque exploran el espacio de estados de forma puramente metódica sin usar heurísticas que estimen la distancia hacia la meta.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Porque operan sin conocer de antemano cuál es la configuración del estado inicial del problema.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Porque están diseñados exclusivamente para ejecutarse en entornos virtuales que carecen de metas fijas.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Al ser métodos ciegos, solo conocen las transiciones válidas pero carecen de métricas complementarias para priorizar caminos prometedores.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">¿Qué estructuras de datos rigen el comportamiento de BFS y DFS, y cómo impactan su orden de exploración?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> BFS se basa en una Pila (LIFO) para ir rama por rama; DFS utiliza una Cola (FIFO) para avanzar de manera horizontal.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Ambos algoritmos emplean listas enlazadas desordenadas, derivando en un comportamiento exploratorio errático.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> BFS usa una Cola (FIFO) para explorar exhaustivamente nivel por nivel; DFS usa una Pila (LIFO) para ramificar verticalmente en profundidad.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> BFS recurre a un árbol binario balanceado mientras que DFS se aloja en un grafo lineal sin retorno o backtracking.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. El uso de la cola (FIFO) obliga a BFS a vaciar un nivel antes de pasar al siguiente, mientras que la pila (LIFO) causa el descenso profundo de DFS.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">¿Bajo qué condiciones específicas de un problema es preferible utilizar BFS sobre DFS?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Cuando la memoria del sistema es severamente crítica y el factor de ramificación es infinito.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Cuando la solución se encuentra a poca profundidad del nodo raíz y se requiere garantizar optimalidad.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> En escenarios donde existen múltiples ciclos infinitos en el grafo y no se cuenta con control de visitados.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Cuando los costos de los pasos del camino son completamente asimétricos e irregulares.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. BFS es ideal si la meta está cerca de la raíz y asegura el camino más corto con costos uniformes, a costa de un alto consumo de memoria exponencial.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">¿Qué es el algoritmo IDDFS (Iterative Deepening DFS) y qué ventaja aporta al diseño de agentes?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Es un algoritmo estocástico que selecciona caminos de búsqueda al azar para optimizar el tiempo de respuesta.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Es la búsqueda en profundidad iterativa; fusiona la excelente eficiencia en memoria de DFS con la completitud y optimalidad de BFS mediante límites de profundidad progresivos.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Es una modificación de BFS que duplica de forma automática el factor de ramificación en cada paso ejecutado.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Es una red neuronal recurrente encargada de podar ramas estériles en sistemas de reglas de producción.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. IDDFS soluciona la debilidad de memoria de BFS y el peligro de bucles infinitos de DFS incrementando iterativamente la cota de profundidad de búsqueda.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">Si un árbol de búsqueda posee un factor de ramificación b=10 y la meta reside a una profundidad d=5, ¿cuántos nodos aproximados almacena BFS en el peor de los casos?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Alrededor de 50 nodos, derivado del cálculo lineal (b × d).</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Aproximadamente 100,000 nodos debido a su complejidad espacial exponencial O(b^d).</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Exactamente 15 nodos, sumando la ramificación y la profundidad base.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Más de diez millones de nodos producto del desborde de sub-árboles cíclicos.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. La exigencia de memoria de BFS crece de manera geométrica/exponencial, convirtiéndose en el principal obstáculo del algoritmo ante problemas complejos.</div>
+                        </div>
+                    </div>
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
+                </div>
+            </section>
+
             <section class="reveal">
                 <h2 id="conclusion">Conclusión</h2>
-                <p>BFS y DFS son los <strong>algoritmos fundamentales</strong> de la búsqueda en IA. BFS garantiza encontrar la solución óptima pero consume mucha memoria; DFS es eficiente en memoria pero puede no ser óptimo ni completo. Dominar estos algoritmos es el prerequisito para entender algoritmos más sofisticados como A*, IDA* y búsquada Monte Carlo, que se construyen sobre estos principios.</p>
+                <p>BFS y DFS son los <strong>algoritmos fundamentales</strong> de la búsqueda en IA. BFS garantiza encontrar la solución óptima pero consume mucha memoria; DFS es eficiente en memoria pero puede no ser óptimo ni completo. Dominar estos algoritmos es el prerequisito para entender algoritmos más sofisticados como A*, IDA* y búsqueda Monte Carlo, que se construyen sobre estos principios.</p>
             </section>
+            
             <section class="reveal">
                 <h2 id="referencias">📚 Referencias</h2>
                 <ul>
@@ -189,6 +289,7 @@
                     <li>Luger, G. F. (2009). <em>Artificial Intelligence</em> (6th ed.). Pearson.</li>
                 </ul>
             </section>
+            
             <nav class="article-nav reveal">
                 <a href="espacios-estados.html" class="article-nav-link">
                     <span class="nav-label">← Anterior</span>
@@ -208,6 +309,9 @@
         </div>
     </footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
     <script src="../js/main.js"></script>
 </body>
 </html>

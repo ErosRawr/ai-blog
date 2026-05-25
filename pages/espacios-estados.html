@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-<body>
+<body class="has-sidebar">
     <div class="particles" aria-hidden="true">
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
         <div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -25,9 +26,28 @@
                 <li><a href="../index.html#unidad3">Unidad 3</a></li>
                 <li><a href="../index.html#unidad4">Unidad 4</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="navbar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">Unidad III — Razonamiento y Búsqueda</div>
+            <ul class="sidebar-links">
+                <li><a href="representacion-reglas.html"><span class="link-number">3.1</span> Representación por Reglas</a></li>
+                <li><a href="metodos-inferencia-reglas.html"><span class="link-number">3.2</span> Métodos de Inferencia</a></li>
+                <li><a href="reglas-produccion.html"><span class="link-number">3.3</span> Reglas de Producción</a></li>
+                <li><a href="sintaxis-reglas-produccion.html"><span class="link-number">3.4</span> Sintaxis de Reglas</a></li>
+                <li><a href="arquitectura-sistema-produccion.html"><span class="link-number">3.5</span> Arquitectura del Sistema</a></li>
+                <li><a href="espacios-estados.html" class="active"><span class="link-number">3.6</span> Espacios de Estados</a></li>
+                <li><a href="busqueda-sistematica.html"><span class="link-number">3.7</span> Búsqueda Sistemática</a></li>
+            </ul>
+        </div>
+    </aside>
+
     <div class="page-wrapper">
         <header class="article-hero">
             <div class="breadcrumb">
@@ -38,7 +58,7 @@
             <div class="article-meta">
                 <span class="article-meta-item">📖 Lectura: 12 min</span>
                 <span class="article-meta-item">🏷️ Unidad III</span>
-                <span class="article-meta-item">📝 Tema 3.7</span>
+                <span class="article-meta-item">📝 Tema 3.6</span>
             </div>
         </header>
         <article class="article-content">
@@ -56,6 +76,7 @@
                     <strong>T</strong> = función de transición: T(s, a) → s'.</p>
                 </div>
             </section>
+
             <section class="reveal">
                 <h2 id="tipos">Determinístico vs. No Determinístico</h2>
                 <div class="concept-grid">
@@ -83,32 +104,44 @@
                     </tbody>
                 </table>
             </section>
+
             <section class="reveal">
                 <h2 id="ejemplo">Ejemplo: aspiradora robot</h2>
                 <div class="code-block">
-<span class="comment">// Espacio de estados — Aspiradora en 2 habitaciones</span>
+<pre><code class="language-javascript">// Modelado formal del Espacio de Estados — Aspiradora en 2 habitaciones (A y B)
+const estado = {
+    robot: "A",       // Ubicación del agente: "A" o "B"
+    habitacionA: "SÚC_IA", // Estado de la superficie A: "SÚC_IA" o "LIMPIA"
+    habitacionB: "SÚC_IA"  // Estado de la superficie B: "SÚC_IA" o "LIMPIA"
+};
 
-<span class="keyword">Estados posibles (8):</span>
-   [A-limpia, B-limpia,  robot-en-A]
-   [A-limpia, B-limpia,  robot-en-B]
-   [A-sucia,  B-limpia,  robot-en-A]
-   [A-limpia, B-sucia,   robot-en-B]
-   ... <span class="comment">(8 combinaciones totales)</span>
+// Acciones válidas libres de contexto
+const acciones = ["IZQUIERDA", "DERECHA", "ASPIRAR"];
 
-<span class="keyword">Acciones:</span> Izquierda, Derecha, Aspirar
+// Modelo Transicional DETERMINÍSTICO
+function transicionDeterminista(estadoActual, accion) {
+    if (accion === "ASPIRAR" && estadoActual.robot === "A") {
+        return { ...estadoActual, habitacionA: "LIMPIA" }; 
+        // Resultado único, exacto y garantizado
+    }
+    return estadoActual;
+}
 
-<span class="function">DETERMINÍSTICO:</span>
-   T([A-sucia, robot-en-A], Aspirar) = <span class="string">[A-limpia, robot-en-A]</span>
-   <span class="comment">→ Resultado único y seguro</span>
-
-<span class="function">NO DETERMINÍSTICO:</span>
-   T([A-sucia, robot-en-A], Aspirar) = {
-     <span class="string">[A-limpia, robot-en-A]</span> <span class="comment">con P=0.9</span>,
-     <span class="string">[A-sucia, robot-en-A]</span>  <span class="comment">con P=0.1 (falla)</span>
-   }
-   <span class="comment">→ El aspirado puede fallar 10% del tiempo</span>
+// Modelo Transicional NO DETERMINÍSTICO
+function transicionNoDeterminista(estadoActual, accion) {
+    if (accion === "ASPIRAR" && estadoActual.robot === "A") {
+        const probabilidadExito = Math.random() < 0.90; 
+        return {
+            ...estadoActual,
+            habitacionA: probabilidadExito ? "LIMPIA" : "SÚC_IA" 
+            // El actuador falla un 10% de las veces reteniendo suciedad
+        };
+    }
+    return estadoActual;
+}</code></pre>
                 </div>
             </section>
+
             <section class="reveal">
                 <h2 id="actividad">🎯 Actividad práctica</h2>
                 <div class="callout callout-tip">
@@ -122,20 +155,90 @@
                     <p>e) Encuentra un camino solución del estado inicial al estado meta.</p>
                 </div>
             </section>
+
             <section class="reveal">
-                <h2 id="cuestionario">📝 Cuestionario</h2>
-                <div class="concept-grid">
-                    <div class="concept-card"><h4>Pregunta 1</h4><p>Define formalmente un espacio de estados con sus cinco componentes.</p></div>
-                    <div class="concept-card"><h4>Pregunta 2</h4><p>¿Cuál es la diferencia clave entre un espacio de estados determinístico y uno no determinístico?</p></div>
-                    <div class="concept-card"><h4>Pregunta 3</h4><p>¿Por qué los problemas no determinísticos requieren planes condicionales en lugar de planes lineales?</p></div>
-                    <div class="concept-card"><h4>Pregunta 4</h4><p>Da un ejemplo del mundo real de un espacio de estados determinístico y otro no determinístico.</p></div>
-                    <div class="concept-card"><h4>Pregunta 5</h4><p>¿Qué es la «explosión combinatoria» y cómo afecta a la búsqueda en espacios de estados?</p></div>
+                <h2 id="video">Video Explicativo</h2>
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/GvOQSf3Oi10" title="Espacios de Estados en Inteligencia Artificial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
                 </div>
             </section>
+
+            <section class="reveal">
+                <div class="quiz-section" id="quiz-3-6">
+                    <h2>📝 Evaluación — Tema 3.6</h2>
+                    <div class="quiz-score" id="quizScore"></div>
+                    <div class="quiz-list">
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 1 de 5</div>
+                            <div class="quiz-question">¿Qué componentes integran la tupla formal (S, s₀, G, A, T) que define un espacio de estados?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Sensores, Servidores, Gráficos, Algoritmos y Tensores.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Conjunto de estados, Estado inicial, Estados meta, Acciones y Función de transición.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Sintaxis, Semántica, Grafos de control, Árboles y Terminales.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Hechos, Reglas de inferencia, Base del conocimiento, Agendas y Motores.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Estos cinco elementos matemáticos describen y acotan por completo un problema de búsqueda formal.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="c">
+                            <div class="quiz-question-number">Pregunta 2 de 5</div>
+                            <div class="quiz-question">¿Cuál es la principal característica de un espacio de estados No Determinístico?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> El costo de los caminos solución varía de forma aleatoria a cada segundo.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Carece de estados meta u objetivos explícitos en su tupla de diseño.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Una única acción ejecutada bajo un mismo estado puede mapear a múltiples estados sucesores posibles.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Obliga al algoritmo a procesar ramificaciones exclusivamente de forma lineal y secuencial.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Al no tener certeza absoluta del estado resultante, se introduce incertidumbre en el proceso de transiciones.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="a">
+                            <div class="quiz-question-number">Pregunta 3 de 5</div>
+                            <div class="quiz-question">¿Por qué la planificación en entornos no determinísticos requiere planes condicionales o políticas en lugar de planes lineales simples?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> Porque el agente inteligente debe estar preparado con ramificaciones lógicas para responder ante imprevistos o fallas del entorno.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Porque los entornos lineales provocan fugas de memoria y desbordamientos en motores reactivos.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Debido a que algoritmos clásicos como A* no admiten matrices multidimensionales.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Para reducir de forma artificial el tamaño de las tablas de datos operativas.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Las estructuras condicionales (si pasa s₁ ejecutar a₁, si pasa s₂ ejecutar a₂) garantizan alcanzar la meta a pesar de la incertidumbre.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 4 de 5</div>
+                            <div class="quiz-question">En el ejemplo probabilístico de la aspiradora inteligente, ¿qué representa el 10% asignado a la condición de falla?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> La porción de memoria de trabajo consumida por el recolector de basura de JS.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> La incertidumbre o imperfección física del actuador al no limpiar efectivamente la superficie.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> La cantidad de polvo remanente que se esparce de forma cíclica por la habitación.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> El porcentaje de batería consumido por cada acción de aspirado realizada.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Modela las imperfecciones del mundo real, donde las acciones del hardware no siempre tienen resultados perfectos.</div>
+                        </div>
+
+                        <div class="quiz-card" data-answer="b">
+                            <div class="quiz-question-number">Pregunta 5 de 5</div>
+                            <div class="quiz-question">¿A qué refiere el concepto de «explosión combinatoria» al explorar un espacio de estados?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-option="a"><span class="quiz-option-letter">A</span> A la corrupción de punteros internos al procesar grafos cíclicos concurrentes.</div>
+                                <div class="quiz-option" data-option="b"><span class="quiz-option-letter">B</span> Al crecimiento exponencial del número de estados a medida que aumenta la profundidad o variables del problema.</div>
+                                <div class="quiz-option" data-option="c"><span class="quiz-option-letter">C</span> Al borrado masivo de nodos estériles o inalcanzables en un árbol de decisión AND-OR.</div>
+                                <div class="quiz-option" data-option="d"><span class="quiz-option-letter">D</span> Al fallo de un algoritmo de búsqueda ciega cuando encuentra múltiples estados meta contiguos.</div>
+                            </div>
+                            <div class="quiz-feedback">✅ Correcto. Este fenómeno limita la viabilidad de resolver problemas complejos por fuerza bruta, haciendo necesaria la introducción de funciones heurísticas.</div>
+                        </div>
+                    </div>
+                    <button class="quiz-check-btn" id="quizCheckBtn">Verificar respuestas</button>
+                </div>
+            </section>
+
             <section class="reveal">
                 <h2 id="conclusion">Conclusión</h2>
                 <p>Los espacios de estados son la <strong>representación formal</strong> más usada para modelar problemas de búsqueda y planificación en IA. Comprender la diferencia entre espacios determinísticos y no determinísticos es clave para elegir los algoritmos correctos. Esta representación conecta directamente con los algoritmos de búsqueda que veremos en el siguiente tema.</p>
             </section>
+
             <section class="reveal">
                 <h2 id="referencias">📚 Referencias</h2>
                 <ul>
@@ -146,6 +249,7 @@
                     <li>Korf, R. E. (1985). Depth-First Iterative-Deepening. <em>Artificial Intelligence</em>, 27(1), 97–109.</li>
                 </ul>
             </section>
+
             <nav class="article-nav reveal">
                 <a href="arquitectura-sistema-produccion.html" class="article-nav-link">
                     <span class="nav-label">← Anterior</span>
@@ -165,6 +269,9 @@
         </div>
     </footer>
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
     <script src="../js/main.js"></script>
 </body>
 </html>
